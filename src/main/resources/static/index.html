@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>Eingabeformular zur Auswahl kombinierter Ressourcen</title>
+    <link href="skeleton.css" rel="stylesheet" type="text/css">
+    <link href="normalize.css" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <script language="javascript" src="javascript.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<form action="/submit-form" enctype="multipart/form-data" method="POST">
+    <h2 class="modern-heading">Eingabeformular zur Auswahl kombinierter Ressourcen</h2>
+    <div class="row">
+        <div class="six columns">
+            <h5> Technische Rahmenbedingungen am Aufstellort</h5>
+
+            <label for="Temperatur">Durschnittliche Raumtemperatur:</label>
+            <div class="input-container">
+                <input class="u-full-width element" id="Temperatur" max="+100" min="-100" name="Temperatur" oninput="showTemperature()"
+                       step="1.0" type="range">
+                <span id="TemperaturAnzeige"></span>
+            </div>
+
+            <label for="Luftfeuchtigkeit">Relative Luftfeuchtigkeit:</label>
+            <div class="input-container">
+                <input class="u-full-width" id="Luftfeuchtigkeit" max="+100" min="-100" name="Luftfeuchtigkeit" oninput="showLuftfeuchtigkeit()"
+                       step="1.0"
+                       type="range"
+                       value="0">
+                <span id="LuftfeuchtigkeitAnzeige"></span>
+            </div>
+
+
+            <label for="Pneumatikversorgung">Max. Verfügbare Pneumatikversorgung :</label>
+            <div class="input-container">
+                <input class="u-full-width" id="Pneumatikversorgung" name="Pneumatikversorgung" type="number">
+                <div class="unit">Bar</div>
+            </div>
+
+            <label for="Stromversorgung">Max. Verfügbare Stromversorgung:</label>
+            <div class="input-container">
+                <!--<input class="u-full-width" type="text" id="Stromversorgung" name="Stromversorgung"> -->
+                <select class="u-full-width" id="Stromversorgung" name="Stromversorgung">
+                    <option value="Wechselstrom (230 V, 16 A)">Wechselstrom (230 V, 16 A)</option>
+                    <option value="Drehstrom (400 V, 16 A)">Drehstrom (400 V, 16 A)</option>
+                    <option value="Drehstrom (400 V, 32 A)">Drehstrom (400 V, 32 A)</option>
+                    <option value="Drehstrom (400 V, 63 A)">Drehstrom (400 V, 63 A)</option>
+                </select>
+                <div class="unit">A</div>
+            </div>
+
+
+        </div>
+        <div class="six columns">
+            <h5> Wirtschaftliche Rahmenbedingungen am Aufstellort</h5>
+            <label for="Flächenkosten">Flächenkosten (pro m²):</label>
+            <div class="input-container">
+                <input class="u-full-width" id="Flächenkosten" name="Flächenkosten" type="number">
+                <div class="unit">€</div>
+            </div>
+
+            <label for="Einsatzdauer">Geplante Einsatzdauer in Monaten:</label>
+            <div class="input-container">
+                <input class="u-full-width" id="Einsatzdauer" name="Einsatzdauer" type="number">
+                <div class="unit">€</div>
+            </div>
+
+            <label for="Ressourcen">Vorhandene Ressourcen:</label>
+            <input accept=".json, .xml" class="u-full-width" id="Ressourcen" name="Ressourcen" type="file">
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="six columns">
+            <button class="button-primary" type="submit">Anfrage starten</button>
+        </div>
+        <div class="six columns">
+
+            <label for="file">Anforderungsdatei (XML/JSON)</label>
+            <input accept=".json, .xml" class="u-full-width" id="file" name="file" type="file">
+        </div>
+    </div>
+    </br>
+</form>
+</body>
+</html>
