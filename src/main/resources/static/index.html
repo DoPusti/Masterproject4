@@ -2,29 +2,29 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Eingabeformular zur Auswahl kombinierter Ressourcen</title>
+    <title class="dynamic-content">{{title}}</title>
     <link href="skeleton.css" rel="stylesheet" type="text/css">
     <link href="normalize.css" rel="stylesheet" type="text/css">
     <link href="styles.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="javascript.js" type="text/javascript"></script>
+    <script src="javascript.js" type="text/javascript"></script>
+    <script src="mustache.js"></script>
+    <script src="render.js"></script>
 </head>
-
 <body>
 
 <form action="/submit-form" enctype="multipart/form-data" method="POST">
-    <h2 class="modern-heading">Eingabeformular zur Auswahl kombinierter Ressourcen</h2>
+    <h2 class="modern-heading dynamic-content">{{title}}</h2>
     <div class="row">
         <div class="six columns">
-            <h5> Technische Rahmenbedingungen am Aufstellort</h5>
-
-            <label for="Temperatur">Durschnittliche Raumtemperatur:</label>
+            <h5 class="dynamic-content">{{headerLeft}}</h5>
+            <label class ="dynamic-content" for="Temperatur">{{left0}}</label>
             <div class="input-container">
                 <input class="u-full-width element" id="Temperatur" max="+100" min="-100" name="Temperatur" oninput="showTemperature()"
                        step="1.0" type="range">
                 <span id="TemperaturAnzeige"></span>
             </div>
 
-            <label for="Luftfeuchtigkeit">Relative Luftfeuchtigkeit:</label>
+            <label class="dynamic-content" for="Luftfeuchtigkeit">{{left1}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Luftfeuchtigkeit" max="+100" min="-100" name="Luftfeuchtigkeit" oninput="showLuftfeuchtigkeit()"
                        step="1.0"
@@ -34,20 +34,19 @@
             </div>
 
 
-            <label for="Pneumatikversorgung">Max. Verfügbare Pneumatikversorgung :</label>
+            <label class ="dynamic-content" for="Pneumatikversorgung">{{left2}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Pneumatikversorgung" name="Pneumatikversorgung" type="number">
                 <div class="unit">Bar</div>
             </div>
 
-            <label for="Stromversorgung">Max. Verfügbare Stromversorgung:</label>
+            <label class ="dynamic-content" for="Stromversorgung">{{left3}}</label>
             <div class="input-container">
-                <!--<input class="u-full-width" type="text" id="Stromversorgung" name="Stromversorgung"> -->
-                <select class="u-full-width" id="Stromversorgung" name="Stromversorgung">
-                    <option value="Wechselstrom (230 V, 16 A)">Wechselstrom (230 V, 16 A)</option>
-                    <option value="Drehstrom (400 V, 16 A)">Drehstrom (400 V, 16 A)</option>
-                    <option value="Drehstrom (400 V, 32 A)">Drehstrom (400 V, 32 A)</option>
-                    <option value="Drehstrom (400 V, 63 A)">Drehstrom (400 V, 63 A)</option>
+                   <select class="u-full-width dynamic-content" id="Stromversorgung" name="Stromversorgung">
+                    <option value="Wechselstrom (230 V, 16 A)">{{elect0}}</option>
+                    <option value="Drehstrom (400 V, 16 A)">{{elect1}}</option>
+                    <option value="Drehstrom (400 V, 32 A)">{{elect2}}</option>
+                    <option value="Drehstrom (400 V, 63 A)">{{elect3}}</option>
                 </select>
                 <div class="unit">A</div>
             </div>
@@ -55,31 +54,31 @@
 
         </div>
         <div class="six columns">
-            <h5> Wirtschaftliche Rahmenbedingungen am Aufstellort</h5>
-            <label for="Flächenkosten">Flächenkosten (pro m²):</label>
+            <h5 class ="dynamic-content" >{{headerRight}}</h5>
+            <label class="dynamic-content" for="Flächenkosten">{{right0}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Flächenkosten" name="Flächenkosten" type="number">
                 <div class="unit">€</div>
             </div>
 
-            <label for="Einsatzdauer">Geplante Einsatzdauer in Monaten:</label>
+            <label class="dynamic-content" for="Einsatzdauer">{{right1}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Einsatzdauer" name="Einsatzdauer" type="number">
                 <div class="unit">€</div>
             </div>
 
-            <label for="Ressourcen">Vorhandene Ressourcen:</label>
+            <label class="dynamic-content"  for="Ressourcen">{{right2}}</label>
             <input accept=".json, .xml" class="u-full-width" id="Ressourcen" name="Ressourcen" type="file">
         </div>
     </div>
     </br>
     <div class="row">
         <div class="six columns">
-            <button class="button-primary" type="submit">Anfrage starten</button>
+            <button class="button-primary dynamic-content" type="submit">{{start}}</button>
         </div>
         <div class="six columns">
 
-            <label for="file">Anforderungsdatei (XML/JSON)</label>
+            <label class="dynamic-content" for="file">{{assurances}}</label>
             <input accept=".json, .xml" class="u-full-width" id="file" name="file" type="file">
         </div>
     </div>
