@@ -2,6 +2,7 @@ package com.example.Masterproject4;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -23,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.logging.Logger;
 
 @RestController
 public class HtmlController {
@@ -31,11 +33,6 @@ public class HtmlController {
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
-    }
-
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "") String name) {
-        return "<h1>Hello " + name + "!</h1>\n" + new java.util.Date();
     }
 
     @PostMapping("/submit-form")
@@ -47,7 +44,6 @@ public class HtmlController {
                              @RequestParam("Einsatzdauer") String Einsatzdauer,
                              @RequestParam("Ressourcen") MultipartFile RessourcenFile,
                              @RequestParam("file") MultipartFile file) throws IOException {
-
 
         System.out.println("Temperatur: " + Temperatur);
         System.out.println("Luftfeuchtigkeit: " + Luftfeuchtigkeit);
