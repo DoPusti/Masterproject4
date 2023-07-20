@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,41 +17,16 @@ import lombok.NoArgsConstructor;
 public class ProductRequirementDBClass {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "prID", nullable = false)
     private Long id;
 
     @Column(name = "AssetId")
     private String assetId;
 
-    @Column(name = "Mass")
-    private double mass;
+    @OneToMany(mappedBy="productRequirement",fetch = FetchType.EAGER)
+    private Set<ProductPropertyDBClass> productPoperties;
 
-    @Column(name = "Temperature")
-    private double temperature;
-
-    @Column(name = "DimensionLength")
-    private double dimensionLength;
-
-    @Column(name = "DimensionLength")
-    private double dimensionWidth;
-
-    @Column(name = "DimensionLength")
-    private double dimensionHeight;
-
-    @Column(name = "CenterOfMassX")
-    private double centerOfMassX;
-
-    @Column(name = "CenterOfMassY")
-    private double centerOfMassY;
-
-    @Column(name = "CenterOfMassZ")
-    private double centerOfMassZ;
-
-    @Column(name = "StaticFrictionCoefficient")
-    private double staticFrictionCoefficient;
-
-    @Column(name = "FerroMagnetic")
-    private Boolean ferroMagnetic;
-
+    @OneToMany(mappedBy="productRequirement",fetch = FetchType.EAGER)
+    private Set<ProcessRequirementDBClass> processRequirements;
 
 }

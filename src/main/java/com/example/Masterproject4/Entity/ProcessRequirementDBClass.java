@@ -15,8 +15,11 @@ import lombok.NoArgsConstructor;
 public class ProcessRequirementDBClass {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "Id", nullable = false)
-    private Long iD;
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "tvName")
+    private String tvName;
 
     @Column(name = "PositionX")
     private double positionX;
@@ -54,5 +57,11 @@ public class ProcessRequirementDBClass {
     @Column(name = "MomentumZ")
     private double momentumZ;
 
+    @Column(name = "ReferenceParts")
+    private double referenceParts;
+
+    @ManyToOne
+    @JoinColumn(name = "prID",nullable = false,referencedColumnName = "prID")
+    private ProductRequirementDBClass productRequirement;
 
 }

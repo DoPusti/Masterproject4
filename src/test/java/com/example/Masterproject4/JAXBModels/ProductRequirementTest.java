@@ -5,6 +5,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.io.File;
 import java.util.List;
 
@@ -29,14 +30,47 @@ class ProductRequirementTest {
 
     @Test
     void xmlFormatterGetAllValues() throws JAXBException {
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirementTVXML.xml");
+        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirementWithMultipleTVS.xml");
 
         JAXBContext jaxbContext = JAXBContext.newInstance(ProductRequirement.class);
 
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
         ProductRequirement productRequirement = (ProductRequirement) unmarshaller.unmarshal(file);
-
+        // Alle Submodelle auflisten (Identification, ProductPropertyOverall, ProcessRequirement)
+        List<SubModel> listOfAllSubmodels = productRequirement.getSubmodels().getSubmodel();
+        listOfAllSubmodels.stream().forEach(subModel -> {
+            System.out.println("---------------------");
+            System.out.println("SubModel" + subModel.getIdShort());
+            switch (subModel.getIdShort()) {
+                case "Identification":
+                    // Es gibt immer nur 1 Element
+                    Property properyForIdentification = subModel.getSubmodelElements().getSubmodelElement().get(0).getProperty();
+                    System.out.println("IdShort : " + properyForIdentification.getIdShort());
+                    System.out.println("Value   : " + properyForIdentification.getValue());
+                    break;
+                case "ProductPropertyOverall":
+                    List<SubModelElement> subModelElementsInProductProperty = subModel.getSubmodelElements().getSubmodelElement();
+                    subModelElementsInProductProperty.stream().forEach(subModelElementInProductProperty -> {
+                        System.out.println("IdShort von SMC: " + subModelElementInProductProperty.getSubmodelElementCollection().getIdShort());
+                        List<SubModelElement> subModelElementsInSMC = subModelElementInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsInSMC.stream().forEach(subModelElementInSingleParts -> {
+                            System.out.println("IdShort von Member in SMC: " + subModelElementInSingleParts.getSubmodelElementCollection().getIdShort());
+                            List<SubModelElement> subModelElementsInSMCInSMC = subModelElementInSingleParts.getSubmodelElementCollection().getValue().getSubmodelElement();
+                            subModelElementsInSMCInSMC.stream().forEach(subModelElementInSMCInSMC -> {
+                                System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
+                                System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
+                            });
+                        });
+                    } );
+                    break;
+                case "ProcessRequirement":
+                    break;
+                default:
+                    break;
+            }
+        });
+        /*
         // Alle Submodels des Assets
         List<SubModel> listeOfSubmodels = productRequirement.getSubmodels().getSubmodel();
         listeOfSubmodels.stream().forEach(objekt -> {
@@ -87,6 +121,8 @@ class ProductRequirementTest {
             });
 
         });
+
+         */
 
 
     }
