@@ -10,11 +10,11 @@ import java.io.File;
 import java.util.List;
 
 
-class ProductRequirementTest {
+class ProductRequirementFullObjectTest {
 
     @Test
     void xmlFormatterGetSubmodels() throws JAXBException {
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirement.xml");
+        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirementFullObject.xml");
 
         JAXBContext jaxbContext = JAXBContext.newInstance(ProductRequirement.class);
 

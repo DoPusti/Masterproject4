@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class ProductRequirementDBClassTest {
+class ProductRequirementFullObjectDBClassTest {
     @Autowired
     private ProductRequirementRepository productRequirementRepository;
 

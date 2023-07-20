@@ -7,10 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class ProductRequirementRepositoryTest {
+class ProductRequirementFullObjectRepositoryTest {
 
     @Autowired
     private ProductRequirementRepository productRequirementRepository;
@@ -50,11 +48,8 @@ class ProductRequirementRepositoryTest {
     @Test
     public void updateProductRequirement() {
 
-        System.out.println(productRequirementRepository.updateProductRequirementByAssetId("12345678","1234"));
+        System.out.println(productRequirementRepository.updateProductRequirementByAssetId("12345678", "1234"));
     }
-
-
-
 
 
 }
