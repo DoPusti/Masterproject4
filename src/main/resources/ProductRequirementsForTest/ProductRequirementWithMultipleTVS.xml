@@ -1245,7 +1245,7 @@
             <submodelElements>
                 <submodelElement>
                     <submodelElementCollection>
-                        <idShort>TV1</idShort>
+                        <idShort    >TV1</idShort>
                         <kind>Instance</kind>
                         <semanticId>
                             <keys />

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Teilvorgang {
+    String tvName;
     double PositionX;
     double PositionY;
     double PositionZ;

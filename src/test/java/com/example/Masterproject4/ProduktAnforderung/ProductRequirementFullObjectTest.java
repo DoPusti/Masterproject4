@@ -24,8 +24,6 @@ class ProductRequirementFullObjectTest {
 
         List<Teilvorgang> teilVorgang = new ArrayList<>();
 
-        Teilvorgang teilvorgangOfProductRequirement = new Teilvorgang();
-
         ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
 
         File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirementWithMultipleTVS.xml");
@@ -56,7 +54,6 @@ class ProductRequirementFullObjectTest {
                             System.out.println("IdShort von Member in SMC: " + subModelElementParts.getSubmodelElementCollection().getIdShort());
                             Part partOfProductRequirement = new Part();
                             partOfProductRequirement.setTyp(subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            System.out.println("Wert vor dem Speichern: " + partOfProductRequirement.getTyp());
                             List<SubModelElement> subModelElementsInSMCInSMC = subModelElementParts.getSubmodelElementCollection().getValue().getSubmodelElement();
                             subModelElementsInSMCInSMC.forEach(subModelElementInSMCInSMC -> {
 
@@ -80,11 +77,9 @@ class ProductRequirementFullObjectTest {
                                                     case "Z" ->
                                                             partOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
                                                 }
-                                                /*
-                                                System.out.println("IdShort: " + property2.getIdShort());
-                                                System.out.println("Value: " + property2.getValue());
+                                                //System.out.println("IdShort: " + property2.getIdShort());
+                                                //System.out.println("Value: " + property2.getValue());
 
-                                                 */
                                             });
                                         }
                                         // Property ist direkt da
@@ -97,39 +92,91 @@ class ProductRequirementFullObjectTest {
                                                 case "FerroMagnetic" ->
                                                         partOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
                                             }
-                                            /*
-                                            System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
-                                            System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
 
-                                             */
-
+                                            //System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
+                                            //System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
                                         }
-                                            System.out.println("Nach Belegen eines Wertes " + partOfProductRequirement);
+                                        //System.out.println("Nach Belegen eines Wertes " + partOfProductRequirement);
                                     }
 
 
-
                             );
-                            System.out.println("Vor dem Hinzufügen " + partOfProductRequirement);
-                            System.out.println("Vor dem Hinzufügen " + parts);
                             parts.add(partOfProductRequirement);
-                            System.out.println("Nach dem Hinzufügen " + partOfProductRequirement);
-                            System.out.println("Nach dem Hinzufügen " + parts);
                         });
                     });
                     break;
                 case "ProcessRequirement":
+                    List<SubModelElement> subModelElementsInProcessRequirement = subModelObject.getSubmodelElements().getSubmodelElement();
+                    subModelElementsInProcessRequirement.forEach(object4 -> {
+                        //Von Jedem Element die SubModelElementCollection filtern
+                        //System.out.println(object4);
+                        Teilvorgang teilVorGangParts = new Teilvorgang();
+                        teilVorGangParts.setTvName(object4.getSubmodelElementCollection().getIdShort());
+                        System.out.println("Id vom SMC " + teilVorGangParts.getTvName());
+                        //2 Elemente mit SMC und eins mit Property
+                        List<SubModelElement> subModelElementsInSMC = object4.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsInSMC.forEach(object5 -> {
+                            Property property5 = object5.getProperty();
+                            // SMC Rest
+                            if (property5 == null) {
+                                List<SubModelElement> subModelElementsRest = object5.getSubmodelElementCollection().getValue().getSubmodelElement();
+                                subModelElementsRest.forEach(subModelElement -> {
+                                    Property property6 = subModelElement.getProperty();
+                                    switch (property6.getIdShort()) {
+                                        case "PositionX" ->
+                                                teilVorGangParts.setPositionX(Double.parseDouble(property6.getValue()));
+                                        case "PositionY" ->
+                                                teilVorGangParts.setPositionY(Double.parseDouble(property6.getValue()));
+                                        case "PositionZ" ->
+                                                teilVorGangParts.setPositionZ(Double.parseDouble(property6.getValue()));
+                                        case "RotationX" ->
+                                                teilVorGangParts.setRotationX(Double.parseDouble(property6.getValue()));
+                                        case "RotationY" ->
+                                                teilVorGangParts.setRotationY(Double.parseDouble(property6.getValue()));
+                                        case "RotationZ" ->
+                                                teilVorGangParts.setRotationZ(Double.parseDouble(property6.getValue()));
+                                        case "ForceX" ->
+                                                teilVorGangParts.setForceX(Double.parseDouble(property6.getValue()));
+                                        case "ForceY" ->
+                                                teilVorGangParts.setForceY(Double.parseDouble(property6.getValue()));
+                                        case "ForceZ" ->
+                                                teilVorGangParts.setForceZ(Double.parseDouble(property6.getValue()));
+                                        case "MomentumX" ->
+                                                teilVorGangParts.setMomentumX(Double.parseDouble(property6.getValue()));
+                                        case "MomentumY" ->
+                                                teilVorGangParts.setMomentumY(Double.parseDouble(property6.getValue()));
+                                        case "MomentumZ" ->
+                                                teilVorGangParts.setMomentumZ(Double.parseDouble(property6.getValue()));
+                                    }
+                                });
+
+
+                            }
+                            // Property Reference Parts
+                            else {
+                                teilVorGangParts.setReferenceParts(property5.getValue());
+                                System.out.println("ReferenceParts gesetzt mit : " + teilVorGangParts.getReferenceParts());
+
+                            }
+                        });
+                        teilVorgang.add(teilVorGangParts);
+
+                    });
+                    // Zur Liste hinzufügen
+
                     break;
             }
         });
         System.out.println(parts);
         productRequirementFullObject.setPart(parts);
+        productRequirementFullObject.setTeilVorgang(teilVorgang);
         System.out.println("---------------------------------------------");
         System.out.println("Infos zum Objekt ProductRequirementFullObject");
         System.out.println(productRequirementFullObject.getAssetId());
         System.out.println(productRequirementFullObject.getPart());
         System.out.println(productRequirementFullObject.getPart().size());
-
+        System.out.println(productRequirementFullObject.getTeilVorgang());
+        System.out.println(productRequirementFullObject.getTeilVorgang().size());
 
     }
 
