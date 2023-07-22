@@ -1,9 +1,6 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
-import com.example.Masterproject4.JAXBModels.Property;
-import com.example.Masterproject4.JAXBModels.SubModel;
-import com.example.Masterproject4.JAXBModels.SubModelElement;
-import com.example.Masterproject4.JAXBModels.XMLStructure;
+import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.Zusicherung.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -200,105 +197,14 @@ class XMLStructureFullObjectTest {
         listOfAllSubmodels.forEach(subModelObject -> {
             List<SubModelElement> listOfAllSubmodelsElements = subModelObject.getSubmodelElements().getSubmodelElement();
             switch (subModelObject.getIdShort()) {
-                case "Identification":
-                    System.out.println("Unterprozedur Fill Identification wird aufgerufen");
-                    fillSubModelIdentification(listOfAllSubmodelsElements);
-                    break;
-                case "Assurances":
-                    System.out.println("Unterprozedur Fill Assurances wird aufgerufen");
+                case "Identification" ->
+                        fillSubModelIdentification(listOfAllSubmodelsElements, subModelObject.getIdShort());
+                case "Assurances" ->
                     fillSubModelAssurances(listOfAllSubmodelsElements);
-                    listOfAllSubmodelsElements.forEach(subModelElementsAssurances -> {
-                        List<SubModelElement> SMEsinSMEInAssurances = subModelElementsAssurances.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        SMEsinSMEInAssurances.forEach(SMEinSMEinAssurance -> {
-                            //Manche haben direkt Property, andere zuerst wieder eine SEC
-                            Property propertyInAssurance = SMEinSMEinAssurance.getProperty();
-                            if (propertyInAssurance == null) {
-                                List<SubModelElement> SMesinSMEsInSMEinAssurances = SMEinSMEinAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
-                                SMesinSMEsInSMEinAssurances.forEach(SMesinSMEsInSMEinAssurancesObject -> {
-                                    Property propertyInSMEInAssurance = SMesinSMEsInSMEinAssurancesObject.getProperty();
-                                    if (propertyInSMEInAssurance == null) {
-                                        // RangeObjekte (z.B. Force in Constraints)
-                                        switch (SMesinSMEsInSMEinAssurancesObject.getRange().getIdShort()) {
-                                            case "X":
-                                                assuranceFullObject.setXForceMin(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMin()));
-                                                assuranceFullObject.setXForceMax(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMax()));
-                                                System.out.println("X mit MIN und MAX eingefügt");
-                                            case "Y":
-                                                assuranceFullObject.setYForceMin(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMin()));
-                                                assuranceFullObject.setYForceMax(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMax()));
-                                                System.out.println("Y mit MIN und MAX eingefügt");
-                                            case "Z":
-                                                assuranceFullObject.setZForceMin(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMin()));
-                                                assuranceFullObject.setZForceMax(Double.parseDouble(SMesinSMEsInSMEinAssurancesObject.getRange().getMax()));
-                                                System.out.println("Z mit MIN und MAX eingefügt");
-                                        }
+                case "MediaSupply" ->
+                    fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
 
-                                    } else {
-                                        // Properties im ersten SCM
-                                        switch (propertyInSMEInAssurance.getIdShort()) {
-                                            case "Length":
-                                                assuranceFullObject.setMass(Double.parseDouble(propertyInSMEInAssurance.getValue()));
-                                                System.out.println("Mass eingefügt");
-                                            case "Width":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-                                            case "Height":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-                                            case "X":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-                                            case "Y":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-                                            case "Z":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-                                            case "Parallelgripper", "Magneticgripper", "Vaccumgripper":
-                                                if (propertyInSMEInAssurance.getValue() != null) {
-                                                    assuranceFullObject.setOperatingPrinciple(propertyInSMEInAssurance.getIdShort());
-                                                    System.out.println("Operating Principle eingefügt");
-                                                }
-                                            case "Position":
-                                                assuranceFullObject.setConnectionType(propertyInSMEInAssurance.getValue());
-                                                System.out.println("ConnectionType eingefügt");
-
-                                        }
-                                    }
-
-
-                                });
-                            } else {
-                                // Direkte Properties
-                                switch (propertyInAssurance.getIdShort()) {
-                                    case "Mass":
-                                        assuranceFullObject.setMass(Double.parseDouble(propertyInAssurance.getValue()));
-                                        System.out.println("Mass eingefügt");
-                                    case "ConnectionType":
-                                        assuranceFullObject.setConnectionType(propertyInAssurance.getValue());
-                                        System.out.println("ConnectionType eingefügt");
-                                }
-                            }
-                        });
-
-                    });
-                    break;
-                /*
-                case "MediaSupply":
-                    listOfAllSubmodelsElements.forEach(subModelElements -> {
-                        Property propertyMediaSupply = subModelElements.getProperty();
-                        switch (propertyMediaSupply.getIdShort()) {
-                            case "OperatingCurrent":
-                                assuranceFullObject.setOperatingCurrent(Double.parseDouble(propertyMediaSupply.getValue()));
-                            case "OperatingVoltage":
-                                assuranceFullObject.setOperatingVoltage(Double.parseDouble(propertyMediaSupply.getValue()));
-                            case "CompressedAirPressure":
-                                assuranceFullObject.setCompressedAirPressure(Double.parseDouble(propertyMediaSupply.getValue()));
-                            case "AirFlow":
-                                assuranceFullObject.setAirFlow(Double.parseDouble(propertyMediaSupply.getValue()));
-                        }
-                    });
-                    break;
+                    /*
                 case "EnvironmentalConditions":
                     listOfAllSubmodelsElements.forEach(subModelElements -> {
                         Property propertyEnvironmentalConditions = subModelElements.getProperty();
@@ -370,23 +276,11 @@ class XMLStructureFullObjectTest {
 
 
     // Submodel Identification
-    private void fillSubModelIdentification(List<SubModelElement> subModelElements) {
+    private void fillSubModelIdentification(List<SubModelElement> subModelElements, String SECIdShort) {
+        System.out.println("Aufruf mit " + SECIdShort);
         subModelElements.forEach(subModelElementsInAssurance -> {
             Property propertyIdentification = subModelElementsInAssurance.getProperty();
-            switch (propertyIdentification.getIdShort()) {
-                case "AssetId":
-                    assuranceFullObject.setAssetId(propertyIdentification.getValue());
-                    System.out.println(propertyIdentification.getIdShort() + " eingefügt");
-                    break;
-                case "SerialNumber":
-                    assuranceFullObject.setSerialNumber(propertyIdentification.getValue());
-                    System.out.println(propertyIdentification.getIdShort() + " eingefügt");
-                    break;
-                case "URL":
-                    assuranceFullObject.setUrl(propertyIdentification.getValue());
-                    System.out.println(propertyIdentification.getIdShort() + " eingefügt");
-                    break;
-            }
+            fillValueInList(propertyIdentification.getIdShort(), propertyIdentification.getValue(), "", SECIdShort);
         });
 
     }
@@ -395,27 +289,58 @@ class XMLStructureFullObjectTest {
     private void fillSubModelAssurances(List<SubModelElement> listOfAllSubmodelsElements) {
         listOfAllSubmodelsElements.forEach(subModelElementsInAssurance -> {
             // Alle direkten Properties von SMC prüfen
-            Property property1 = subModelElementsInAssurance.getProperty();
-            if (property1 != null) {
-                fillValueInList(property1.getIdShort(), property1.getValue(), "", subModelElementsInAssurance.getSubmodelElementCollection().getIdShort());
-            } else {
+            String idShortOfSMC = subModelElementsInAssurance.getSubmodelElementCollection().getIdShort();
+            List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
 
-            }
-            System.out.println(subModelElementsInAssurance.getSubmodelElementCollection().getIdShort());
-            System.out.println(subModelElementsInAssurance.getSubmodelElementCollection());
+            // Schleife über alle SMC im SM Assurance
+            // Erstmal Property testen
+            subModelElementsDeep1.forEach(subModelElementObject1 -> {
+                Property property1 = subModelElementObject1.getProperty();
+                if (property1 != null) {
+                    fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
+                } else {
+                    // Neue Ebene der SMC
+                    String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
+                    List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                    subModelElementsDeep2.forEach(subModelElementObject2 -> {
+                        Property property2 = subModelElementObject2.getProperty();
+                        if (property2 != null) {
+                            fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
+                        }
+                        // Kein Property, sondern Range
+                        else {
+                            Range range = subModelElementObject2.getRange();
+                            fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
+                        }
+                    });
+                }
+
+            });
+
         });
     }
 
+    private void fillSubModelMediaSupply(List<SubModelElement> subModelElements, String SECIdShort) {
+        subModelElements.forEach(subModelElementObject1 -> {
+            Property property1 = subModelElementObject1.getProperty();
+            fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+        });
+    }
     private void fillValueInList(String idShort, String value1, String value2, String SECIdshort) {
         switch (SECIdshort) {
-            // Identification
+            case "Properties":
+                switch (idShort) {
+                    case "Mass" -> assuranceFullObject.setMass(Double.parseDouble(value1));
+                    case "ConnectionType" -> assuranceFullObject.setConnectionType(value1);
+                }
+                // Identification
             case "Identification":
-                switch (value1) {
+                switch (idShort) {
                     case "AssetId" -> assuranceFullObject.setAssetId(value1);
                     case "SerialNumber" -> assuranceFullObject.setSerialNumber(value1);
                     case "URL" -> assuranceFullObject.setUrl(value1);
                 }
-            // Assurances
+                // Assurances
             case "Dimensions":
                 switch (idShort) {
                     case "Length" -> assuranceFullObject.setLength(Double.parseDouble(value1));
@@ -481,24 +406,26 @@ class XMLStructureFullObjectTest {
 
                 }
 
-            // MediaSupply
+                // MediaSupply
             case "MediaSupply":
                 switch (idShort) {
                     case "OperatingCurrent" -> assuranceFullObject.setOperatingCurrent(Double.parseDouble(value1));
-                    case  "OperatingVoltage" -> assuranceFullObject.setOperatingVoltage(Double.parseDouble(value1));
-                    case  "CompressedAirPressure" -> assuranceFullObject.setCompressedAirPressure(Double.parseDouble(value1));
+                    case "OperatingVoltage" -> assuranceFullObject.setOperatingVoltage(Double.parseDouble(value1));
+                    case "CompressedAirPressure" ->
+                            assuranceFullObject.setCompressedAirPressure(Double.parseDouble(value1));
+                    case "AirFlow" ->assuranceFullObject.setAirFlow(Double.parseDouble(value1));
                 }
-            // Environmental Conditions
+                // Environmental Conditions
             case "EnvironmentalConditions":
                 switch (idShort) {
                     case "Temperature" -> assuranceFullObject.setTemperature(Double.parseDouble(value1));
                     case "Pressure" -> assuranceFullObject.setPressure(Double.parseDouble(value1));
                     case "Humidity" -> assuranceFullObject.setHumidity(Double.parseDouble(value1));
                     case "Purity" -> assuranceFullObject.setPurity(Boolean.parseBoolean(value1));
-                    case  "FoodGrade" -> assuranceFullObject.setFoodGrade(Integer.parseInt(value1));
-                    case  "Explosiveness" -> assuranceFullObject.setExplosiveness(Integer.parseInt(value1));
+                    case "FoodGrade" -> assuranceFullObject.setFoodGrade(Integer.parseInt(value1));
+                    case "Explosiveness" -> assuranceFullObject.setExplosiveness(Integer.parseInt(value1));
                 }
-            // EconomicFactors
+                // EconomicFactors
             case "EconomicFactors":
                 switch (idShort) {
                     case "Price" -> assuranceFullObject.setPrice(Double.parseDouble(value1));
@@ -511,9 +438,12 @@ class XMLStructureFullObjectTest {
                 }
             case "SpaceRequirement":
                 switch (idShort) {
-                    case "Length" : assuranceFullObject.setLengthSR(Double.parseDouble(value1));
-                    case "Width" : assuranceFullObject.setWidthSR(Double.parseDouble(value1));
-                    case "Height" : assuranceFullObject.setHeightSR(Double.parseDouble(value1));
+                    case "Length":
+                        assuranceFullObject.setLengthSR(Double.parseDouble(value1));
+                    case "Width":
+                        assuranceFullObject.setWidthSR(Double.parseDouble(value1));
+                    case "Height":
+                        assuranceFullObject.setHeightSR(Double.parseDouble(value1));
                 }
 
 
