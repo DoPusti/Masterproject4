@@ -999,7 +999,7 @@
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>NaN</value>
+                  <value>5</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -1014,7 +1014,7 @@
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>NaN</value>
+                  <value>10</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -1029,7 +1029,7 @@
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>NaN</value>
+                  <value>25</value>
                 </property>
               </submodelElement>
             </value>

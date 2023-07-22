@@ -1,5 +1,6 @@
 package com.example.Masterproject4.Zusicherung;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
 public class AssuranceFullObject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     // Identification
     String assetId;
     String serialNumber;
@@ -66,10 +73,10 @@ public class AssuranceFullObject {
     double lengthSR;
     double widthSR;
     double heightSR;
-    int lengthOfUsage;
-    int maintenanceInterval;
-    int maintanceDuration;
-    int deliveryTime;
+    double lengthOfUsage;
+    double maintenanceInterval;
+    double maintanceDuration;
+    double deliveryTime;
     double oneTimeLicenceCost;
     double monthlyLicenceCost;
 

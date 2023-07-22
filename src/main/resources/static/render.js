@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
         right1: "Geplante Einsatzdauer in Monaten:",
         right2: "Vorhandene Ressourcen:",
         start: "Anfrage starten",
-        assurances: "Anforderungsdatei (XML/JSON)"
+        requirments: "Anforderungsdatei (XML/JSON)",
+        assurances: "Zusicherungen (XML/JSON)"
 
 
     };

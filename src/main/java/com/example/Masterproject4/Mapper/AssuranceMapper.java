@@ -1,204 +1,28 @@
-package com.example.Masterproject4.ProduktAnforderung;
+package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.Repository.AssuranceRepository;
-import com.example.Masterproject4.Repository.ProductPropertyRepository;
 import com.example.Masterproject4.Zusicherung.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootTest
-class XMLStructureFullObjectTest {
+public class AssuranceMapper {
 
     AssuranceFullObject assuranceFullObject = new AssuranceFullObject();
-    @Autowired
-    private AssuranceRepository assuranceRepository;
-
-    @Test
-    public void fillProductRequirement() throws JAXBException {
-        List<Part> parts = new ArrayList<>();
 
 
-        List<Teilvorgang> teilVorgang = new ArrayList<>();
+    public AssuranceFullObject saveXMLToDatabase(File file) throws JAXBException {
 
-        ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
-
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi.xml");
-
+        File file1 = new File("src\\main\\resources\\ProductRequirementsForTest\\ABBScaraIRB920T_Axis07.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
-
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file1);
 
-        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
-
-        // Loop über alle Submodelle des AASX-Files
-        List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
-        listOfAllSubmodels.forEach(subModelObject -> {
-            switch (subModelObject.getIdShort()) {
-                case "Identification" : {
-                    Property propertyForIdentification = subModelObject.getSubmodelElements().getSubmodelElement().get(0).getProperty();
-                    System.out.println("IdShort : " + propertyForIdentification.getIdShort());
-                    System.out.println("Value   : " + propertyForIdentification.getValue());
-                    productRequirementFullObject.setAssetId(propertyForIdentification.getValue());
-                    break;
-                }
-                case "ProductPropertyOverall" : {
-                    //submodel -> submodelElements -> submodelElement -> submodelElementCollection
-                    List<SubModelElement> subModelElementsInProductProperty = subModelObject.getSubmodelElements().getSubmodelElement();
-                    subModelElementsInProductProperty.forEach(subModelElementInProductProperty -> {
-                        System.out.println("IdShort von SMC: " + subModelElementInProductProperty.getSubmodelElementCollection().getIdShort());
-                        List<SubModelElement> subModelElementsInSMC = subModelElementInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        subModelElementsInSMC.forEach(subModelElementParts -> {
-                            System.out.println("IdShort von Member in SMC: " + subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            Part partOfProductRequirement = new Part();
-                            partOfProductRequirement.setTyp(subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            List<SubModelElement> subModelElementsInSMCInSMC = subModelElementParts.getSubmodelElementCollection().getValue().getSubmodelElement();
-                            subModelElementsInSMCInSMC.forEach(subModelElementInSMCInSMC -> {
-
-                                        Property property = subModelElementInSMCInSMC.getProperty();
-                                        // SCM und kein Property
-                                        if (property == null) {
-                                            List<SubModelElement> subModelElementsInProperty = subModelElementInSMCInSMC.getSubmodelElementCollection().getValue().getSubmodelElement();
-                                            subModelElementsInProperty.stream().forEach(subModelElementProperty -> {
-                                                Property property2 = subModelElementProperty.getProperty();
-                                                switch (property2.getIdShort()) {
-                                                    case "Length" ->
-                                                            partOfProductRequirement.setLength(Double.parseDouble(property2.getValue()));
-                                                    case "Width" ->
-                                                            partOfProductRequirement.setWidth(Double.parseDouble(property2.getValue()));
-                                                    case "Height" ->
-                                                            partOfProductRequirement.setHeight(Double.parseDouble(property2.getValue()));
-                                                    case "X" ->
-                                                            partOfProductRequirement.setX(Double.parseDouble(property2.getValue()));
-                                                    case "Y" ->
-                                                            partOfProductRequirement.setY(Double.parseDouble(property2.getValue()));
-                                                    case "Z" ->
-                                                            partOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
-                                                }
-                                                //System.out.println("IdShort: " + property2.getIdShort());
-                                                //System.out.println("Value: " + property2.getValue());
-
-                                            });
-                                        }
-                                        // Property ist direkt da
-                                        else {
-                                            switch (property.getIdShort()) {
-                                                case "Mass" ->
-                                                        partOfProductRequirement.setMass(Double.parseDouble(property.getValue()));
-                                                case "StaticFrictionCoefficient" ->
-                                                        partOfProductRequirement.setStaticFrictionCoefficient(Double.parseDouble(property.getValue()));
-                                                case "FerroMagnetic" ->
-                                                        partOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
-                                            }
-
-                                            //System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
-                                            //System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
-                                        }
-                                        //System.out.println("Nach Belegen eines Wertes " + partOfProductRequirement);
-                                    }
-
-
-                            );
-                            parts.add(partOfProductRequirement);
-                        });
-                    }); break;
-                }
-                case "ProcessRequirement" : {
-                    List<SubModelElement> subModelElementsInProcessRequirement = subModelObject.getSubmodelElements().getSubmodelElement();
-                    subModelElementsInProcessRequirement.forEach(object4 -> {
-                        //Von Jedem Element die SubModelElementCollection filtern
-                        //System.out.println(object4);
-                        Teilvorgang teilVorGangParts = new Teilvorgang();
-                        teilVorGangParts.setTvName(object4.getSubmodelElementCollection().getIdShort());
-                        System.out.println("Id vom SMC " + teilVorGangParts.getTvName());
-                        //2 Elemente mit SMC und eins mit Property
-                        List<SubModelElement> subModelElementsInSMC = object4.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        subModelElementsInSMC.forEach(object5 -> {
-                            Property property5 = object5.getProperty();
-                            // SMC Rest
-                            if (property5 == null) {
-                                List<SubModelElement> subModelElementsRest = object5.getSubmodelElementCollection().getValue().getSubmodelElement();
-                                subModelElementsRest.forEach(subModelElement -> {
-                                    Property property6 = subModelElement.getProperty();
-                                    switch (property6.getIdShort()) {
-                                        case "PositionX" ->
-                                                teilVorGangParts.setPositionX(Double.parseDouble(property6.getValue()));
-                                        case "PositionY" ->
-                                                teilVorGangParts.setPositionY(Double.parseDouble(property6.getValue()));
-                                        case "PositionZ" ->
-                                                teilVorGangParts.setPositionZ(Double.parseDouble(property6.getValue()));
-                                        case "RotationX" ->
-                                                teilVorGangParts.setRotationX(Double.parseDouble(property6.getValue()));
-                                        case "RotationY" ->
-                                                teilVorGangParts.setRotationY(Double.parseDouble(property6.getValue()));
-                                        case "RotationZ" ->
-                                                teilVorGangParts.setRotationZ(Double.parseDouble(property6.getValue()));
-                                        case "ForceX" ->
-                                                teilVorGangParts.setForceX(Double.parseDouble(property6.getValue()));
-                                        case "ForceY" ->
-                                                teilVorGangParts.setForceY(Double.parseDouble(property6.getValue()));
-                                        case "ForceZ" ->
-                                                teilVorGangParts.setForceZ(Double.parseDouble(property6.getValue()));
-                                        case "MomentumX" ->
-                                                teilVorGangParts.setMomentumX(Double.parseDouble(property6.getValue()));
-                                        case "MomentumY" ->
-                                                teilVorGangParts.setMomentumY(Double.parseDouble(property6.getValue()));
-                                        case "MomentumZ" ->
-                                                teilVorGangParts.setMomentumZ(Double.parseDouble(property6.getValue()));
-                                    }
-                                });
-
-
-                            }
-                            // Property Reference Parts
-                            else {
-                                teilVorGangParts.setReferenceParts(property5.getValue());
-                                System.out.println("ReferenceParts gesetzt mit : " + teilVorGangParts.getReferenceParts());
-
-                            }
-                        });
-                        teilVorgang.add(teilVorGangParts);
-
-                    }); break;
-                }
-                // Zur Liste hinzufügen
-
-            }
-        });
-        System.out.println(parts);
-        productRequirementFullObject.setPart(parts);
-        productRequirementFullObject.setTeilVorgang(teilVorgang);
-        System.out.println("---------------------------------------------");
-        System.out.println("Infos zum Objekt ProductRequirementFullObject");
-        System.out.println(productRequirementFullObject.getAssetId());
-        System.out.println(productRequirementFullObject.getPart());
-        System.out.println(productRequirementFullObject.getPart().size());
-        System.out.println(productRequirementFullObject.getTeilVorgang());
-        System.out.println(productRequirementFullObject.getTeilVorgang().size());
-
-    }
-
-    @Test
-    void fillAssurances() throws JAXBException {
-
-
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ABBScaraIRB920T_Axis07.xml");
-
-        JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
-
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
-
-        // Loop über alle Submodelle des AASX-Files
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
         listOfAllSubmodels.forEach(subModelObject -> {
             List<SubModelElement> listOfAllSubmodelsElements = subModelObject.getSubmodelElements().getSubmodelElement();
@@ -206,11 +30,11 @@ class XMLStructureFullObjectTest {
                 case "Identification" ->
                         fillSubModelIdentification(listOfAllSubmodelsElements, subModelObject.getIdShort());
                 case "Assurances" ->
-                    fillSubModelAssurances(listOfAllSubmodelsElements);
+                        fillSubModelAssurances(listOfAllSubmodelsElements);
                 case "MediaSupply" ->
-                    fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                        fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
                 case "EnvironmentalConditions" ->
-                    fillSubModelEnvironmentConditions(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                        fillSubModelEnvironmentConditions(listOfAllSubmodelsElements,subModelObject.getIdShort());
 
                 case "EconomicFactors" ->
                         fillSubModelEconomicFactors(listOfAllSubmodelsElements,subModelObject.getIdShort());
@@ -220,15 +44,10 @@ class XMLStructureFullObjectTest {
         System.out.println("------------------");
         System.out.println("Informationen zum Objekt");
         System.out.println(assuranceFullObject);
-
-        assuranceRepository.save(assuranceFullObject);
-
-
-
+        return assuranceFullObject;
+        //assuranceRepository.save(assuranceFullObject);
 
     }
-
-
     // Submodel Identification
     private void fillSubModelIdentification(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementsInAssurance -> {
@@ -442,5 +261,4 @@ class XMLStructureFullObjectTest {
     }
 
     ;
-
 }
