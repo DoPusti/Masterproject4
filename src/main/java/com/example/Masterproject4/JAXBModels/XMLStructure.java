@@ -7,7 +7,7 @@ import lombok.Data;
 @XmlType(propOrder = {"assetAdministrationShells","assets","submodels","conceptDescriptions"})
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductRequirement {
+public class XMLStructure {
     @XmlElement(name="assetAdministrationShells")
     private AssetAdministrationShells assetAdministrationShells;
 

@@ -8,13 +8,18 @@ import lombok.Data;
 
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"property","submodelElementCollection"})
+@XmlType(propOrder = {"property","submodelElementCollection","range"})
 public class SubModelElement {
     @XmlElement(name="property", required = false)
     private Property property;
 
     @XmlElement(name="submodelElementCollection")
     private SubmodelElementCollection submodelElementCollection;
+
+    @XmlElement(name="range")
+    private Range range;
+
+
 
 
 }

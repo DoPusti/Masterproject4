@@ -1,13 +1,11 @@
 package com.example.Masterproject4;
 
-import com.example.Masterproject4.JAXBModels.ProductRequirement;
+import com.example.Masterproject4.JAXBModels.XMLStructure;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
 import jakarta.xml.bind.JAXBException;
-import org.springframework.core.io.Resource;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +18,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 @RestController
 public class HtmlController {
@@ -48,24 +47,6 @@ public class HtmlController {
         System.out.println("Einsatzdauer: " + Einsatzdauer);
         System.out.println("Filetyp: " + fileOfUser.getContentType());
 
-
-        /*
-        String path = "file:/C:/Users/domin/Desktop/Wilhelm Büchner - Hochschule/Masterarbeit/AASX_Files/*.json";
-        // Dateien einlesen
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(resourceLoader);
-        Resource[] resources = resolver.getResources(path);
-
-
-
-
-        for (Resource resource : resources) {
-            if (resource.isReadable()) {
-                System.out.println("Datei: " + resource.getFilename());
-            }
-        }
-        */
-
-
         if (fileOfUser.getContentType().equals("application/json")) {
             return "JSON-Datei erfolgreich verarbeitet.";
         } else if (fileOfUser.getContentType().equals("text/xml")) {
@@ -77,14 +58,14 @@ public class HtmlController {
                 fos.write(fileOfUser.getBytes());
             }
             Charset charset = StandardCharsets.UTF_8;
-            String content = new String(Files.readAllBytes(fileConverted.toPath()), charset);
+            String content = Files.readString(fileConverted.toPath(), charset);
             content = content.replaceAll("aas:", "");
             content = content.replaceAll("IEC:", "");
-            Files.write(fileConverted.toPath(), content.getBytes(charset));
+            Files.writeString(fileConverted.toPath(), content, charset);
 
 
-            ProductRequirement productRequirementOfMapper = mapper.unmarschallXML(fileConverted);
-            ProductRequirementFullObject productRequirementFullObject = mapper.mapXMLToClass(productRequirementOfMapper);
+            XMLStructure XMLStructureOfMapper = mapper.unmarschallXML(fileConverted);
+            ProductRequirementFullObject productRequirementFullObject = mapper.mapXMLToClass(XMLStructureOfMapper);
             System.out.println("---------------------------------------------");
             System.out.println("Infos zum Objekt ProductRequirementFullObject");
             System.out.println(productRequirementFullObject.getAssetId());

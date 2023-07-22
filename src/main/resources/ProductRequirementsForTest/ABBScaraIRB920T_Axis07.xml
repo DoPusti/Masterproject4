@@ -748,61 +748,6 @@
             </value>
           </submodelElementCollection>
         </submodelElement>
-        <submodelElement>
-          <submodelElementCollection>
-            <idShort>InternalPropertyRelations</idShort>
-            <kind>Instance</kind>
-            <semanticId>
-              <keys />
-            </semanticId>
-            <qualifier />
-            <ordered>false</ordered>
-            <allowDuplicates>false</allowDuplicates>
-            <value>
-              <submodelElement>
-                <relationshipElement>
-                  <idShort>RelationRepeatabilityForce</idShort>
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <first>
-                    <keys>
-                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
-                      <key type="SubmodelElementCollection" local="true" idType="IdShort">PropertyChanges</key>
-                      <key type="Property" local="true" idType="IdShort">Repeatability</key>
-                    </keys>
-                  </first>
-                  <second>
-                    <keys>
-                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
-                      <key type="SubmodelElementCollection" local="true" idType="IdShort">Constraints</key>
-                      <key type="Property" local="true" idType="IdShort">zForce</key>
-                    </keys>
-                  </second>
-                </relationshipElement>
-              </submodelElement>
-              <submodelElement>
-                <annotatedRelationshipElement>
-                  <idShort />
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <first>
-                    <keys />
-                  </first>
-                  <second>
-                    <keys />
-                  </second>
-                  <annotations />
-                </annotatedRelationshipElement>
-              </submodelElement>
-            </value>
-          </submodelElementCollection>
-        </submodelElement>
       </submodelElements>
     </submodel>
     <submodel>

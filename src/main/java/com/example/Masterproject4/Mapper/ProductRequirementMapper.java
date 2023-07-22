@@ -1,6 +1,6 @@
 package com.example.Masterproject4.Mapper;
 
-import com.example.Masterproject4.JAXBModels.ProductRequirement;
+import com.example.Masterproject4.JAXBModels.XMLStructure;
 import com.example.Masterproject4.JAXBModels.Property;
 import com.example.Masterproject4.JAXBModels.SubModel;
 import com.example.Masterproject4.JAXBModels.SubModelElement;
@@ -17,22 +17,22 @@ import java.util.List;
 
 public class ProductRequirementMapper {
 
-    public ProductRequirement unmarschallXML(File file) throws JAXBException {
-        File file1 = new File("src\\main\\resources\\ProductRequirementsForTest\\ProductRequirementWithMultipleTVS.xml");
+    public XMLStructure unmarschallXML(File file) throws JAXBException {
 
-        JAXBContext jaxbContext = JAXBContext.newInstance(com.example.Masterproject4.JAXBModels.ProductRequirement.class);
-
+        JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
 
-        ProductRequirement productRequirement = (ProductRequirement) unmarshaller.unmarshal(file);
-        return productRequirement;
+        return XMLStructure;
     }
 
-    public ProductRequirementFullObject mapXMLToClass(ProductRequirement productRequirement) {
+    public ProductRequirementFullObject mapXMLToClass(XMLStructure XMLStructure) {
         ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
+
         List<Part> parts = new ArrayList<>();
         List<Teilvorgang> teilVorgang = new ArrayList<>();
-        List<SubModel> listOfAllSubmodels = productRequirement.getSubmodels().getSubmodel();
+        List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
+
         listOfAllSubmodels.forEach(subModelObject -> {
             switch (subModelObject.getIdShort()) {
                 case "Identification":
@@ -74,9 +74,6 @@ public class ProductRequirementMapper {
                                                     case "Z" ->
                                                             partOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
                                                 }
-                                                //System.out.println("IdShort: " + property2.getIdShort());
-                                                //System.out.println("Value: " + property2.getValue());
-
                                             });
                                         }
                                         // Property ist direkt da
@@ -89,11 +86,7 @@ public class ProductRequirementMapper {
                                                 case "FerroMagnetic" ->
                                                         partOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
                                             }
-
-                                            //System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
-                                            //System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
                                         }
-                                        //System.out.println("Nach Belegen eines Wertes " + partOfProductRequirement);
                                     }
 
 
@@ -106,7 +99,6 @@ public class ProductRequirementMapper {
                     List<SubModelElement> subModelElementsInProcessRequirement = subModelObject.getSubmodelElements().getSubmodelElement();
                     subModelElementsInProcessRequirement.forEach(object4 -> {
                         //Von Jedem Element die SubModelElementCollection filtern
-                        //System.out.println(object4);
                         Teilvorgang teilVorGangParts = new Teilvorgang();
                         teilVorGangParts.setTvName(object4.getSubmodelElementCollection().getIdShort());
                         System.out.println("Id vom SMC " + teilVorGangParts.getTvName());
@@ -164,7 +156,6 @@ public class ProductRequirementMapper {
                     break;
             }
         });
-        System.out.println(parts);
         productRequirementFullObject.setPart(parts);
         productRequirementFullObject.setTeilVorgang(teilVorgang);
 

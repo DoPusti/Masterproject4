@@ -3,12 +3,14 @@ package com.example.Masterproject4.Repository;
 import com.example.Masterproject4.Entity.ProductRequirementDBClass;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+@DataJpaTest
 @SpringBootTest
-class ProductRequirementFullObjectRepositoryTest {
+class XMLStructureFullObjectRepositoryTest {
 
     @Autowired
     private ProductRequirementRepository productRequirementRepository;
