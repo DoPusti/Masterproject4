@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 public class AssuranceMapper {
 
@@ -17,11 +18,13 @@ public class AssuranceMapper {
 
 
     public AssuranceFullObject saveXMLToDatabase(File file) throws JAXBException {
-
+        // Testfile
         File file1 = new File("src\\main\\resources\\ProductRequirementsForTest\\ABBScaraIRB920T_Axis07.xml");
+
+
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file1);
+        XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
 
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
         listOfAllSubmodels.forEach(subModelObject -> {
@@ -63,31 +66,33 @@ public class AssuranceMapper {
             // Alle direkten Properties von SMC prüfen
             String idShortOfSMC = subModelElementsInAssurance.getSubmodelElementCollection().getIdShort();
             List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
+            if(!Objects.equals(idShortOfSMC, "InternalPropertyRelations")) {
+                // Schleife über alle SMC im SM Assurance
+                // Erstmal Property testen
+                subModelElementsDeep1.forEach(subModelElementObject1 -> {
+                    Property property1 = subModelElementObject1.getProperty();
+                    if (property1 != null) {
+                        fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
+                    } else {
+                        // Neue Ebene der SMC
+                        String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
+                        List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsDeep2.forEach(subModelElementObject2 -> {
+                            Property property2 = subModelElementObject2.getProperty();
+                            if (property2 != null) {
+                                fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
+                            }
+                            // Kein Property, sondern Range
+                            else {
+                                Range range = subModelElementObject2.getRange();
+                                fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
+                            }
+                        });
+                    }
 
-            // Schleife über alle SMC im SM Assurance
-            // Erstmal Property testen
-            subModelElementsDeep1.forEach(subModelElementObject1 -> {
-                Property property1 = subModelElementObject1.getProperty();
-                if (property1 != null) {
-                    fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
-                } else {
-                    // Neue Ebene der SMC
-                    String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
-                    List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
-                    subModelElementsDeep2.forEach(subModelElementObject2 -> {
-                        Property property2 = subModelElementObject2.getProperty();
-                        if (property2 != null) {
-                            fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
-                        }
-                        // Kein Property, sondern Range
-                        else {
-                            Range range = subModelElementObject2.getRange();
-                            fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
-                        }
-                    });
-                }
+                });
+            }
 
-            });
 
         });
     }

@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootTest
 class XMLStructureFullObjectTest {
@@ -190,7 +191,7 @@ class XMLStructureFullObjectTest {
     void fillAssurances() throws JAXBException {
 
 
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ABBScaraIRB920T_Axis07.xml");
+        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\ABBScaraIRB920T_Axis07_2.xml");
 
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
 
@@ -202,11 +203,16 @@ class XMLStructureFullObjectTest {
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
         listOfAllSubmodels.forEach(subModelObject -> {
             List<SubModelElement> listOfAllSubmodelsElements = subModelObject.getSubmodelElements().getSubmodelElement();
+            System.out.println("Idshort vom SubmodelElement " + subModelObject.getIdShort());
+
+
             switch (subModelObject.getIdShort()) {
                 case "Identification" ->
                         fillSubModelIdentification(listOfAllSubmodelsElements, subModelObject.getIdShort());
+
                 case "Assurances" ->
                     fillSubModelAssurances(listOfAllSubmodelsElements);
+                /*
                 case "MediaSupply" ->
                     fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
                 case "EnvironmentalConditions" ->
@@ -215,7 +221,11 @@ class XMLStructureFullObjectTest {
                 case "EconomicFactors" ->
                         fillSubModelEconomicFactors(listOfAllSubmodelsElements,subModelObject.getIdShort());
 
+                 */
+
             }
+
+
         });
         System.out.println("------------------");
         System.out.println("Informationen zum Objekt");
@@ -235,42 +245,52 @@ class XMLStructureFullObjectTest {
             Property propertyIdentification = subModelElementsInAssurance.getProperty();
             fillValueInList(propertyIdentification.getIdShort(), propertyIdentification.getValue(), "", SECIdShort);
         });
+        System.out.println("Liste für Identification gefüllt");
 
     }
 
     // Submodel Assurance
     private void fillSubModelAssurances(List<SubModelElement> listOfAllSubmodelsElements) {
         listOfAllSubmodelsElements.forEach(subModelElementsInAssurance -> {
+            System.out.println("SubModelElemente in Assurance");
+
             // Alle direkten Properties von SMC prüfen
             String idShortOfSMC = subModelElementsInAssurance.getSubmodelElementCollection().getIdShort();
-            List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
+            System.out.println("Idshort von jedem SubmodelElement in Assurance " + idShortOfSMC);
+            //TODO Mit Patrick die Befüllung besprechen
+            if(!Objects.equals(idShortOfSMC, "InternalPropertyRelations")) {
+                List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
 
-            // Schleife über alle SMC im SM Assurance
-            // Erstmal Property testen
-            subModelElementsDeep1.forEach(subModelElementObject1 -> {
-                Property property1 = subModelElementObject1.getProperty();
-                if (property1 != null) {
-                    fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
-                } else {
-                    // Neue Ebene der SMC
-                    String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
-                    List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
-                    subModelElementsDeep2.forEach(subModelElementObject2 -> {
-                        Property property2 = subModelElementObject2.getProperty();
-                        if (property2 != null) {
-                            fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
-                        }
-                        // Kein Property, sondern Range
-                        else {
-                            Range range = subModelElementObject2.getRange();
-                            fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
-                        }
-                    });
-                }
+                // Schleife über alle SMC im SM Assurance
+                // Erstmal Property testen
+                subModelElementsDeep1.forEach(subModelElementObject1 -> {
+                    Property property1 = subModelElementObject1.getProperty();
+                    if (property1 != null) {
+                        fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
+                    } else {
+                        // Neue Ebene der SMC
+                        String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
+                        List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsDeep2.forEach(subModelElementObject2 -> {
+                            Property property2 = subModelElementObject2.getProperty();
+                            if (property2 != null) {
+                                fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
+                            }
+                            // Kein Property, sondern Range
+                            else {
+                                Range range = subModelElementObject2.getRange();
+                                fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
+                            }
+                        });
+                    }
 
-            });
+                });
+
+            }
+
 
         });
+        System.out.println("Liste für Assurances gefüllt");
     }
 
     // Submodel MediaSupply
@@ -279,6 +299,7 @@ class XMLStructureFullObjectTest {
             Property property1 = subModelElementObject1.getProperty();
             fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
         });
+        System.out.println("Liste für MediaSupply gefüllt");
     }
 
     // Submodel EnvironmentConditions
@@ -287,6 +308,7 @@ class XMLStructureFullObjectTest {
             Property property1 = subModelElementObject1.getProperty();
             fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
         });
+        System.out.println("Liste für EnvironmentConditions gefüllt");
     }
 
     // Submodel EconomicFactors
@@ -309,6 +331,7 @@ class XMLStructureFullObjectTest {
 
             }
         });
+        System.out.println("Liste für EconomicFactors gefüllt");
 
     }
     private void fillValueInList(String idShort, String value1, String value2, String SECIdshort) {

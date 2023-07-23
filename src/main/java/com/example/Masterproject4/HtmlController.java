@@ -41,41 +41,14 @@ public class HtmlController {
                              @RequestParam("file") MultipartFile fileOfUser,
                              @RequestParam("assurance") MultipartFile assurance
     ) throws IOException, JAXBException {
-        // File fileOfUser Konvertieren von Multipart zu File
-        /*
-        File fileConverted = new File(Objects.requireNonNull(RessourcenFile.getOriginalFilename()));
-        try (FileOutputStream fos = new FileOutputStream(fileConverted)) {
-            fos.write(RessourcenFile.getBytes());
-        }
-        Charset charset = StandardCharsets.UTF_8;
-        String content = Files.readString(fileConverted.toPath(), charset);
-        content = content.replaceAll("aas:", "");
-        content = content.replaceAll("IEC:", "");
-        Files.writeString(fileConverted.toPath(), content, charset);
 
-        // File fileOfUser Konvertieren von Multipart zu File
-        File fileConverted1 = new File(Objects.requireNonNull(fileOfUser.getOriginalFilename()));
-        try (FileOutputStream fos = new FileOutputStream(fileConverted1)) {
-            fos.write(fileOfUser.getBytes());
-        }
-        Charset charset1 = StandardCharsets.UTF_8;
-        String content1 = Files.readString(fileConverted.toPath(), charset1);
-        content1 = content1.replaceAll("aas:", "");
-        content1 = content1.replaceAll("IEC:", "");
-        Files.writeString(fileConverted1.toPath(), content1, charset1);
+        // Prüfen ob Zusicherungen hochgeladen werden müssen
+        if(!assurance.isEmpty()) {
+            File convertedFile = new FileConverter().convertFile(assurance);
+            AssuranceMapper assuranceMapper = new AssuranceMapper();
+            assuranceRepository.save(assuranceMapper.saveXMLToDatabase(convertedFile));
 
-        // File fileOfUser Konvertieren von Multipart zu File
-        File fileConverted2 = new File(Objects.requireNonNull(assurance.getOriginalFilename()));
-        try (FileOutputStream fos = new FileOutputStream(fileConverted2)) {
-            fos.write(assurance.getBytes());
         }
-        Charset charset2 = StandardCharsets.UTF_8;
-        String content2 = Files.readString(fileConverted2.toPath(), charset2);
-        content2 = content2.replaceAll("aas:", "");
-        content2 = content2.replaceAll("IEC:", "");
-        Files.writeString(fileConverted2.toPath(), content2, charset2);
-
-         */
 
         return "Werte für die Files sind (ressourcenfiel,anforderung,assurance)" + RessourcenFile.isEmpty() + " " + fileOfUser.isEmpty()  + " " + assurance.isEmpty() ;
 
@@ -88,8 +61,7 @@ public class HtmlController {
             return "JSON-Datei erfolgreich verarbeitet.";
         } else if (Objects.equals(fileOfUser.getContentType(), "text/xml")) {
 
-            AssuranceMapper assuranceMapper = new AssuranceMapper();
-            assuranceRepository.save(assuranceMapper.saveXMLToDatabase(fileConverted));
+
 
             ProductRequirementMapper mapper = new ProductRequirementMapper();
 
