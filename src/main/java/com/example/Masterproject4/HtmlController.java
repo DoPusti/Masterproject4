@@ -2,6 +2,7 @@ package com.example.Masterproject4;
 
 import com.example.Masterproject4.JAXBModels.XMLStructure;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
+import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +40,25 @@ public class HtmlController {
                              @RequestParam("Einsatzdauer") String Einsatzdauer,
                              @RequestParam("Ressourcen") MultipartFile RessourcenFile,
                              @RequestParam("file") MultipartFile fileOfUser,
-                             @RequestParam("assurance") MultipartFile assurance
+                             @RequestParam("assurance") MultipartFile[] assurance
     ) throws IOException, JAXBException {
 
         // Prüfen ob Zusicherungen hochgeladen werden müssen
-        if(!assurance.isEmpty()) {
-            File convertedFile = new FileConverter().convertFile(assurance);
-            AssuranceMapper assuranceMapper = new AssuranceMapper();
-            assuranceRepository.save(assuranceMapper.saveXMLToDatabase(convertedFile));
-
+        for(MultipartFile fileInAssurance : assurance) {
+            if(!fileInAssurance.isEmpty()) {
+                File convertedFile = new FileConverter().convertFile(fileInAssurance);
+                AssuranceMapper assuranceMapper = new AssuranceMapper();
+                assuranceRepository.save(assuranceMapper.saveXMLToDatabase(convertedFile));
+            }
         }
 
-        return "Werte für die Files sind (ressourcenfiel,anforderung,assurance)" + RessourcenFile.isEmpty() + " " + fileOfUser.isEmpty()  + " " + assurance.isEmpty() ;
+        if(!fileOfUser.isEmpty()) {
+            File convertedFile = new FileConverter().convertFile(fileOfUser);
+            ProductRequirementMapper productRequirementMapper = new ProductRequirementMapper();
+            productRequirementMapper.mapXMLToClass(convertedFile);
+        }
+
+        return "Verarbeitung erfolgt";
 
 
     }

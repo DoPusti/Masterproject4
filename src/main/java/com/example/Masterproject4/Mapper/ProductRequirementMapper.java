@@ -17,16 +17,12 @@ import java.util.List;
 
 public class ProductRequirementMapper {
 
-    public XMLStructure unmarschallXML(File file) throws JAXBException {
-
+    public ProductRequirementFullObject mapXMLToClass(File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
 
-        return XMLStructure;
-    }
 
-    public ProductRequirementFullObject mapXMLToClass(XMLStructure XMLStructure) {
         ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
 
         List<Part> parts = new ArrayList<>();

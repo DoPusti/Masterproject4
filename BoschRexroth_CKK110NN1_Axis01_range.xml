@@ -1,0 +1,2220 @@
+<?xml version="1.0"?>
+<aasenv xmlns:IEC="http://www.admin-shell.io/IEC61360/2/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:abac="http://www.admin-shell.io/aas/abac/2/0" xsi:schemaLocation="http://www.admin-shell.io/aas/2/0 AAS.xsd http://www.admin-shell.io/IEC61360/2/0 IEC61360.xsd" xmlns:aas="http://www.admin-shell.io/aas/2/0">
+  <assetAdministrationShells>
+    <assetAdministrationShell>
+      <idShort>BoschRexroth_CKK110NN1_Axis01</idShort>
+      <identification idType="Custom">AssetAdministrationShell---76BB9792</identification>
+      <assetRef>
+        <keys>
+          <key type="Asset" local="true" idType="Custom">Asset---5B36F28F</key>
+        </keys>
+      </assetRef>
+      <submodelRefs>
+        <submodelRef>
+          <keys>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/1143_4130_1122_9464</key>
+          </keys>
+        </submodelRef>
+        <submodelRef>
+          <keys>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/8460_4152_0122_4565</key>
+          </keys>
+        </submodelRef>
+        <submodelRef>
+          <keys>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9204_9010_2122_6595</key>
+          </keys>
+        </submodelRef>
+        <submodelRef>
+          <keys>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/0444_9010_2122_6907</key>
+          </keys>
+        </submodelRef>
+        <submodelRef>
+          <keys>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/0425_8041_0122_9117</key>
+          </keys>
+        </submodelRef>
+      </submodelRefs>
+      <conceptDictionaries />
+    </assetAdministrationShell>
+  </assetAdministrationShells>
+  <assets>
+    <asset>
+      <idShort>BoschRexroth_CKK110NN1_Axis01</idShort>
+      <identification idType="Custom">Asset---5B36F28F</identification>
+      <kind>Instance</kind>
+    </asset>
+  </assets>
+  <submodels>
+    <submodel>
+      <idShort>Identification</idShort>
+      <identification idType="IRI">https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE</identification>
+      <kind>Instance</kind>
+      <semanticId>
+        <keys>
+          <key type="GlobalReference" local="false" idType="IRI">https://www.hsu-hh.de/aut/aas/identification</key>
+        </keys>
+      </semanticId>
+      <qualifier />
+      <submodelElements>
+        <submodelElement>
+          <property>
+            <idShort>AssetId</idShort>
+            <category>PARAMETER</category>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://www.hsu-hh.de/aut/aas/assetid</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE</value>
+          </property>
+        </submodelElement>
+      </submodelElements>
+    </submodel>
+    <submodel>
+      <idShort>Assurances</idShort>
+      <identification idType="IRI">https://example.com/ids/sm/8460_4152_0122_4565</identification>
+      <kind>Instance</kind>
+      <semanticId>
+        <keys />
+      </semanticId>
+      <qualifier />
+      <submodelElements>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>Properties</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <property>
+                  <idShort>Mass</idShort>
+                  <category>CONSTANT</category>
+                  <description>
+                    <langString lang="en">The mass of the resource itself, in g</langString>
+                  </description>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6425_5181_2122_0395</key>
+                    </keys>
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>2000</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Dimensions</idShort>
+                  <category>VARIABLE</category>
+                  <description>
+                    <langString lang="en">The dimensions of the ressource, in mm</langString>
+                  </description>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>Length</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9435_5181_2122_9980</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Width</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6045_5181_2122_8780</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                        <valueId>
+                          <keys />
+                        </valueId>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Height</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0455_5181_2122_0689</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>CenterOfMass</idShort>
+                  <category>CONSTANT</category>
+                  <description>
+                    <langString lang="en">The location of the center of mass in a known and given coordinate system, in m</langString>
+                  </description>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>X</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3595_5181_2122_0693</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Y</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5100_6181_2122_0301</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Z</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8300_6181_2122_8200</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>ConnectionType</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>NotAutomaticallyRemovable</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>OperatingPrinciple</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys>
+                      <key type="ConceptDescription" local="true" idType="IRI" />
+                    </keys>
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>true</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>Parallelgripper</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Magneticgripper</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Vaccumgripper</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>PropertyChanges</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>X</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>Position</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en" />
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9480_0290_2032_3063</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>1500</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.005</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Rotation</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">How much the resource can rotate the product around the x-axis in °</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5521_8181_2122_3306</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.04</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Y</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>Position</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en" />
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9480_0290_2032_3063</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3141_8181_2122_9458</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Rotation</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">How much the resource can rotate the product around the y-axis in °</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9241_8181_2122_0307</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3151_8181_2122_4233</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Z</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>Position</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en" />
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9480_0290_2032_3063</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2061_8181_2122_7168</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Rotation</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">How much the resource can rotate the product around the z-axis in °</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2361_8181_2122_2695</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracy</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4071_8181_2122_4716</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>NaN</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>Constraints</idShort>
+            <category>CONSTANT</category>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Force</idShort>
+                  <category>CONSTANT</category>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <range>
+                        <idShort>X</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
+                          </keys>
+                        </semanticId>
+                        <valueType />
+                        <min>NaN</min>
+                        <max>NaN</max>
+                      </range>
+                    </submodelElement>
+                    <submodelElement>
+                      <range>
+                        <idShort>Y</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
+                          </keys>
+                        </semanticId>
+                        <valueType />
+                        <min>NaN</min>
+                        <max>NaN</max>
+                      </range>
+                    </submodelElement>
+                    <submodelElement>
+                      <range>
+                        <idShort>Z</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
+                          </keys>
+                        </semanticId>
+                        <valueType />
+                        <min>0</min>
+                        <max>400</max>
+                      </range>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Torque</idShort>
+                  <category>CONSTANT</category>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>X</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">The maximum torque/ momentum the resource can endure in x direction, in Nm</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0052_8181_2122_6813</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>396</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Y</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">The maximum torque/ momentum the resource can endure in y direction, in Nm</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1352_8181_2122_7719</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>510</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>Z</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">The maximum torque/ momentum the resource can endure in z direction, in Nm</langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2552_8181_2122_2615</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>240</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>InternalPropertyRelations</idShort>
+            <category>CONSTANT</category>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <relationshipElement>
+                  <idShort>RelationRepeatabilityForce</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <first>
+                    <keys>
+                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
+                      <key type="SubmodelElementCollection" local="true" idType="IdShort">PropertyChanges</key>
+                      <key type="Property" local="true" idType="IdShort">Repeatability</key>
+                    </keys>
+                  </first>
+                  <second>
+                    <keys>
+                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
+                      <key type="SubmodelElementCollection" local="true" idType="IdShort">Constraints</key>
+                      <key type="Property" local="true" idType="IdShort">zForce</key>
+                    </keys>
+                  </second>
+                </relationshipElement>
+              </submodelElement>
+              <submodelElement>
+                <annotatedRelationshipElement>
+                  <idShort />
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <first>
+                    <keys />
+                  </first>
+                  <second>
+                    <keys />
+                  </second>
+                  <annotations />
+                </annotatedRelationshipElement>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+      </submodelElements>
+    </submodel>
+    <submodel>
+      <idShort>MediaSupply</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/sm/9204_9010_2122_6595</identification>
+      <kind>Instance</kind>
+      <semanticId>
+        <keys />
+      </semanticId>
+      <qualifier />
+      <submodelElements>
+        <submodelElement>
+          <property>
+            <idShort>OperatingCurrent</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">The current used by a resource combination during normal operation in Ampere.</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8414_9010_2122_3584</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>OperatingVoltage</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">The range of voltages as defined by the Manufacturer under which the resource can be operated normally, even if the voltage fluctuates</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7173_1182_1122_9282</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>CompressedAirPressure</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">Compressed air is a form of stored energy that is used to operate machinery, in bar</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0583_1182_1122_2321</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>AirFlow</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0585_4110_2122_9738</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+      </submodelElements>
+    </submodel>
+    <submodel>
+      <idShort>EnvironmentalConditions</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/sm/0444_9010_2122_6907</identification>
+      <kind>Instance</kind>
+      <semanticId>
+        <keys />
+      </semanticId>
+      <qualifier />
+      <submodelElements>
+        <submodelElement>
+          <property>
+            <idShort>Temperature</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">The temperature at which the resource can be operated, in °C</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6534_1182_1122_8931</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>Pressure</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">The pressure of the environment, needed for operating the resource, in bar</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6534_1182_1122_8931</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>Humidity</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">The humidity level in which the resource can operate, in %</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6444_1182_1122_1212</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>Purity</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6264_1182_1122_8221</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>yes</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>FoodGrade</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8274_1182_1122_3809</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>0</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>Explosiveness</idShort>
+            <category>CONSTANT</category>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3594_1182_1122_4831</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>1</value>
+          </property>
+        </submodelElement>
+      </submodelElements>
+    </submodel>
+    <submodel>
+      <idShort>EconomicFactors</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/sm/0425_8041_0122_9117</identification>
+      <kind>Instance</kind>
+      <semanticId>
+        <keys />
+      </semanticId>
+      <qualifier />
+      <embeddedDataSpecification>
+        <dataSpecification>
+          <keys />
+        </dataSpecification>
+      </embeddedDataSpecification>
+      <submodelElements>
+        <submodelElement>
+          <property>
+            <idShort>Price</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">How much the product costs</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4550_2182_1122_1201</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>2000</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>SpaceRequirement</idShort>
+            <category>CONSTANT</category>
+            <description>
+              <langString lang="en">How much space the product takes (e.g. diameter or length x width x height)</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <property>
+                  <idShort>Length</idShort>
+                  <category>CONSTANT</category>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1403_8181_2122_1108</key>
+                    </keys>
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>NaN</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Width</idShort>
+                  <category>CONSTANT</category>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5013_8181_2122_2343</key>
+                    </keys>
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>NaN</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Height</idShort>
+                  <category>CONSTANT</category>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1213_8181_2122_0030</key>
+                    </keys>
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>NaN</value>
+                </property>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>Lengthofusage</idShort>
+            <category>VARIABLE</category>
+            <description>
+              <langString lang="en">How much time the product can still be used (from now onwards, in years)</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5031_2182_1122_9721</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>15</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>MaintenanceInterval</idShort>
+            <category>VARIABLE</category>
+            <description>
+              <langString lang="en">When the next maintenance is due (in months)</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2461_2182_1122_6100</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>15</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>MaintanceDuration</idShort>
+            <category>PARAMETER</category>
+            <description>
+              <langString lang="en">How much time of an operating staff is needed per month</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1571_2182_1122_5399</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>2</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>DeliveryTime</idShort>
+            <category>PARAMETER</category>
+            <description>
+              <langString lang="en">How much time delivery for the ressorce takes in weeks</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2395_4110_2122_8873</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>4</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>OneTimeLicenceCost</idShort>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4143_9010_2122_9027</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+        <submodelElement>
+          <property>
+            <idShort>MonthlyLicenceCost</idShort>
+            <description>
+              <langString lang="en">How much licence cost customer has to pay monthly for licences needed for operating the ressource</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys>
+                <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4553_9010_2122_0484</key>
+              </keys>
+            </semanticId>
+            <qualifier />
+            <valueType />
+            <value>NaN</value>
+          </property>
+        </submodelElement>
+      </submodelElements>
+    </submodel>
+  </submodels>
+  <conceptDescriptions>
+    <conceptDescription>
+      <idShort>AssetId</idShort>
+      <identification idType="IRI">https://www.hsu-hh.de/aut/aas/assetid</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="EN">AssetId</langString>
+              <langString lang="DE">Asset ID</langString>
+            </preferredName>
+            <shortName>
+              <langString lang="EN?">AssetId</langString>
+            </shortName>
+            <unit />
+            <dataType />
+            <definition>
+              <langString lang="DE">Global eindeutige ID eines Asset, die machienenlesbar oder durch Menschen lesbar ist.</langString>
+              <langString lang="EN">Global unique ID of an asset, which can be read by both human and machine.</langString>
+            </definition>
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys />
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>SerialNumber</idShort>
+      <identification idType="IRDI">0173-1#02-AAM556#002</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="EN">Serial number</langString>
+              <langString lang="DE">Seriennummer</langString>
+            </preferredName>
+            <shortName>
+              <langString lang="EN?">InstanceId</langString>
+            </shortName>
+            <unit />
+            <dataType />
+            <definition>
+              <langString lang="DE">eindeutige Zahlen- und Buchstabenkombination mit der das Gerät nach seiner Herstellung identifiziert ist</langString>
+              <langString lang="EN">unique combination of numbers and letters used to identify the device once it has been manufactured</langString>
+            </definition>
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys />
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>URL</idShort>
+      <identification idType="IRDI">0173-1#02-AAO694#001</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="DE">Internetadresse</langString>
+              <langString lang="EN">Internet address</langString>
+            </preferredName>
+            <shortName>
+              <langString lang="EN?">URL</langString>
+            </shortName>
+            <unit />
+            <dataType />
+            <definition>
+              <langString lang="EN">stated as link to a home page. The home page is the starting page or table of contents of a web site with offerings. It usually has the name index.htm or index.html</langString>
+              <langString lang="DE">Angabe als Link, um in eine Homepage zu gelangen. die Homepage ist die Start- beziehungsweise die Inhaltsseite eines Web-Angebots. Meistens trägt sie den Namen index.htm oder index.html</langString>
+            </definition>
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys />
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Mass</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/6425_5181_2122_0395</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>g</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Length</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/9435_5181_2122_9980</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Width</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/6045_5181_2122_8780</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Height</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/0455_5181_2122_0689</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>X</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3595_5181_2122_0693</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Y</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5100_6181_2122_0301</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Z</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/8300_6181_2122_8200</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/7411_8181_2122_7774</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>PositionRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Rotation</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5521_8181_2122_3306</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>°</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>RotationRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1431_8181_2122_1237</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>PositionRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3141_8181_2122_9458</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Rotation</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/9241_8181_2122_0307</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="" />
+            </preferredName>
+            <shortName />
+            <unit>°</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>RotationRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3151_8181_2122_4233</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3351_8181_2122_2101</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>PositionRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2061_8181_2122_7168</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Rotation</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2361_8181_2122_2695</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>°</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>RotationRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/4071_8181_2122_4716</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>X</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/6532_8181_2122_8339</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>N</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Y</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/0242_8181_2122_0334</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>N</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Z</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/4442_8181_2122_2537</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>N</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>X</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/0052_8181_2122_6813</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Nm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Y</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1352_8181_2122_7719</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Nm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Z</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2552_8181_2122_2615</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Nm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>OperatingCurrent</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/8414_9010_2122_3584</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="" />
+              <langString lang="" />
+            </preferredName>
+            <shortName>
+              <langString lang="EN?">OperatingCurrent</langString>
+            </shortName>
+            <unit>A</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>OperatingVoltage</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/7173_1182_1122_9282</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>V</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>CompressedAirPressure</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/0583_1182_1122_2321</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="" />
+            </preferredName>
+            <shortName />
+            <unit>bar</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>AirFlow</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/0585_4110_2122_9738</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>l/min</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Temperature</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/4304_1182_1122_2204</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>°C</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Pressure</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/6534_1182_1122_8931</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>°C</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Humidity</idShort>
+      <category>VARIABLE</category>
+      <identification idType="IRI">https://example.com/ids/cd/6444_1182_1122_1212</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>g/kg</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Purity</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/6264_1182_1122_8221</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit />
+            <dataType>BOOLEAN</dataType>
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>FoodGrade</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/8274_1182_1122_3809</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Good/Bad</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Explosiveness</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3594_1182_1122_4831</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit />
+            <dataType>INTEGER_COUNT</dataType>
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="ConceptDescription" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+      <embeddedDataSpecification>
+        <dataSpecification>
+          <keys />
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Price</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/4550_2182_1122_1201</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="" />
+              <langString lang="" />
+            </preferredName>
+            <shortName />
+            <unit>€</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="true" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Lengthofusage</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/5031_2182_1122_9721</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Months</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>MaintenanceInterval</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/2461_2182_1122_6100</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Days</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>MaintanceDuration</idShort>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/1571_2182_1122_5399</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>hours</unit>
+            <unitId>
+              <keys />
+            </unitId>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>DeliveryTime</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2395_4110_2122_8873</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>Days</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>OneTimeLicenceCost</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/4143_9010_2122_9027</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>€</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>MonthlyLicenceCost</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/4553_9010_2122_0484</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>€</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Length</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1403_8181_2122_1108</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Width</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5013_8181_2122_2343</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Height</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1213_8181_2122_0030</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/9480_0290_2032_3063</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Y</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <unit>N</unit>
+            <dataType />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+  </conceptDescriptions>
+</aasenv>
