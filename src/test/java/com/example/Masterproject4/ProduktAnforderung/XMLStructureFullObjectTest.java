@@ -2,8 +2,7 @@ package com.example.Masterproject4.ProduktAnforderung;
 
 import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.Repository.AssuranceRepository;
-import com.example.Masterproject4.Repository.ProductPropertyRepository;
-import com.example.Masterproject4.Zusicherung.AssuranceFullObject;
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
@@ -32,7 +31,7 @@ class XMLStructureFullObjectTest {
 
         ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
 
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi.xml");
+        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi2.xml");
 
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
 

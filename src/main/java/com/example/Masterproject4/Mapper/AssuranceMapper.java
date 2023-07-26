@@ -1,12 +1,10 @@
 package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.JAXBModels.*;
-import com.example.Masterproject4.Repository.AssuranceRepository;
-import com.example.Masterproject4.Zusicherung.AssuranceFullObject;
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.util.List;

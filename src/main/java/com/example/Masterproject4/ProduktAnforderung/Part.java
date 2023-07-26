@@ -20,4 +20,5 @@ public class Part {
     double x;
     double y;
     double z;
+    double meanRoughness;
 }

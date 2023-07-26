@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
         headerRight:"Wirtschaftliche Rahmenbedingungen am Aufstellort",
         right0: "Flächenkosten (pro m²):",
         right1: "Geplante Einsatzdauer in Monaten:",
-        right2: "Vorhandene Ressourcen:",
+        right2: "ProductRequirementDBClass",
         start: "Anfrage starten",
         requirments: "Anforderungsdatei (XML/JSON)",
-        assurances: "Zusicherungen (XML/JSON)"
+        assurances: "ProductRequirementDBClass"
 
 
     };

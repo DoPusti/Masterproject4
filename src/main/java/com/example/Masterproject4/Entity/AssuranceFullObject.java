@@ -1,4 +1,4 @@
-package com.example.Masterproject4.Zusicherung;
+package com.example.Masterproject4.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

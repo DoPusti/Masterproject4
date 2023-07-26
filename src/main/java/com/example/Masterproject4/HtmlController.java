@@ -53,44 +53,5 @@ public class HtmlController {
         return "Werte für die Files sind (ressourcenfiel,anforderung,assurance)" + RessourcenFile.isEmpty() + " " + fileOfUser.isEmpty()  + " " + assurance.isEmpty() ;
 
 
-
-
-
-        /*
-        if (Objects.equals(fileOfUser.getContentType(), "application/json")) {
-            return "JSON-Datei erfolgreich verarbeitet.";
-        } else if (Objects.equals(fileOfUser.getContentType(), "text/xml")) {
-
-
-
-            ProductRequirementMapper mapper = new ProductRequirementMapper();
-
-            // File Konvertieren von Multipart zu File
-            File fileConverted = new File(Objects.requireNonNull(fileOfUser.getOriginalFilename()));
-            try (FileOutputStream fos = new FileOutputStream(fileConverted)) {
-                fos.write(fileOfUser.getBytes());
-            }
-            Charset charset = StandardCharsets.UTF_8;
-            String content = Files.readString(fileConverted.toPath(), charset);
-            content = content.replaceAll("aas:", "");
-            content = content.replaceAll("IEC:", "");
-            Files.writeString(fileConverted.toPath(), content, charset);
-
-
-            XMLStructure XMLStructureOfMapper = mapper.unmarschallXML(fileConverted);
-            ProductRequirementFullObject productRequirementFullObject = mapper.mapXMLToClass(XMLStructureOfMapper);
-            System.out.println("---------------------------------------------");
-            System.out.println("Infos zum Objekt ProductRequirementFullObject");
-            System.out.println(productRequirementFullObject.getAssetId());
-            System.out.println(productRequirementFullObject.getPart());
-            System.out.println(productRequirementFullObject.getPart().size());
-            System.out.println(productRequirementFullObject.getTeilVorgang());
-            System.out.println(productRequirementFullObject.getTeilVorgang().size());
-
-
-
-            return "HTML erfolgreich verarbeiet";
-        }*/
-
     }
 }
