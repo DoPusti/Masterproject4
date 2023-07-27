@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Teilvorgang {
+public class ProcessRequirement {
     String tvName;
     double PositionX;
     double PositionY;

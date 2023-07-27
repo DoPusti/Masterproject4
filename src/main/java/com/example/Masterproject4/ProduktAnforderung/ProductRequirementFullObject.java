@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductRequirementFullObject {
 
     String assetId;
-    List<Part> part;
-    List<Teilvorgang> teilVorgang;
+    List<ProductProperty> productProperty;
+    List<ProcessRequirement> teilVorgang;
 
 }

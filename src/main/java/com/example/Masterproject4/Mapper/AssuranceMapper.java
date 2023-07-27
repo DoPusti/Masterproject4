@@ -5,10 +5,12 @@ import com.example.Masterproject4.Entity.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class AssuranceMapper {
 

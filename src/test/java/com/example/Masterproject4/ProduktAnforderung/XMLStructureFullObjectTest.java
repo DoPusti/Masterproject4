@@ -24,10 +24,10 @@ class XMLStructureFullObjectTest {
 
     @Test
     public void fillProductRequirement() throws JAXBException {
-        List<Part> parts = new ArrayList<>();
+        List<ProductProperty> productProperties = new ArrayList<>();
 
 
-        List<Teilvorgang> teilVorgang = new ArrayList<>();
+        List<ProcessRequirement> teilVorgang = new ArrayList<>();
 
         ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
 
@@ -58,8 +58,8 @@ class XMLStructureFullObjectTest {
                         List<SubModelElement> subModelElementsInSMC = subModelElementInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
                         subModelElementsInSMC.forEach(subModelElementParts -> {
                             System.out.println("IdShort von Member in SMC: " + subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            Part partOfProductRequirement = new Part();
-                            partOfProductRequirement.setTyp(subModelElementParts.getSubmodelElementCollection().getIdShort());
+                            ProductProperty productPropertyOfProductRequirement = new ProductProperty();
+                            productPropertyOfProductRequirement.setTyp(subModelElementParts.getSubmodelElementCollection().getIdShort());
                             List<SubModelElement> subModelElementsInSMCInSMC = subModelElementParts.getSubmodelElementCollection().getValue().getSubmodelElement();
                             subModelElementsInSMCInSMC.forEach(subModelElementInSMCInSMC -> {
 
@@ -71,17 +71,17 @@ class XMLStructureFullObjectTest {
                                                 Property property2 = subModelElementProperty.getProperty();
                                                 switch (property2.getIdShort()) {
                                                     case "Length" ->
-                                                            partOfProductRequirement.setLength(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setLength(Double.parseDouble(property2.getValue()));
                                                     case "Width" ->
-                                                            partOfProductRequirement.setWidth(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setWidth(Double.parseDouble(property2.getValue()));
                                                     case "Height" ->
-                                                            partOfProductRequirement.setHeight(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setHeight(Double.parseDouble(property2.getValue()));
                                                     case "X" ->
-                                                            partOfProductRequirement.setX(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setX(Double.parseDouble(property2.getValue()));
                                                     case "Y" ->
-                                                            partOfProductRequirement.setY(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setY(Double.parseDouble(property2.getValue()));
                                                     case "Z" ->
-                                                            partOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
+                                                            productPropertyOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
                                                 }
                                                 //System.out.println("IdShort: " + property2.getIdShort());
                                                 //System.out.println("Value: " + property2.getValue());
@@ -92,22 +92,22 @@ class XMLStructureFullObjectTest {
                                         else {
                                             switch (property.getIdShort()) {
                                                 case "Mass" ->
-                                                        partOfProductRequirement.setMass(Double.parseDouble(property.getValue()));
+                                                        productPropertyOfProductRequirement.setMass(Double.parseDouble(property.getValue()));
                                                 case "StaticFrictionCoefficient" ->
-                                                        partOfProductRequirement.setStaticFrictionCoefficient(Double.parseDouble(property.getValue()));
+                                                        productPropertyOfProductRequirement.setStaticFrictionCoefficient(Double.parseDouble(property.getValue()));
                                                 case "FerroMagnetic" ->
-                                                        partOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
+                                                        productPropertyOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
                                             }
 
                                             //System.out.println("IdShort: " + subModelElementInSMCInSMC.getProperty().getIdShort());
                                             //System.out.println("Value: " + subModelElementInSMCInSMC.getProperty().getValue());
                                         }
-                                        //System.out.println("Nach Belegen eines Wertes " + partOfProductRequirement);
+                                        //System.out.println("Nach Belegen eines Wertes " + productPropertyOfProductRequirement);
                                     }
 
 
                             );
-                            parts.add(partOfProductRequirement);
+                            productProperties.add(productPropertyOfProductRequirement);
                         });
                     }); break;
                 }
@@ -116,7 +116,7 @@ class XMLStructureFullObjectTest {
                     subModelElementsInProcessRequirement.forEach(object4 -> {
                         //Von Jedem Element die SubModelElementCollection filtern
                         //System.out.println(object4);
-                        Teilvorgang teilVorGangParts = new Teilvorgang();
+                        ProcessRequirement teilVorGangParts = new ProcessRequirement();
                         teilVorGangParts.setTvName(object4.getSubmodelElementCollection().getIdShort());
                         System.out.println("Id vom SMC " + teilVorGangParts.getTvName());
                         //2 Elemente mit SMC und eins mit Property
@@ -173,14 +173,14 @@ class XMLStructureFullObjectTest {
 
             }
         });
-        System.out.println(parts);
-        productRequirementFullObject.setPart(parts);
+        System.out.println(productProperties);
+        productRequirementFullObject.setProductProperty(productProperties);
         productRequirementFullObject.setTeilVorgang(teilVorgang);
         System.out.println("---------------------------------------------");
         System.out.println("Infos zum Objekt ProductRequirementFullObject");
         System.out.println(productRequirementFullObject.getAssetId());
-        System.out.println(productRequirementFullObject.getPart());
-        System.out.println(productRequirementFullObject.getPart().size());
+        System.out.println(productRequirementFullObject.getProductProperty());
+        System.out.println(productRequirementFullObject.getProductProperty().size());
         System.out.println(productRequirementFullObject.getTeilVorgang());
         System.out.println(productRequirementFullObject.getTeilVorgang().size());
 

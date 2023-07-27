@@ -4,9 +4,9 @@ import com.example.Masterproject4.JAXBModels.Property;
 import com.example.Masterproject4.JAXBModels.SubModel;
 import com.example.Masterproject4.JAXBModels.SubModelElement;
 import com.example.Masterproject4.JAXBModels.XMLStructure;
-import com.example.Masterproject4.ProduktAnforderung.Part;
+import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
+import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
-import com.example.Masterproject4.ProduktAnforderung.Teilvorgang;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.Test;
@@ -16,107 +16,98 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProductRequirementMapperTest {
 
-
     ProductRequirementFullObject fullObjectProductRequirment = new ProductRequirementFullObject();
-    List<Part> parts = new ArrayList<>();
-    List<Teilvorgang> teilVorgang = new ArrayList<>();
+    List<ProductProperty> productProperties = new ArrayList<>();
+    List<ProcessRequirement> teilVorgang = new ArrayList<>();
 
     @Test
     public void fillProductRequirement() throws Exception {
-        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi2.xml");
+        File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi3.xml");
 
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
-
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
         XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
 
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
         listOfAllSubmodels.forEach(subModelObject -> {
-            System.out.println(subModelObject.getIdShort());
-            List<SubModelElement> subModelElements = subModelObject.getSubmodelElements().getSubmodelElement();
-            subModelElements.forEach(subModelElement -> {
-                String idShortOfSM = subModelObject.getIdShort();
-                System.out.println(subModelElement);
-                switch (subModelObject.getIdShort()) {
-                    //Teilvorgang einzelnerVorgang = null;
-                   // Part einzelnesTeil = null;
-                    case "Identification" :
-                        Property property1 = subModelElement.getProperty();
-                        /*
-                        fillValueInList(property1.getIdShort(),property1.getValue(),idShortOfSM,einzelnesTeil,einzelnerVorgang);
-
-                         */
+            String idShortOfSM = subModelObject.getIdShort();
+            System.out.println(idShortOfSM);
+            List<SubModelElement> listOfAllSubmodelsElements = subModelObject.getSubmodelElements().getSubmodelElement();
+            listOfAllSubmodelsElements.forEach(subModelElement -> {
+                switch (idShortOfSM) {
+                    case "Identification" -> fillSubModelIdentification(listOfAllSubmodelsElements);
+                    case "ProductProperty" -> fillSubModelProductProperty(listOfAllSubmodelsElements);
                 }
             });
         });
+        /*
         System.out.println("Volles Object");
         System.out.println(fullObjectProductRequirment);
         System.out.println("Liste Teilvorgänge");
         System.out.println(teilVorgang);
         System.out.println("Liste Teile");
-        System.out.println(parts);
+        System.out.println(productProperties);
+
+         */
     }
 
 
-    private void fillValueInList(String idShort, String value1, String idShortOfSM,
-                                 Part teileVonRequirement, Teilvorgang vorgaengeVonRequirement) throws Exception {
-        if(value1.equals("NaN")) {
-            value1 = "0";
-        }
-        switch(idShort) {
-            case "ReferenceParts" -> vorgaengeVonRequirement.setReferenceParts(value1);
-            case "Mass" -> teileVonRequirement.setMass(Double.parseDouble(value1));
-            case "MeanRoughness" -> teileVonRequirement.setMeanRoughness(Double.parseDouble(value1));
-            case "FerroMagnetic" -> teileVonRequirement.setFerroMagnetic(Boolean.parseBoolean(value1));
-        }
-        switch (idShortOfSM) {
-            // Identification
-            case "Identification":
-                switch (idShort) {
-                    case "AssetId" -> fullObjectProductRequirment.setAssetId(value1);
-                }
-            case "RequiredPropertyChanges":
-                switch (idShort) {
-                    case "PositionX" -> vorgaengeVonRequirement.setPositionX(Double.parseDouble(value1));
-                    case "PositionY" -> vorgaengeVonRequirement.setPositionY(Double.parseDouble(value1));
-                    case "PositionZ" -> vorgaengeVonRequirement.setPositionZ(Double.parseDouble(value1));
-                    case "RotationX" -> vorgaengeVonRequirement.setRotationX(Double.parseDouble(value1));
-                    case "RotationY" -> vorgaengeVonRequirement.setRotationY(Double.parseDouble(value1));
-                    case "RotationZ" -> vorgaengeVonRequirement.setRotationZ(Double.parseDouble(value1));
+    private void fillSubModelIdentification(List<SubModelElement> subModelElements) {
+        subModelElements.forEach(subModelElementsInAssurance -> {
+            Property propertyIdentification = subModelElementsInAssurance.getProperty();
+            switch (propertyIdentification.getIdShort()) {
+                case "AssetId" -> fullObjectProductRequirment.setAssetId(propertyIdentification.getValue());
+            }
+        });
 
-                }
-            case "RequiredFurtherContraints":
-                switch (idShort) {
-                    case "ForceX" -> vorgaengeVonRequirement.setForceX(Double.parseDouble(value1));
-                    case "ForceY" -> vorgaengeVonRequirement.setForceY(Double.parseDouble(value1));
-                    case "ForceZ" -> vorgaengeVonRequirement.setForceZ(Double.parseDouble(value1));
-                    case "MomentumX" -> vorgaengeVonRequirement.setMomentumX(Double.parseDouble(value1));
-                    case "MomentumY" -> vorgaengeVonRequirement.setMomentumY(Double.parseDouble(value1));
-                    case "MomentumZ" -> vorgaengeVonRequirement.setMomentumZ(Double.parseDouble(value1));
-
-                }
-            case "CenterOfMass":
-                switch (idShort) {
-                    case "X" -> teileVonRequirement.setX(Double.parseDouble(value1));
-                    case "Y" -> teileVonRequirement.setZ(Double.parseDouble(value1));
-                    case "Z" -> teileVonRequirement.setZ(Double.parseDouble(value1));
-                }
-            case "Dimensions":
-                switch (idShort) {
-                    case "Length" -> teileVonRequirement.setLength(Double.parseDouble(value1));
-                    case "Width" ->  teileVonRequirement.setWidth(Double.parseDouble(value1));
-                    case "Height" -> teileVonRequirement.setHeight(Double.parseDouble(value1));
-                }
-
-
-
-        }
     }
+
+    private void fillSubModelProductProperty(List<SubModelElement> subModelElements) {
+        subModelElements.forEach(subModelElementsInProductProperty -> {
+            // IDShort z.B. Combined Parts
+            String idShortOfSubModelElement = subModelElementsInProductProperty.getSubmodelElementCollection().getIdShort();
+            System.out.println(idShortOfSubModelElement);
+            List<SubModelElement> subModelElementsInProductPropertyDeep1 = subModelElementsInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
+            subModelElementsInProductPropertyDeep1.forEach(subModelElementObject -> {
+                String idShortOfPart = subModelElementObject.getSubmodelElementCollection().getIdShort();
+                System.out.println(idShortOfPart);
+                ProductProperty productProperty = new ProductProperty();
+                productProperty.setTyp(idShortOfPart);
+                List<SubModelElement> subModelElementsInProductPropertyDeep2 = subModelElementObject.getSubmodelElementCollection().getValue().getSubmodelElement();
+                subModelElementsInProductPropertyDeep2.forEach(subModelElementObject1 -> {
+                    // Property ausprobieren
+                    //productProperties
+                    Property property1 = subModelElementObject1.getProperty();
+                    if (property1!=null) {
+                        switch(property1.getIdShort()) {
+                            case "Mass" -> productProperty.setMass(Double.parseDouble(property1.getValue()));
+                            case "MeanRoughness" -> productProperty.setMeanRoughness(Double.parseDouble(property1.getValue()));
+                            case "FerroMagnetic" -> productProperty.setFerroMagnetic(Boolean.parseBoolean(property1.getValue()));
+                        }
+                    } else {
+
+                       List<SubModelElement>  subModelElementsInProductPropertyDeep3 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsInProductPropertyDeep3.forEach(subModelElementObject2 -> {
+                            Property property2 = subModelElementObject2.getProperty();
+                            switch(property2.getIdShort()) {
+                                case "Length" -> productProperty.setLength(Double.parseDouble(property2.getValue()));
+                                case "Width" -> productProperty.setWidth(Double.parseDouble(property2.getValue()));
+                                case "Height" -> productProperty.setHeight(Double.parseDouble(property2.getValue()));
+                            }
+                        });
+                    }
+
+                });
+                System.out.println("Fertiges Product " + productProperty);
+
+            });
+        });
+
+    }
+
 
 }

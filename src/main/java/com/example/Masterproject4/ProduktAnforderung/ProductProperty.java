@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Part {
+public class ProductProperty {
     String typ;
     double mass;
     double staticFrictionCoefficient;
