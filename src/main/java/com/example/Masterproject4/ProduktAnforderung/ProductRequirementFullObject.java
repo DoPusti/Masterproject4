@@ -13,6 +13,6 @@ public class ProductRequirementFullObject {
 
     String assetId;
     List<ProductProperty> productProperty;
-    List<ProcessRequirement> teilVorgang;
+    List<ProcessRequirement> processRequirement;
 
 }

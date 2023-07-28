@@ -102,46 +102,7 @@ public class ProductRequirementMapper {
                         subModelElementsInSMC.forEach(object5 -> {
                             Property property5 = object5.getProperty();
                             // SMC Rest
-                            if (property5 == null) {
-                                List<SubModelElement> subModelElementsRest = object5.getSubmodelElementCollection().getValue().getSubmodelElement();
-                                subModelElementsRest.forEach(subModelElement -> {
-                                    Property property6 = subModelElement.getProperty();
-                                    switch (property6.getIdShort()) {
-                                        case "PositionX" ->
-                                                teilVorGangParts.setPositionX(Double.parseDouble(property6.getValue()));
-                                        case "PositionY" ->
-                                                teilVorGangParts.setPositionY(Double.parseDouble(property6.getValue()));
-                                        case "PositionZ" ->
-                                                teilVorGangParts.setPositionZ(Double.parseDouble(property6.getValue()));
-                                        case "RotationX" ->
-                                                teilVorGangParts.setRotationX(Double.parseDouble(property6.getValue()));
-                                        case "RotationY" ->
-                                                teilVorGangParts.setRotationY(Double.parseDouble(property6.getValue()));
-                                        case "RotationZ" ->
-                                                teilVorGangParts.setRotationZ(Double.parseDouble(property6.getValue()));
-                                        case "ForceX" ->
-                                                teilVorGangParts.setForceX(Double.parseDouble(property6.getValue()));
-                                        case "ForceY" ->
-                                                teilVorGangParts.setForceY(Double.parseDouble(property6.getValue()));
-                                        case "ForceZ" ->
-                                                teilVorGangParts.setForceZ(Double.parseDouble(property6.getValue()));
-                                        case "MomentumX" ->
-                                                teilVorGangParts.setMomentumX(Double.parseDouble(property6.getValue()));
-                                        case "MomentumY" ->
-                                                teilVorGangParts.setMomentumY(Double.parseDouble(property6.getValue()));
-                                        case "MomentumZ" ->
-                                                teilVorGangParts.setMomentumZ(Double.parseDouble(property6.getValue()));
-                                    }
-                                });
 
-
-                            }
-                            // Property Reference Parts
-                            else {
-                                teilVorGangParts.setReferenceParts(property5.getValue());
-                                System.out.println("ReferenceParts gesetzt mit : " + teilVorGangParts.getReferenceParts());
-
-                            }
                         });
                         teilVorgang.add(teilVorGangParts);
 
@@ -152,7 +113,7 @@ public class ProductRequirementMapper {
             }
         });
         productRequirementFullObject.setProductProperty(productProperties);
-        productRequirementFullObject.setTeilVorgang(teilVorgang);
+        //productRequirementFullObject.setTeilVorgang(teilVorgang);
 
         return productRequirementFullObject;
     }

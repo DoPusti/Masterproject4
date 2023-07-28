@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductProperty {
     String typ;
+    String idShort;
     double mass;
     double staticFrictionCoefficient;
     boolean ferroMagnetic;
