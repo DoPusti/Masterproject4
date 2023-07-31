@@ -16,106 +16,195 @@ import java.util.List;
 
 public class ProductRequirementMapper {
 
+    ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
+    List<ProductProperty> productProperties = new ArrayList<>();
+    List<ProcessRequirement> processRequirements = new ArrayList<>();
+
     public ProductRequirementFullObject mapXMLToClass(File file) throws JAXBException {
+        //File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi3.xml");
+
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
 
-
-        ProductRequirementFullObject productRequirementFullObject = new ProductRequirementFullObject();
-
-        List<ProductProperty> productProperties = new ArrayList<>();
-        List<ProcessRequirement> teilVorgang = new ArrayList<>();
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
-
         listOfAllSubmodels.forEach(subModelObject -> {
-            switch (subModelObject.getIdShort()) {
-                case "Identification":
-                    Property propertyForIdentification = subModelObject.getSubmodelElements().getSubmodelElement().get(0).getProperty();
-                    System.out.println("IdShort : " + propertyForIdentification.getIdShort());
-                    System.out.println("Value   : " + propertyForIdentification.getValue());
-                    productRequirementFullObject.setAssetId(propertyForIdentification.getValue());
-                    break;
-                case "ProductPropertyOverall":
-                    //submodel -> submodelElements -> submodelElement -> submodelElementCollection
-                    List<SubModelElement> subModelElementsInProductProperty = subModelObject.getSubmodelElements().getSubmodelElement();
-                    subModelElementsInProductProperty.forEach(subModelElementInProductProperty -> {
-                        System.out.println("IdShort von SMC: " + subModelElementInProductProperty.getSubmodelElementCollection().getIdShort());
-                        List<SubModelElement> subModelElementsInSMC = subModelElementInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        subModelElementsInSMC.forEach(subModelElementParts -> {
-                            System.out.println("IdShort von Member in SMC: " + subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            ProductProperty productPropertyOfProductRequirement = new ProductProperty();
-                            productPropertyOfProductRequirement.setTyp(subModelElementParts.getSubmodelElementCollection().getIdShort());
-                            List<SubModelElement> subModelElementsInSMCInSMC = subModelElementParts.getSubmodelElementCollection().getValue().getSubmodelElement();
-                            subModelElementsInSMCInSMC.forEach(subModelElementInSMCInSMC -> {
-
-                                        Property property = subModelElementInSMCInSMC.getProperty();
-                                        // SCM und kein Property
-                                        if (property == null) {
-                                            List<SubModelElement> subModelElementsInProperty = subModelElementInSMCInSMC.getSubmodelElementCollection().getValue().getSubmodelElement();
-                                            subModelElementsInProperty.stream().forEach(subModelElementProperty -> {
-                                                Property property2 = subModelElementProperty.getProperty();
-                                                switch (property2.getIdShort()) {
-                                                    case "Length" ->
-                                                            productPropertyOfProductRequirement.setLength(Double.parseDouble(property2.getValue()));
-                                                    case "Width" ->
-                                                            productPropertyOfProductRequirement.setWidth(Double.parseDouble(property2.getValue()));
-                                                    case "Height" ->
-                                                            productPropertyOfProductRequirement.setHeight(Double.parseDouble(property2.getValue()));
-                                                    case "X" ->
-                                                            productPropertyOfProductRequirement.setX(Double.parseDouble(property2.getValue()));
-                                                    case "Y" ->
-                                                            productPropertyOfProductRequirement.setY(Double.parseDouble(property2.getValue()));
-                                                    case "Z" ->
-                                                            productPropertyOfProductRequirement.setZ(Double.parseDouble(property2.getValue()));
-                                                }
-                                            });
-                                        }
-                                        // Property ist direkt da
-                                        else {
-                                            switch (property.getIdShort()) {
-                                                case "Mass" ->
-                                                        productPropertyOfProductRequirement.setMass(Double.parseDouble(property.getValue()));
-                                                case "StaticFrictionCoefficient" ->
-                                                        productPropertyOfProductRequirement.setStaticFrictionCoefficient(Double.parseDouble(property.getValue()));
-                                                case "FerroMagnetic" ->
-                                                        productPropertyOfProductRequirement.setFerroMagnetic(Boolean.parseBoolean(property.getValue()));
-                                            }
-                                        }
-                                    }
-
-
-                            );
-                            productProperties.add(productPropertyOfProductRequirement);
-                        });
-                    });
-                    break;
-                case "ProcessRequirement":
-                    List<SubModelElement> subModelElementsInProcessRequirement = subModelObject.getSubmodelElements().getSubmodelElement();
-                    subModelElementsInProcessRequirement.forEach(object4 -> {
-                        //Von Jedem Element die SubModelElementCollection filtern
-                        ProcessRequirement teilVorGangParts = new ProcessRequirement();
-                        teilVorGangParts.setTvName(object4.getSubmodelElementCollection().getIdShort());
-                        System.out.println("Id vom SMC " + teilVorGangParts.getTvName());
-                        //2 Elemente mit SMC und eins mit Property
-                        List<SubModelElement> subModelElementsInSMC = object4.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        subModelElementsInSMC.forEach(object5 -> {
-                            Property property5 = object5.getProperty();
-                            // SMC Rest
-
-                        });
-                        teilVorgang.add(teilVorGangParts);
-
-                    });
-                    // Zur Liste hinzufügen
-
-                    break;
-            }
+            String idShortOfSM = subModelObject.getIdShort();
+            List<SubModelElement> listOfAllSubmodelsElements = subModelObject.getSubmodelElements().getSubmodelElement();
+            listOfAllSubmodelsElements.forEach(subModelElement -> {
+                switch (idShortOfSM) {
+                    case "Identification" -> fillSubModelIdentification(listOfAllSubmodelsElements);
+                    case "ProductProperty" -> fillSubModelProductProperty(listOfAllSubmodelsElements);
+                    case "ProcessRequirement" -> fillSubModelProcessRequirement(listOfAllSubmodelsElements);
+                }
+            });
         });
-        productRequirementFullObject.setProductProperty(productProperties);
-        //productRequirementFullObject.setTeilVorgang(teilVorgang);
-
-        return productRequirementFullObject;
+        fullObjectProductRequirement.setProductProperty(productProperties);
+        fullObjectProductRequirement.setProcessRequirement(processRequirements);
+        return fullObjectProductRequirement;
     }
 
-}
+
+    private void fillSubModelIdentification(List<SubModelElement> subModelElements) {
+        subModelElements.forEach(subModelElementsInAssurance -> {
+            Property propertyIdentification = subModelElementsInAssurance.getProperty();
+            switch (propertyIdentification.getIdShort()) {
+                case "AssetId" -> fullObjectProductRequirement.setAssetId(propertyIdentification.getValue());
+            }
+        });
+
+    }
+
+    private void fillSubModelProductProperty(List<SubModelElement> subModelElements) {
+        subModelElements.forEach(subModelElementsInProductProperty -> {
+            // IDShort z.B. Combined Parts
+            String idShortOfSubModelElement = subModelElementsInProductProperty.getSubmodelElementCollection().getIdShort();
+            List<SubModelElement> subModelElementsInProductPropertyDeep1 = subModelElementsInProductProperty.getSubmodelElementCollection().getValue().getSubmodelElement();
+            subModelElementsInProductPropertyDeep1.forEach(subModelElementObject -> {
+                String idShortOfPart = subModelElementObject.getSubmodelElementCollection().getIdShort();
+                ProductProperty productProperty = new ProductProperty();
+                productProperty.setIdShort(idShortOfPart);
+                productProperty.setTyp(idShortOfSubModelElement);
+                List<SubModelElement> subModelElementsInProductPropertyDeep2 = subModelElementObject.getSubmodelElementCollection().getValue().getSubmodelElement();
+                subModelElementsInProductPropertyDeep2.forEach(subModelElementObject1 -> {
+                    // Property ausprobieren
+                    //productProperties
+                    Property property1 = subModelElementObject1.getProperty();
+                    if (property1 != null) {
+                        switch (property1.getIdShort()) {
+                            case "Mass" -> productProperty.setMass(Double.parseDouble(property1.getValue()));
+                            case "MeanRoughness" ->
+                                    productProperty.setMeanRoughness(Double.parseDouble(property1.getValue()));
+                            case "FerroMagnetic" ->
+                                    productProperty.setFerroMagnetic(Boolean.parseBoolean(property1.getValue()));
+                        }
+                    } else {
+
+                        List<SubModelElement> subModelElementsInProductPropertyDeep3 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        subModelElementsInProductPropertyDeep3.forEach(subModelElementObject2 -> {
+                            Property property2 = subModelElementObject2.getProperty();
+                            switch (property2.getIdShort()) {
+                                case "Length" -> productProperty.setLength(Double.parseDouble(property2.getValue()));
+                                case "Width" -> productProperty.setWidth(Double.parseDouble(property2.getValue()));
+                                case "Height" -> productProperty.setHeight(Double.parseDouble(property2.getValue()));
+                            }
+                        });
+                    }
+
+                });
+                productProperties.add(productProperty);
+
+            });
+        });
+
+    }
+
+    private void fillSubModelProcessRequirement(List<SubModelElement> subModelElements) {
+        subModelElements.forEach(subModelElementsInProcessRequirement -> {
+            String idShortOfProcessRequirement = subModelElementsInProcessRequirement.getSubmodelElementCollection().getIdShort();
+            List<SubModelElement> subModelElementsInElement = subModelElementsInProcessRequirement.getSubmodelElementCollection().getValue().getSubmodelElement();
+            ProcessRequirement processRequirement = new ProcessRequirement();
+            processRequirement.setTvName(idShortOfProcessRequirement);
+            subModelElementsInElement.forEach(subModelElementDeep1 -> {
+                Property property = subModelElementDeep1.getProperty();
+                if (property != null) {
+                    switch (property.getIdShort()) {
+                        case "ReferenceParts" -> processRequirement.setReferenceParts(property.getValue());
+                    }
+                } else {
+                    String idShortInnerhalbSCM = subModelElementDeep1.getSubmodelElementCollection().getIdShort();
+                    List<SubModelElement> listOfElements = subModelElementDeep1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                    listOfElements.forEach(subModelElementDeep2 -> {
+                        List<SubModelElement> subModelElements3 = subModelElementDeep2.getSubmodelElementCollection().getValue().getSubmodelElement();
+                        // bisher noch null bei PreCondition und PostCondition
+                        if (subModelElements3 != null) {
+                            subModelElements3.forEach(subModelElementDeep3 -> {
+                                Property property2 = subModelElementDeep3.getProperty();
+                                switch (property2.getIdShort()) {
+                                    case "PositionX":
+                                        processRequirement.setPositionX(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "PositionY":
+                                        processRequirement.setPositionY(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "PositionZ":
+                                        processRequirement.setPositionZ(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "RotationX":
+                                        processRequirement.setRotationX(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "RotationY":
+                                        processRequirement.setRotationY(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "RotationZ":
+                                        processRequirement.setRotationZ(Double.parseDouble(property2.getValue()));
+                                        break;
+                                    case "MaxSpeedX":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxSpeedXRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxSpeedXSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "MaxSpeedY":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxSpeedYRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxSpeedYSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "MaxSpeedZ":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxSpeedZRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxSpeedZSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "MaxAccelerationX":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxAccelerationXRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxAccelerationXSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "MaxAccelerationY":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxAccelerationYRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxAccelerationYSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "MaxAccelerationZ":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setMaxAccelerationZRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setMaxAccelerationZSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "ForceX":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setForceXRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setForceXSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "ForceY":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setForceYRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setForceYSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                    case "ForceZ":
+                                        if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                            processRequirement.setForceZRsC(Double.parseDouble(property2.getValue()));
+                                        } else {
+                                            processRequirement.setForceZSsC(Double.parseDouble(property2.getValue()));
+                                        }
+                                }
+                            });
+                        }
+                    });
+                }
+                processRequirements.add(processRequirement);
+            });
+        });
+
+    }
+
+    ;
+    }
+
+

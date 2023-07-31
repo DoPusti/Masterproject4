@@ -3,6 +3,7 @@ package com.example.Masterproject4;
 import com.example.Masterproject4.JAXBModels.XMLStructure;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
+import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.Objects;
+
 
 @RestController
 public class HtmlController {
@@ -55,7 +52,8 @@ public class HtmlController {
         if(!fileOfUser.isEmpty()) {
             File convertedFile = new FileConverter().convertFile(fileOfUser);
             ProductRequirementMapper productRequirementMapper = new ProductRequirementMapper();
-            productRequirementMapper.mapXMLToClass(convertedFile);
+            ProductRequirementFullObject fullObjectProductRequirement = productRequirementMapper.mapXMLToClass(convertedFile);
+            System.out.println(fullObjectProductRequirement);
         }
 
         return "Verarbeitung erfolgt";
