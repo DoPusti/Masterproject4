@@ -1259,7 +1259,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1274,7 +1274,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1289,7 +1289,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1300,6 +1300,72 @@
                               <qualifier />
                               <valueType />
                               <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
                             </property>
                           </submodelElement>
                         </value>
@@ -1451,7 +1517,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1466,7 +1532,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1481,7 +1547,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1492,6 +1558,72 @@
                               <qualifier />
                               <valueType />
                               <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
                             </property>
                           </submodelElement>
                         </value>
@@ -1506,525 +1638,6 @@
         <submodelElement>
           <submodelElementCollection>
             <idShort>TV2_secondary_process</idShort>
-            <description>
-              <langString lang="en">transport assembly of middle of housing for later insertion</langString>
-            </description>
-            <kind>Instance</kind>
-            <semanticId>
-              <keys />
-            </semanticId>
-            <qualifier />
-            <ordered>false</ordered>
-            <allowDuplicates>false</allowDuplicates>
-            <value>
-              <submodelElement>
-                <submodelElementCollection>
-                  <idShort>RequiredStateChange</idShort>
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>PersistentStateChange</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value>
-                          <submodelElement>
-                            <property>
-                              <idShort>PositionX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>99</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>PositionY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>50</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>PositionZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>55</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>RotationX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7201_1110_2122_5197</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>21</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>RotationY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6111_1110_2122_8937</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>RotationZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1511_1110_2122_7095</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>17</value>
-                            </property>
-                          </submodelElement>
-                        </value>
-                      </submodelElementCollection>
-                    </submodelElement>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>PreCondition</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value />
-                      </submodelElementCollection>
-                    </submodelElement>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>PostCondition</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value />
-                      </submodelElementCollection>
-                    </submodelElement>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>RateOfChange</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxSpeedX</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>20</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxAccelerationX</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>12</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxSpeedY</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>25</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxAccelerationY</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>123</value>
-                            </property>
-                          </submodelElement>
-                        </value>
-                      </submodelElementCollection>
-                    </submodelElement>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>Constraints</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8421_1110_2122_9594</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>21</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2041_1110_2122_9711</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>455</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5271_1110_2122_5959</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9182_1110_2122_9896</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>10</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9133_1110_2122_5877</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5343_1110_2122_5236</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>99</value>
-                            </property>
-                          </submodelElement>
-                        </value>
-                      </submodelElementCollection>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
-              </submodelElement>
-              <submodelElement>
-                <property>
-                  <idShort>ReferenceParts</idShort>
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <valueType />
-                  <value>assembly_middle_of_housing</value>
-                </property>
-              </submodelElement>
-              <submodelElement>
-                <submodelElementCollection>
-                  <idShort>SecundaryStateChange</idShort>
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>RateOfChange</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxSpeedX</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>20</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxAccelerationX</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>12</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxSpeedY</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>25</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MaxAccelerationY</idShort>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys />
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>123</value>
-                            </property>
-                          </submodelElement>
-                        </value>
-                      </submodelElementCollection>
-                    </submodelElement>
-                    <submodelElement>
-                      <submodelElementCollection>
-                        <idShort>Constraints</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys />
-                        </semanticId>
-                        <qualifier />
-                        <ordered>false</ordered>
-                        <allowDuplicates>false</allowDuplicates>
-                        <value>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8421_1110_2122_9594</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2041_1110_2122_9711</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>ForceZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5271_1110_2122_5959</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumX</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9182_1110_2122_9896</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumY</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9133_1110_2122_5877</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                          <submodelElement>
-                            <property>
-                              <idShort>MomentumZ</idShort>
-                              <category>CONSTANT</category>
-                              <kind>Instance</kind>
-                              <semanticId>
-                                <keys>
-                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5343_1110_2122_5236</key>
-                                </keys>
-                              </semanticId>
-                              <qualifier />
-                              <valueType />
-                              <value>0</value>
-                            </property>
-                          </submodelElement>
-                        </value>
-                      </submodelElementCollection>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
-              </submodelElement>
-            </value>
-          </submodelElementCollection>
-        </submodelElement>
-        <submodelElement>
-          <submodelElementCollection>
-            <idShort>TV3_secondary_process</idShort>
             <description>
               <langString lang="en">transport assembly of middle of housing for later insertion</langString>
             </description>
@@ -2262,7 +1875,7 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>55</value>
+                              <value>0</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
@@ -2277,7 +1890,7 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>0</value>
+                              <value>55</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
@@ -2292,12 +1905,12 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>0</value>
+                              <value>7</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2312,7 +1925,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2327,7 +1940,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2337,7 +1950,73 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>89</value>
+                              <value>9</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>99</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>27</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>2</value>
                             </property>
                           </submodelElement>
                         </value>
@@ -2489,7 +2168,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2504,7 +2183,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2519,7 +2198,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2530,6 +2209,723 @@
                               <qualifier />
                               <valueType />
                               <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                        </value>
+                      </submodelElementCollection>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>TV3_secondary_process</idShort>
+            <description>
+              <langString lang="en">transport assembly of middle of housing for later insertion</langString>
+            </description>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>RequiredStateChange</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>PersistentStateChange</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>100</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>50</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9330_0132_7032_6051</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>40</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7201_1110_2122_5197</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>50</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6111_1110_2122_8937</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1511_1110_2122_7095</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                        </value>
+                      </submodelElementCollection>
+                    </submodelElement>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>PreCondition</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value />
+                      </submodelElementCollection>
+                    </submodelElement>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>PostCondition</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value />
+                      </submodelElementCollection>
+                    </submodelElement>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>RateOfChange</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxSpeedX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>20</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxAccelerationX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxSpeedY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>25</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxAccelerationY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>123</value>
+                            </property>
+                          </submodelElement>
+                        </value>
+                      </submodelElementCollection>
+                    </submodelElement>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>Constraints</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8421_1110_2122_9594</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2041_1110_2122_9711</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5271_1110_2122_5959</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>71</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9182_1110_2122_9896</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>55</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9133_1110_2122_5877</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5343_1110_2122_5236</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>2</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>25</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>78</value>
+                            </property>
+                          </submodelElement>
+                        </value>
+                      </submodelElementCollection>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>ReferenceParts</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <valueType />
+                  <value>assembly_middle_of_housing</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>SecundaryStateChange</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>RateOfChange</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxSpeedX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>20</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxAccelerationX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxSpeedY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>25</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>MaxAccelerationY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>123</value>
+                            </property>
+                          </submodelElement>
+                        </value>
+                      </submodelElementCollection>
+                    </submodelElement>
+                    <submodelElement>
+                      <submodelElementCollection>
+                        <idShort>Constraints</idShort>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys />
+                        </semanticId>
+                        <qualifier />
+                        <ordered>false</ordered>
+                        <allowDuplicates>false</allowDuplicates>
+                        <value>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8421_1110_2122_9594</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2041_1110_2122_9711</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>ForceZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5271_1110_2122_5959</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueX</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9182_1110_2122_9896</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueY</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9133_1110_2122_5877</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>TorqueZ</idShort>
+                              <category>CONSTANT</category>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys>
+                                  <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5343_1110_2122_5236</key>
+                                </keys>
+                              </semanticId>
+                              <qualifier />
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
                             </property>
                           </submodelElement>
                         </value>
@@ -2781,7 +3177,7 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>0</value>
+                              <value>100</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
@@ -2796,7 +3192,7 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>0</value>
+                              <value>20</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
@@ -2811,12 +3207,12 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>89</value>
+                              <value>0</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2826,12 +3222,12 @@
                               </semanticId>
                               <qualifier />
                               <valueType />
-                              <value>10</value>
+                              <value>0</value>
                             </property>
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2846,7 +3242,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2857,6 +3253,72 @@
                               <qualifier />
                               <valueType />
                               <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>20</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>16</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
                             </property>
                           </submodelElement>
                         </value>
@@ -3008,7 +3470,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumX</idShort>
+                              <idShort>TorqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3023,7 +3485,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumY</idShort>
+                              <idShort>TorqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3038,7 +3500,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MomentumZ</idShort>
+                              <idShort>TorqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3049,6 +3511,72 @@
                               <qualifier />
                               <valueType />
                               <value>0</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>12</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>44</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>1</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>22</value>
+                            </property>
+                          </submodelElement>
+                          <submodelElement>
+                            <property>
+                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <kind>Instance</kind>
+                              <semanticId>
+                                <keys />
+                              </semanticId>
+                              <valueType />
+                              <value>5</value>
                             </property>
                           </submodelElement>
                         </value>

@@ -13,6 +13,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @SpringBootTest
 class ProductRequirementMapperTest {
@@ -24,20 +26,31 @@ class ProductRequirementMapperTest {
     @Test
     public void getAllConstraints() throws Exception {
         fillProductRequirement();
-        System.out.println("Constrainttest");
+        assertEquals(4, processRequirements.size());
+        assertEquals(5,productProperties.size());
+        /*
         List<ProcessRequirement> processRequirementsforConstraints = fullObjectProductRequirement.getProcessRequirement();
         processRequirementsforConstraints.forEach(constraint -> {
             System.out.println(constraint.getTvName());
+            System.out.println("RsC");
             System.out.println(constraint.getForceXRsC());
             System.out.println(constraint.getForceYRsC());
             System.out.println(constraint.getForceZRsC());
-            System.out.println(constraint.getMomentumXRsC());
-            System.out.println(constraint.getMomentumYRsC());
-            System.out.println(constraint.getMomentumZRsC());
-
+            System.out.println(constraint.getTorqueXRsC());
+            System.out.println(constraint.getTorqueYRsC());
+            System.out.println(constraint.getTorqueZRsC());
+            System.out.println("SsC");
+            System.out.println(constraint.getForceXSsC());
+            System.out.println(constraint.getForceYSsC());
+            System.out.println(constraint.getForceZSsC());
+            System.out.println(constraint.getTorqueXSsC());
+            System.out.println(constraint.getTorqueYSsC());
+            System.out.println(constraint.getTorqueZSsC());
 
 
         });
+
+         */
     }
 
     @Test
@@ -52,7 +65,7 @@ class ProductRequirementMapperTest {
         listOfAllSubmodels.forEach(subModelObject -> {
 
             String idShortOfSM = subModelObject.getIdShort();
-            System.out.println(idShortOfSM);
+            //System.out.println(idShortOfSM);
             //System.out.println(subModelObject);
 
             switch (idShortOfSM) {
@@ -63,12 +76,12 @@ class ProductRequirementMapperTest {
                 case "ProductProperty":
                     List<SubModelElement> subModelElements2 = subModelObject.getSubmodelElements().getSubmodelElement();
                     subModelElements2.forEach(subElements21 -> {
-                        System.out.println("Product Properties");
-                        System.out.println(subElements21.getSubmodelElementCollection().getIdShort());
+                        //System.out.println("Product Properties");
+                       //System.out.println(subElements21.getSubmodelElementCollection().getIdShort());
                         List<SubModelElement> subModelElementsDeep2 = subElements21.getSubmodelElementCollection().getValue().getSubmodelElement();
                         subModelElementsDeep2.forEach(subModelElementsDeep3 -> {
                             // Jedes einzelne Element in Single Parts und Combined Parts
-                            System.out.println();
+                            //System.out.println();
                             ProductProperty newProductProperty = fillSubModelProductProperty(subModelElementsDeep3.getSubmodelElementCollection());
                             // z.B. Single Parts und Combined Parts
                             newProductProperty.setTyp(subElements21.getSubmodelElementCollection().getIdShort());
@@ -94,8 +107,8 @@ class ProductRequirementMapperTest {
     private void fillSubModelIdentification(List<SubModelElement> subModelElements) {
         subModelElements.forEach(subModelElementsInAssurance -> {
             Property propertyIdentification = subModelElementsInAssurance.getProperty();
-            switch (propertyIdentification.getIdShort()) {
-                case "AssetId" -> fullObjectProductRequirement.setAssetId(propertyIdentification.getValue());
+            if (propertyIdentification.getIdShort().equals("AssetId")) {
+                fullObjectProductRequirement.setAssetId(propertyIdentification.getValue());
             }
         });
 
@@ -113,7 +126,8 @@ class ProductRequirementMapperTest {
             if (property1 != null) {
                 switch (property1.getIdShort()) {
                     case "Mass" -> newProductProperty.setMass(Double.parseDouble(property1.getValue()));
-                    case "MeanRoughness" -> newProductProperty.setMeanRoughness(Double.parseDouble(property1.getValue()));
+                    case "MeanRoughness" ->
+                            newProductProperty.setMeanRoughness(Double.parseDouble(property1.getValue()));
                     case "FerroMagnetic" ->
                             newProductProperty.setFerroMagnetic(Boolean.parseBoolean(property1.getValue()));
                 }
@@ -133,25 +147,25 @@ class ProductRequirementMapperTest {
         });
 
 
-        System.out.println("Fertiges Produkt");
-        System.out.println(newProductProperty);
+        //System.out.println("Fertiges Produkt");
+        //System.out.println(newProductProperty);
         return newProductProperty;
     }
 
 
     private ProcessRequirement fillSubModelProcessRequirement(SubmodelElementCollection collection) {
-        System.out.println(collection);
+        //System.out.println(collection);
         ProcessRequirement processRequirement = new ProcessRequirement();
         String idShortOfProcessRequirement = collection.getIdShort();
 
         List<SubModelElement> subModelElementsInElement = collection.getValue().getSubmodelElement();
         processRequirement.setTvName(idShortOfProcessRequirement);
         subModelElementsInElement.forEach(subModelElementDeep1 -> {
-            System.out.println(subModelElementDeep1);
+            //System.out.println(subModelElementDeep1);
             Property property = subModelElementDeep1.getProperty();
             if (property != null) {
-                switch (property.getIdShort()) {
-                    case "ReferenceParts" -> processRequirement.setReferenceParts(property.getValue());
+                if (property.getIdShort().equals("ReferenceParts")) {
+                    processRequirement.setReferenceParts(property.getValue());
                 }
             } else {
                 String idShortInnerhalbSCM = subModelElementDeep1.getSubmodelElementCollection().getIdShort();
@@ -164,77 +178,173 @@ class ProductRequirementMapperTest {
                             Property property2 = subModelElementDeep3.getProperty();
                             switch (property2.getIdShort()) {
                                 case "PositionX":
-                                    processRequirement.setPositionX(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionXRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionXSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
                                 case "PositionY":
-                                    processRequirement.setPositionY(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionYRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionYSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
                                 case "PositionZ":
-                                    processRequirement.setPositionZ(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionZRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionZSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
                                 case "RotationX":
-                                    processRequirement.setRotationX(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationXRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationXSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
                                 case "RotationY":
-                                    processRequirement.setRotationY(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationYRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationYSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
                                 case "RotationZ":
-                                    processRequirement.setRotationZ(Double.parseDouble(property2.getValue()));
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationZRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationZSsC(Double.parseDouble(property2.getValue()));
+                                    }
                                     break;
-                                case "MaxSpeedX":
+                                  case "MaxSpeedX":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxSpeedXRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxSpeedXSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                      break;
                                 case "MaxSpeedY":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxSpeedYRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxSpeedYSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "MaxSpeedZ":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxSpeedZRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxSpeedZSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "MaxAccelerationX":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxAccelerationXRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxAccelerationXSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "MaxAccelerationY":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxAccelerationYRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxAccelerationYSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "MaxAccelerationZ":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setMaxAccelerationZRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setMaxAccelerationZSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "ForceX":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setForceXRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setForceXSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "ForceY":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setForceYRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setForceYSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
                                 case "ForceZ":
                                     if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
                                         processRequirement.setForceZRsC(Double.parseDouble(property2.getValue()));
                                     } else {
                                         processRequirement.setForceZSsC(Double.parseDouble(property2.getValue()));
                                     }
+                                    break;
+                                case "PositionRepetitionAccuracyX":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionRepetitionAccuracyXRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionRepetitionAccuracyXSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "PositionRepetitionAccuracyY":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionRepetitionAccuracyYRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionRepetitionAccuracyYSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "PositionRepetitionAccuracyZ":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setPositionRepetitionAccuracyZRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setPositionRepetitionAccuracyZSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "RotationRepetitionAccuracyX":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationRepetitionAccuracyXRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationRepetitionAccuracyXSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "RotationRepetitionAccuracyY":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationRepetitionAccuracyYRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationRepetitionAccuracyYSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "RotationRepetitionAccuracyZ":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setRotationRepetitionAccuracyZRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setRotationRepetitionAccuracyZSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "TorqueX":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setTorqueXRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setTorqueXSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "TorqueY":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setTorqueYRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setTorqueYSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
+                                case "TorqueZ":
+                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
+                                        processRequirement.setTorqueZRsC(Double.parseDouble(property2.getValue()));
+                                    } else {
+                                        processRequirement.setTorqueZSsC(Double.parseDouble(property2.getValue()));
+                                    }
+                                    break;
                             }
                         });
                     }
@@ -243,11 +353,9 @@ class ProductRequirementMapperTest {
 
         });
 
-        System.out.println("Fertiges Process Requirement");
-        System.out.println(processRequirement);
+        //System.out.println("Fertiges Process Requirement");
+        //System.out.println(processRequirement);
         return processRequirement;
     }
-
-    ;
 
 }

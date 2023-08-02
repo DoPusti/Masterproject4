@@ -2,22 +2,22 @@
 <aasenv xmlns:IEC="http://www.admin-shell.io/IEC61360/2/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:abac="http://www.admin-shell.io/aas/abac/2/0" xsi:schemaLocation="http://www.admin-shell.io/aas/2/0 AAS.xsd http://www.admin-shell.io/IEC61360/2/0 IEC61360.xsd" xmlns:aas="http://www.admin-shell.io/aas/2/0">
   <assetAdministrationShells>
     <assetAdministrationShell>
-      <idShort>ABBScaraIRB920T_Axis07</idShort>
-      <identification idType="IRI">https://example.com/ids/aas/6340_9041_1122_5643</identification>
+      <idShort>BoschRexroth_CKK110NN1_Axis01</idShort>
+      <identification idType="Custom">AssetAdministrationShell---76BB9792</identification>
       <assetRef>
         <keys>
-          <key type="Asset" local="true" idType="IRI">https://example.com/ids/asset/6340_9041_1122_5643</key>
+          <key type="Asset" local="true" idType="Custom">Asset---5B36F28F</key>
         </keys>
       </assetRef>
       <submodelRefs>
         <submodelRef>
           <keys>
-            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/6340_9041_1122_5643</key>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/1143_4130_1122_9464</key>
           </keys>
         </submodelRef>
         <submodelRef>
           <keys>
-            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/3050_9041_1122_5926</key>
+            <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/8460_4152_0122_4565</key>
           </keys>
         </submodelRef>
         <submodelRef>
@@ -41,15 +41,15 @@
   </assetAdministrationShells>
   <assets>
     <asset>
-      <idShort>ABBScaraIRB920T_Axis07</idShort>
-      <identification idType="IRI">https://example.com/ids/asset/6340_9041_1122_5643</identification>
+      <idShort>BoschRexroth_CKK110NN1_Axis01</idShort>
+      <identification idType="Custom">Asset---5B36F28F</identification>
       <kind>Instance</kind>
     </asset>
   </assets>
   <submodels>
     <submodel>
       <idShort>Identification</idShort>
-      <identification idType="IRI">https://example.com/ids/sm/6340_9041_1122_5643</identification>
+      <identification idType="IRI">https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE</identification>
       <kind>Instance</kind>
       <semanticId>
         <keys>
@@ -70,44 +70,14 @@
             </semanticId>
             <qualifier />
             <valueType />
-            <value>HTTP://PK.ABB.COM/XXXXXX1</value>
-          </property>
-        </submodelElement>
-        <submodelElement>
-          <property>
-            <idShort>SerialNumber</idShort>
-            <category>PARAMETER</category>
-            <kind>Instance</kind>
-            <semanticId>
-              <keys>
-                <key type="ConceptDescription" local="true" idType="IRDI">0173-1#02-AAM556#002</key>
-              </keys>
-            </semanticId>
-            <qualifier />
-            <valueType />
-            <value>ABB.com/demo/aas/XXXXXX1</value>
-          </property>
-        </submodelElement>
-        <submodelElement>
-          <property>
-            <idShort>URL</idShort>
-            <category>PARAMETER</category>
-            <kind>Instance</kind>
-            <semanticId>
-              <keys>
-                <key type="ConceptDescription" local="true" idType="IRDI">0173-1#02-AAO694#001</key>
-              </keys>
-            </semanticId>
-            <qualifier />
-            <valueType />
-            <value>https://ABB.de/XXXXXX1</value>
+            <value>https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE</value>
           </property>
         </submodelElement>
       </submodelElements>
     </submodel>
     <submodel>
       <idShort>Assurances</idShort>
-      <identification idType="IRI">https://example.com/ids/sm/3050_9041_1122_5926</identification>
+      <identification idType="IRI">https://example.com/ids/sm/8460_4152_0122_4565</identification>
       <kind>Instance</kind>
       <semanticId>
         <keys />
@@ -135,12 +105,12 @@
                   <kind>Instance</kind>
                   <semanticId>
                     <keys>
-                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2490_5122_2122_4884</key>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6425_5181_2122_0395</key>
                     </keys>
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>2400</value>
+                  <value>2000</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -165,12 +135,12 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2161_5122_2122_5036</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9435_5181_2122_9980</key>
                           </keys>
                         </semanticId>
                         <qualifier />
                         <valueType />
-                        <value>290</value>
+                        <value>NaN</value>
                       </property>
                     </submodelElement>
                     <submodelElement>
@@ -180,12 +150,12 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5471_5122_2122_3103</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/6045_5181_2122_8780</key>
                           </keys>
                         </semanticId>
                         <qualifier />
                         <valueType />
-                        <value>290</value>
+                        <value>NaN</value>
                         <valueId>
                           <keys />
                         </valueId>
@@ -198,12 +168,12 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0081_5122_2122_1588</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0455_5181_2122_0689</key>
                           </keys>
                         </semanticId>
                         <qualifier />
                         <valueType />
-                        <value>720</value>
+                        <value>NaN</value>
                       </property>
                     </submodelElement>
                   </value>
@@ -231,7 +201,7 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8281_5122_2122_6218</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3595_5181_2122_0693</key>
                           </keys>
                         </semanticId>
                         <qualifier />
@@ -246,7 +216,7 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0581_5122_2122_9630</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5100_6181_2122_0301</key>
                           </keys>
                         </semanticId>
                         <qualifier />
@@ -261,7 +231,7 @@
                         <kind>Instance</kind>
                         <semanticId>
                           <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3091_5122_2122_2484</key>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8300_6181_2122_8200</key>
                           </keys>
                         </semanticId>
                         <qualifier />
@@ -290,7 +260,7 @@
                   <kind>Instance</kind>
                   <semanticId>
                     <keys>
-                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3491_5122_2122_0045</key>
+                      <key type="ConceptDescription" local="true" idType="IRI" />
                     </keys>
                   </semanticId>
                   <qualifier />
@@ -354,253 +324,70 @@
             <allowDuplicates>false</allowDuplicates>
             <value>
               <submodelElement>
-                <submodelElementCollection>
-                  <idShort>X</idShort>
+                <property>
+                  <idShort>PositionX</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <property>
-                        <idShort>Position</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en" />
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7432_5122_2122_3211</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>550</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8142_5122_2122_3253</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>20</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>Rotation</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">How much the resource can rotate the product around the x-axis in °</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0342_5122_2122_0449</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9352_5122_2122_6245</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
+                  <valueType />
+                  <value>1500</value>
+                </property>
               </submodelElement>
               <submodelElement>
-                <submodelElementCollection>
-                  <idShort>Y</idShort>
+                <property>
+                  <idShort>PositionY</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <property>
-                        <idShort>Position</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en" />
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9062_5122_2122_4625</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4262_5122_2122_9120</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>Rotation</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">How much the resource can rotate the product around the z-axis in °</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8462_5122_2122_3099</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7072_5122_2122_4143</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
+                  <valueType />
+                  <value>200</value>
+                </property>
               </submodelElement>
               <submodelElement>
-                <submodelElementCollection>
-                  <idShort>Z</idShort>
+                <property>
+                  <idShort>PositionZ</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <property>
-                        <idShort>Position</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en" />
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7432_5122_2122_3211</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>300</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/8142_5122_2122_3253</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>20</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>Rotation</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">How much the resource can rotate the product around the x-axis in °</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0342_5122_2122_0449</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9352_5122_2122_6245</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
+                  <valueType />
+                  <value>99</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationX</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>10</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationY</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>0</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationZ</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>1.2</value>
+                </property>
               </submodelElement>
             </value>
           </submodelElementCollection>
@@ -608,6 +395,7 @@
         <submodelElement>
           <submodelElementCollection>
             <idShort>Constraints</idShort>
+            <category>CONSTANT</category>
             <kind>Instance</kind>
             <semanticId>
               <keys />
@@ -617,133 +405,192 @@
             <allowDuplicates>false</allowDuplicates>
             <value>
               <submodelElement>
-                <submodelElementCollection>
-                  <idShort>Force</idShort>
-                  <category>CONSTANT</category>
+                <property>
+                  <idShort>ForceX</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
-                  <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <range>
-                        <idShort>X</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1425_4141_4032_9724</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <min>NaN</min>
-                        <max>NaN</max>
-                      </range>
-                    </submodelElement>
-                    <submodelElement>
-                      <range>
-                        <idShort>Y</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1425_4141_4032_9724</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <min>0</min>
-                        <max>550</max>
-                      </range>
-                    </submodelElement>
-                    <submodelElement>
-                      <range>
-                        <idShort>Z</idShort>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1425_4141_4032_9724</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <min>0</min>
-                        <max>550</max>
-                      </range>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
+                  <valueType />
+                  <value>12</value>
+                </property>
               </submodelElement>
               <submodelElement>
-                <submodelElementCollection>
-                  <idShort>Torque</idShort>
-                  <category>CONSTANT</category>
+                <property>
+                  <idShort>ForceY</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>122</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>ForceZ</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>0</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>TorqueX</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>12</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>TorqueY</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>1222</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>TorqueZ</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>10</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>PositionRepetitionAccuracyX</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>2</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>PositionRepetitionAccuracyY</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>1</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>PositionRepetitionAccuracyZ</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>0</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationRepetitionAccuracyX</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>6</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationRepetitionAccuracyY</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>6</value>
+                </property>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>RotationRepetitionAccuracyZ</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>6</value>
+                </property>
+              </submodelElement>
+            </value>
+          </submodelElementCollection>
+        </submodelElement>
+        <submodelElement>
+          <submodelElementCollection>
+            <idShort>InternalPropertyRelations</idShort>
+            <category>CONSTANT</category>
+            <kind>Instance</kind>
+            <semanticId>
+              <keys />
+            </semanticId>
+            <qualifier />
+            <ordered>false</ordered>
+            <allowDuplicates>false</allowDuplicates>
+            <value>
+              <submodelElement>
+                <relationshipElement>
+                  <idShort>RelationRepeatabilityForce</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
                   <qualifier />
-                  <ordered>false</ordered>
-                  <allowDuplicates>false</allowDuplicates>
-                  <value>
-                    <submodelElement>
-                      <property>
-                        <idShort>X</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">The maximum torque/ momentum the resource can endure in x direction, in Nm</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4003_5122_2122_3724</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>330</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>Y</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">The maximum torque/ momentum the resource can endure in y direction, in Nm</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/0303_5122_2122_3551</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>330</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>Z</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">The maximum torque/ momentum the resource can endure in z direction, in Nm</langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2503_5122_2122_4288</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>150</value>
-                      </property>
-                    </submodelElement>
-                  </value>
-                </submodelElementCollection>
+                  <first>
+                    <keys>
+                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
+                      <key type="SubmodelElementCollection" local="true" idType="IdShort">PropertyChanges</key>
+                      <key type="Property" local="true" idType="IdShort">Repeatability</key>
+                    </keys>
+                  </first>
+                  <second>
+                    <keys>
+                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
+                      <key type="SubmodelElementCollection" local="true" idType="IdShort">Constraints</key>
+                      <key type="Property" local="true" idType="IdShort">zForce</key>
+                    </keys>
+                  </second>
+                </relationshipElement>
+              </submodelElement>
+              <submodelElement>
+                <annotatedRelationshipElement>
+                  <idShort />
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <qualifier />
+                  <first>
+                    <keys />
+                  </first>
+                  <second>
+                    <keys />
+                  </second>
+                  <annotations />
+                </annotatedRelationshipElement>
               </submodelElement>
             </value>
           </submodelElementCollection>
@@ -825,7 +672,7 @@
             </semanticId>
             <qualifier />
             <valueType />
-            <value>1.2</value>
+            <value>NaN</value>
           </property>
         </submodelElement>
       </submodelElements>
@@ -969,7 +816,7 @@
             </semanticId>
             <qualifier />
             <valueType />
-            <value>3000</value>
+            <value>2000</value>
           </property>
         </submodelElement>
         <submodelElement>
@@ -994,12 +841,12 @@
                   <kind>Instance</kind>
                   <semanticId>
                     <keys>
-                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3134_5122_2122_4550</key>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1403_8181_2122_1108</key>
                     </keys>
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>5</value>
+                  <value>NaN</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -1009,12 +856,12 @@
                   <kind>Instance</kind>
                   <semanticId>
                     <keys>
-                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9234_5122_2122_2558</key>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5013_8181_2122_2343</key>
                     </keys>
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>10</value>
+                  <value>NaN</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -1024,12 +871,12 @@
                   <kind>Instance</kind>
                   <semanticId>
                     <keys>
-                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1434_5122_2122_1510</key>
+                      <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1213_8181_2122_0030</key>
                     </keys>
                   </semanticId>
                   <qualifier />
                   <valueType />
-                  <value>25</value>
+                  <value>NaN</value>
                 </property>
               </submodelElement>
             </value>
@@ -1068,7 +915,7 @@
             </semanticId>
             <qualifier />
             <valueType />
-            <value>NaN</value>
+            <value>15</value>
           </property>
         </submodelElement>
         <submodelElement>
@@ -1086,7 +933,7 @@
             </semanticId>
             <qualifier />
             <valueType />
-            <value>NaN</value>
+            <value>2</value>
           </property>
         </submodelElement>
         <submodelElement>
@@ -1222,7 +1069,8 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Mass</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/2490_5122_2122_4884</identification>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/6425_5181_2122_0395</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1242,7 +1090,8 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Length</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/2161_5122_2122_5036</identification>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/9435_5181_2122_9980</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1262,7 +1111,8 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Width</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/5471_5122_2122_3103</identification>
+      <category>CONSTANT</category>
+      <identification idType="IRI">https://example.com/ids/cd/6045_5181_2122_8780</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1282,7 +1132,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Height</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/0081_5122_2122_1588</identification>
+      <identification idType="IRI">https://example.com/ids/cd/0455_5181_2122_0689</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1302,7 +1152,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>X</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/8281_5122_2122_6218</identification>
+      <identification idType="IRI">https://example.com/ids/cd/3595_5181_2122_0693</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1322,7 +1172,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Y</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/0581_5122_2122_9630</identification>
+      <identification idType="IRI">https://example.com/ids/cd/5100_6181_2122_0301</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1342,107 +1192,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Z</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/3091_5122_2122_2484</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>OperatingPrinciple</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/3491_5122_2122_0045</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit />
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>Position</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/7432_5122_2122_3211</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>PositionRepetitionAccuracy</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/8142_5122_2122_3253</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>Rotation</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/0342_5122_2122_0449</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>°</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>RotationRepetitionAccuracy</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/9352_5122_2122_6245</identification>
+      <identification idType="IRI">https://example.com/ids/cd/8300_6181_2122_8200</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1462,7 +1212,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Position</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/9062_5122_2122_4625</identification>
+      <identification idType="IRI">https://example.com/ids/cd/7411_8181_2122_7774</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1481,8 +1231,8 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>PositionRepetitionAccuracy</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/4262_5122_2122_9120</identification>
+      <idShort>PositionRepetitionAccuracyZ</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1502,7 +1252,169 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Rotation</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/8462_5122_2122_3099</identification>
+      <identification idType="IRI">https://example.com/ids/cd/5521_8181_2122_3306</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>°</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>RotationRepetitionAccuracyZ</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1431_8181_2122_1237</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>PositionRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3141_8181_2122_9458</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Rotation</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/9241_8181_2122_0307</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName>
+              <langString lang="" />
+            </preferredName>
+            <shortName />
+            <unit>°</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>RotationRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3151_8181_2122_4233</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/3351_8181_2122_2101</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>PositionRepetitionAccuracy</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2061_8181_2122_7168</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Rotation</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/2361_8181_2122_2695</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1522,7 +1434,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>RotationRepetitionAccuracy</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/7072_5122_2122_4143</identification>
+      <identification idType="IRI">https://example.com/ids/cd/4071_8181_2122_4716</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1542,7 +1454,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>X</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/9092_5122_2122_7956</identification>
+      <identification idType="IRI">https://example.com/ids/cd/6532_8181_2122_8339</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1562,7 +1474,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Y</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/7292_5122_2122_2674</identification>
+      <identification idType="IRI">https://example.com/ids/cd/0242_8181_2122_0334</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1582,7 +1494,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Z</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/6492_5122_2122_2783</identification>
+      <identification idType="IRI">https://example.com/ids/cd/4442_8181_2122_2537</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1602,7 +1514,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>X</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/4003_5122_2122_3724</identification>
+      <identification idType="IRI">https://example.com/ids/cd/0052_8181_2122_6813</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1622,7 +1534,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Y</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/0303_5122_2122_3551</identification>
+      <identification idType="IRI">https://example.com/ids/cd/1352_8181_2122_7719</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1642,7 +1554,7 @@
     </conceptDescription>
     <conceptDescription>
       <idShort>Z</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/2503_5122_2122_4288</identification>
+      <identification idType="IRI">https://example.com/ids/cd/2552_8181_2122_2615</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
@@ -1772,7 +1684,7 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>Temperature</idShort>
+      <idShort>Pressure</idShort>
       <category>CONSTANT</category>
       <identification idType="IRI">https://example.com/ids/cd/6534_1182_1122_8931</identification>
       <embeddedDataSpecification>
@@ -1904,67 +1816,7 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>Height</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/1434_5122_2122_1510</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>Width2</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/9234_5122_2122_2558</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>Length</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/3134_5122_2122_4550</identification>
-      <embeddedDataSpecification>
-        <dataSpecificationContent>
-          <dataSpecificationIEC61360>
-            <preferredName />
-            <shortName />
-            <unit>mm</unit>
-            <dataType />
-            <definition />
-          </dataSpecificationIEC61360>
-        </dataSpecificationContent>
-        <dataSpecification>
-          <keys>
-            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
-          </keys>
-        </dataSpecification>
-      </embeddedDataSpecification>
-    </conceptDescription>
-    <conceptDescription>
-      <idShort>LengthOfUsage</idShort>
+      <idShort>Lengthofusage</idShort>
       <category>CONSTANT</category>
       <identification idType="IRI">https://example.com/ids/cd/5031_2182_1122_9721</identification>
       <embeddedDataSpecification>
@@ -2006,7 +1858,7 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>MaintenanceDuration</idShort>
+      <idShort>MaintanceDuration</idShort>
       <category>CONSTANT</category>
       <identification idType="IRI">https://example.com/ids/cd/1571_2182_1122_5399</identification>
       <embeddedDataSpecification>
@@ -2090,8 +1942,88 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>Z</idShort>
-      <identification idType="IRI">https://example.com/ids/cd/1425_4141_4032_9724</identification>
+      <idShort>Length</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1403_8181_2122_1108</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Width</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5013_8181_2122_2343</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Height</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/1213_8181_2122_0030</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Position</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/9480_0290_2032_3063</identification>
+      <embeddedDataSpecification>
+        <dataSpecificationContent>
+          <dataSpecificationIEC61360>
+            <preferredName />
+            <shortName />
+            <unit>mm</unit>
+            <dataType />
+            <definition />
+          </dataSpecificationIEC61360>
+        </dataSpecificationContent>
+        <dataSpecification>
+          <keys>
+            <key type="GlobalReference" local="false" idType="IRI">http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</key>
+          </keys>
+        </dataSpecification>
+      </embeddedDataSpecification>
+    </conceptDescription>
+    <conceptDescription>
+      <idShort>Y</idShort>
+      <identification idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
