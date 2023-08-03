@@ -44,12 +44,9 @@ public class AssuranceFullObject {
     double xRotationRepetitionAccuracy;
     double yRotationRepetitionAccuracy;
     double zRotationRepetitionAccuracy;
-    double xForceMin;
-    double xForceMax;
-    double yForceMin;
-    double yForceMax;
-    double zForceMin;
-    double zForceMax;
+    double xForce;
+    double yForce;
+    double zForce;
     double xTorque;
     double yTorque;
     double zTorque;

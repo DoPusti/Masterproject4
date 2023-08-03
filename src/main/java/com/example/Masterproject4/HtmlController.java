@@ -1,8 +1,8 @@
 package com.example.Masterproject4;
 
-import com.example.Masterproject4.JAXBModels.XMLStructure;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
+import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import jakarta.xml.bind.JAXBException;
@@ -15,6 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 @RestController
@@ -24,6 +28,7 @@ public class HtmlController {
 
     @Autowired
     private AssuranceRepository assuranceRepository;
+
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
@@ -41,19 +46,33 @@ public class HtmlController {
     ) throws IOException, JAXBException {
 
         // Prüfen ob Zusicherungen hochgeladen werden müssen
-        for(MultipartFile fileInAssurance : assurance) {
-            if(!fileInAssurance.isEmpty()) {
+        for (MultipartFile fileInAssurance : assurance) {
+            if (!fileInAssurance.isEmpty()) {
                 File convertedFile = new FileConverter().convertFile(fileInAssurance);
                 AssuranceMapper assuranceMapper = new AssuranceMapper();
                 assuranceRepository.save(assuranceMapper.saveXMLToDatabase(convertedFile));
             }
         }
 
-        if(!fileOfUser.isEmpty()) {
+        if (!fileOfUser.isEmpty()) {
             File convertedFile = new FileConverter().convertFile(fileOfUser);
             ProductRequirementMapper productRequirementMapper = new ProductRequirementMapper();
             ProductRequirementFullObject fullObjectProductRequirement = productRequirementMapper.mapXMLToClass(convertedFile);
-            System.out.println(fullObjectProductRequirement);
+            List<ProcessRequirement> processRequirementList = fullObjectProductRequirement.getProcessRequirement();
+            double[][] processRequirementFullList = productRequirementMapper.fillAndSortRequirementList(processRequirementList);
+            for (int row = 0; row < processRequirementFullList.length; row++) {
+                System.out.print("Zeile " + row + ": ");
+                for (int col = 0; col < processRequirementFullList[row].length; col++) {
+                    double value = processRequirementFullList[row][col];
+                    System.out.print(value + " ");
+                }
+            }
+
+
+
+
+
+
         }
 
         return "Verarbeitung erfolgt";

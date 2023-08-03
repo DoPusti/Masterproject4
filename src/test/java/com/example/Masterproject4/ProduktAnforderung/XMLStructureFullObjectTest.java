@@ -16,6 +16,7 @@ class XMLStructureFullObjectTest {
 
     @Test
     public void restCall() {
+        /*
         try {
 
             URL url = new URL("http://localhost:8070/getPayload");//your url i.e fetch data from .
@@ -38,12 +39,17 @@ class XMLStructureFullObjectTest {
             System.out.println("Exception in NetClientGet:- " + e);
         }
 
+         */
+
     }
     @Test
     public void getAllTypes()  {
+        /*
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> call= restTemplate.getForEntity("http://localhost:8070/getPayload?AssetId=123",String.class);
         System.out.println(call.getBody());
+
+         */
     }
 
 

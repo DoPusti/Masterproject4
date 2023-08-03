@@ -7,8 +7,10 @@ import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObjec
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductRequirementMapper {
@@ -320,7 +322,75 @@ public class ProductRequirementMapper {
         return processRequirement;
     }
 
+    public double[][] fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn) {
 
+        List<Double> listOfForceX = new ArrayList<>();
+        List<Double> listOfForceY = new ArrayList<>();
+        List<Double> listOfForceZ = new ArrayList<>();
+        List<Double> listOfTorqueX = new ArrayList<>();
+        List<Double> listOfTorqueY = new ArrayList<>();
+        List<Double> listOfTorqueZ = new ArrayList<>();
+        List<Double> listOfPositionRepetitionAccuracyX = new ArrayList<>();
+        List<Double> listOfPositionRepetitionAccuracyY = new ArrayList<>();
+        List<Double> listOfPositionRepetitionAccuracyZ = new ArrayList<>();
+        List<Double> listOfRotationRepetitionAccuracyX = new ArrayList<>();
+        List<Double> listOfRotationRepetitionAccuracyY = new ArrayList<>();
+        List<Double> listOfRotationRepetitionAccuracyZ = new ArrayList<>();
+
+
+        processRequirementListIn.forEach(processRequirement -> {
+            listOfForceX.add(processRequirement.getForceXRsC());
+            listOfForceY.add(processRequirement.getForceYRsC());
+            listOfForceZ.add(processRequirement.getForceZRsC());
+
+            listOfTorqueX.add(processRequirement.getTorqueXRsC());
+            listOfTorqueY.add(processRequirement.getTorqueYRsC());
+            listOfTorqueZ.add(processRequirement.getTorqueZRsC());
+
+            listOfPositionRepetitionAccuracyX.add(processRequirement.getPositionRepetitionAccuracyXRsC());
+            listOfPositionRepetitionAccuracyY.add(processRequirement.getPositionRepetitionAccuracyYRsC());
+            listOfPositionRepetitionAccuracyZ.add(processRequirement.getPositionRepetitionAccuracyZRsC());
+
+            listOfRotationRepetitionAccuracyX.add(processRequirement.getRotationRepetitionAccuracyXRsC());
+            listOfRotationRepetitionAccuracyY.add(processRequirement.getRotationRepetitionAccuracyYRsC());
+            listOfRotationRepetitionAccuracyZ.add(processRequirement.getRotationRepetitionAccuracyZRsC());
+
+            listOfForceX.sort(Collections.reverseOrder());
+            listOfForceY.sort(Collections.reverseOrder());
+            listOfForceZ.sort(Collections.reverseOrder());
+            listOfTorqueX.sort(Collections.reverseOrder());
+            listOfTorqueY.sort(Collections.reverseOrder());
+            listOfTorqueZ.sort(Collections.reverseOrder());
+            listOfPositionRepetitionAccuracyX.sort(Collections.reverseOrder());
+            listOfPositionRepetitionAccuracyY.sort(Collections.reverseOrder());
+            listOfPositionRepetitionAccuracyZ.sort(Collections.reverseOrder());
+            listOfRotationRepetitionAccuracyX.sort(Collections.reverseOrder());
+            listOfRotationRepetitionAccuracyY.sort(Collections.reverseOrder());
+            listOfRotationRepetitionAccuracyZ.sort(Collections.reverseOrder());
+
+        });
+        double[][] ascendingList = new double[listOfForceX.size()][12];
+        // Tabellenstruktur
+        // ForceX | ForceY | ForceZ | TorqueX | TorqueY | TorqueZ | PositionRepetitionAccuracyX | PositionRepetitionAccuracyY | PositionRepetitionAccuracyZ  | RotationRepetitionAccuracyX | RotationRepetitionAccuracyY | RotationRepetitionAccuracyZ
+        for (int i = 0; i < listOfForceX.size(); i++) {
+            ascendingList[i][0] = listOfForceX.get(i);
+            ascendingList[i][1] = listOfForceY.get(i);
+            ascendingList[i][2] = listOfForceZ.get(i);
+            ascendingList[i][3] = listOfTorqueX.get(i);
+            ascendingList[i][4] = listOfTorqueY.get(i);
+            ascendingList[i][5] = listOfTorqueZ.get(i);
+            ascendingList[i][6] = listOfPositionRepetitionAccuracyX.get(i);
+            ascendingList[i][7] = listOfPositionRepetitionAccuracyY.get(i);
+            ascendingList[i][8] = listOfPositionRepetitionAccuracyZ.get(i);
+            ascendingList[i][9] = listOfRotationRepetitionAccuracyX.get(i);
+            ascendingList[i][10] = listOfRotationRepetitionAccuracyY.get(i);
+            ascendingList[i][11] = listOfRotationRepetitionAccuracyZ.get(i);
+        }
+
+        return ascendingList;
     }
+
+
+}
 
 

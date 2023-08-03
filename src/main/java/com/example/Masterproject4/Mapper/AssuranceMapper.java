@@ -173,53 +173,6 @@ public class AssuranceMapper {
                     assuranceFullObject.setOperatingPrinciple(value1);
                     break;
                 }
-            case "X":
-                switch (idShort) {
-                    case "Position" -> assuranceFullObject.setXPosition(Double.parseDouble(value1));
-                    case "PositionRepetitionAccuracy" ->
-                            assuranceFullObject.setXPositionRepetitionAccuracy(Double.parseDouble(value1));
-                    case "Rotation" -> assuranceFullObject.setXRotation(Double.parseDouble(value1));
-                    case "RotationRepetitionAccuracy" ->
-                            assuranceFullObject.setXRotationRepetitionAccuracy(Double.parseDouble(value1));
-                }
-            case "Y":
-                switch (idShort) {
-                    case "Position" -> assuranceFullObject.setYPosition(Double.parseDouble(value1));
-                    case "PositionRepetitionAccuracy" ->
-                            assuranceFullObject.setYPositionRepetitionAccuracy(Double.parseDouble(value1));
-                    case "Rotation" -> assuranceFullObject.setYRotation(Double.parseDouble(value1));
-                    case "RotationRepetitionAccuracy" ->
-                            assuranceFullObject.setYRotationRepetitionAccuracy(Double.parseDouble(value1));
-                }
-            case "Z":
-                switch (idShort) {
-                    case "Position" -> assuranceFullObject.setZPosition(Double.parseDouble(value1));
-                    case "PositionRepetitionAccuracy" ->
-                            assuranceFullObject.setZPositionRepetitionAccuracy(Double.parseDouble(value1));
-                    case "Rotation" -> assuranceFullObject.setZRotation(Double.parseDouble(value1));
-                    case "RotationRepetitionAccuracy" ->
-                            assuranceFullObject.setZRotationRepetitionAccuracy(Double.parseDouble(value1));
-                }
-            case "Force":
-                switch (idShort) {
-                    case "X":
-                        assuranceFullObject.setXForceMin(Double.parseDouble(value1));
-                        assuranceFullObject.setXForceMax(Double.parseDouble(value2));
-                    case "Y":
-                        assuranceFullObject.setYForceMin(Double.parseDouble(value1));
-                        assuranceFullObject.setYForceMax(Double.parseDouble(value2));
-                    case "Z":
-                        assuranceFullObject.setZForceMin(Double.parseDouble(value1));
-                        assuranceFullObject.setZForceMax(Double.parseDouble(value2));
-
-                }
-            case "Torque":
-                switch (idShort) {
-                    case "X" -> assuranceFullObject.setXTorque(Double.parseDouble(value1));
-                    case "Y" -> assuranceFullObject.setYTorque(Double.parseDouble(value1));
-                    case "Z" -> assuranceFullObject.setZTorque(Double.parseDouble(value1));
-
-                }
 
                 // MediaSupply
             case "MediaSupply":
