@@ -330,6 +330,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>1500</value>
                 </property>
@@ -341,6 +342,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>200</value>
                 </property>
@@ -352,6 +354,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>99</value>
                 </property>
@@ -363,6 +366,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>10</value>
                 </property>
@@ -374,6 +378,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>0</value>
                 </property>
@@ -385,6 +390,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>1.2</value>
                 </property>
@@ -411,6 +417,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>12</value>
                 </property>
@@ -422,6 +429,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>122</value>
                 </property>
@@ -433,6 +441,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>0</value>
                 </property>
@@ -444,6 +453,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>12</value>
                 </property>
@@ -455,6 +465,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>1222</value>
                 </property>
@@ -466,6 +477,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>10</value>
                 </property>
@@ -477,8 +489,9 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
-                  <value>2</value>
+                  <value>12</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -488,6 +501,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>1</value>
                 </property>
@@ -499,8 +513,9 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
-                  <value>0</value>
+                  <value>25</value>
                 </property>
               </submodelElement>
               <submodelElement>
@@ -510,6 +525,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>6</value>
                 </property>
@@ -521,6 +537,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>6</value>
                 </property>
@@ -532,6 +549,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>6</value>
                 </property>
@@ -552,45 +570,15 @@
             <allowDuplicates>false</allowDuplicates>
             <value>
               <submodelElement>
-                <relationshipElement>
-                  <idShort>RelationRepeatabilityForce</idShort>
+                <property>
+                  <idShort>RestAPIAdress</idShort>
                   <kind>Instance</kind>
                   <semanticId>
                     <keys />
                   </semanticId>
-                  <qualifier />
-                  <first>
-                    <keys>
-                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
-                      <key type="SubmodelElementCollection" local="true" idType="IdShort">PropertyChanges</key>
-                      <key type="Property" local="true" idType="IdShort">Repeatability</key>
-                    </keys>
-                  </first>
-                  <second>
-                    <keys>
-                      <key type="Submodel" local="true" idType="IRI">https://example.com/ids/sm/9441_0111_0122_1045</key>
-                      <key type="SubmodelElementCollection" local="true" idType="IdShort">Constraints</key>
-                      <key type="Property" local="true" idType="IdShort">zForce</key>
-                    </keys>
-                  </second>
-                </relationshipElement>
-              </submodelElement>
-              <submodelElement>
-                <annotatedRelationshipElement>
-                  <idShort />
-                  <kind>Instance</kind>
-                  <semanticId>
-                    <keys />
-                  </semanticId>
-                  <qualifier />
-                  <first>
-                    <keys />
-                  </first>
-                  <second>
-                    <keys />
-                  </second>
-                  <annotations />
-                </annotatedRelationshipElement>
+                  <valueType />
+                  <value>http://localhost:8070</value>
+                </property>
               </submodelElement>
             </value>
           </submodelElementCollection>

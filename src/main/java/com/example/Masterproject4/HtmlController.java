@@ -1,5 +1,8 @@
 package com.example.Masterproject4;
 
+import com.example.Masterproject4.Handler.FileConverter;
+import com.example.Masterproject4.Handler.RessourceChecker;
+import com.example.Masterproject4.Handler.RessourceHolder;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
@@ -15,9 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -29,9 +29,14 @@ public class HtmlController {
     @Autowired
     private AssuranceRepository assuranceRepository;
 
+    @Autowired
+    private RessourceChecker ressourceChecker;
+
+
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
+
 
     @PostMapping("/submit-form")
     public String submitForm(@RequestParam("Temperatur") String Temperatur,
@@ -44,6 +49,7 @@ public class HtmlController {
                              @RequestParam("file") MultipartFile fileOfUser,
                              @RequestParam("assurance") MultipartFile[] assurance
     ) throws IOException, JAXBException {
+
 
         // Prüfen ob Zusicherungen hochgeladen werden müssen
         for (MultipartFile fileInAssurance : assurance) {
@@ -59,18 +65,48 @@ public class HtmlController {
             ProductRequirementMapper productRequirementMapper = new ProductRequirementMapper();
             ProductRequirementFullObject fullObjectProductRequirement = productRequirementMapper.mapXMLToClass(convertedFile);
             List<ProcessRequirement> processRequirementList = fullObjectProductRequirement.getProcessRequirement();
-            double[][] processRequirementFullList = productRequirementMapper.fillAndSortRequirementList(processRequirementList);
-            for (int row = 0; row < processRequirementFullList.length; row++) {
-                System.out.print("Zeile " + row + ": ");
-                for (int col = 0; col < processRequirementFullList[row].length; col++) {
-                    double value = processRequirementFullList[row][col];
-                    System.out.print(value + " ");
-                }
-            }
+
+
+            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, 1);
+            productRequirementMapper.printRessourceHolderList(ressourceHolderList);
 
 
 
+/*
+            List<Constraints> processRequirementFullList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, "");
+            System.out.println("Alte Liste");
+            System.out.println(processRequirementFullList);
 
+ */
+            /*
+            // ConstraintListe von Assurance
+            List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            List<Constraints> assuranceFullList = new ArrayList<Constraints>();
+            assuranceList.forEach(assuranceObject -> {
+                Constraints constraintAssurance = Constraints.builder()
+                        .idShort(assuranceObject.getAssetId())
+                        .restApi(assuranceObject.getRestAPIAdress())
+                        .forceX(assuranceObject.getForceX())
+                        .forceY(assuranceObject.getForceY())
+                        .forceZ(assuranceObject.getForceZ())
+                        .torqueX(assuranceObject.getTorqueX())
+                        .torqueY(assuranceObject.getTorqueY())
+                        .torqueZ(assuranceObject.getTorqueZ())
+                        .positionRepetitionAccuracyX(assuranceObject.getPositionRepetitionAccuracyX())
+                        .positionRepetitionAccuracyY(assuranceObject.getPositionRepetitionAccuracyY())
+                        .positionRepetitionAccuracyZ(assuranceObject.getPositionRepetitionAccuracyZ())
+                        .rotationRepetitionAccuracyX(assuranceObject.getRotationRepetitionAccuracyX())
+                        .rotationRepetitionAccuracyY(assuranceObject.getRotationRepetitionAccuracyY())
+                        .rotationRepetitionAccuracyZ(assuranceObject.getRotationRepetitionAccuracyZ())
+                        .build();
+                assuranceFullList.add(constraintAssurance);
+            });
+
+            List<Constraints> matchedAssurances =  ressourceChecker.compareRequirementWithAssurance(processRequirementFullList,assuranceFullList);
+            System.out.println("matched Assurance " + matchedAssurances);
+            ressourceChecker.callRestService(matchedAssurances);
+
+             */
 
 
         }
@@ -79,4 +115,5 @@ public class HtmlController {
 
 
     }
+
 }

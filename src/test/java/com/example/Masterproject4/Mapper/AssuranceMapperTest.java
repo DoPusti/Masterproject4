@@ -1,8 +1,8 @@
 package com.example.Masterproject4.Mapper;
 
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.Repository.AssuranceRepository;
-import com.example.Masterproject4.Entity.AssuranceFullObject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.util.List;
-import java.util.Objects;
 
+//@DataJpaTest
 @SpringBootTest
 class AssuranceMapperTest {
 
@@ -44,16 +44,13 @@ class AssuranceMapperTest {
                 case "Identification" ->
                         fillSubModelIdentification(listOfAllSubmodelsElements, subModelObject.getIdShort());
 
-                case "Assurances" ->
-                        fillSubModelAssurances(listOfAllSubmodelsElements);
-                case "MediaSupply" ->
-                        fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                case "Assurances" -> fillSubModelAssurances(listOfAllSubmodelsElements);
+                case "MediaSupply" -> fillSubModelMediaSupply(listOfAllSubmodelsElements, subModelObject.getIdShort());
                 case "EnvironmentalConditions" ->
-                        fillSubModelEnvironmentConditions(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                        fillSubModelEnvironmentConditions(listOfAllSubmodelsElements, subModelObject.getIdShort());
 
                 case "EconomicFactors" ->
-                        fillSubModelEconomicFactors(listOfAllSubmodelsElements,subModelObject.getIdShort());
-
+                        fillSubModelEconomicFactors(listOfAllSubmodelsElements, subModelObject.getIdShort());
 
 
             }
@@ -65,8 +62,6 @@ class AssuranceMapperTest {
         System.out.println(assuranceFullObject);
 
         assuranceRepository.save(assuranceFullObject);
-
-
 
 
     }
@@ -86,51 +81,46 @@ class AssuranceMapperTest {
     private void fillSubModelAssurances(List<SubModelElement> listOfAllSubmodelsElements) {
         listOfAllSubmodelsElements.forEach(subModelElementsInAssurance -> {
             System.out.println("SubModelElemente in Assurance");
-
             // Alle direkten Properties von SMC prüfen
             String idShortOfSMC = subModelElementsInAssurance.getSubmodelElementCollection().getIdShort();
             System.out.println("Idshort von jedem SubmodelElement in Assurance " + idShortOfSMC);
-            //TODO Mit Patrick die Befüllung besprechen
-            if(!Objects.equals(idShortOfSMC, "InternalPropertyRelations")) {
-                List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
 
-                // Schleife über alle SMC im SM Assurance
-                // Erstmal Property testen
-                subModelElementsDeep1.forEach(subModelElementObject1 -> {
-                    Property property1 = subModelElementObject1.getProperty();
-                    if (property1 != null) {
-                        fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
-                    } else {
-                        // Neue Ebene der SMC
-                        String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
-                        List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
-                        subModelElementsDeep2.forEach(subModelElementObject2 -> {
-                            Property property2 = subModelElementObject2.getProperty();
-                            if (property2 != null) {
-                                fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
-                            }
-                            // Kein Property, sondern Range
-                            else {
-                                Range range = subModelElementObject2.getRange();
-                                fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
-                            }
-                        });
-                    }
+            List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
 
-                });
+            // Schleife über alle SMC im SM Assurance
+            // Erstmal Property testen
+            subModelElementsDeep1.forEach(subModelElementObject1 -> {
+                Property property1 = subModelElementObject1.getProperty();
+                if (property1 != null) {
+                    fillValueInList(property1.getIdShort(), property1.getValue(), "", idShortOfSMC);
+                } else {
+                    // Neue Ebene der SMC
+                    String idShortOfSMCInSMC = subModelElementObject1.getSubmodelElementCollection().getIdShort();
+                    List<SubModelElement> subModelElementsDeep2 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
+                    subModelElementsDeep2.forEach(subModelElementObject2 -> {
+                        Property property2 = subModelElementObject2.getProperty();
+                        if (property2 != null) {
+                            fillValueInList(property2.getIdShort(), property2.getValue(), "", idShortOfSMCInSMC);
+                        }
+                        // Kein Property, sondern Range
+                        else {
+                            Range range = subModelElementObject2.getRange();
+                            fillValueInList(range.getIdShort(), range.getMin(), range.getMax(), idShortOfSMCInSMC);
+                        }
+                    });
+                }
 
-            }
+            });
 
-
-        });
+    });
         System.out.println("Liste für Assurances gefüllt");
-    }
+}
 
     // Submodel MediaSupply
     private void fillSubModelMediaSupply(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
         });
         System.out.println("Liste für MediaSupply gefüllt");
     }
@@ -139,7 +129,7 @@ class AssuranceMapperTest {
     private void fillSubModelEnvironmentConditions(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
         });
         System.out.println("Liste für EnvironmentConditions gefüllt");
     }
@@ -148,8 +138,8 @@ class AssuranceMapperTest {
     private void fillSubModelEconomicFactors(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            if(property1 != null) {
-                fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            if (property1 != null) {
+                fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
             } else {
 
                 String SMCIdSHort = subModelElementObject1.getSubmodelElementCollection().getIdShort();
@@ -157,10 +147,10 @@ class AssuranceMapperTest {
                 subModelElementDeep1.forEach(subModelElementObject2 -> {
                     Property property2 = subModelElementObject2.getProperty();
                     System.out.println("Aufruf mit " + property2.getIdShort() + " " + property2.getValue() + " " + SMCIdSHort);
-                    fillValueInList(property2.getIdShort(),property2.getValue(),"",SMCIdSHort);
+                    fillValueInList(property2.getIdShort(), property2.getValue(), "", SMCIdSHort);
 
 
-                }) ;
+                });
 
             }
         });
@@ -169,13 +159,14 @@ class AssuranceMapperTest {
     }
 
     private void fillValueInList(String idShort, String value1, String value2, String SECIdshort) {
-        if(value1.equals("NaN")) {
+        if (value1.equals("NaN")) {
             value1 = "0";
         }
-        if(value2.equals("NaN")) {
+        if (value2.equals("NaN")) {
             value2 = "0";
         }
         switch (SECIdshort) {
+            case "InternalPropertyRelations": assuranceFullObject.setRestAPIAdress(value1); break;
             case "Properties":
                 switch (idShort) {
                     case "Mass" -> assuranceFullObject.setMass(Double.parseDouble(value1));
@@ -208,21 +199,27 @@ class AssuranceMapperTest {
                 }
             case "Constraints":
                 switch (idShort) {
-                    case "ForceX" -> assuranceFullObject.setXForce(Double.parseDouble(value1));
-                    case "ForceY" -> assuranceFullObject.setYForce(Double.parseDouble(value1));
-                    case "ForceZ" -> assuranceFullObject.setZForce(Double.parseDouble(value1));
+                    case "ForceX" -> assuranceFullObject.setForceX(Double.parseDouble(value1));
+                    case "ForceY" -> assuranceFullObject.setForceY(Double.parseDouble(value1));
+                    case "ForceZ" -> assuranceFullObject.setForceZ(Double.parseDouble(value1));
 
-                    case "TorqueX" -> assuranceFullObject.setXTorque(Double.parseDouble(value1));
-                    case "TorqueY" -> assuranceFullObject.setYTorque(Double.parseDouble(value1));
-                    case "TorqueZ" -> assuranceFullObject.setZTorque(Double.parseDouble(value1));
+                    case "TorqueX" -> assuranceFullObject.setTorqueX(Double.parseDouble(value1));
+                    case "TorqueY" -> assuranceFullObject.setTorqueY(Double.parseDouble(value1));
+                    case "TorqueZ" -> assuranceFullObject.setTorqueZ(Double.parseDouble(value1));
 
-                    case "PositionRepetitionAccuracyX" -> assuranceFullObject.setXPositionRepetitionAccuracy(Double.parseDouble(value1));
-                    case "PositionRepetitionAccuracyY" -> assuranceFullObject.setYPositionRepetitionAccuracy(Double.parseDouble(value1));
-                    case "PositionRepetitionAccuracyZ" -> assuranceFullObject.setZPositionRepetitionAccuracy(Double.parseDouble(value1));
+                    case "PositionRepetitionAccuracyX" ->
+                            assuranceFullObject.setPositionRepetitionAccuracyX(Double.parseDouble(value1));
+                    case "PositionRepetitionAccuracyY" ->
+                            assuranceFullObject.setPositionRepetitionAccuracyY(Double.parseDouble(value1));
+                    case "PositionRepetitionAccuracyZ" ->
+                            assuranceFullObject.setPositionRepetitionAccuracyZ(Double.parseDouble(value1));
 
-                    case "RotationRepetitionAccuracyX" -> assuranceFullObject.setXRotationRepetitionAccuracy(Double.parseDouble(value1));
-                    case "RotationRepetitionAccuracyY" -> assuranceFullObject.setYRotationRepetitionAccuracy(Double.parseDouble(value1));
-                    case "RotationRepetitionAccuracyZ" -> assuranceFullObject.setZRotationRepetitionAccuracy(Double.parseDouble(value1));
+                    case "RotationRepetitionAccuracyX" ->
+                            assuranceFullObject.setRotationRepetitionAccuracyX(Double.parseDouble(value1));
+                    case "RotationRepetitionAccuracyY" ->
+                            assuranceFullObject.setRotationRepetitionAccuracyY(Double.parseDouble(value1));
+                    case "RotationRepetitionAccuracyZ" ->
+                            assuranceFullObject.setRotationRepetitionAccuracyZ(Double.parseDouble(value1));
                 }
                 // MediaSupply
             case "MediaSupply":
@@ -231,7 +228,7 @@ class AssuranceMapperTest {
                     case "OperatingVoltage" -> assuranceFullObject.setOperatingVoltage(Double.parseDouble(value1));
                     case "CompressedAirPressure" ->
                             assuranceFullObject.setCompressedAirPressure(Double.parseDouble(value1));
-                    case "AirFlow" ->assuranceFullObject.setAirFlow(Double.parseDouble(value1));
+                    case "AirFlow" -> assuranceFullObject.setAirFlow(Double.parseDouble(value1));
                 }
                 // Environmental Conditions
             case "EnvironmentalConditions":
@@ -248,7 +245,8 @@ class AssuranceMapperTest {
                 switch (idShort) {
                     case "Price" -> assuranceFullObject.setPrice(Double.parseDouble(value1));
                     case "Lengthofusage" -> assuranceFullObject.setLengthOfUsage(Double.parseDouble(value1));
-                    case "MaintenanceInterval" -> assuranceFullObject.setMaintenanceInterval(Double.parseDouble(value1));
+                    case "MaintenanceInterval" ->
+                            assuranceFullObject.setMaintenanceInterval(Double.parseDouble(value1));
                     case "MaintanceDuration" -> assuranceFullObject.setMaintanceDuration(Double.parseDouble(value1));
                     case "DeliveryTime" -> assuranceFullObject.setDeliveryTime(Double.parseDouble(value1));
                     case "OneTimeLicenceCost" -> assuranceFullObject.setOneTimeLicenceCost(Double.parseDouble(value1));
@@ -268,6 +266,6 @@ class AssuranceMapperTest {
         }
     }
 
-    ;
+;
 
 }

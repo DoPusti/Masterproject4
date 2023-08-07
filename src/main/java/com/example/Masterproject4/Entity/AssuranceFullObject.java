@@ -32,24 +32,24 @@ public class AssuranceFullObject {
     double zCoM;
     String connectionType;
     String operatingPrinciple;
-    double xPosition;
-    double yPosition;
-    double zPosition;
-    double xPositionRepetitionAccuracy;
-    double yPositionRepetitionAccuracy;
-    double zPositionRepetitionAccuracy;
-    double xRotation;
-    double yRotation;
-    double zRotation;
-    double xRotationRepetitionAccuracy;
-    double yRotationRepetitionAccuracy;
-    double zRotationRepetitionAccuracy;
-    double xForce;
-    double yForce;
-    double zForce;
-    double xTorque;
-    double yTorque;
-    double zTorque;
+    double PositionX;
+    double PositionY;
+    double PositionZ;
+    double PositionRepetitionAccuracyX;
+    double PositionRepetitionAccuracyY;
+    double PositionRepetitionAccuracyZ;
+    double RotationX;
+    double RotationY;
+    double RotationZ;
+    double RotationRepetitionAccuracyX;
+    double RotationRepetitionAccuracyY;
+    double RotationRepetitionAccuracyZ;
+    double ForceX;
+    double ForceY;
+    double ForceZ;
+    double TorqueX;
+    double TorqueY;
+    double TorqueZ;
 
     // MediaSupply
     double operatingCurrent;
@@ -76,6 +76,8 @@ public class AssuranceFullObject {
     double deliveryTime;
     double oneTimeLicenceCost;
     double monthlyLicenceCost;
+
+    String RestAPIAdress;
 
 
 

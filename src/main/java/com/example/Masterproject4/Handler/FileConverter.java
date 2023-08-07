@@ -1,4 +1,4 @@
-package com.example.Masterproject4;
+package com.example.Masterproject4.Handler;
 
 import org.springframework.web.multipart.MultipartFile;
 
