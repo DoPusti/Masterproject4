@@ -1,6 +1,5 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.Handler.Constraints;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
@@ -60,5 +59,51 @@ public class RessourceChecker {
             }
         });
 
+    }
+
+    public void checkConstraintsOfRequirement(List<RessourceHolder> ressourceHolderIn, List<Constraints> assuranceListIn, Boolean gripper) {
+        List<Constraints> listOfMatchedConstraints = new ArrayList<Constraints>();
+        RessourceHolder matchedRessourceholder = new RessourceHolder();
+        for (RessourceHolder ressourceHolder : ressourceHolderIn) {
+            if (gripper) {
+                compareRessourceWithGripper(ressourceHolder, assuranceListIn, listOfMatchedConstraints);
+            }
+            if (!(listOfMatchedConstraints.isEmpty())) {
+                matchedRessourceholder = ressourceHolder;
+                break;
+            }
+        }
+        System.out.println("Passende Ressource");
+        System.out.println(matchedRessourceholder);
+        System.out.println("Passende Assurnace");
+        System.out.println(listOfMatchedConstraints);
+    }
+
+    public void compareRessourceWithGripper(RessourceHolder ressourceHolderIn, List<Constraints> assuranceListIn, List<Constraints> matchedConstraints) {
+        for (Constraints constraint : assuranceListIn) {
+            if (constraint.getConnectionType().equals("AutomaticallyRemoveable")) {
+                /*
+                System.out.println("Vergleich von");
+                System.out.println(ressourceHolderIn);
+                System.out.println("mit");
+                System.out.println(constraint);
+
+                 */
+                if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
+                        && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
+                        && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue()
+                        && constraint.getTorqueX() >= ressourceHolderIn.getTorqueX().getValue()
+                        && constraint.getTorqueY() >= ressourceHolderIn.getTorqueY().getValue()
+                        && constraint.getTorqueZ() >= ressourceHolderIn.getTorqueZ().getValue()
+                        && constraint.getPositionRepetitionAccuracyX() >= ressourceHolderIn.getPositionRepetitionAccuracyX().getValue()
+                        && constraint.getPositionRepetitionAccuracyY() >= ressourceHolderIn.getPositionRepetitionAccuracyY().getValue()
+                        && constraint.getPositionRepetitionAccuracyZ() >= ressourceHolderIn.getPositionRepetitionAccuracyZ().getValue()
+                        && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue()
+                        && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
+                        && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
+                    matchedConstraints.add(constraint);
+                }
+            }
+        }
     }
 }

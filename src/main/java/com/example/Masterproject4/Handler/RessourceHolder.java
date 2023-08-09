@@ -31,5 +31,24 @@ public class RessourceHolder {
     AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyY;
     AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyZ;
 
+    @Override
+    public String toString() {
+        return "RessourceHolder{" +
+                "idShort='" + idShort + '\'' +
+                "\nforceX=" + forceX +
+                "\nforceY=" + forceY +
+                "\nforceZ=" + forceZ +
+                "\ntorqueX=" + torqueX +
+                "\ntorqueY=" + torqueY +
+                "\ntorqueZ=" + torqueZ +
+                "\npositionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
+                "\npositionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
+                "\npositionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
+                "\nrotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
+                "\nrotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
+                "\nrotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
+                "\nrestApi='" + restApi + '\'' +
+                '}';
+    }
 
 }

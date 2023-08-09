@@ -24,6 +24,7 @@ public class Constraints {
     double rotationRepetitionAccuracyY;
     double rotationRepetitionAccuracyZ;
     String restApi;
+    String connectionType;
 
     public boolean matches(Constraints other) {
         return this.forceX <= other.forceX &&
@@ -38,6 +39,27 @@ public class Constraints {
                 this.rotationRepetitionAccuracyX <= other.rotationRepetitionAccuracyX &&
                 this.rotationRepetitionAccuracyY <= other.rotationRepetitionAccuracyY &&
                 this.rotationRepetitionAccuracyZ <= other.rotationRepetitionAccuracyZ;
+    }
+
+    @Override
+    public String toString() {
+        return "Constraints{" +
+                "idShort='" + idShort + '\'' +
+                "\nforceX=" + forceX +
+                "\nforceY=" + forceY +
+                "\nforceZ=" + forceZ +
+                "\ntorqueX=" + torqueX +
+                "\ntorqueY=" + torqueY +
+                "\ntorqueZ=" + torqueZ +
+                "\npositionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
+                "\npositionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
+                "\npositionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
+                "\nrotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
+                "\nrotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
+                "\nrotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
+                "\nrestApi='" + restApi + '\'' +
+                "\nconnectionType='" + connectionType + '\'' +
+                '}';
     }
 
 

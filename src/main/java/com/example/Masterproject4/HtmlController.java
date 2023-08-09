@@ -1,5 +1,7 @@
 package com.example.Masterproject4;
 
+import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.Handler.Constraints;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Handler.RessourceHolder;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -70,21 +73,13 @@ public class HtmlController {
             List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, 1);
             productRequirementMapper.printRessourceHolderList(ressourceHolderList);
 
-
-
-/*
-            List<Constraints> processRequirementFullList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, "");
-            System.out.println("Alte Liste");
-            System.out.println(processRequirementFullList);
-
- */
-            /*
             // ConstraintListe von Assurance
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
-            List<Constraints> assuranceFullList = new ArrayList<Constraints>();
+            List<Constraints> assuranceFullList = new ArrayList<>();
             assuranceList.forEach(assuranceObject -> {
                 Constraints constraintAssurance = Constraints.builder()
                         .idShort(assuranceObject.getAssetId())
+                        .connectionType(assuranceObject.getConnectionType())
                         .restApi(assuranceObject.getRestAPIAdress())
                         .forceX(assuranceObject.getForceX())
                         .forceY(assuranceObject.getForceY())
@@ -102,14 +97,12 @@ public class HtmlController {
                 assuranceFullList.add(constraintAssurance);
             });
 
-            List<Constraints> matchedAssurances =  ressourceChecker.compareRequirementWithAssurance(processRequirementFullList,assuranceFullList);
-            System.out.println("matched Assurance " + matchedAssurances);
-            ressourceChecker.callRestService(matchedAssurances);
-
-             */
+            // Zuerst Greifer prüfen
+            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceFullList,true);
 
 
         }
+
 
         return "Verarbeitung erfolgt";
 
