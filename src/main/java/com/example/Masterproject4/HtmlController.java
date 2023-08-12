@@ -11,6 +11,8 @@ import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import jakarta.xml.bind.JAXBException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 
 @RestController
@@ -40,6 +44,8 @@ public class HtmlController {
         this.resourceLoader = resourceLoader;
     }
 
+    private static final Logger Log = LoggerFactory.getLogger(HtmlController.class);
+
 
     @PostMapping("/submit-form")
     public String submitForm(@RequestParam("Temperatur") String Temperatur,
@@ -52,6 +58,7 @@ public class HtmlController {
                              @RequestParam("file") MultipartFile fileOfUser,
                              @RequestParam("assurance") MultipartFile[] assurance
     ) throws IOException, JAXBException {
+
 
 
         // Prüfen ob Zusicherungen hochgeladen werden müssen
@@ -70,12 +77,18 @@ public class HtmlController {
             List<ProcessRequirement> processRequirementList = fullObjectProductRequirement.getProcessRequirement();
 
 
-            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, 1);
-            productRequirementMapper.printRessourceHolderList(ressourceHolderList);
+            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList);
+            Log.info("Ressourcenliste nach dem Sortieren");
+            Log.info(ressourceHolderList.toString());
+            // Attribute wie Mass und Mass Roughness filtern und hinzufügen
+            List<RessourceHolder> ressourceHolderListWithPartAttributs = ressourceChecker.fillPartAttributs(ressourceHolderList,fullObjectProductRequirement);
+            Log.info("Ressourcenliste nach Filtern von Part Attributen");
+            Log.info(ressourceHolderList.toString());
 
             // ConstraintListe von Assurance
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             List<Constraints> assuranceFullList = new ArrayList<>();
+
             assuranceList.forEach(assuranceObject -> {
                 Constraints constraintAssurance = Constraints.builder()
                         .idShort(assuranceObject.getAssetId())
@@ -97,8 +110,10 @@ public class HtmlController {
                 assuranceFullList.add(constraintAssurance);
             });
 
+
+
             // Zuerst Greifer prüfen
-            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceFullList,true);
+            //ressourceChecker.checkConstraintsOfRequirement(ressourceHolderListWithPartAttributs,assuranceFullList,true);
 
 
         }

@@ -1,7 +1,12 @@
 package com.example.Masterproject4.Handler;
 
+import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
+import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
+import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
 import lombok.Builder;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -15,37 +20,7 @@ import java.util.List;
 @Builder
 public class RessourceChecker {
 
-    public static void findMatchingAssurance(Constraints requirement, List<Constraints> assurances, List<Constraints> matchedAssurance) {
-        for (Constraints assurance : assurances) {
-            if (requirement.matches(assurance)) {
-                matchedAssurance.add(assurance);
-                System.out.println("Gefundenes Requirement");
-                System.out.println(requirement);
-                System.out.println("Gefundener Assurance");
-                System.out.println(assurance);
-            }
-        }
-    }
-
-    public List<Constraints> compareRequirementWithAssurance(List<Constraints> productRequirements, List<Constraints> assurances) {
-        List<Constraints> matchedAssurances = new ArrayList<>();
-
-        System.out.println("Liste der Anforderungen");
-        productRequirements.forEach(System.out::println);
-        ;
-        System.out.println("Liste der Assurances");
-        assurances.forEach(System.out::println);
-        ;
-
-        for (Constraints requirement : productRequirements) {
-            findMatchingAssurance(requirement, assurances, matchedAssurances);
-            if (!(matchedAssurances.isEmpty())) {
-                break;
-            }
-        }
-
-        return matchedAssurances;
-    }
+    private static final Logger Log = LoggerFactory.getLogger(RessourceChecker.class);
 
     public void callRestService(List<Constraints> matchedAssurances) {
         matchedAssurances.forEach(assurance -> {
@@ -62,7 +37,7 @@ public class RessourceChecker {
     }
 
     public void checkConstraintsOfRequirement(List<RessourceHolder> ressourceHolderIn, List<Constraints> assuranceListIn, Boolean gripper) {
-        List<Constraints> listOfMatchedConstraints = new ArrayList<Constraints>();
+        List<Constraints> listOfMatchedConstraints = new ArrayList<>();
         RessourceHolder matchedRessourceholder = new RessourceHolder();
         for (RessourceHolder ressourceHolder : ressourceHolderIn) {
             if (gripper) {
@@ -73,22 +48,13 @@ public class RessourceChecker {
                 break;
             }
         }
-        System.out.println("Passende Ressource");
-        System.out.println(matchedRessourceholder);
-        System.out.println("Passende Assurnace");
-        System.out.println(listOfMatchedConstraints);
+        Log.info(matchedRessourceholder.toString());
+        Log.info(listOfMatchedConstraints.toString());
     }
 
     public void compareRessourceWithGripper(RessourceHolder ressourceHolderIn, List<Constraints> assuranceListIn, List<Constraints> matchedConstraints) {
         for (Constraints constraint : assuranceListIn) {
             if (constraint.getConnectionType().equals("AutomaticallyRemoveable")) {
-                /*
-                System.out.println("Vergleich von");
-                System.out.println(ressourceHolderIn);
-                System.out.println("mit");
-                System.out.println(constraint);
-
-                 */
                 if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
                         && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
                         && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue()
@@ -105,5 +71,23 @@ public class RessourceChecker {
                 }
             }
         }
+    }
+
+    public List<RessourceHolder> fillPartAttributs(List<RessourceHolder> ressourceHolderListIn, ProductRequirementFullObject fullObjectProductRequirementIn) {
+        // fullObjectProductRequirementIn als Referencliste
+        // ressourceHolderListIn als Sortierte Liste von Ressourcen
+        List<ProductProperty> productPropertyList = fullObjectProductRequirementIn.getProductProperty();
+        List<ProcessRequirement> processRequirementList= fullObjectProductRequirementIn.getProcessRequirement();
+
+        ressourceHolderListIn.forEach(ressourceHolder -> {
+            productPropertyList.forEach(productProperty -> {
+                if(ressourceHolder.getTvList().contains(productProperty.getIdShort())) {
+                    processRequirementList.forEach(processRequirement -> {
+                        if(processRequirement.get)
+                    });
+                }
+            });
+        });
+        return ressourceHolderListIn;
     }
 }

@@ -44,9 +44,12 @@ public class AssuranceMapper {
 
             }
         });
+        /*
         System.out.println("------------------");
         System.out.println("Informationen zum Objekt");
         System.out.println(assuranceFullObject);
+
+         */
         return assuranceFullObject;
         //assuranceRepository.save(assuranceFullObject);
 

@@ -2,7 +2,6 @@ package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.Handler.RessourceHolder;
 import com.example.Masterproject4.JAXBModels.*;
-import com.example.Masterproject4.Handler.Constraints;
 import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
 import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
@@ -13,11 +12,17 @@ import jakarta.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.*;
 
+import static java.lang.Math.max;
+
 public class ProductRequirementMapper {
 
     ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
     List<ProductProperty> productProperties = new ArrayList<>();
     List<ProcessRequirement> processRequirements = new ArrayList<>();
+
+    private static void printEntry(String description, AbstractMap.SimpleEntry<String, Double> entry) {
+        System.out.println(description + ": " + entry.getKey() + " - " + entry.getValue());
+    }
 
     public ProductRequirementFullObject mapXMLToClass(File file) throws JAXBException {
         //File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi3.xml");
@@ -67,7 +72,6 @@ public class ProductRequirementMapper {
         fullObjectProductRequirement.setProcessRequirement(processRequirements);
         return fullObjectProductRequirement;
     }
-
 
     private void fillSubModelIdentification(List<SubModelElement> subModelElements) {
         subModelElements.forEach(subModelElementsInAssurance -> {
@@ -322,35 +326,35 @@ public class ProductRequirementMapper {
         return processRequirement;
     }
 
-    public List<RessourceHolder> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn,double value) {
+    public List<RessourceHolder> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn) {
 
-        List<RessourceHolder> newRessourceHolderList = new ArrayList<RessourceHolder>();
-        Map<String,Double> unsortedMapForceX                        = new HashMap<>();
-        Map<String,Double> unsortedMapForceY                        = new HashMap<>();
-        Map<String,Double> unsortedMapForceZ                        = new HashMap<>();
-        Map<String,Double> unsortedMapTorqueX                       = new HashMap<>();
-        Map<String,Double> unsortedMapTorqueY                       = new HashMap<>();
-        Map<String,Double> unsortedMapTorqueZ                       = new HashMap<>();
-        Map<String,Double> unsortedMapPositionRepetitionAccuracyX   = new HashMap<>();
-        Map<String,Double> unsortedMapPositionRepetitionAccuracyY   = new HashMap<>();
-        Map<String,Double> unsortedMapPositionRepetitionAccuracyZ   = new HashMap<>();
-        Map<String,Double> unsortedMapRotationRepetitionAccuracyX   = new HashMap<>();
-        Map<String,Double> unsortedMapRotationRepetitionAccuracyY   = new HashMap<>();
-        Map<String,Double> unsortedMapRotationRepetitionAccuracyZ	= new HashMap<>();
+        List<RessourceHolder> newRessourceHolderList = new ArrayList<>();
+        Map<String, Double> unsortedMapForceX = new HashMap<>();
+        Map<String, Double> unsortedMapForceY = new HashMap<>();
+        Map<String, Double> unsortedMapForceZ = new HashMap<>();
+        Map<String, Double> unsortedMapTorqueX = new HashMap<>();
+        Map<String, Double> unsortedMapTorqueY = new HashMap<>();
+        Map<String, Double> unsortedMapTorqueZ = new HashMap<>();
+        Map<String, Double> unsortedMapPositionRepetitionAccuracyX = new HashMap<>();
+        Map<String, Double> unsortedMapPositionRepetitionAccuracyY = new HashMap<>();
+        Map<String, Double> unsortedMapPositionRepetitionAccuracyZ = new HashMap<>();
+        Map<String, Double> unsortedMapRotationRepetitionAccuracyX = new HashMap<>();
+        Map<String, Double> unsortedMapRotationRepetitionAccuracyY = new HashMap<>();
+        Map<String, Double> unsortedMapRotationRepetitionAccuracyZ = new HashMap<>();
 
         processRequirementListIn.forEach(processRequirement -> {
-            unsortedMapForceX.put(processRequirement.getTvName(),processRequirement.getForceXRsC());
-            unsortedMapForceY.put(processRequirement.getTvName(),processRequirement.getForceYRsC());
-            unsortedMapForceZ.put(processRequirement.getTvName(),processRequirement.getForceZRsC());
-            unsortedMapTorqueX.put(processRequirement.getTvName(),processRequirement.getTorqueXRsC());
-            unsortedMapTorqueY.put(processRequirement.getTvName(),processRequirement.getTorqueYRsC());
-            unsortedMapTorqueZ.put(processRequirement.getTvName(),processRequirement.getTorqueZRsC());
-            unsortedMapPositionRepetitionAccuracyX.put(processRequirement.getTvName(),processRequirement.getPositionRepetitionAccuracyXRsC());
-            unsortedMapPositionRepetitionAccuracyY.put(processRequirement.getTvName(),processRequirement.getPositionRepetitionAccuracyYRsC());
-            unsortedMapPositionRepetitionAccuracyZ.put(processRequirement.getTvName(),processRequirement.getPositionRepetitionAccuracyZRsC());
-            unsortedMapRotationRepetitionAccuracyX.put(processRequirement.getTvName(),processRequirement.getRotationRepetitionAccuracyXRsC());
-            unsortedMapRotationRepetitionAccuracyY.put(processRequirement.getTvName(),processRequirement.getRotationRepetitionAccuracyYRsC());
-            unsortedMapRotationRepetitionAccuracyZ.put(processRequirement.getTvName(),processRequirement.getRotationRepetitionAccuracyZRsC());
+            unsortedMapForceX.put(processRequirement.getTvName(), max(processRequirement.getForceXRsC(), processRequirement.getForceXSsC()));
+            unsortedMapForceY.put(processRequirement.getTvName(), max(processRequirement.getForceYRsC(), processRequirement.getForceYSsC()));
+            unsortedMapForceZ.put(processRequirement.getTvName(), max(processRequirement.getForceZRsC(), processRequirement.getForceZSsC()));
+            unsortedMapTorqueX.put(processRequirement.getTvName(), max(processRequirement.getTorqueXRsC(), processRequirement.getTorqueXSsC()));
+            unsortedMapTorqueY.put(processRequirement.getTvName(), max(processRequirement.getTorqueYRsC(), processRequirement.getTorqueYSsC()));
+            unsortedMapTorqueZ.put(processRequirement.getTvName(), max(processRequirement.getTorqueZRsC(), processRequirement.getTorqueZSsC()));
+            unsortedMapPositionRepetitionAccuracyX.put(processRequirement.getTvName(), max(processRequirement.getPositionRepetitionAccuracyXRsC(), processRequirement.getPositionRepetitionAccuracyXSsC()));
+            unsortedMapPositionRepetitionAccuracyY.put(processRequirement.getTvName(), max(processRequirement.getPositionRepetitionAccuracyYRsC(), processRequirement.getPositionRepetitionAccuracyYSsC()));
+            unsortedMapPositionRepetitionAccuracyZ.put(processRequirement.getTvName(), max(processRequirement.getPositionRepetitionAccuracyZRsC(), processRequirement.getPositionRepetitionAccuracyZSsC()));
+            unsortedMapRotationRepetitionAccuracyX.put(processRequirement.getTvName(), max(processRequirement.getRotationRepetitionAccuracyXRsC(), processRequirement.getRotationRepetitionAccuracyXSsC()));
+            unsortedMapRotationRepetitionAccuracyY.put(processRequirement.getTvName(), max(processRequirement.getRotationRepetitionAccuracyYRsC(), processRequirement.getRotationRepetitionAccuracyYSsC()));
+            unsortedMapRotationRepetitionAccuracyZ.put(processRequirement.getTvName(), max(processRequirement.getRotationRepetitionAccuracyZRsC(), processRequirement.getRotationRepetitionAccuracyZSsC()));
 
 
         });
@@ -427,127 +431,43 @@ public class ProductRequirementMapper {
         Collections.reverse(sortedListRotationRepetitionAccuracyZ);
 
 
+
         for (int i = 0; i < sortedListForceX.size(); i++) {
+            List<String> tvList = new ArrayList<>();
+            // TV - Liste erzeugen aller betroffenen TVS pro Permutation
+            tvList.add(sortedListForceX.get(i).getKey());
+            tvList.add(sortedListForceY.get(i).getKey());
+            tvList.add(sortedListForceZ.get(i).getKey());
+            tvList.add(sortedListTorqueX.get(i).getKey());
+            tvList.add(sortedListTorqueY.get(i).getKey());
+            tvList.add(sortedListTorqueZ.get(i).getKey());
+            tvList.add(sortedListPositionRepetitionAccuracyX.get(i).getKey());
+            tvList.add(sortedListPositionRepetitionAccuracyY.get(i).getKey());
+            tvList.add(sortedListPositionRepetitionAccuracyZ.get(i).getKey());
+            tvList.add(sortedListRotationRepetitionAccuracyX.get(i).getKey());
+            tvList.add(sortedListRotationRepetitionAccuracyY.get(i).getKey());
+            tvList.add(sortedListRotationRepetitionAccuracyZ.get(i).getKey());
             RessourceHolder newRessource = RessourceHolder.builder()
-                    .forceX(new AbstractMap.SimpleEntry<>(sortedListForceX.get(i).getKey(),sortedListForceX.get(i).getValue()))
-                    .forceY(new AbstractMap.SimpleEntry<>(sortedListForceY.get(i).getKey(),sortedListForceY.get(i).getValue()))
-                    .forceZ(new AbstractMap.SimpleEntry<>(sortedListForceZ.get(i).getKey(),sortedListForceZ.get(i).getValue()))
-                    .torqueX(new AbstractMap.SimpleEntry<>(sortedListTorqueX.get(i).getKey(),sortedListTorqueX.get(i).getValue()))
-                    .torqueY(new AbstractMap.SimpleEntry<>(sortedListTorqueY.get(i).getKey(),sortedListTorqueY.get(i).getValue()))
-                    .torqueZ(new AbstractMap.SimpleEntry<>(sortedListTorqueZ.get(i).getKey(),sortedListTorqueZ.get(i).getValue()))
-                    .positionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyX.get(i).getKey(),sortedListPositionRepetitionAccuracyX.get(i).getValue()))
-                    .positionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyY.get(i).getKey(),sortedListPositionRepetitionAccuracyY.get(i).getValue()))
-                    .positionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyZ.get(i).getKey(),sortedListPositionRepetitionAccuracyZ.get(i).getValue()))
-                    .rotationRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyX.get(i).getKey(),sortedListRotationRepetitionAccuracyX.get(i).getValue()))
-                    .rotationRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyY.get(i).getKey(),sortedListRotationRepetitionAccuracyY.get(i).getValue()))
-                    .rotationRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyZ.get(i).getKey(),sortedListRotationRepetitionAccuracyZ.get(i).getValue()))
+                    .forceX(new AbstractMap.SimpleEntry<>(sortedListForceX.get(i).getKey(), sortedListForceX.get(i).getValue()))
+                    .forceY(new AbstractMap.SimpleEntry<>(sortedListForceY.get(i).getKey(), sortedListForceY.get(i).getValue()))
+                    .forceZ(new AbstractMap.SimpleEntry<>(sortedListForceZ.get(i).getKey(), sortedListForceZ.get(i).getValue()))
+                    .torqueX(new AbstractMap.SimpleEntry<>(sortedListTorqueX.get(i).getKey(), sortedListTorqueX.get(i).getValue()))
+                    .torqueY(new AbstractMap.SimpleEntry<>(sortedListTorqueY.get(i).getKey(), sortedListTorqueY.get(i).getValue()))
+                    .torqueZ(new AbstractMap.SimpleEntry<>(sortedListTorqueZ.get(i).getKey(), sortedListTorqueZ.get(i).getValue()))
+                    .positionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyX.get(i).getKey(), sortedListPositionRepetitionAccuracyX.get(i).getValue()))
+                    .positionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyY.get(i).getKey(), sortedListPositionRepetitionAccuracyY.get(i).getValue()))
+                    .positionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyZ.get(i).getKey(), sortedListPositionRepetitionAccuracyZ.get(i).getValue()))
+                    .rotationRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyX.get(i).getKey(), sortedListRotationRepetitionAccuracyX.get(i).getValue()))
+                    .rotationRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyY.get(i).getKey(), sortedListRotationRepetitionAccuracyY.get(i).getValue()))
+                    .rotationRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(sortedListRotationRepetitionAccuracyZ.get(i).getKey(), sortedListRotationRepetitionAccuracyZ.get(i).getValue()))
+                    .tvList(tvList)
                     .build();
 
             newRessourceHolderList.add(newRessource);
         }
 
 
-
-
         return newRessourceHolderList;
-    }
-
-    public List<Constraints> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn,String value) {
-
-        List<Double> listOfForceX = new ArrayList<>();
-        List<Double> listOfForceY = new ArrayList<>();
-        List<Double> listOfForceZ = new ArrayList<>();
-        List<Double> listOfTorqueX = new ArrayList<>();
-        List<Double> listOfTorqueY = new ArrayList<>();
-        List<Double> listOfTorqueZ = new ArrayList<>();
-        List<Double> listOfPositionRepetitionAccuracyX = new ArrayList<>();
-        List<Double> listOfPositionRepetitionAccuracyY = new ArrayList<>();
-        List<Double> listOfPositionRepetitionAccuracyZ = new ArrayList<>();
-        List<Double> listOfRotationRepetitionAccuracyX = new ArrayList<>();
-        List<Double> listOfRotationRepetitionAccuracyY = new ArrayList<>();
-        List<Double> listOfRotationRepetitionAccuracyZ = new ArrayList<>();
-        List<Constraints> constraintsList = new ArrayList<>();
-
-
-        processRequirementListIn.forEach(processRequirement -> {
-            listOfForceX.add(processRequirement.getForceXRsC());
-            listOfForceY.add(processRequirement.getForceYRsC());
-            listOfForceZ.add(processRequirement.getForceZRsC());
-
-            listOfTorqueX.add(processRequirement.getTorqueXRsC());
-            listOfTorqueY.add(processRequirement.getTorqueYRsC());
-            listOfTorqueZ.add(processRequirement.getTorqueZRsC());
-
-            listOfPositionRepetitionAccuracyX.add(processRequirement.getPositionRepetitionAccuracyXRsC());
-            listOfPositionRepetitionAccuracyY.add(processRequirement.getPositionRepetitionAccuracyYRsC());
-            listOfPositionRepetitionAccuracyZ.add(processRequirement.getPositionRepetitionAccuracyZRsC());
-
-            listOfRotationRepetitionAccuracyX.add(processRequirement.getRotationRepetitionAccuracyXRsC());
-            listOfRotationRepetitionAccuracyY.add(processRequirement.getRotationRepetitionAccuracyYRsC());
-            listOfRotationRepetitionAccuracyZ.add(processRequirement.getRotationRepetitionAccuracyZRsC());
-
-            listOfForceX.sort(Collections.reverseOrder());
-            listOfForceY.sort(Collections.reverseOrder());
-            listOfForceZ.sort(Collections.reverseOrder());
-            listOfTorqueX.sort(Collections.reverseOrder());
-            listOfTorqueY.sort(Collections.reverseOrder());
-            listOfTorqueZ.sort(Collections.reverseOrder());
-            listOfPositionRepetitionAccuracyX.sort(Collections.reverseOrder());
-            listOfPositionRepetitionAccuracyY.sort(Collections.reverseOrder());
-            listOfPositionRepetitionAccuracyZ.sort(Collections.reverseOrder());
-            listOfRotationRepetitionAccuracyX.sort(Collections.reverseOrder());
-            listOfRotationRepetitionAccuracyY.sort(Collections.reverseOrder());
-            listOfRotationRepetitionAccuracyZ.sort(Collections.reverseOrder());
-
-        });
-        // Tabellenstruktur
-        // ForceX | ForceY | ForceZ | TorqueX | TorqueY | TorqueZ | PositionRepetitionAccuracyX | PositionRepetitionAccuracyY | PositionRepetitionAccuracyZ  | RotationRepetitionAccuracyX | RotationRepetitionAccuracyY | RotationRepetitionAccuracyZ
-        for (int i = 0; i < listOfForceX.size(); i++) {
-            Constraints constraint = Constraints.builder()
-                    .idShort(String.valueOf(i))
-                     .forceX(listOfForceX.get(i))
-                    .forceY(listOfForceY.get(i))
-                    .forceZ(listOfForceZ.get(i))
-                    .torqueX(listOfTorqueX.get(i))
-                    .torqueY(listOfTorqueY.get(i))
-                    .torqueZ(listOfTorqueZ.get(i))
-                    .positionRepetitionAccuracyX(listOfPositionRepetitionAccuracyX.get(i))
-                    .positionRepetitionAccuracyY(listOfPositionRepetitionAccuracyY.get(i))
-                    .positionRepetitionAccuracyZ(listOfPositionRepetitionAccuracyZ.get(i))
-                    .rotationRepetitionAccuracyX(listOfRotationRepetitionAccuracyX.get(i))
-                    .rotationRepetitionAccuracyY(listOfRotationRepetitionAccuracyY.get(i))
-                    .rotationRepetitionAccuracyZ(listOfRotationRepetitionAccuracyZ.get(i))
-                    .build();
-
-            constraintsList.add(constraint);
-        }
-
-        return constraintsList;
-    }
-
-    public void printRessourceHolderList(List<RessourceHolder> ressourceHolderList) {
-        for (RessourceHolder ressourceHolder : ressourceHolderList) {
-            System.out.println("ID: " + ressourceHolder.getIdShort());
-            System.out.println("REST API: " + ressourceHolder.getRestApi());
-            System.out.println("Mass: " + ressourceHolder.getMass());
-
-            printEntry("Force X", ressourceHolder.getForceX());
-            printEntry("Force Y", ressourceHolder.getForceY());
-            printEntry("Force Z", ressourceHolder.getForceZ());
-            printEntry("Torque X", ressourceHolder.getTorqueX());
-            printEntry("Torque Y", ressourceHolder.getTorqueY());
-            printEntry("Torque Z", ressourceHolder.getTorqueZ());
-            printEntry("Position Repetition Accuracy X", ressourceHolder.getPositionRepetitionAccuracyX());
-            printEntry("Position Repetition Accuracy Y", ressourceHolder.getPositionRepetitionAccuracyY());
-            printEntry("Position Repetition Accuracy Z", ressourceHolder.getPositionRepetitionAccuracyZ());
-            printEntry("Rotation Repetition Accuracy X", ressourceHolder.getRotationRepetitionAccuracyX());
-            printEntry("Rotation Repetition Accuracy Y", ressourceHolder.getRotationRepetitionAccuracyY());
-            printEntry("Rotation Repetition Accuracy Z", ressourceHolder.getRotationRepetitionAccuracyZ());
-            System.out.println(); // Leerzeile zur Trennung
-        }
-    }
-    private static void printEntry(String description, AbstractMap.SimpleEntry<String, Double> entry) {
-        System.out.println(description + ": " + entry.getKey() + " - " + entry.getValue());
     }
 
 
