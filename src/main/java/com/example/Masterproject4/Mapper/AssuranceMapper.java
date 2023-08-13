@@ -1,17 +1,19 @@
 package com.example.Masterproject4.Mapper;
 
-import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.Handler.Constraints;
+import com.example.Masterproject4.JAXBModels.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Logger;
 
+@Component
 public class AssuranceMapper {
 
     AssuranceFullObject assuranceFullObject = new AssuranceFullObject();
@@ -32,15 +34,13 @@ public class AssuranceMapper {
             switch (subModelObject.getIdShort()) {
                 case "Identification" ->
                         fillSubModelIdentification(listOfAllSubmodelsElements, subModelObject.getIdShort());
-                case "Assurances" ->
-                        fillSubModelAssurances(listOfAllSubmodelsElements);
-                case "MediaSupply" ->
-                        fillSubModelMediaSupply(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                case "Assurances" -> fillSubModelAssurances(listOfAllSubmodelsElements);
+                case "MediaSupply" -> fillSubModelMediaSupply(listOfAllSubmodelsElements, subModelObject.getIdShort());
                 case "EnvironmentalConditions" ->
-                        fillSubModelEnvironmentConditions(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                        fillSubModelEnvironmentConditions(listOfAllSubmodelsElements, subModelObject.getIdShort());
 
                 case "EconomicFactors" ->
-                        fillSubModelEconomicFactors(listOfAllSubmodelsElements,subModelObject.getIdShort());
+                        fillSubModelEconomicFactors(listOfAllSubmodelsElements, subModelObject.getIdShort());
 
             }
         });
@@ -54,6 +54,7 @@ public class AssuranceMapper {
         //assuranceRepository.save(assuranceFullObject);
 
     }
+
     // Submodel Identification
     private void fillSubModelIdentification(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementsInAssurance -> {
@@ -69,7 +70,7 @@ public class AssuranceMapper {
             // Alle direkten Properties von SMC prüfen
             String idShortOfSMC = subModelElementsInAssurance.getSubmodelElementCollection().getIdShort();
             List<SubModelElement> subModelElementsDeep1 = subModelElementsInAssurance.getSubmodelElementCollection().getValue().getSubmodelElement();
-            if(!Objects.equals(idShortOfSMC, "InternalPropertyRelations")) {
+            if (!Objects.equals(idShortOfSMC, "InternalPropertyRelations")) {
                 // Schleife über alle SMC im SM Assurance
                 // Erstmal Property testen
                 subModelElementsDeep1.forEach(subModelElementObject1 -> {
@@ -104,7 +105,7 @@ public class AssuranceMapper {
     private void fillSubModelMediaSupply(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
         });
     }
 
@@ -112,7 +113,7 @@ public class AssuranceMapper {
     private void fillSubModelEnvironmentConditions(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
         });
     }
 
@@ -120,8 +121,8 @@ public class AssuranceMapper {
     private void fillSubModelEconomicFactors(List<SubModelElement> subModelElements, String SECIdShort) {
         subModelElements.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
-            if(property1 != null) {
-                fillValueInList(property1.getIdShort(),property1.getValue(),"",SECIdShort);
+            if (property1 != null) {
+                fillValueInList(property1.getIdShort(), property1.getValue(), "", SECIdShort);
             } else {
 
                 String SMCIdSHort = subModelElementObject1.getSubmodelElementCollection().getIdShort();
@@ -129,20 +130,21 @@ public class AssuranceMapper {
                 subModelElementDeep1.forEach(subModelElementObject2 -> {
                     Property property2 = subModelElementObject2.getProperty();
                     System.out.println("Aufruf mit " + property2.getIdShort() + " " + property2.getValue() + " " + SMCIdSHort);
-                    fillValueInList(property2.getIdShort(),property2.getValue(),"",SMCIdSHort);
+                    fillValueInList(property2.getIdShort(), property2.getValue(), "", SMCIdSHort);
 
 
-                }) ;
+                });
 
             }
         });
 
     }
+
     private void fillValueInList(String idShort, String value1, String value2, String SECIdshort) {
-        if(value1.equals("NaN")) {
+        if (value1.equals("NaN")) {
             value1 = "0";
         }
-        if(value2.equals("NaN")) {
+        if (value2.equals("NaN")) {
             value2 = "0";
         }
         switch (SECIdshort) {
@@ -184,7 +186,7 @@ public class AssuranceMapper {
                     case "OperatingVoltage" -> assuranceFullObject.setOperatingVoltage(Double.parseDouble(value1));
                     case "CompressedAirPressure" ->
                             assuranceFullObject.setCompressedAirPressure(Double.parseDouble(value1));
-                    case "AirFlow" ->assuranceFullObject.setAirFlow(Double.parseDouble(value1));
+                    case "AirFlow" -> assuranceFullObject.setAirFlow(Double.parseDouble(value1));
                 }
                 // Environmental Conditions
             case "EnvironmentalConditions":
@@ -201,7 +203,8 @@ public class AssuranceMapper {
                 switch (idShort) {
                     case "Price" -> assuranceFullObject.setPrice(Double.parseDouble(value1));
                     case "Lengthofusage" -> assuranceFullObject.setLengthOfUsage(Double.parseDouble(value1));
-                    case "MaintenanceInterval" -> assuranceFullObject.setMaintenanceInterval(Double.parseDouble(value1));
+                    case "MaintenanceInterval" ->
+                            assuranceFullObject.setMaintenanceInterval(Double.parseDouble(value1));
                     case "MaintanceDuration" -> assuranceFullObject.setMaintanceDuration(Double.parseDouble(value1));
                     case "DeliveryTime" -> assuranceFullObject.setDeliveryTime(Double.parseDouble(value1));
                     case "OneTimeLicenceCost" -> assuranceFullObject.setOneTimeLicenceCost(Double.parseDouble(value1));
@@ -222,4 +225,29 @@ public class AssuranceMapper {
     }
 
     ;
+
+    public List<Constraints> fillAssuranceFullList (List<AssuranceFullObject> assuranceFullObjectIn) {
+        List<Constraints> assuranceFullList = new ArrayList<>();
+        assuranceFullObjectIn.forEach(assuranceObject -> {
+            Constraints constraintAssurance = Constraints.builder()
+                    .idShort(assuranceObject.getAssetId())
+                    .connectionType(assuranceObject.getConnectionType())
+                    .restApi(assuranceObject.getRestAPIAdress())
+                    .forceX(assuranceObject.getForceX())
+                    .forceY(assuranceObject.getForceY())
+                    .forceZ(assuranceObject.getForceZ())
+                    .torqueX(assuranceObject.getTorqueX())
+                    .torqueY(assuranceObject.getTorqueY())
+                    .torqueZ(assuranceObject.getTorqueZ())
+                    .positionRepetitionAccuracyX(assuranceObject.getPositionRepetitionAccuracyX())
+                    .positionRepetitionAccuracyY(assuranceObject.getPositionRepetitionAccuracyY())
+                    .positionRepetitionAccuracyZ(assuranceObject.getPositionRepetitionAccuracyZ())
+                    .rotationRepetitionAccuracyX(assuranceObject.getRotationRepetitionAccuracyX())
+                    .rotationRepetitionAccuracyY(assuranceObject.getRotationRepetitionAccuracyY())
+                    .rotationRepetitionAccuracyZ(assuranceObject.getRotationRepetitionAccuracyZ())
+                    .build();
+            assuranceFullList.add(constraintAssurance);
+        });
+        return assuranceFullList;
+    }
 }

@@ -4,7 +4,8 @@ import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.Constraints;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
-import com.example.Masterproject4.Handler.RessourceHolder;
+import com.example.Masterproject4.ProduktAnforderung.ProductProcessReference;
+import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
@@ -39,6 +40,18 @@ public class HtmlController {
     @Autowired
     private RessourceChecker ressourceChecker;
 
+    @Autowired
+    private ProductProcessReference productProcessReference;
+
+    @Autowired
+    private ProductRequirementMapper productRequirementMapper;
+
+    @Autowired
+    private ProductRequirementFullObject productRequirementFullObject;
+
+    @Autowired
+    private AssuranceMapper assuranceMapper;
+
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -72,43 +85,37 @@ public class HtmlController {
 
         if (!fileOfUser.isEmpty()) {
             File convertedFile = new FileConverter().convertFile(fileOfUser);
-            ProductRequirementMapper productRequirementMapper = new ProductRequirementMapper();
-            ProductRequirementFullObject fullObjectProductRequirement = productRequirementMapper.mapXMLToClass(convertedFile);
-            List<ProcessRequirement> processRequirementList = fullObjectProductRequirement.getProcessRequirement();
+            /*
+                Fertiges Objekt mit allen Daten der Produktanforderung
+            */
+            productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
+            List<ProcessRequirement> processRequirementList = productRequirementFullObject.getProcessRequirement();
 
-
+            /*
+                Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
+             */
             List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList);
-            Log.info("Ressourcenliste nach dem Sortieren");
-            Log.info(ressourceHolderList.toString());
-            // Attribute wie Mass und Mass Roughness filtern und hinzufügen
-            List<RessourceHolder> ressourceHolderListWithPartAttributs = ressourceChecker.fillPartAttributs(ressourceHolderList,fullObjectProductRequirement);
-            Log.info("Ressourcenliste nach Filtern von Part Attributen");
-            Log.info(ressourceHolderList.toString());
-
-            // ConstraintListe von Assurance
-            List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
-            List<Constraints> assuranceFullList = new ArrayList<>();
-
-            assuranceList.forEach(assuranceObject -> {
-                Constraints constraintAssurance = Constraints.builder()
-                        .idShort(assuranceObject.getAssetId())
-                        .connectionType(assuranceObject.getConnectionType())
-                        .restApi(assuranceObject.getRestAPIAdress())
-                        .forceX(assuranceObject.getForceX())
-                        .forceY(assuranceObject.getForceY())
-                        .forceZ(assuranceObject.getForceZ())
-                        .torqueX(assuranceObject.getTorqueX())
-                        .torqueY(assuranceObject.getTorqueY())
-                        .torqueZ(assuranceObject.getTorqueZ())
-                        .positionRepetitionAccuracyX(assuranceObject.getPositionRepetitionAccuracyX())
-                        .positionRepetitionAccuracyY(assuranceObject.getPositionRepetitionAccuracyY())
-                        .positionRepetitionAccuracyZ(assuranceObject.getPositionRepetitionAccuracyZ())
-                        .rotationRepetitionAccuracyX(assuranceObject.getRotationRepetitionAccuracyX())
-                        .rotationRepetitionAccuracyY(assuranceObject.getRotationRepetitionAccuracyY())
-                        .rotationRepetitionAccuracyZ(assuranceObject.getRotationRepetitionAccuracyZ())
-                        .build();
-                assuranceFullList.add(constraintAssurance);
+            Log.info("Ressourcenliste ->");
+            ressourceHolderList.forEach(ressourceHolder -> {
+               Log.info(ressourceHolder.toString());
             });
+
+            /*
+                Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen
+            */
+            List<ProductProcessReference> listOfProductProcessReference = productRequirementMapper.getAllProductProcessReference(productRequirementFullObject);
+            Log.info("ProductProcessReference ->");
+            Log.info(String.valueOf(listOfProductProcessReference.size()));
+            listOfProductProcessReference.forEach(productProcessReference -> {
+                Log.info(productProcessReference.toString());
+            });
+            /*
+                Objekt zur Haltunge der Daten für die Zusicherungen
+            */
+            //List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            //List<Constraints> assuranceFullList = assuranceMapper.fillAssuranceFullList(assuranceList);
+
+
 
 
 

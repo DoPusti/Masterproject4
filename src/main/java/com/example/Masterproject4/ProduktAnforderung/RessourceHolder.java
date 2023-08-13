@@ -1,4 +1,4 @@
-package com.example.Masterproject4.Handler;
+package com.example.Masterproject4.ProduktAnforderung;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,22 +43,22 @@ public class RessourceHolder {
     @Override
     public String toString() {
         return "RessourceHolder{" +
-                "idShort='" + idShort + '\'' +
-                "\nforceX=" + forceX +
-                "\nforceY=" + forceY +
-                "\nforceZ=" + forceZ +
-                "\ntorqueX=" + torqueX +
-                "\ntorqueY=" + torqueY +
-                "\ntorqueZ=" + torqueZ +
-                "\npositionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
-                "\npositionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
-                "\npositionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
-                "\nrotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
-                "\nrotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
-                "\nrotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
-                "\ntvList=" + tvList +
-                "\nrestApi='" + restApi + '\'' +
-                '}';
+                "idShort='" + idShort +
+                " | forceX=" + forceX +
+                " | forceY=" + forceY +
+                " | forceZ=" + forceZ +
+                " | torqueX=" + torqueX +
+                " | torqueY=" + torqueY +
+                " | torqueZ=" + torqueZ +
+                " | positionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
+                " | positionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
+                " | positionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
+                " | rotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
+                " | rotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
+                " | rotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
+                " | tvList=" + tvList +
+                " | restApi='" + restApi +
+                '}' + "\n";
     }
 
 }

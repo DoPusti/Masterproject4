@@ -1,19 +1,18 @@
 package com.example.Masterproject4.Mapper;
 
-import com.example.Masterproject4.Handler.RessourceHolder;
 import com.example.Masterproject4.JAXBModels.*;
-import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
-import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
-import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
+import com.example.Masterproject4.ProduktAnforderung.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.*;
 
 import static java.lang.Math.max;
 
+@Component
 public class ProductRequirementMapper {
 
     ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
@@ -431,7 +430,6 @@ public class ProductRequirementMapper {
         Collections.reverse(sortedListRotationRepetitionAccuracyZ);
 
 
-
         for (int i = 0; i < sortedListForceX.size(); i++) {
             List<String> tvList = new ArrayList<>();
             // TV - Liste erzeugen aller betroffenen TVS pro Permutation
@@ -468,6 +466,39 @@ public class ProductRequirementMapper {
 
 
         return newRessourceHolderList;
+    }
+
+    public List<ProductProcessReference> getAllProductProcessReference(ProductRequirementFullObject productRequirementFullObjectIn) {
+        List<ProductProcessReference> productProcessReferenceOut = new ArrayList<>();
+
+        List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
+        List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
+
+        processRequirement.forEach(process -> {
+            productProperty.forEach(product -> {
+                System.out.println("Processname  " + process.getReferenceParts());
+                System.out.println("Productname " + product.getIdShort());
+                if (process.getReferenceParts().equals(product.getIdShort())) {
+                    System.out.println("Gefunden!");
+                    productProcessReferenceOut.add(ProductProcessReference.builder()
+                            .tvName(process.getTvName())
+                            .partName(product.getIdShort())
+                            .mass(product.getMass())
+                            .meanRoughness(product.getMeanRoughness())
+                            .ferroMagnetic(product.isFerroMagnetic())
+                            .length(product.getLength())
+                            .width(product.getWidth())
+                            .height(product.getHeight())
+                            .centerOfMassX(product.getX())
+                            .centerOfMassY(product.getY())
+                            .centerOfMassZ(product.getZ())
+                            .build());
+                }
+            });
+        });
+
+
+        return productProcessReferenceOut;
     }
 
 

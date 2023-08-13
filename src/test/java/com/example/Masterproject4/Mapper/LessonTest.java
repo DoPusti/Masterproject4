@@ -1,6 +1,6 @@
 package com.example.Masterproject4.Mapper;
 
-import com.example.Masterproject4.Handler.RessourceHolder;
+import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

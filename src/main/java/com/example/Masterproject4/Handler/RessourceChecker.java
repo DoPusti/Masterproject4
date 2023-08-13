@@ -3,6 +3,7 @@ package com.example.Masterproject4.Handler;
 import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
 import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
 import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
+import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
 import lombok.Builder;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Component
@@ -80,14 +82,9 @@ public class RessourceChecker {
         List<ProcessRequirement> processRequirementList= fullObjectProductRequirementIn.getProcessRequirement();
 
         ressourceHolderListIn.forEach(ressourceHolder -> {
-            productPropertyList.forEach(productProperty -> {
-                if(ressourceHolder.getTvList().contains(productProperty.getIdShort())) {
-                    processRequirementList.forEach(processRequirement -> {
-                        if(processRequirement.get)
-                    });
-                }
-            });
+            //Map<String,String> referenceList = getTVReferencePartsWithAttributes(fullObjectProductRequirementIn);
         });
         return ressourceHolderListIn;
     }
+
 }
