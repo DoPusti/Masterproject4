@@ -18,6 +18,14 @@ public class RessourceHolder {
     String restApi;
     double mass;
     double meanRoughness;
+    boolean ferroMagnetic;
+    double length;
+    double width;
+    double height;
+    double centerOfMassX;
+    double centerOfMassY;
+    double centerOfMassZ;
+
     List<String> tvList;
 
     AbstractMap.SimpleEntry<String, Double> positionX;
@@ -56,6 +64,15 @@ public class RessourceHolder {
                 " | rotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
                 " | rotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
                 " | rotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
+                " | mass=" + mass +
+                " | meanRoughness=" + meanRoughness +
+                " | ferroMagnetic=" + ferroMagnetic +
+                " | length=" + length +
+                " | width=" + width +
+                " | height=" + height +
+                " | centerOfMassX=" + centerOfMassX +
+                " | centerOfMassY=" + centerOfMassY +
+                " | centerOfMassZ=" + centerOfMassZ +
                 " | tvList=" + tvList +
                 " | restApi='" + restApi +
                 '}' + "\n";

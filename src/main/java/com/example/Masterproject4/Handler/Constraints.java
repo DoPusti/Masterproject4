@@ -17,6 +17,12 @@ public class Constraints {
     double torqueX;
     double torqueY;
     double torqueZ;
+    double positionX;
+    double positionY;
+    double positionZ;
+    double rotationX;
+    double rotationY;
+    double rotationZ;
     double positionRepetitionAccuracyX;
     double positionRepetitionAccuracyY;
     double positionRepetitionAccuracyZ;
@@ -25,40 +31,49 @@ public class Constraints {
     double rotationRepetitionAccuracyZ;
     String restApi;
     String connectionType;
+    double price;
+    double centerOfMassX;
+    double centerOfMassY;
+    double centerOfMassZ;
+    double length;
+    double width;
+    double height;
+    boolean ferroMagnetic;
 
-    public boolean matches(Constraints other) {
-        return this.forceX <= other.forceX &&
-                this.forceY <= other.forceY &&
-                this.forceZ <= other.forceZ &&
-                this.torqueX <= other.torqueX &&
-                this.torqueY <= other.torqueY &&
-                this.torqueZ <= other.torqueZ &&
-                this.positionRepetitionAccuracyX <= other.positionRepetitionAccuracyX &&
-                this.positionRepetitionAccuracyY <= other.positionRepetitionAccuracyY &&
-                this.positionRepetitionAccuracyZ <= other.positionRepetitionAccuracyZ &&
-                this.rotationRepetitionAccuracyX <= other.rotationRepetitionAccuracyX &&
-                this.rotationRepetitionAccuracyY <= other.rotationRepetitionAccuracyY &&
-                this.rotationRepetitionAccuracyZ <= other.rotationRepetitionAccuracyZ;
-    }
+
 
     @Override
     public String toString() {
         return "Constraints{" +
-                "idShort='" + idShort + '\'' +
-                "\nforceX=" + forceX +
-                "\nforceY=" + forceY +
-                "\nforceZ=" + forceZ +
-                "\ntorqueX=" + torqueX +
-                "\ntorqueY=" + torqueY +
-                "\ntorqueZ=" + torqueZ +
-                "\npositionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
-                "\npositionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
-                "\npositionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
-                "\nrotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
-                "\nrotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
-                "\nrotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
-                "\nrestApi='" + restApi + '\'' +
-                "\nconnectionType='" + connectionType + '\'' +
+                "idShort='" + idShort +
+                " | forceX=" + forceX +
+                " |  forceY=" + forceY +
+                " | forceZ=" + forceZ +
+                " | torqueX=" + torqueX +
+                " | torqueY=" + torqueY +
+                " | torqueZ=" + torqueZ +
+                " | positionX=" + positionX +
+                " | positionY=" + positionY +
+                " | positionZ=" + positionZ +
+                " | rotationX=" + rotationX +
+                " | rotationY=" + rotationY +
+                " | rotationZ=" + rotationZ +
+                " | length=" + length +
+                " | width=" + width +
+                " | height=" + height +
+                " | centerOfMassX=" + centerOfMassX +
+                " | centerOfMassY=" + centerOfMassY +
+                " | centerOfMassZ=" + centerOfMassZ +
+                " | ferroMagnetic=" + ferroMagnetic +
+                " | positionRepetitionAccuracyX=" + positionRepetitionAccuracyX +
+                " | positionRepetitionAccuracyY=" + positionRepetitionAccuracyY +
+                " | positionRepetitionAccuracyZ=" + positionRepetitionAccuracyZ +
+                " | rotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
+                " | rotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
+                " | rotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
+                " | restApi='" + restApi +
+                " | price='" + price +
+                " | connectionType='" + connectionType + '\n' +
                 '}';
     }
 

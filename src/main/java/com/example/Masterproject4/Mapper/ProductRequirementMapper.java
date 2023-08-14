@@ -108,6 +108,9 @@ public class ProductRequirementMapper {
                         case "Length" -> newProductProperty.setLength(Double.parseDouble(property2.getValue()));
                         case "Width" -> newProductProperty.setWidth(Double.parseDouble(property2.getValue()));
                         case "Height" -> newProductProperty.setHeight(Double.parseDouble(property2.getValue()));
+                        case "X" -> newProductProperty.setCenterOfMassX(Double.parseDouble(property2.getValue()));
+                        case "Y" -> newProductProperty.setCenterOfMassY(Double.parseDouble(property2.getValue()));
+                        case "Z" -> newProductProperty.setCenterOfMassZ(Double.parseDouble(property2.getValue()));
                     }
                 });
             }
@@ -325,7 +328,7 @@ public class ProductRequirementMapper {
         return processRequirement;
     }
 
-    public List<RessourceHolder> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn) {
+    public List<RessourceHolder> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn,List<ProductProcessReference> productProcessReferenceIn) {
 
         List<RessourceHolder> newRessourceHolderList = new ArrayList<>();
         Map<String, Double> unsortedMapForceX = new HashMap<>();
@@ -452,6 +455,15 @@ public class ProductRequirementMapper {
                     .torqueX(new AbstractMap.SimpleEntry<>(sortedListTorqueX.get(i).getKey(), sortedListTorqueX.get(i).getValue()))
                     .torqueY(new AbstractMap.SimpleEntry<>(sortedListTorqueY.get(i).getKey(), sortedListTorqueY.get(i).getValue()))
                     .torqueZ(new AbstractMap.SimpleEntry<>(sortedListTorqueZ.get(i).getKey(), sortedListTorqueZ.get(i).getValue()))
+                    .mass(0)
+                    .meanRoughness(0)
+                    .ferroMagnetic(true)
+                    .height(0)
+                    .width(0)
+                    .length(0)
+                    .centerOfMassX(0)
+                    .centerOfMassY(0)
+                    .centerOfMassZ(0)
                     .positionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyX.get(i).getKey(), sortedListPositionRepetitionAccuracyX.get(i).getValue()))
                     .positionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyY.get(i).getKey(), sortedListPositionRepetitionAccuracyY.get(i).getValue()))
                     .positionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(sortedListPositionRepetitionAccuracyZ.get(i).getKey(), sortedListPositionRepetitionAccuracyZ.get(i).getValue()))
@@ -464,6 +476,30 @@ public class ProductRequirementMapper {
             newRessourceHolderList.add(newRessource);
         }
 
+        // Jetzt noch die restlichen Werte befüllen. Geht erst jetzt, da die Sequenz der Teilvorgänge bekannt ist
+        newRessourceHolderList.forEach(ressourceHolderInList -> {
+            List<String> tvList = ressourceHolderInList.getTvList();
+            tvList.forEach(tv -> {
+                productProcessReferenceIn.forEach(productProcessReferenceInList -> {
+                    if (productProcessReferenceInList.getTvName().equals(tv)) {
+                        ressourceHolderInList.setMass(max(ressourceHolderInList.getMass(),productProcessReferenceInList.getMass()));
+                        ressourceHolderInList.setMass(max(ressourceHolderInList.getMeanRoughness(),productProcessReferenceInList.getMeanRoughness()));
+                        ressourceHolderInList.setHeight(max(ressourceHolderInList.getHeight(),productProcessReferenceInList.getHeight()));
+                        ressourceHolderInList.setWidth(max(ressourceHolderInList.getWidth(),productProcessReferenceInList.getWidth()));
+                        ressourceHolderInList.setLength(max(ressourceHolderInList.getLength(),productProcessReferenceInList.getLength()));
+                        ressourceHolderInList.setCenterOfMassX(max(ressourceHolderInList.getCenterOfMassX(),productProcessReferenceInList.getCenterOfMassX()));
+                        ressourceHolderInList.setCenterOfMassY(max(ressourceHolderInList.getCenterOfMassY(),productProcessReferenceInList.getCenterOfMassY()));
+                        ressourceHolderInList.setCenterOfMassZ(max(ressourceHolderInList.getCenterOfMassZ(),productProcessReferenceInList.getCenterOfMassZ()));
+                        if(!productProcessReferenceInList.isFerroMagnetic()) {
+                            productProcessReferenceInList.setFerroMagnetic(false);
+                        }
+                    }
+                });
+
+            });
+
+        });
+
 
         return newRessourceHolderList;
     }
@@ -474,12 +510,15 @@ public class ProductRequirementMapper {
         List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
 
+        System.out.println("Größe : " + processRequirement.size());
         processRequirement.forEach(process -> {
             productProperty.forEach(product -> {
-                System.out.println("Processname  " + process.getReferenceParts());
-                System.out.println("Productname " + product.getIdShort());
                 if (process.getReferenceParts().equals(product.getIdShort())) {
-                    System.out.println("Gefunden!");
+                    System.out.println("Eintrag gefunden");
+                    System.out.println("Process");
+                    System.out.println(process);
+                    System.out.println("Product");
+                    System.out.println(product);
                     productProcessReferenceOut.add(ProductProcessReference.builder()
                             .tvName(process.getTvName())
                             .partName(product.getIdShort())
@@ -489,11 +528,14 @@ public class ProductRequirementMapper {
                             .length(product.getLength())
                             .width(product.getWidth())
                             .height(product.getHeight())
-                            .centerOfMassX(product.getX())
-                            .centerOfMassY(product.getY())
-                            .centerOfMassZ(product.getZ())
+                            .centerOfMassX(product.getCenterOfMassX())
+                            .centerOfMassY(product.getCenterOfMassY())
+                            .centerOfMassZ(product.getCenterOfMassZ())
                             .build());
+                    System.out.println("Neue Liste");
+                    System.out.println(productProcessReferenceOut);
                 }
+
             });
         });
 

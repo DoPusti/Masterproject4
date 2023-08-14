@@ -91,14 +91,6 @@ public class HtmlController {
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
             List<ProcessRequirement> processRequirementList = productRequirementFullObject.getProcessRequirement();
 
-            /*
-                Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
-             */
-            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList);
-            Log.info("Ressourcenliste ->");
-            ressourceHolderList.forEach(ressourceHolder -> {
-               Log.info(ressourceHolder.toString());
-            });
 
             /*
                 Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen
@@ -109,18 +101,32 @@ public class HtmlController {
             listOfProductProcessReference.forEach(productProcessReference -> {
                 Log.info(productProcessReference.toString());
             });
+
+            /*
+                Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
+             */
+            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList,listOfProductProcessReference);
+            Log.info("Ressourcenliste ->");
+            ressourceHolderList.forEach(ressourceHolder -> {
+               Log.info(ressourceHolder.toString());
+            });
+
+
             /*
                 Objekt zur Haltunge der Daten für die Zusicherungen
             */
-            //List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
-            //List<Constraints> assuranceFullList = assuranceMapper.fillAssuranceFullList(assuranceList);
+            List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            List<Constraints> assuranceFullList = assuranceMapper.fillAssuranceFullList(assuranceList);
+            Log.info("AssuranceList ->");
+            assuranceFullList.forEach(assuranceInList -> {
+                Log.info(assuranceInList.toString());
+            });
 
+            /*
+                Passende Ressource Greifer suchen (AutomaticallyRemoveable)
 
-
-
-
-            // Zuerst Greifer prüfen
-            //ressourceChecker.checkConstraintsOfRequirement(ressourceHolderListWithPartAttributs,assuranceFullList,true);
+            */
+            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceFullList,true);
 
 
         }

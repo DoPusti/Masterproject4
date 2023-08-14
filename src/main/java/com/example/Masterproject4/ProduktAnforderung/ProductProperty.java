@@ -18,8 +18,8 @@ public class ProductProperty {
     double length;
     double width;
     double height;
-    double x;
-    double y;
-    double z;
+    double centerOfMassX;
+    double centerOfMassY;
+    double centerOfMassZ;
     double meanRoughness;
 }

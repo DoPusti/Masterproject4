@@ -14,7 +14,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 @Component
@@ -79,7 +78,7 @@ public class RessourceChecker {
         // fullObjectProductRequirementIn als Referencliste
         // ressourceHolderListIn als Sortierte Liste von Ressourcen
         List<ProductProperty> productPropertyList = fullObjectProductRequirementIn.getProductProperty();
-        List<ProcessRequirement> processRequirementList= fullObjectProductRequirementIn.getProcessRequirement();
+        List<ProcessRequirement> processRequirementList = fullObjectProductRequirementIn.getProcessRequirement();
 
         ressourceHolderListIn.forEach(ressourceHolder -> {
             //Map<String,String> referenceList = getTVReferencePartsWithAttributes(fullObjectProductRequirementIn);
