@@ -510,15 +510,15 @@ public class ProductRequirementMapper {
         List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
 
-        System.out.println("Größe : " + processRequirement.size());
+        //System.out.println("Größe : " + processRequirement.size());
         processRequirement.forEach(process -> {
             productProperty.forEach(product -> {
                 if (process.getReferenceParts().equals(product.getIdShort())) {
-                    System.out.println("Eintrag gefunden");
-                    System.out.println("Process");
-                    System.out.println(process);
-                    System.out.println("Product");
-                    System.out.println(product);
+                    //System.out.println("Eintrag gefunden");
+                    //System.out.println("Process");
+                    //System.out.println(process);
+                    //System.out.println("Product");
+                    //System.out.println(product);
                     productProcessReferenceOut.add(ProductProcessReference.builder()
                             .tvName(process.getTvName())
                             .partName(product.getIdShort())
@@ -532,8 +532,8 @@ public class ProductRequirementMapper {
                             .centerOfMassY(product.getCenterOfMassY())
                             .centerOfMassZ(product.getCenterOfMassZ())
                             .build());
-                    System.out.println("Neue Liste");
-                    System.out.println(productProcessReferenceOut);
+                    //System.out.println("Neue Liste");
+                    //System.out.println(productProcessReferenceOut);
                 }
 
             });

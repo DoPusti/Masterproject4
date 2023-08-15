@@ -129,7 +129,7 @@ public class AssuranceMapper {
                 List<SubModelElement> subModelElementDeep1 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
                 subModelElementDeep1.forEach(subModelElementObject2 -> {
                     Property property2 = subModelElementObject2.getProperty();
-                    System.out.println("Aufruf mit " + property2.getIdShort() + " " + property2.getValue() + " " + SMCIdSHort);
+                    //System.out.println("Aufruf mit " + property2.getIdShort() + " " + property2.getValue() + " " + SMCIdSHort);
                     fillValueInList(property2.getIdShort(), property2.getValue(), "", SMCIdSHort);
 
 
@@ -229,7 +229,6 @@ public class AssuranceMapper {
     public List<Constraints> fillAssuranceFullList (List<AssuranceFullObject> assuranceFullObjectIn) {
         List<Constraints> assuranceFullList = new ArrayList<>();
         assuranceFullObjectIn.forEach(assuranceObject -> {
-            boolean ferroMagnetic = assuranceObject.getOperatingPrinciple().equals("Magneticripper");
 
             Constraints constraintAssurance = Constraints.builder()
                     .idShort(assuranceObject.getAssetId())

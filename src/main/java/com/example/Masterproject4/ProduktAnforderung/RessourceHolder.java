@@ -1,5 +1,7 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
+import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.Handler.Constraints;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,6 +49,8 @@ public class RessourceHolder {
     AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyY;
     AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyZ;
 
+    AssuranceFullObject gripper;
+
 
     @Override
     public String toString() {
@@ -75,6 +79,7 @@ public class RessourceHolder {
                 " | centerOfMassZ=" + centerOfMassZ +
                 " | tvList=" + tvList +
                 " | restApi='" + restApi +
+                " | gripper='" + gripper +
                 '}' + "\n";
     }
 

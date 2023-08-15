@@ -1,8 +1,6 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.ProduktAnforderung.ProcessRequirement;
-import com.example.Masterproject4.ProduktAnforderung.ProductProperty;
-import com.example.Masterproject4.ProduktAnforderung.ProductRequirementFullObject;
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
 import lombok.Builder;
 import lombok.Data;
@@ -37,24 +35,28 @@ public class RessourceChecker {
 
     }
 
-    public void checkConstraintsOfRequirement(List<RessourceHolder> ressourceHolderIn, List<Constraints> assuranceListIn, Boolean gripper) {
-        List<Constraints> listOfMatchedConstraints = new ArrayList<>();
+    public void checkConstraintsOfRequirement(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn, Boolean gripper) {
         RessourceHolder matchedRessourceholder = new RessourceHolder();
+        AssuranceFullObject constraints = new AssuranceFullObject();
         for (RessourceHolder ressourceHolder : ressourceHolderIn) {
             if (gripper) {
-                compareRessourceWithGripper(ressourceHolder, assuranceListIn, listOfMatchedConstraints);
+                constraints = compareRessourceWithGripper(ressourceHolder, assuranceListIn);
+            } else {
+                //compareRessourceWithOtherRessource(ressourceHolder, assuranceListIn, listOfMatchedConstraints);
             }
-            if (!(listOfMatchedConstraints.isEmpty())) {
+            if (!(constraints.getAssetId() == null)) {
                 matchedRessourceholder = ressourceHolder;
+                ressourceHolder.setGripper(constraints);
                 break;
             }
         }
         Log.info(matchedRessourceholder.toString());
-        Log.info(listOfMatchedConstraints.toString());
+        Log.info(constraints.toString());
     }
 
-    public void compareRessourceWithGripper(RessourceHolder ressourceHolderIn, List<Constraints> assuranceListIn, List<Constraints> matchedConstraints) {
-        for (Constraints constraint : assuranceListIn) {
+    public AssuranceFullObject compareRessourceWithGripper(RessourceHolder ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
+        AssuranceFullObject constraintsOut = new AssuranceFullObject();
+        for (AssuranceFullObject constraint : assuranceListIn) {
             if (constraint.getConnectionType().equals("AutomaticallyRemoveable")) {
                 if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
                         && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
@@ -68,22 +70,41 @@ public class RessourceChecker {
                         && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue()
                         && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
                         && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
-                    matchedConstraints.add(constraint);
+                    if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
+                        //System.out.println("constraintsOut " + constraintsOut);
+                        //System.out.println("constraint " + constraint);
+                        constraintsOut = constraint;
+                        //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
+
+                    }
+                }
+            }
+        }
+        return constraintsOut;
+    }
+
+    public void compareRessourceWithOtherRessource(RessourceHolder ressourceHolderIn, List<AssuranceFullObject> assuranceListIn, List<Constraints> matchedConstraints) {
+        System.out.println(matchedConstraints);
+        for (AssuranceFullObject constraint : assuranceListIn) {
+            if (constraint.getConnectionType().equals("NotAutomaticallyRemoveable")) {
+                if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
+                        && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
+                        && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue()
+                        && constraint.getTorqueX() >= ressourceHolderIn.getTorqueX().getValue()
+                        && constraint.getTorqueY() >= ressourceHolderIn.getTorqueY().getValue()
+                        && constraint.getTorqueZ() >= ressourceHolderIn.getTorqueZ().getValue()
+                        && constraint.getPositionRepetitionAccuracyX() >= ressourceHolderIn.getPositionRepetitionAccuracyX().getValue()
+                        && constraint.getPositionRepetitionAccuracyY() >= ressourceHolderIn.getPositionRepetitionAccuracyY().getValue()
+                        && constraint.getPositionRepetitionAccuracyZ() >= ressourceHolderIn.getPositionRepetitionAccuracyZ().getValue()
+                        && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue()
+                        && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
+                        && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
+
+                    //matchedConstraints.add(constraint);
                 }
             }
         }
     }
 
-    public List<RessourceHolder> fillPartAttributs(List<RessourceHolder> ressourceHolderListIn, ProductRequirementFullObject fullObjectProductRequirementIn) {
-        // fullObjectProductRequirementIn als Referencliste
-        // ressourceHolderListIn als Sortierte Liste von Ressourcen
-        List<ProductProperty> productPropertyList = fullObjectProductRequirementIn.getProductProperty();
-        List<ProcessRequirement> processRequirementList = fullObjectProductRequirementIn.getProcessRequirement();
-
-        ressourceHolderListIn.forEach(ressourceHolder -> {
-            //Map<String,String> referenceList = getTVReferencePartsWithAttributes(fullObjectProductRequirementIn);
-        });
-        return ressourceHolderListIn;
-    }
 
 }

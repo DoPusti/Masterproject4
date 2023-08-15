@@ -71,9 +71,9 @@ public class Constraints {
                 " | rotationRepetitionAccuracyX=" + rotationRepetitionAccuracyX +
                 " | rotationRepetitionAccuracyY=" + rotationRepetitionAccuracyY +
                 " | rotationRepetitionAccuracyZ=" + rotationRepetitionAccuracyZ +
-                " | restApi='" + restApi +
-                " | price='" + price +
-                " | connectionType='" + connectionType + '\n' +
+                " | restApi=" + restApi +
+                " | price=" + price +
+                " | connectionType=" + connectionType + '\n' +
                 '}';
     }
 

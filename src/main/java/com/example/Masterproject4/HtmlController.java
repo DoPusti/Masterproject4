@@ -96,11 +96,13 @@ public class HtmlController {
                 Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen
             */
             List<ProductProcessReference> listOfProductProcessReference = productRequirementMapper.getAllProductProcessReference(productRequirementFullObject);
+
             Log.info("ProductProcessReference ->");
             Log.info(String.valueOf(listOfProductProcessReference.size()));
             listOfProductProcessReference.forEach(productProcessReference -> {
                 Log.info(productProcessReference.toString());
             });
+
 
             /*
                 Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
@@ -116,18 +118,26 @@ public class HtmlController {
                 Objekt zur Haltunge der Daten für die Zusicherungen
             */
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            Log.info("AssuranceListFullObject ->");
+            assuranceList.forEach(assuranceInLists -> {
+                Log.info(assuranceInLists.toString());
+            });
+
+            /*
             List<Constraints> assuranceFullList = assuranceMapper.fillAssuranceFullList(assuranceList);
             Log.info("AssuranceList ->");
             assuranceFullList.forEach(assuranceInList -> {
                 Log.info(assuranceInList.toString());
             });
 
+             */
+
             /*
                 Passende Ressource Greifer suchen (AutomaticallyRemoveable)
 
             */
-            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceFullList,true);
-
+            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceList,true);
+            System.out.println(ressourceHolderList);
 
         }
 
