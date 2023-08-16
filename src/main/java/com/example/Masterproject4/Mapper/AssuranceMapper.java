@@ -1,7 +1,6 @@
 package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.Handler.Constraints;
 import com.example.Masterproject4.JAXBModels.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -9,7 +8,6 @@ import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -226,40 +224,5 @@ public class AssuranceMapper {
 
     ;
 
-    public List<Constraints> fillAssuranceFullList (List<AssuranceFullObject> assuranceFullObjectIn) {
-        List<Constraints> assuranceFullList = new ArrayList<>();
-        assuranceFullObjectIn.forEach(assuranceObject -> {
 
-            Constraints constraintAssurance = Constraints.builder()
-                    .idShort(assuranceObject.getAssetId())
-                    .connectionType(assuranceObject.getConnectionType())
-                    .restApi(assuranceObject.getRestAPIAdress())
-                    .forceX(assuranceObject.getForceX())
-                    .forceY(assuranceObject.getForceY())
-                    .forceZ(assuranceObject.getForceZ())
-                    .torqueX(assuranceObject.getTorqueX())
-                    .torqueY(assuranceObject.getTorqueY())
-                    .torqueZ(assuranceObject.getTorqueZ())
-                    .positionX(assuranceObject.getPositionX())
-                    .positionY(assuranceObject.getPositionY())
-                    .positionZ(assuranceObject.getPositionZ())
-                    .rotationX(assuranceObject.getRotationX())
-                    .rotationY(assuranceObject.getRotationY())
-                    .rotationZ(assuranceObject.getRotationZ())
-                    .price(assuranceObject.getPrice())
-                    .centerOfMassX(assuranceObject.getXCoM())
-                    .centerOfMassY(assuranceObject.getYCoM())
-                    .centerOfMassZ(assuranceObject.getZCoM())
-                    .ferroMagnetic(assuranceObject.getOperatingPrinciple().equals("Magneticgripper"))
-                    .positionRepetitionAccuracyX(assuranceObject.getPositionRepetitionAccuracyX())
-                    .positionRepetitionAccuracyY(assuranceObject.getPositionRepetitionAccuracyY())
-                    .positionRepetitionAccuracyZ(assuranceObject.getPositionRepetitionAccuracyZ())
-                    .rotationRepetitionAccuracyX(assuranceObject.getRotationRepetitionAccuracyX())
-                    .rotationRepetitionAccuracyY(assuranceObject.getRotationRepetitionAccuracyY())
-                    .rotationRepetitionAccuracyZ(assuranceObject.getRotationRepetitionAccuracyZ())
-                    .build();
-            assuranceFullList.add(constraintAssurance);
-        });
-        return assuranceFullList;
-    }
 }

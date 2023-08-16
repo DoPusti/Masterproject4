@@ -123,21 +123,24 @@ public class HtmlController {
                 Log.info(assuranceInLists.toString());
             });
 
-            /*
-            List<Constraints> assuranceFullList = assuranceMapper.fillAssuranceFullList(assuranceList);
-            Log.info("AssuranceList ->");
-            assuranceFullList.forEach(assuranceInList -> {
-                Log.info(assuranceInList.toString());
-            });
 
-             */
+
+
 
             /*
                 Passende Ressource Greifer suchen (AutomaticallyRemoveable)
 
             */
-            ressourceChecker.checkConstraintsOfRequirement(ressourceHolderList,assuranceList,true);
-            System.out.println(ressourceHolderList);
+            ressourceChecker.searchForGripper(ressourceHolderList,assuranceList);
+
+            /*
+                Passender Greifer wurde nun ausgesucht -> Suche nach Achse oder passenden Roboter
+             */
+            productRequirementMapper.setNewProperties(ressourceHolderList);
+            Log.info("Neue Sequenz mit Greifer + Produkt");
+            ressourceHolderList.forEach(ressourceHolder -> {
+                Log.info(ressourceHolder.toString());
+            });
 
         }
 
