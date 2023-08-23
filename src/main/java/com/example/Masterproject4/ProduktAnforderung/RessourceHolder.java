@@ -27,6 +27,12 @@ public class RessourceHolder {
     double centerOfMassX;
     double centerOfMassY;
     double centerOfMassZ;
+    boolean lenghtIsSet;
+    boolean widthIsSet;
+    boolean heightIsSet;
+    boolean centerOfMassXIsSet;
+    boolean centerOfMassYIsSet;
+    boolean centerOfMassZIsSet;
 
     List<String> tvList;
 

@@ -1,67 +1,899 @@
-2023-08-16T16:10:07.394+02:00  INFO 24768 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 24768 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-08-16T16:10:07.396+02:00  INFO 24768 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-08-16T16:10:07.894+02:00  INFO 24768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-16T16:10:07.954+02:00  INFO 24768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interfaces.
-2023-08-16T16:10:08.358+02:00  INFO 24768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-08-16T16:10:08.365+02:00  INFO 24768 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-08-16T16:10:08.365+02:00  INFO 24768 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-08-16T16:10:08.433+02:00  INFO 24768 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-08-16T16:10:08.434+02:00  INFO 24768 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1008 ms
-2023-08-16T16:10:08.537+02:00  INFO 24768 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-08-16T16:10:08.573+02:00  INFO 24768 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-08-16T16:10:08.574+02:00  INFO 24768 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-08-16T16:10:08.662+02:00  INFO 24768 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-08-16T16:10:08.747+02:00  INFO 24768 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-08-16T16:10:08.758+02:00  INFO 24768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-08-16T16:10:08.865+02:00  INFO 24768 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51eb0e84
-2023-08-16T16:10:08.866+02:00  INFO 24768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-08-16T16:10:08.901+02:00  INFO 24768 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-08-16T16:10:09.034+02:00  INFO 24768 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-08-16T16:10:09.467+02:00  INFO 24768 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-08-16T16:10:09.856+02:00  INFO 24768 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-08-16T16:10:10.026+02:00  WARN 24768 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-08-16T16:10:10.106+02:00  INFO 24768 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-08-16T16:10:10.205+02:00  INFO 24768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-08-16T16:10:10.210+02:00  INFO 24768 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.177 seconds (process running for 3.439)
-2023-08-16T16:10:10.257+02:00  INFO 24768 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-08-16T16:10:10.258+02:00  INFO 24768 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-08-16T16:10:10.258+02:00  INFO 24768 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2023-08-16T16:10:14.244+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : ProductProcessReference ->
-2023-08-16T16:10:14.244+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : 4
-2023-08-16T16:10:14.247+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : ProductProcessReference{partName='assembly_middle_of_housing | tvName=TV1_secondary_process | mass=425.49 | meanRoughness=0.5 | ferroMagnetic=false | length=10.0 | width=100.0 | height=40.0 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0}
+2023-08-23T18:47:48.839+02:00  WARN 5420 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
 
-2023-08-16T16:10:14.248+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : ProductProcessReference{partName='bridging_element | tvName=TV2_secondary_process | mass=16.38 | meanRoughness=0.4 | ferroMagnetic=false | length=20.0 | width=7.0 | height=37.738 | centerOfMassX=10.0 | centerOfMassY=3.5 | centerOfMassZ=8.972}
+Found multiple occurrences of org.json.JSONObject on the class path:
 
-2023-08-16T16:10:14.248+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : ProductProcessReference{partName='assembly_middle_of_housing | tvName=TV3_secondary_process | mass=425.49 | meanRoughness=0.5 | ferroMagnetic=false | length=10.0 | width=100.0 | height=40.0 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0}
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
 
-2023-08-16T16:10:14.248+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : ProductProcessReference{partName='assembly_top_of_housing | tvName=TV4_secondary_process | mass=569.96 | meanRoughness=0.5 | ferroMagnetic=false | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=14.092}
+You may wish to exclude one of them to ensure predictable runtime behavior
 
-2023-08-16T16:10:14.250+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : Ressourcenliste ->
-2023-08-16T16:10:14.256+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='0 | forceX=TV4_secondary_process=100.0 | forceY=TV2_secondary_process=55.0 | forceZ=TV3_secondary_process=71.0 | torqueX=TV3_secondary_process=55.0 | torqueY=TV2_secondary_process=0.0 | torqueZ=TV2_secondary_process=9.0 | positionRepetitionAccuracyX=TV2_secondary_process=99.0 | positionRepetitionAccuracyY=TV2_secondary_process=1.0 | positionRepetitionAccuracyZ=TV2_secondary_process=27.0 | rotationRepetitionAccuracyX=TV2_secondary_process=44.0 | rotationRepetitionAccuracyY=TV3_secondary_process=25.0 | rotationRepetitionAccuracyZ=TV3_secondary_process=78.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV3_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV4_secondary_process, TV2_secondary_process, TV3_secondary_process, TV3_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV3_secondary_process, TV3_secondary_process] | restApi='null | gripper='null}
+2023-08-23T18:47:48.861+02:00  INFO 5420 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 5420 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:47:48.862+02:00  INFO 5420 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:47:49.537+02:00  INFO 5420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:47:49.586+02:00  INFO 5420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:47:49.947+02:00  INFO 5420 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:47:50.008+02:00  INFO 5420 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:47:50.011+02:00  INFO 5420 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:47:50.183+02:00  INFO 5420 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:47:50.304+02:00  INFO 5420 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:47:50.321+02:00  INFO 5420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:47:50.468+02:00  INFO 5420 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@59f45950
+2023-08-23T18:47:50.470+02:00  INFO 5420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:47:50.510+02:00  INFO 5420 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:47:50.715+02:00  INFO 5420 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:47:51.322+02:00  INFO 5420 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:47:51.791+02:00  INFO 5420 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:47:52.143+02:00  WARN 5420 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:47:52.300+02:00  INFO 5420 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:47:52.471+02:00  INFO 5420 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.937 seconds (process running for 4.908)
+2023-08-23T18:47:53.867+02:00  INFO 5420 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:47:53.870+02:00  INFO 5420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:47:53.881+02:00  INFO 5420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:20.436+02:00  WARN 28928 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
 
-2023-08-16T16:10:14.256+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='1 | forceX=TV2_secondary_process=0.0 | forceY=TV4_secondary_process=20.0 | forceZ=TV2_secondary_process=7.0 | torqueX=TV2_secondary_process=0.0 | torqueY=TV4_secondary_process=0.0 | torqueZ=TV3_secondary_process=2.0 | positionRepetitionAccuracyX=TV4_secondary_process=20.0 | positionRepetitionAccuracyY=TV4_secondary_process=1.0 | positionRepetitionAccuracyZ=TV4_secondary_process=22.0 | rotationRepetitionAccuracyX=TV4_secondary_process=44.0 | rotationRepetitionAccuracyY=TV2_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV2_secondary_process=5.0 | mass=0.4 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV2_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process, TV4_secondary_process, TV3_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process] | restApi='null | gripper='null}
+Found multiple occurrences of org.json.JSONObject on the class path:
 
-2023-08-16T16:10:14.256+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='2 | forceX=TV1_secondary_process=0.0 | forceY=TV3_secondary_process=1.0 | forceZ=TV4_secondary_process=0.0 | torqueX=TV4_secondary_process=0.0 | torqueY=TV1_secondary_process=0.0 | torqueZ=TV4_secondary_process=0.0 | positionRepetitionAccuracyX=TV1_secondary_process=12.0 | positionRepetitionAccuracyY=TV1_secondary_process=1.0 | positionRepetitionAccuracyZ=TV1_secondary_process=22.0 | rotationRepetitionAccuracyX=TV1_secondary_process=44.0 | rotationRepetitionAccuracyY=TV4_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV4_secondary_process=5.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV4_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV3_secondary_process, TV4_secondary_process, TV4_secondary_process, TV1_secondary_process, TV4_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV4_secondary_process, TV4_secondary_process] | restApi='null | gripper='null}
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
 
-2023-08-16T16:10:14.256+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='3 | forceX=TV3_secondary_process=0.0 | forceY=TV1_secondary_process=0.0 | forceZ=TV1_secondary_process=0.0 | torqueX=TV1_secondary_process=0.0 | torqueY=TV3_secondary_process=0.0 | torqueZ=TV1_secondary_process=0.0 | positionRepetitionAccuracyX=TV3_secondary_process=12.0 | positionRepetitionAccuracyY=TV3_secondary_process=1.0 | positionRepetitionAccuracyZ=TV3_secondary_process=22.0 | rotationRepetitionAccuracyX=TV3_secondary_process=44.0 | rotationRepetitionAccuracyY=TV1_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV1_secondary_process=5.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=10.0 | width=100.0 | height=40.0 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV1_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV3_secondary_process, TV1_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV1_secondary_process, TV1_secondary_process] | restApi='null | gripper='null}
+You may wish to exclude one of them to ensure predictable runtime behavior
 
-2023-08-16T16:10:14.360+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceListFullObject ->
-2023-08-16T16:10:14.366+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=1, assetId=https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=NotAutomaticallyRemovable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=2.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=0.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=6.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=0.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=0.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.366+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=2, assetId=https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=NotAutomaticallyRemovable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=12.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=6.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=0.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=0.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.366+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=52, assetId=Greifer1, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=25.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=98.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=50.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=5000.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.366+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=102, assetId=https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=NotAutomaticallyRemovable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=12.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=6.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=0.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=0.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.366+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=152, assetId=Greifer2, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=25.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=98.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=50.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=2000.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.367+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=202, assetId=Greifer3, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=12.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=6.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=0.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=10.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.367+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : AssuranceFullObject(id=252, assetId=https://store.boschrexroth.com/Lineartechnik/Linearachsen/Compactmodule/Compactmodule-detailliert/COMPACTMODUL_R036040000?cclcl=de_DE, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=NotAutomaticallyRemovable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=12.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=6.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=0.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=0.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.367+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.e.M.Handler.RessourceChecker           : RessourceHolder{idShort='1 | forceX=TV2_secondary_process=0.0 | forceY=TV4_secondary_process=20.0 | forceZ=TV2_secondary_process=7.0 | torqueX=TV2_secondary_process=0.0 | torqueY=TV4_secondary_process=0.0 | torqueZ=TV3_secondary_process=2.0 | positionRepetitionAccuracyX=TV4_secondary_process=20.0 | positionRepetitionAccuracyY=TV4_secondary_process=1.0 | positionRepetitionAccuracyZ=TV4_secondary_process=22.0 | rotationRepetitionAccuracyX=TV4_secondary_process=44.0 | rotationRepetitionAccuracyY=TV2_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV2_secondary_process=5.0 | mass=0.4 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV2_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process, TV4_secondary_process, TV3_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process] | restApi='null | gripper='AssuranceFullObject(id=152, assetId=Greifer2, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=25.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=98.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=50.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=2000.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)}
+2023-08-23T18:49:20.448+02:00  INFO 28928 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 28928 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:20.449+02:00  INFO 28928 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:20.941+02:00  INFO 28928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:20.988+02:00  INFO 28928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:21.330+02:00  INFO 28928 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:21.372+02:00  INFO 28928 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:21.374+02:00  INFO 28928 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:21.519+02:00  INFO 28928 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:21.625+02:00  INFO 28928 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:21.643+02:00  INFO 28928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:21.818+02:00  INFO 28928 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a7a1a0d
+2023-08-23T18:49:21.820+02:00  INFO 28928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:21.868+02:00  INFO 28928 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:22.034+02:00  INFO 28928 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:22.535+02:00  INFO 28928 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:22.923+02:00  INFO 28928 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:23.292+02:00  WARN 28928 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:23.437+02:00  INFO 28928 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:23.580+02:00  INFO 28928 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.404 seconds (process running for 4.153)
+2023-08-23T18:49:24.163+02:00  INFO 28928 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:24.164+02:00  INFO 28928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:24.170+02:00  INFO 28928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:27.443+02:00  WARN 9052 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
 
-2023-08-16T16:10:14.367+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.e.M.Handler.RessourceChecker           : AssuranceFullObject(id=152, assetId=Greifer2, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=25.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=98.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=50.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=2000.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)
-2023-08-16T16:10:14.367+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : Neue Sequenz mit Greifer + Produkt
-2023-08-16T16:10:14.368+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='0 | forceX=TV4_secondary_process=100.0 | forceY=TV2_secondary_process=55.0 | forceZ=TV3_secondary_process=71.0 | torqueX=TV3_secondary_process=55.0 | torqueY=TV2_secondary_process=0.0 | torqueZ=TV2_secondary_process=9.0 | positionRepetitionAccuracyX=TV2_secondary_process=99.0 | positionRepetitionAccuracyY=TV2_secondary_process=1.0 | positionRepetitionAccuracyZ=TV2_secondary_process=27.0 | rotationRepetitionAccuracyX=TV2_secondary_process=44.0 | rotationRepetitionAccuracyY=TV3_secondary_process=25.0 | rotationRepetitionAccuracyZ=TV3_secondary_process=78.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV3_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV4_secondary_process, TV2_secondary_process, TV3_secondary_process, TV3_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV2_secondary_process, TV3_secondary_process, TV3_secondary_process] | restApi='null | gripper='null}
+Found multiple occurrences of org.json.JSONObject on the class path:
 
-2023-08-16T16:10:14.368+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='1 | forceX=TV2_secondary_process=12.0 | forceY=TV4_secondary_process=142.0 | forceZ=TV2_secondary_process=57.0 | torqueX=TV2_secondary_process=12.0 | torqueY=TV4_secondary_process=1234.0 | torqueZ=TV3_secondary_process=12.0 | positionRepetitionAccuracyX=TV4_secondary_process=45.0 | positionRepetitionAccuracyY=TV4_secondary_process=2.0 | positionRepetitionAccuracyZ=TV4_secondary_process=47.0 | rotationRepetitionAccuracyX=TV4_secondary_process=142.0 | rotationRepetitionAccuracyY=TV2_secondary_process=11.0 | rotationRepetitionAccuracyZ=TV2_secondary_process=11.0 | mass=2000.4 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV2_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process, TV4_secondary_process, TV3_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV4_secondary_process, TV2_secondary_process, TV2_secondary_process] | restApi='null | gripper='AssuranceFullObject(id=152, assetId=Greifer2, serialNumber=null, url=null, mass=2000.0, length=0.0, width=0.0, height=0.0, xCoM=0.0, yCoM=0.0, zCoM=0.0, connectionType=AutomaticallyRemoveable, operatingPrinciple=0, PositionX=0.0, PositionY=0.0, PositionZ=0.0, PositionRepetitionAccuracyX=25.0, PositionRepetitionAccuracyY=1.0, PositionRepetitionAccuracyZ=25.0, RotationX=0.0, RotationY=0.0, RotationZ=0.0, RotationRepetitionAccuracyX=98.0, RotationRepetitionAccuracyY=6.0, RotationRepetitionAccuracyZ=6.0, ForceX=12.0, ForceY=122.0, ForceZ=50.0, TorqueX=12.0, TorqueY=1222.0, TorqueZ=10.0, operatingCurrent=0.0, operatingVoltage=0.0, compressedAirPressure=0.0, airFlow=0.0, temperature=0.0, pressure=0.0, humidity=0.0, purity=false, foodGrade=0, explosiveness=1, price=2000.0, lengthSR=0.0, widthSR=0.0, heightSR=0.0, lengthOfUsage=15.0, maintenanceInterval=15.0, maintanceDuration=2.0, deliveryTime=4.0, oneTimeLicenceCost=0.0, monthlyLicenceCost=0.0, RestAPIAdress=http://localhost:8070)}
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
 
-2023-08-16T16:10:14.368+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='2 | forceX=TV1_secondary_process=0.0 | forceY=TV3_secondary_process=1.0 | forceZ=TV4_secondary_process=0.0 | torqueX=TV4_secondary_process=0.0 | torqueY=TV1_secondary_process=0.0 | torqueZ=TV4_secondary_process=0.0 | positionRepetitionAccuracyX=TV1_secondary_process=12.0 | positionRepetitionAccuracyY=TV1_secondary_process=1.0 | positionRepetitionAccuracyZ=TV1_secondary_process=22.0 | rotationRepetitionAccuracyX=TV1_secondary_process=44.0 | rotationRepetitionAccuracyY=TV4_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV4_secondary_process=5.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=100.0 | width=100.0 | height=47.5 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV4_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV3_secondary_process, TV4_secondary_process, TV4_secondary_process, TV1_secondary_process, TV4_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV4_secondary_process, TV4_secondary_process] | restApi='null | gripper='null}
+You may wish to exclude one of them to ensure predictable runtime behavior
 
-2023-08-16T16:10:14.368+02:00  INFO 24768 --- [http-nio-8080-exec-2] c.example.Masterproject4.HtmlController  : RessourceHolder{idShort='3 | forceX=TV3_secondary_process=0.0 | forceY=TV1_secondary_process=0.0 | forceZ=TV1_secondary_process=0.0 | torqueX=TV1_secondary_process=0.0 | torqueY=TV3_secondary_process=0.0 | torqueZ=TV1_secondary_process=0.0 | positionRepetitionAccuracyX=TV3_secondary_process=12.0 | positionRepetitionAccuracyY=TV3_secondary_process=1.0 | positionRepetitionAccuracyZ=TV3_secondary_process=22.0 | rotationRepetitionAccuracyX=TV3_secondary_process=44.0 | rotationRepetitionAccuracyY=TV1_secondary_process=5.0 | rotationRepetitionAccuracyZ=TV1_secondary_process=5.0 | mass=0.5 | meanRoughness=0.0 | ferroMagnetic=true | length=10.0 | width=100.0 | height=40.0 | centerOfMassX=50.0 | centerOfMassY=50.0 | centerOfMassZ=20.0 | tvList=[TV1_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV1_secondary_process, TV1_secondary_process, TV1_secondary_process, TV3_secondary_process, TV1_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV3_secondary_process, TV1_secondary_process, TV1_secondary_process] | restApi='null | gripper='null}
+2023-08-23T18:49:27.455+02:00  INFO 9052 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 9052 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:27.456+02:00  INFO 9052 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:27.938+02:00  INFO 9052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:27.986+02:00  INFO 9052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:28.333+02:00  INFO 9052 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:28.379+02:00  INFO 9052 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:28.381+02:00  INFO 9052 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:28.532+02:00  INFO 9052 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:28.640+02:00  INFO 9052 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:28.659+02:00  INFO 9052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:28.825+02:00  INFO 9052 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:49:28.827+02:00  INFO 9052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:28.869+02:00  INFO 9052 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:29.044+02:00  INFO 9052 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:29.546+02:00  INFO 9052 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:29.925+02:00  INFO 9052 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:30.261+02:00  WARN 9052 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:30.393+02:00  INFO 9052 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:30.572+02:00  INFO 9052 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.414 seconds (process running for 4.205)
+2023-08-23T18:49:31.161+02:00  INFO 9052 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:31.162+02:00  INFO 9052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:31.168+02:00  INFO 9052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:34.586+02:00  WARN 19932 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
 
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:49:34.599+02:00  INFO 19932 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 19932 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:34.600+02:00  INFO 19932 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:35.087+02:00  INFO 19932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:35.136+02:00  INFO 19932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:35.469+02:00  INFO 19932 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:35.515+02:00  INFO 19932 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:35.517+02:00  INFO 19932 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:35.668+02:00  INFO 19932 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:35.773+02:00  INFO 19932 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:35.789+02:00  INFO 19932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:35.959+02:00  INFO 19932 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2023-08-23T18:49:35.961+02:00  INFO 19932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:36.004+02:00  INFO 19932 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:36.188+02:00  INFO 19932 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:36.690+02:00  INFO 19932 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:37.066+02:00  INFO 19932 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:37.432+02:00  WARN 19932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:37.576+02:00  INFO 19932 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:37.720+02:00  INFO 19932 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.402 seconds (process running for 4.318)
+2023-08-23T18:49:38.315+02:00  INFO 19932 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:38.316+02:00  INFO 19932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:38.323+02:00  INFO 19932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:41.244+02:00  WARN 7032 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:49:41.256+02:00  INFO 7032 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 7032 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:41.257+02:00  INFO 7032 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:41.742+02:00  INFO 7032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:41.794+02:00  INFO 7032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:42.130+02:00  INFO 7032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:42.175+02:00  INFO 7032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:42.176+02:00  INFO 7032 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:42.321+02:00  INFO 7032 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:42.419+02:00  INFO 7032 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:42.434+02:00  INFO 7032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:42.591+02:00  INFO 7032 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:49:42.592+02:00  INFO 7032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:42.632+02:00  INFO 7032 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:42.800+02:00  INFO 7032 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:43.284+02:00  INFO 7032 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:43.671+02:00  INFO 7032 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:43.984+02:00  WARN 7032 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:44.118+02:00  INFO 7032 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:44.279+02:00  INFO 7032 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.299 seconds (process running for 4.322)
+2023-08-23T18:49:44.874+02:00  INFO 7032 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:44.876+02:00  INFO 7032 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:44.883+02:00  INFO 7032 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:47.858+02:00  WARN 29020 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:49:47.871+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 29020 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:47.873+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:48.363+02:00  INFO 29020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:48.412+02:00  INFO 29020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:48.741+02:00  INFO 29020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:48.789+02:00  INFO 29020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:48.791+02:00  INFO 29020 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:48.939+02:00  INFO 29020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:49.045+02:00  INFO 29020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:49.062+02:00  INFO 29020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:49.232+02:00  INFO 29020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ef5dd23
+2023-08-23T18:49:49.234+02:00  INFO 29020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:49.276+02:00  INFO 29020 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:49.452+02:00  INFO 29020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:49.963+02:00  INFO 29020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:50.333+02:00  INFO 29020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:50.683+02:00  WARN 29020 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:50.814+02:00  INFO 29020 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:50.971+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.383 seconds (process running for 4.463)
+2023-08-23T18:49:51.584+02:00  INFO 29020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:51.586+02:00  INFO 29020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:51.593+02:00  INFO 29020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:49:54.857+02:00  WARN 11824 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:49:54.870+02:00  INFO 11824 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 11824 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:49:54.870+02:00  INFO 11824 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:49:55.344+02:00  INFO 11824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:49:55.392+02:00  INFO 11824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:49:55.735+02:00  INFO 11824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:49:55.788+02:00  INFO 11824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:49:55.789+02:00  INFO 11824 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:49:55.944+02:00  INFO 11824 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:56.049+02:00  INFO 11824 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:49:56.067+02:00  INFO 11824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:49:56.229+02:00  INFO 11824 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2023-08-23T18:49:56.231+02:00  INFO 11824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:49:56.268+02:00  INFO 11824 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:49:56.450+02:00  INFO 11824 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:49:56.987+02:00  INFO 11824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:49:57.366+02:00  INFO 11824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:57.712+02:00  WARN 11824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:49:57.861+02:00  INFO 11824 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:49:58.016+02:00  INFO 11824 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.416 seconds (process running for 4.295)
+2023-08-23T18:49:58.646+02:00  INFO 11824 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:49:58.648+02:00  INFO 11824 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:49:58.653+02:00  INFO 11824 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:01.646+02:00  WARN 1448 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:01.657+02:00  INFO 1448 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 1448 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:01.658+02:00  INFO 1448 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:02.148+02:00  INFO 1448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:02.195+02:00  INFO 1448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:02.522+02:00  INFO 1448 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:02.570+02:00  INFO 1448 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:02.572+02:00  INFO 1448 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:02.730+02:00  INFO 1448 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:02.835+02:00  INFO 1448 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:02.856+02:00  INFO 1448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:03.019+02:00  INFO 1448 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ef5dd23
+2023-08-23T18:50:03.021+02:00  INFO 1448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:03.061+02:00  INFO 1448 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:03.218+02:00  INFO 1448 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:03.728+02:00  INFO 1448 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:04.095+02:00  INFO 1448 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:04.426+02:00  WARN 1448 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:04.562+02:00  INFO 1448 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:04.711+02:00  INFO 1448 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.322 seconds (process running for 4.385)
+2023-08-23T18:50:05.323+02:00  INFO 1448 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:05.325+02:00  INFO 1448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:05.331+02:00  INFO 1448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:08.445+02:00  WARN 28180 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:08.458+02:00  INFO 28180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 28180 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:08.459+02:00  INFO 28180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:08.952+02:00  INFO 28180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:09.001+02:00  INFO 28180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:09.340+02:00  INFO 28180 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:09.389+02:00  INFO 28180 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:09.391+02:00  INFO 28180 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:09.543+02:00  INFO 28180 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:09.649+02:00  INFO 28180 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:09.666+02:00  INFO 28180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:09.835+02:00  INFO 28180 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11399548
+2023-08-23T18:50:09.837+02:00  INFO 28180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:09.878+02:00  INFO 28180 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:10.049+02:00  INFO 28180 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:10.557+02:00  INFO 28180 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:10.945+02:00  INFO 28180 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:11.308+02:00  WARN 28180 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:11.445+02:00  INFO 28180 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:11.625+02:00  INFO 28180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.44 seconds (process running for 4.304)
+2023-08-23T18:50:12.250+02:00  INFO 28180 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:12.251+02:00  INFO 28180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:12.257+02:00  INFO 28180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:15.106+02:00  WARN 30800 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:15.119+02:00  INFO 30800 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 30800 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:15.120+02:00  INFO 30800 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:15.577+02:00  INFO 30800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:15.626+02:00  INFO 30800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:15.976+02:00  INFO 30800 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:16.020+02:00  INFO 30800 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:16.022+02:00  INFO 30800 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:16.177+02:00  INFO 30800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:16.284+02:00  INFO 30800 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:16.305+02:00  INFO 30800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:16.481+02:00  INFO 30800 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:50:16.483+02:00  INFO 30800 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:16.525+02:00  INFO 30800 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:16.694+02:00  INFO 30800 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:17.211+02:00  INFO 30800 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:17.579+02:00  INFO 30800 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:17.910+02:00  WARN 30800 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:18.047+02:00  INFO 30800 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:18.208+02:00  INFO 30800 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.361 seconds (process running for 4.435)
+2023-08-23T18:50:18.807+02:00  INFO 30800 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:18.808+02:00  INFO 30800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:18.814+02:00  INFO 30800 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:22.129+02:00  WARN 22896 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:22.143+02:00  INFO 22896 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 22896 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:22.143+02:00  INFO 22896 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:22.629+02:00  INFO 22896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:22.680+02:00  INFO 22896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:23.016+02:00  INFO 22896 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:23.066+02:00  INFO 22896 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:23.068+02:00  INFO 22896 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:23.220+02:00  INFO 22896 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:23.328+02:00  INFO 22896 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:23.347+02:00  INFO 22896 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:23.530+02:00  INFO 22896 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11399548
+2023-08-23T18:50:23.532+02:00  INFO 22896 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:23.577+02:00  INFO 22896 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:23.744+02:00  INFO 22896 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:24.241+02:00  INFO 22896 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:24.619+02:00  INFO 22896 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:24.965+02:00  WARN 22896 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:25.104+02:00  INFO 22896 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:25.252+02:00  INFO 22896 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.406 seconds (process running for 4.374)
+2023-08-23T18:50:25.876+02:00  INFO 22896 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:25.878+02:00  INFO 22896 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:25.884+02:00  INFO 22896 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:28.852+02:00  WARN 19004 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:28.865+02:00  INFO 19004 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 19004 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:28.866+02:00  INFO 19004 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:29.349+02:00  INFO 19004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:29.399+02:00  INFO 19004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:29.720+02:00  INFO 19004 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:29.768+02:00  INFO 19004 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:29.769+02:00  INFO 19004 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:29.921+02:00  INFO 19004 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:30.030+02:00  INFO 19004 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:30.047+02:00  INFO 19004 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:30.214+02:00  INFO 19004 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ef5dd23
+2023-08-23T18:50:30.216+02:00  INFO 19004 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:30.258+02:00  INFO 19004 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:30.422+02:00  INFO 19004 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:30.919+02:00  INFO 19004 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:31.291+02:00  INFO 19004 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:31.643+02:00  WARN 19004 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:31.781+02:00  INFO 19004 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:31.934+02:00  INFO 19004 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.349 seconds (process running for 4.421)
+2023-08-23T18:50:32.542+02:00  INFO 19004 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:32.544+02:00  INFO 19004 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:32.550+02:00  INFO 19004 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:50:35.652+02:00  WARN 26264 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:50:35.665+02:00  INFO 26264 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 26264 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:50:35.666+02:00  INFO 26264 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:50:36.176+02:00  INFO 26264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:50:36.228+02:00  INFO 26264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:50:36.563+02:00  INFO 26264 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:50:36.608+02:00  INFO 26264 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:50:36.610+02:00  INFO 26264 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:50:36.763+02:00  INFO 26264 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:36.868+02:00  INFO 26264 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:50:36.884+02:00  INFO 26264 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:50:37.033+02:00  INFO 26264 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11399548
+2023-08-23T18:50:37.035+02:00  INFO 26264 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:50:37.076+02:00  INFO 26264 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:50:37.262+02:00  INFO 26264 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:50:37.843+02:00  INFO 26264 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:50:38.228+02:00  INFO 26264 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:38.564+02:00  WARN 26264 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:50:38.701+02:00  INFO 26264 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:50:38.863+02:00  INFO 26264 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.498 seconds (process running for 4.418)
+2023-08-23T18:50:39.495+02:00  INFO 26264 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:50:39.496+02:00  INFO 26264 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:50:39.503+02:00  INFO 26264 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:07.373+02:00  WARN 29020 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:07.385+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 29020 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:07.386+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:07.870+02:00  INFO 29020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:07.924+02:00  INFO 29020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:08.262+02:00  INFO 29020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:08.312+02:00  INFO 29020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:08.314+02:00  INFO 29020 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:08.464+02:00  INFO 29020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:08.577+02:00  INFO 29020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:08.598+02:00  INFO 29020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:08.759+02:00  INFO 29020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a7a1a0d
+2023-08-23T18:52:08.761+02:00  INFO 29020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:08.804+02:00  INFO 29020 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:08.978+02:00  INFO 29020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:09.491+02:00  INFO 29020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:09.886+02:00  INFO 29020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:10.230+02:00  WARN 29020 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:10.371+02:00  INFO 29020 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:10.560+02:00  INFO 29020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.466 seconds (process running for 4.245)
+2023-08-23T18:52:11.174+02:00  INFO 29020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:11.176+02:00  INFO 29020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:11.182+02:00  INFO 29020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:14.308+02:00  WARN 1236 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:14.321+02:00  INFO 1236 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 1236 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:14.321+02:00  INFO 1236 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:14.795+02:00  INFO 1236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:14.843+02:00  INFO 1236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:15.191+02:00  INFO 1236 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:15.247+02:00  INFO 1236 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:15.249+02:00  INFO 1236 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:15.411+02:00  INFO 1236 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:15.516+02:00  INFO 1236 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:15.530+02:00  INFO 1236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:15.689+02:00  INFO 1236 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11399548
+2023-08-23T18:52:15.690+02:00  INFO 1236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:15.730+02:00  INFO 1236 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:15.892+02:00  INFO 1236 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:16.403+02:00  INFO 1236 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:16.820+02:00  INFO 1236 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:17.151+02:00  WARN 1236 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:17.287+02:00  INFO 1236 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:17.456+02:00  INFO 1236 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.412 seconds (process running for 4.34)
+2023-08-23T18:52:18.065+02:00  INFO 1236 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:18.067+02:00  INFO 1236 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:18.074+02:00  INFO 1236 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:21.233+02:00  WARN 6080 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:21.245+02:00  INFO 6080 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 6080 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:21.246+02:00  INFO 6080 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:21.752+02:00  INFO 6080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:21.809+02:00  INFO 6080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:22.136+02:00  INFO 6080 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:22.186+02:00  INFO 6080 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:22.187+02:00  INFO 6080 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:22.338+02:00  INFO 6080 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:22.442+02:00  INFO 6080 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:22.459+02:00  INFO 6080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:22.608+02:00  INFO 6080 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2023-08-23T18:52:22.611+02:00  INFO 6080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:22.651+02:00  INFO 6080 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:22.822+02:00  INFO 6080 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:23.341+02:00  INFO 6080 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:23.714+02:00  INFO 6080 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:24.068+02:00  WARN 6080 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:24.207+02:00  INFO 6080 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:24.393+02:00  INFO 6080 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.448 seconds (process running for 4.384)
+2023-08-23T18:52:25.018+02:00  INFO 6080 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:25.020+02:00  INFO 6080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:25.027+02:00  INFO 6080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:27.730+02:00  WARN 27444 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:27.744+02:00  INFO 27444 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 27444 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:27.745+02:00  INFO 27444 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:28.228+02:00  INFO 27444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:28.278+02:00  INFO 27444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:28.614+02:00  INFO 27444 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:28.664+02:00  INFO 27444 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:28.666+02:00  INFO 27444 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:28.817+02:00  INFO 27444 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:28.926+02:00  INFO 27444 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:28.944+02:00  INFO 27444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:29.128+02:00  INFO 27444 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ef5dd23
+2023-08-23T18:52:29.129+02:00  INFO 27444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:29.172+02:00  INFO 27444 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:29.338+02:00  INFO 27444 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:29.861+02:00  INFO 27444 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:30.245+02:00  INFO 27444 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:30.588+02:00  WARN 27444 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:30.734+02:00  INFO 27444 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:30.923+02:00  INFO 27444 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.458 seconds (process running for 4.515)
+2023-08-23T18:52:31.566+02:00  INFO 27444 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:31.568+02:00  INFO 27444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:31.574+02:00  INFO 27444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:35.050+02:00  WARN 26496 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:35.065+02:00  INFO 26496 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 26496 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:35.066+02:00  INFO 26496 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:35.542+02:00  INFO 26496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:35.599+02:00  INFO 26496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:35.940+02:00  INFO 26496 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:35.989+02:00  INFO 26496 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:35.991+02:00  INFO 26496 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:36.141+02:00  INFO 26496 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:36.253+02:00  INFO 26496 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:36.276+02:00  INFO 26496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:36.446+02:00  INFO 26496 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:52:36.447+02:00  INFO 26496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:36.492+02:00  INFO 26496 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:36.665+02:00  INFO 26496 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:37.173+02:00  INFO 26496 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:37.554+02:00  INFO 26496 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:37.878+02:00  WARN 26496 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:38.012+02:00  INFO 26496 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:38.163+02:00  INFO 26496 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.382 seconds (process running for 4.123)
+2023-08-23T18:52:38.767+02:00  INFO 26496 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:38.770+02:00  INFO 26496 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:38.776+02:00  INFO 26496 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:42.168+02:00  WARN 11508 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:42.180+02:00  INFO 11508 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 11508 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:42.181+02:00  INFO 11508 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:42.664+02:00  INFO 11508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:42.713+02:00  INFO 11508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:43.058+02:00  INFO 11508 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:43.110+02:00  INFO 11508 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:43.111+02:00  INFO 11508 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:43.263+02:00  INFO 11508 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:43.373+02:00  INFO 11508 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:43.390+02:00  INFO 11508 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:43.563+02:00  INFO 11508 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2023-08-23T18:52:43.565+02:00  INFO 11508 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:43.607+02:00  INFO 11508 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:43.807+02:00  INFO 11508 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:44.341+02:00  INFO 11508 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:44.727+02:00  INFO 11508 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:45.100+02:00  WARN 11508 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:45.252+02:00  INFO 11508 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:45.415+02:00  INFO 11508 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.522 seconds (process running for 4.385)
+2023-08-23T18:52:46.042+02:00  INFO 11508 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:46.043+02:00  INFO 11508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:46.050+02:00  INFO 11508 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:48.777+02:00  WARN 11180 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:48.789+02:00  INFO 11180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 11180 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:48.790+02:00  INFO 11180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:49.275+02:00  INFO 11180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:49.325+02:00  INFO 11180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:49.676+02:00  INFO 11180 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:49.722+02:00  INFO 11180 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:49.724+02:00  INFO 11180 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:49.885+02:00  INFO 11180 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:50.003+02:00  INFO 11180 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:50.021+02:00  INFO 11180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:50.200+02:00  INFO 11180 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:52:50.201+02:00  INFO 11180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:50.243+02:00  INFO 11180 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:50.422+02:00  INFO 11180 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:50.937+02:00  INFO 11180 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:51.313+02:00  INFO 11180 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:51.672+02:00  WARN 11180 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:51.826+02:00  INFO 11180 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:51.973+02:00  INFO 11180 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.466 seconds (process running for 4.535)
+2023-08-23T18:52:52.586+02:00  INFO 11180 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:52.588+02:00  INFO 11180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:52.600+02:00  INFO 11180 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:52:56.149+02:00  WARN 11288 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:52:56.163+02:00  INFO 11288 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 11288 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:52:56.163+02:00  INFO 11288 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:52:56.647+02:00  INFO 11288 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:52:56.700+02:00  INFO 11288 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:52:57.044+02:00  INFO 11288 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:52:57.092+02:00  INFO 11288 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:52:57.093+02:00  INFO 11288 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:52:57.246+02:00  INFO 11288 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:57.354+02:00  INFO 11288 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:52:57.370+02:00  INFO 11288 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:52:57.548+02:00  INFO 11288 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a7a1a0d
+2023-08-23T18:52:57.551+02:00  INFO 11288 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:52:57.596+02:00  INFO 11288 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:52:57.771+02:00  INFO 11288 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:52:58.275+02:00  INFO 11288 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:52:58.642+02:00  INFO 11288 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:59.023+02:00  WARN 11288 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:52:59.174+02:00  INFO 11288 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:52:59.323+02:00  INFO 11288 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.437 seconds (process running for 4.212)
+2023-08-23T18:52:59.939+02:00  INFO 11288 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:52:59.941+02:00  INFO 11288 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:52:59.947+02:00  INFO 11288 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:53:02.641+02:00  WARN 15944 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:53:02.656+02:00  INFO 15944 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 15944 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:53:02.657+02:00  INFO 15944 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:53:03.143+02:00  INFO 15944 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:53:03.191+02:00  INFO 15944 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:53:03.518+02:00  INFO 15944 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:53:03.568+02:00  INFO 15944 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:53:03.569+02:00  INFO 15944 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:53:03.718+02:00  INFO 15944 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:03.823+02:00  INFO 15944 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:53:03.836+02:00  INFO 15944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:53:03.993+02:00  INFO 15944 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11399548
+2023-08-23T18:53:03.995+02:00  INFO 15944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:53:04.037+02:00  INFO 15944 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:53:04.198+02:00  INFO 15944 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:04.707+02:00  INFO 15944 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:53:05.082+02:00  INFO 15944 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:05.414+02:00  WARN 15944 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:53:05.549+02:00  INFO 15944 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:53:05.703+02:00  INFO 15944 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.329 seconds (process running for 4.332)
+2023-08-23T18:53:06.306+02:00  INFO 15944 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:06.308+02:00  INFO 15944 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:53:06.314+02:00  INFO 15944 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:53:08.963+02:00  WARN 12556 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:53:08.975+02:00  INFO 12556 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 12556 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:53:08.976+02:00  INFO 12556 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:53:09.457+02:00  INFO 12556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:53:09.506+02:00  INFO 12556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:53:09.832+02:00  INFO 12556 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:53:09.879+02:00  INFO 12556 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:53:09.881+02:00  INFO 12556 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:53:10.028+02:00  INFO 12556 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:10.139+02:00  INFO 12556 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:53:10.156+02:00  INFO 12556 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:53:10.328+02:00  INFO 12556 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:53:10.329+02:00  INFO 12556 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:53:10.373+02:00  INFO 12556 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:53:10.537+02:00  INFO 12556 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:11.054+02:00  INFO 12556 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:53:11.438+02:00  INFO 12556 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:11.780+02:00  WARN 12556 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:53:11.923+02:00  INFO 12556 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:53:12.102+02:00  INFO 12556 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.411 seconds (process running for 4.479)
+2023-08-23T18:53:12.695+02:00  INFO 12556 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:12.697+02:00  INFO 12556 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:53:12.704+02:00  INFO 12556 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:53:16.276+02:00  WARN 24060 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:53:16.291+02:00  INFO 24060 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 24060 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:53:16.292+02:00  INFO 24060 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:53:16.772+02:00  INFO 24060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:53:16.823+02:00  INFO 24060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:53:17.174+02:00  INFO 24060 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:53:17.228+02:00  INFO 24060 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:53:17.230+02:00  INFO 24060 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:53:17.379+02:00  INFO 24060 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:17.489+02:00  INFO 24060 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:53:17.511+02:00  INFO 24060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:53:17.680+02:00  INFO 24060 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a7a1a0d
+2023-08-23T18:53:17.681+02:00  INFO 24060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:53:17.724+02:00  INFO 24060 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:53:17.891+02:00  INFO 24060 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:18.406+02:00  INFO 24060 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:53:18.791+02:00  INFO 24060 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:19.129+02:00  WARN 24060 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:53:19.273+02:00  INFO 24060 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:53:19.447+02:00  INFO 24060 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.446 seconds (process running for 4.203)
+2023-08-23T18:53:20.084+02:00  INFO 24060 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:20.086+02:00  INFO 24060 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:53:20.094+02:00  INFO 24060 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:53:24.753+02:00  WARN 30220 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:53:24.767+02:00  INFO 30220 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 30220 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:53:24.768+02:00  INFO 30220 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:53:25.247+02:00  INFO 30220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:53:25.305+02:00  INFO 30220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:53:25.656+02:00  INFO 30220 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:53:25.706+02:00  INFO 30220 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:53:25.708+02:00  INFO 30220 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:53:25.860+02:00  INFO 30220 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:25.966+02:00  INFO 30220 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:53:25.986+02:00  INFO 30220 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:53:26.161+02:00  INFO 30220 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T18:53:26.162+02:00  INFO 30220 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:53:26.203+02:00  INFO 30220 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:53:26.374+02:00  INFO 30220 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:26.909+02:00  INFO 30220 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:53:27.283+02:00  INFO 30220 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:27.622+02:00  WARN 30220 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:53:27.763+02:00  INFO 30220 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:53:27.919+02:00  INFO 30220 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.433 seconds (process running for 4.203)
+2023-08-23T18:53:28.543+02:00  INFO 30220 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:28.545+02:00  INFO 30220 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:53:28.551+02:00  INFO 30220 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T18:53:31.764+02:00  WARN 21764 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T18:53:31.780+02:00  INFO 21764 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 21764 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T18:53:31.781+02:00  INFO 21764 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T18:53:32.277+02:00  INFO 21764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T18:53:32.327+02:00  INFO 21764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
+2023-08-23T18:53:32.684+02:00  INFO 21764 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T18:53:32.747+02:00  INFO 21764 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T18:53:32.749+02:00  INFO 21764 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T18:53:32.909+02:00  INFO 21764 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:33.020+02:00  INFO 21764 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T18:53:33.045+02:00  INFO 21764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T18:53:33.229+02:00  INFO 21764 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46d0f89c
+2023-08-23T18:53:33.231+02:00  INFO 21764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T18:53:33.276+02:00  INFO 21764 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T18:53:33.451+02:00  INFO 21764 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T18:53:33.965+02:00  INFO 21764 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T18:53:34.345+02:00  INFO 21764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:34.701+02:00  WARN 21764 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T18:53:34.849+02:00  INFO 21764 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T18:53:35.026+02:00  INFO 21764 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.547 seconds (process running for 4.351)
+2023-08-23T18:53:35.691+02:00  INFO 21764 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T18:53:35.693+02:00  INFO 21764 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T18:53:35.699+02:00  INFO 21764 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T19:10:40.451+02:00  WARN 2020 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T19:10:40.472+02:00  INFO 2020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 2020 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T19:10:40.473+02:00  INFO 2020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T19:10:41.395+02:00  INFO 2020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T19:10:41.450+02:00  INFO 2020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interfaces.
+2023-08-23T19:10:41.915+02:00  INFO 2020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T19:10:41.975+02:00  INFO 2020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T19:10:41.977+02:00  INFO 2020 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T19:10:42.141+02:00  INFO 2020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:10:42.257+02:00  INFO 2020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T19:10:42.276+02:00  INFO 2020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T19:10:42.455+02:00  INFO 2020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e0a9b1d
+2023-08-23T19:10:42.456+02:00  INFO 2020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T19:10:42.502+02:00  INFO 2020 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T19:10:42.731+02:00  INFO 2020 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:10:43.335+02:00  INFO 2020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T19:10:43.775+02:00  INFO 2020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:10:44.183+02:00  WARN 2020 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T19:10:44.351+02:00  INFO 2020 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T19:10:44.534+02:00  INFO 2020 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 4.373 seconds (process running for 7.392)
+2023-08-23T19:10:45.327+02:00  INFO 2020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:10:45.329+02:00  INFO 2020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T19:10:45.339+02:00  INFO 2020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T19:10:49.206+02:00  WARN 16768 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T19:10:49.220+02:00  INFO 16768 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 16768 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T19:10:49.221+02:00  INFO 16768 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T19:10:49.822+02:00  INFO 16768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T19:10:49.872+02:00  INFO 16768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
+2023-08-23T19:10:50.234+02:00  INFO 16768 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T19:10:50.281+02:00  INFO 16768 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T19:10:50.282+02:00  INFO 16768 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T19:10:50.438+02:00  INFO 16768 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:10:50.550+02:00  INFO 16768 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T19:10:50.569+02:00  INFO 16768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T19:10:50.756+02:00  INFO 16768 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@163e8949
+2023-08-23T19:10:50.758+02:00  INFO 16768 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T19:10:50.802+02:00  INFO 16768 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T19:10:50.978+02:00  INFO 16768 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:10:51.533+02:00  INFO 16768 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T19:10:51.924+02:00  INFO 16768 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:10:52.307+02:00  WARN 16768 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T19:10:52.458+02:00  INFO 16768 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T19:10:52.614+02:00  INFO 16768 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 3.722 seconds (process running for 4.587)
+2023-08-23T19:10:53.254+02:00  INFO 16768 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:10:53.255+02:00  INFO 16768 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T19:10:53.261+02:00  INFO 16768 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-23T19:26:46.378+02:00  WARN 6532 --- [main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/domin/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/domin/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-08-23T19:26:46.401+02:00  INFO 6532 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Starting AssuranceMapperTest using Java 18 with PID 6532 (started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-08-23T19:26:46.402+02:00  INFO 6532 --- [main] c.e.M.Mapper.AssuranceMapperTest         : No active profile set, falling back to 1 default profile: "default"
+2023-08-23T19:26:47.242+02:00  INFO 6532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-23T19:26:47.318+02:00  INFO 6532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interfaces.
+2023-08-23T19:26:47.894+02:00  INFO 6532 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-23T19:26:48.000+02:00  INFO 6532 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-08-23T19:26:48.004+02:00  INFO 6532 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-08-23T19:26:48.287+02:00  INFO 6532 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:26:48.569+02:00  INFO 6532 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-23T19:26:48.607+02:00  INFO 6532 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-23T19:26:48.933+02:00  INFO 6532 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@610fbe1c
+2023-08-23T19:26:48.936+02:00  INFO 6532 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-23T19:26:49.018+02:00  INFO 6532 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-08-23T19:26:49.384+02:00  INFO 6532 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-08-23T19:26:50.511+02:00  INFO 6532 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-23T19:26:51.175+02:00  INFO 6532 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:26:51.848+02:00  WARN 6532 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23T19:26:52.130+02:00  INFO 6532 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-08-23T19:26:52.417+02:00  INFO 6532 --- [main] c.e.M.Mapper.AssuranceMapperTest         : Started AssuranceMapperTest in 6.507 seconds (process running for 7.899)
+2023-08-23T19:26:53.534+02:00  INFO 6532 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-23T19:26:53.537+02:00  INFO 6532 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-23T19:26:53.562+02:00  INFO 6532 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

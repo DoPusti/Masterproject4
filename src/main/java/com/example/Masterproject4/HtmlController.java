@@ -123,10 +123,6 @@ public class HtmlController {
                 Log.info(assuranceInLists.toString());
             });
 
-
-
-
-
             /*
                 Passende Ressource Greifer suchen (AutomaticallyRemoveable)
 
@@ -137,10 +133,17 @@ public class HtmlController {
                 Passender Greifer wurde nun ausgesucht -> Suche nach Achse oder passenden Roboter
              */
             productRequirementMapper.setNewProperties(ressourceHolderList);
-            Log.info("Neue Sequenz mit Greifer + Produkt");
+            Log.info("Neue kombinierte Anforderung mit Greifer + Produkt");
             ressourceHolderList.forEach(ressourceHolder -> {
                 Log.info(ressourceHolder.toString());
             });
+
+            /*
+                Passende Achse bzw. Roboter finden
+
+             */
+
+            ressourceChecker.searchForAxe(ressourceHolderList,assuranceList);
 
         }
 

@@ -38,7 +38,7 @@ public class RessourceChecker {
         RessourceHolder matchedRessourceholder = new RessourceHolder();
         AssuranceFullObject constraints = new AssuranceFullObject();
         for (RessourceHolder ressourceHolder : ressourceHolderIn) {
-            constraints = compareRessourceWithGripper(ressourceHolder, assuranceListIn);
+            constraints = compareRessourceAssurance(ressourceHolder, assuranceListIn, true);
             if (!(constraints.getAssetId() == null)) {
                 matchedRessourceholder = ressourceHolder;
                 ressourceHolder.setGripper(constraints);
@@ -49,24 +49,91 @@ public class RessourceChecker {
         Log.info(constraints.toString());
     }
 
-    public AssuranceFullObject compareRessourceWithGripper(RessourceHolder ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
+    public AssuranceFullObject compareRessourceAssurance(RessourceHolder ressourceHolderIn, List<AssuranceFullObject> assuranceListIn, Boolean gripper) {
         AssuranceFullObject constraintsOut = new AssuranceFullObject();
         for (AssuranceFullObject constraint : assuranceListIn) {
-            if (constraint.getConnectionType().equals("AutomaticallyRemoveable")) {
-                if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue() && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue() && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue() && constraint.getTorqueX() >= ressourceHolderIn.getTorqueX().getValue() && constraint.getTorqueY() >= ressourceHolderIn.getTorqueY().getValue() && constraint.getTorqueZ() >= ressourceHolderIn.getTorqueZ().getValue() && constraint.getPositionRepetitionAccuracyX() >= ressourceHolderIn.getPositionRepetitionAccuracyX().getValue() && constraint.getPositionRepetitionAccuracyY() >= ressourceHolderIn.getPositionRepetitionAccuracyY().getValue() && constraint.getPositionRepetitionAccuracyZ() >= ressourceHolderIn.getPositionRepetitionAccuracyZ().getValue() && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue() && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue() && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
-                    if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
-                        //System.out.println("constraintsOut " + constraintsOut);
-                        //System.out.println("constraint " + constraint);
-                        constraintsOut = constraint;
-                        //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
+            if (gripper) {
+                if (constraint.getConnectionType().equals("AutomaticallyRemoveable")) {
+                    if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
+                            && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
+                            && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue()
+                            && constraint.getTorqueX() >= ressourceHolderIn.getTorqueX().getValue()
+                            && constraint.getTorqueY() >= ressourceHolderIn.getTorqueY().getValue()
+                            && constraint.getTorqueZ() >= ressourceHolderIn.getTorqueZ().getValue()
+                            && constraint.getPositionRepetitionAccuracyX() >= ressourceHolderIn.getPositionRepetitionAccuracyX().getValue()
+                            && constraint.getPositionRepetitionAccuracyY() >= ressourceHolderIn.getPositionRepetitionAccuracyY().getValue()
+                            && constraint.getPositionRepetitionAccuracyZ() >= ressourceHolderIn.getPositionRepetitionAccuracyZ().getValue()
+                            && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue()
+                            && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
+                            && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
+                        if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
+                            //System.out.println("constraintsOut " + constraintsOut);
+                            //System.out.println("constraint " + constraint);
+                            constraintsOut = constraint;
+                            //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
 
+                        }
                     }
                 }
+            } else {
+                if (constraint.getConnectionType().equals("NotAutomaticallyRemoveable")) {
+                    if (constraint.getForceX() >= ressourceHolderIn.getForceX().getValue()
+                            && constraint.getForceY() >= ressourceHolderIn.getForceY().getValue()
+                            && constraint.getForceZ() >= ressourceHolderIn.getForceZ().getValue()
+                            && constraint.getTorqueX() >= ressourceHolderIn.getTorqueX().getValue()
+                            && constraint.getTorqueY() >= ressourceHolderIn.getTorqueY().getValue()
+                            && constraint.getTorqueZ() >= ressourceHolderIn.getTorqueZ().getValue()
+                            && constraint.getPositionRepetitionAccuracyX() >= ressourceHolderIn.getPositionRepetitionAccuracyX().getValue()
+                            && constraint.getPositionRepetitionAccuracyY() >= ressourceHolderIn.getPositionRepetitionAccuracyY().getValue()
+                            && constraint.getPositionRepetitionAccuracyZ() >= ressourceHolderIn.getPositionRepetitionAccuracyZ().getValue()
+                            && constraint.getRotationRepetitionAccuracyX() >= ressourceHolderIn.getRotationRepetitionAccuracyX().getValue()
+                            && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
+                            && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()
+                            && constraint.getMass() >= ressourceHolderIn.getMass()
+                            && constraint.getXCoM() >= ressourceHolderIn.getCenterOfMassX()
+                            && constraint.getYCoM() >= ressourceHolderIn.getCenterOfMassY()
+                            && constraint.getZCoM() >= ressourceHolderIn.getCenterOfMassZ()
+                            && constraint.getHeight() >= ressourceHolderIn.getHeight()
+                            && constraint.getWidth() >= ressourceHolderIn.getWidth()
+                            && constraint.getLength() >= ressourceHolderIn.getLength()
+                            && constraint.getPositionX() >= ressourceHolderIn.getPositionX().getValue()
+                            && constraint.getPositionY() >= ressourceHolderIn.getPositionY().getValue()
+                            && constraint.getPositionZ() >= ressourceHolderIn.getPositionZ().getValue()
+                            && constraint.getRotationX() >= ressourceHolderIn.getRotationX().getValue()
+                            && constraint.getRotationY() >= ressourceHolderIn.getRotationY().getValue()
+                            && constraint.getRotationZ() >= ressourceHolderIn.getRotationZ().getValue()
+
+                    ) {
+                        if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
+                            //System.out.println("constraintsOut " + constraintsOut);
+                            //System.out.println("constraint " + constraint);
+                            constraintsOut = constraint;
+                            //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
+
+                        }
+                    }
+                }
+
             }
+
         }
         return constraintsOut;
     }
 
+    public void searchForAxe(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
+        RessourceHolder matchedRessourceholder = new RessourceHolder();
+        AssuranceFullObject constraints = new AssuranceFullObject();
+        for (RessourceHolder ressourceHolder : ressourceHolderIn) {
+            constraints = compareRessourceAssurance(ressourceHolder, assuranceListIn, false);
+            if (!(constraints.getAssetId() == null)) {
+                matchedRessourceholder = ressourceHolder;
+                ressourceHolder.setGripper(constraints);
+                break;
+            }
+        }
+        Log.info(matchedRessourceholder.toString());
+        Log.info(constraints.toString());
+    }
 
 
 }

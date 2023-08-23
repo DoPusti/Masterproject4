@@ -112,9 +112,9 @@ class AssuranceMapperTest {
 
             });
 
-    });
+        });
         System.out.println("Liste für Assurances gefüllt");
-}
+    }
 
     // Submodel MediaSupply
     private void fillSubModelMediaSupply(List<SubModelElement> subModelElements, String SECIdShort) {
@@ -166,7 +166,9 @@ class AssuranceMapperTest {
             value2 = "0";
         }
         switch (SECIdshort) {
-            case "InternalPropertyRelations": assuranceFullObject.setRestAPIAdress(value1); break;
+            case "InternalPropertyRelations":
+                assuranceFullObject.setRestAPIAdress(value1);
+                break;
             case "Properties":
                 switch (idShort) {
                     case "Mass" -> assuranceFullObject.setMass(Double.parseDouble(value1));
@@ -266,6 +268,6 @@ class AssuranceMapperTest {
         }
     }
 
-;
+    ;
 
 }
