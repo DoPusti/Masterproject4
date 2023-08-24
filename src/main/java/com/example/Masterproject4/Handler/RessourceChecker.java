@@ -1,6 +1,7 @@
 package com.example.Masterproject4.Handler;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.ProduktAnforderung.KinematicChain;
 import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -133,6 +136,99 @@ public class RessourceChecker {
         }
         Log.info(matchedRessourceholder.toString());
         Log.info(constraints.toString());
+    }
+
+
+
+    public void searchForKinematicChain(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
+        int matchCounter = 0;
+        Class<RessourceHolder> ressourceHolderClass = RessourceHolder.class;
+        Field[] fields = ressourceHolderClass.getDeclaredFields();
+        int minMatchAttributes = (int) Math.ceil(fields.length / 2.0);
+
+        // Schleife über alle Sequenzen des Satzes
+        ressourceHolderIn.forEach(sequenz -> {
+            System.out.println("Gelesene Sequenz:");
+            System.out.println(sequenz.toString());
+            assuranceListIn.forEach(assurance -> {
+                checkMatchingAssurance(sequenz, assurance);
+
+            });
+
+
+
+
+            // Ziel -> Constraints müssen immer erfüllt sein
+            //      -> Min. 1 RequiredStateChange muss erfüllt sein
+
+        });
+
+
+
+
+    }
+
+    public void checkMatchingAssurance(RessourceHolder ressourceIn, AssuranceFullObject assuranceIn) {
+        List<KinematicChain> kinematicChainList  =ressourceIn.getKinematicChainList();
+        KinematicChain kinematicChain = new KinematicChain();
+        List<Boolean> sequences = new ArrayList<>();
+        int booleanCounter = 0;
+        double price = assuranceIn.getPrice();
+
+        AttributeComparer ressourceAttribute = AttributeComparer.builder()
+                .positionX(ressourceIn.getPositionX().getValue())
+                .positionY(ressourceIn.getPositionY().getValue())
+                .positionZ(ressourceIn.getPositionZ().getValue())
+                .forceX(ressourceIn.getForceX().getValue())
+                .forceY(ressourceIn.getForceY().getValue())
+                .forceZ(ressourceIn.getForceZ().getValue())
+                .build();
+
+        AttributeComparer assuranceInAttribute = AttributeComparer.builder()
+                .positionX(ressourceIn.getPositionX().getValue())
+                .positionY(ressourceIn.getPositionY().getValue())
+                .positionZ(ressourceIn.getPositionZ().getValue())
+                .forceX(ressourceIn.getForceX().getValue())
+                .forceY(ressourceIn.getForceY().getValue())
+                .forceZ(ressourceIn.getForceZ().getValue())
+                .build();
+
+        Field[] fieldsOfAttributeComparer =  ressourceAttribute.getClass().getDeclaredFields();
+        Field[] fieldsOfkinematicChain =  kinematicChain.getClass().getDeclaredFields();
+
+        for (Field field : fieldsOfAttributeComparer) {
+            field.setAccessible(true);
+            try {
+                Object value1 = field.get(ressourceAttribute);
+                Object value2 = field.get(assuranceInAttribute);
+                if (value1 instanceof Double && value2 instanceof Double) {
+                    double doubleValue1 = (double) value1;
+                    double doubleValue2 = (double) value2;
+                    Field booleanField = fieldsOfkinematicChain.getClass().getDeclaredField(field.getName());
+                    booleanField.setAccessible(true);
+                    if(doubleValue1 <= doubleValue2) {
+                        booleanField.set(fieldsOfkinematicChain, true);
+                        sequences.add(true);
+                        booleanCounter ++;
+                    } else {
+                        booleanField.set(fieldsOfkinematicChain, false);
+                        sequences.add(false);
+                    }
+
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchFieldException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if(booleanCounter > 3) {
+            kinematicChain.setSequences(sequences);
+            kinematicChain.setAssetId(assuranceIn.getAssetId());
+        }
+
+
+
     }
 
 

@@ -1,7 +1,6 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.Handler.Constraints;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,12 +26,6 @@ public class RessourceHolder {
     double centerOfMassX;
     double centerOfMassY;
     double centerOfMassZ;
-    boolean lenghtIsSet;
-    boolean widthIsSet;
-    boolean heightIsSet;
-    boolean centerOfMassXIsSet;
-    boolean centerOfMassYIsSet;
-    boolean centerOfMassZIsSet;
 
     List<String> tvList;
 
@@ -56,6 +49,8 @@ public class RessourceHolder {
     AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyZ;
 
     AssuranceFullObject gripper;
+
+    List<KinematicChain> kinematicChainList;
 
 
     @Override

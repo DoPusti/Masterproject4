@@ -142,6 +142,7 @@ public class HtmlController {
                 Passende Achse bzw. Roboter finden
 
              */
+            ressourceChecker.searchForKinematicChain(ressourceHolderList,assuranceList);
 
             ressourceChecker.searchForAxe(ressourceHolderList,assuranceList);
 
