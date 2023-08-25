@@ -79,6 +79,16 @@ public class AssuranceFullObject {
 
     String RestAPIAdress;
 
+    public String getStringSequence() {
+        return "id='" + id +
+                " | forceX=" + ForceX +
+                " | forceY=" + ForceY +
+                " | forceZ=" + ForceZ +
+                " | positionX=" + PositionX +
+                " | positionY=" + PositionY +
+                " | positionZ=" + PositionZ;
+    }
+
 
 
 }

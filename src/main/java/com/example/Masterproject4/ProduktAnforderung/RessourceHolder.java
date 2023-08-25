@@ -52,6 +52,16 @@ public class RessourceHolder {
 
     List<KinematicChain> kinematicChainList;
 
+    public String getStringSequence() {
+        return "idShort='" + idShort +
+                " | forceX=" + forceX.getValue() +
+                " | forceY=" + forceY.getValue() +
+                " | forceZ=" + forceZ.getValue() +
+                " | positionX=" + positionX.getValue() +
+                " | positionY=" + positionY.getValue() +
+                " | positionZ=" + positionZ.getValue();
+    }
+
 
     @Override
     public String toString() {
