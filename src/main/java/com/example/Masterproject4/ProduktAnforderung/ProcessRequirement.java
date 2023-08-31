@@ -68,6 +68,7 @@ public class ProcessRequirement {
 
 
     String ReferenceParts;
+    boolean stability;
 
 
 

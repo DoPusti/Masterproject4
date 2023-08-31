@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Component
@@ -142,43 +141,67 @@ public class RessourceChecker {
     public void searchForKinematicChain(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
 
 
-
+        boolean foundMinimumOfOneAssurance = false;
         // Schleife über alle Sequenzen des Satzes
-        ressourceHolderIn.forEach(sequenz -> {
-            System.out.println("Gelesene Sequenz:");
-            System.out.println(sequenz.getStringSequence());
-            assuranceListIn.forEach(assurance -> {
-                if (assurance.getConnectionType().equals("NotAutomaticallyRemovable")) {
-                    System.out.println("Gelesene Zusicherung:");
-                    System.out.println(assurance.getStringSequence());
-                    checkMatchingAssurance(sequenz, assurance);
+        for (RessourceHolder ressourceHolder : ressourceHolderIn) {
+            if (!foundMinimumOfOneAssurance) {
+                System.out.println("Gelesene Sequenz:");
+                System.out.println(ressourceHolder.getStringSequence());
+                for (AssuranceFullObject assurance : assuranceListIn) {
+                    if (assurance.getConnectionType().equals("NotAutomaticallyRemovable")) {
+                        if (checkMatchingAssurance(ressourceHolder, assurance)) {
+                            foundMinimumOfOneAssurance = true;
+                        }
+                        ;
+                    }
                 }
-            });
-            // Mindestens ein Eintrag wurde gefunden, der passen könnte
-            if(!(sequenz.getKinematicChainList() == null)) {
-                List<KinematicChain> kinematicChainList = sequenz.getKinematicChainList();
-                kinematicChainList.forEach(kinematicChain -> {
-                    if(!kinematicChain.isForceX()) {
-                        kinematicChain.setRankingForceX(checkRankingOfConstraint(kinematicChain.getAssurance(),ressourceHolderIn,"ForceX"));
-                    }
-                    if(!kinematicChain.isForceY()) {
-                        kinematicChain.setRankingForceY(checkRankingOfConstraint(kinematicChain.getAssurance(),ressourceHolderIn,"ForceY"));
-                    }
-                    if(!kinematicChain.isForceZ()) {
-                        kinematicChain.setRankingForceZ(checkRankingOfConstraint(kinematicChain.getAssurance(),ressourceHolderIn,"ForceZ"));
-                    }
+                System.out.println("Ausgabe der gesamten Ressourholer:");
+                ressourceHolderIn.forEach(objekt -> {
+                    String sequence = objekt.getStringSequence();
+                    System.out.println(sequence);
                 });
+                // Mindestens ein Eintrag wurde gefunden, der passen könnte
+                if (!(ressourceHolder.getKinematicChainList() == null)) {
+                    List<KinematicChain> kinematicChainList = ressourceHolder.getKinematicChainList();
+                    kinematicChainList.forEach(kinematicChain -> {
+                        System.out.println("Prüfung der kinematischen Kette vor dem Ranking:");
+                        System.out.println(kinematicChain);
+                        if (!kinematicChain.isForceX()) {
+                            kinematicChain.setRankingForceX(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "ForceX"));
+                        }
+                        if (!kinematicChain.isForceY()) {
+                            kinematicChain.setRankingForceY(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "ForceY"));
+                        }
+                        if (!kinematicChain.isForceZ()) {
+                            kinematicChain.setRankingForceZ(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "ForceZ"));
+                        }
+                        if (!kinematicChain.isPositionX()) {
+                            kinematicChain.setRankingPositionX(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "PositionX"));
+                        }
+                        if (!kinematicChain.isPositionY()) {
+                            kinematicChain.setRankingPositionY(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "PositionY"));
+                        }
+                        if (!kinematicChain.isPositionZ()) {
+                            kinematicChain.setRankingPositionZ(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "PositionZ"));
+                        }
+                        System.out.println("Prüfung der kinematischen Kette nach dem Ranking:");
+                        System.out.println(kinematicChain);
+                    });
+                }
+
+
+            } else {
+                break;
             }
-
-
-        });
+        }
 
 
     }
 
-    public void checkMatchingAssurance(RessourceHolder ressourceIn, AssuranceFullObject assuranceIn) {
+    public boolean checkMatchingAssurance(RessourceHolder ressourceIn, AssuranceFullObject assuranceIn) {
+        boolean foundAssurance = false;
         List<KinematicChain> kinematicChainList;
-        if(ressourceIn.getKinematicChainList() == null) {
+        if (ressourceIn.getKinematicChainList() == null) {
             kinematicChainList = new ArrayList<>();
         } else {
             kinematicChainList = ressourceIn.getKinematicChainList();
@@ -240,7 +263,7 @@ public class RessourceChecker {
         }
 
 
-        if ((requiredStateChangeCounter + constraintCounter >= 3) && requiredStateChangeCounter > 1) {
+        if ((requiredStateChangeCounter + constraintCounter >= 3) && requiredStateChangeCounter >= 1) {
             kinematicChain.setSequences(sequences);
             kinematicChain.setAssurance(assuranceIn);
             kinematicChain.setId(assuranceIn.getId());
@@ -248,37 +271,80 @@ public class RessourceChecker {
             kinematicChainList.add(kinematicChain);
             ressourceIn.setKinematicChainList(kinematicChainList);
             System.out.println("Gefundene Zusicherung");
-            System.out.println(kinematicChain.getSequences());
-            System.out.println(kinematicChain.getId() + " | " + assuranceIn.getForceX() + " | " + assuranceIn.getForceY() + " | " + assuranceIn.getPositionX() + " | " + assuranceIn.getPositionY() + " | " + assuranceIn.getPositionZ());
+            foundAssurance = true;
+            List<Boolean> booleanList = kinematicChain.getSequences();
+            System.out.println("Id=" + kinematicChain.getId()
+                    + " | " + "forceX=" + assuranceIn.getForceX() + "/" + booleanList.get(0)
+                    + " | " + "forceY=" + assuranceIn.getForceY() + "/" + booleanList.get(1)
+                    + " | " + "forceZ=" + assuranceIn.getForceZ() + "/" + booleanList.get(2)
+                    + " | " + "positionX=" + assuranceIn.getPositionX() + "/" + booleanList.get(3)
+                    + " | " + "positionY=" + assuranceIn.getPositionY() + "/" + booleanList.get(4)
+                    + " | " + "positionZ=" + assuranceIn.getPositionZ() + "/" + booleanList.get(5));
 
         }
-
-
+        return foundAssurance;
     }
 
-    public int checkRankingOfConstraint(AssuranceFullObject assuranceIn, List<RessourceHolder> ressourceHolderIn,String attributeName) {
-
+    public int checkRankingOfConstraint(AssuranceFullObject assuranceIn, List<RessourceHolder> ressourceHolderIn, String attributeName) {
+        System.out.println("Suche Ranking für  " + attributeName);
         int rankingCounter = 0;
-
-        for(RessourceHolder ressourceHolder : ressourceHolderIn) {
-            rankingCounter ++;
-            switch (attributeName) {
-                case "ForceX":
-                    if(assuranceIn.getForceX() >= ressourceHolder.getForceX().getValue()) {
+        boolean foundRanking = false;
+        for (RessourceHolder ressourceHolder : ressourceHolderIn) {
+            if (!foundRanking) {
+                rankingCounter++;
+                switch (attributeName) {
+                    case "ForceX":
+                        System.out.println("ForceX geprüft");
+                        if (assuranceIn.getForceX() >= ressourceHolder.getForceX().getValue()) {
+                            System.out.println("Wert erreicht ForceX");
+                            foundRanking = true;
+                            break;
+                        }
                         break;
-                    }
-                case "ForceY":
-                    if(assuranceIn.getForceY() >= ressourceHolder.getForceX().getValue()) {
+                    case "ForceY":
+                        System.out.println("ForceY geprüft");
+                        if (assuranceIn.getForceY() >= ressourceHolder.getForceX().getValue()) {
+                            System.out.println("Wert erreicht ForceY");
+                            foundRanking = true;
+                            break;
+                        }
                         break;
-                    }
-                case "ForceZ":
-                    if(assuranceIn.getForceZ() >= ressourceHolder.getForceX().getValue()) {
+                    case "ForceZ":
+                        System.out.println("ForceZ geprüft");
+                        if (assuranceIn.getForceZ() >= ressourceHolder.getForceX().getValue()) {
+                            System.out.println("Wert erreicht ForceZ");
+                            foundRanking = true;
+                            break;
+                        }
                         break;
-                    }
-                default:
+                    case "PositionX":
+                        if (assuranceIn.getPositionX() >= ressourceHolder.getPositionX().getValue()) {
+                            System.out.println("Wert erreicht PositionX");
+                            foundRanking = true;
+                            break;
+                        }
+                        break;
+                    case "PositionY":
+                        if (assuranceIn.getPositionY() >= ressourceHolder.getPositionY().getValue()) {
+                            System.out.println("Wert erreicht PositionY");
+                            foundRanking = true;
+                            break;
+                        }
+                        break;
+                    case "PositionZ":
+                        if (assuranceIn.getPositionZ() >= ressourceHolder.getPositionZ().getValue()) {
+                            System.out.println("Wert erreicht PositionZ");
+                            foundRanking = true;
+                            break;
+                        }
+                        break;
+                    default:
+                }
             }
+
         }
 
+        return rankingCounter;
     }
 
 }

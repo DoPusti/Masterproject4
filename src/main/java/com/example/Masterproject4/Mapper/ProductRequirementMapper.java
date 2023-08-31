@@ -33,9 +33,6 @@ public class ProductRequirementMapper {
         listOfAllSubmodels.forEach(subModelObject -> {
 
             String idShortOfSM = subModelObject.getIdShort();
-            //System.out.println(idShortOfSM);
-            //System.out.println(subModelObject);
-
             switch (idShortOfSM) {
                 case "Identification":
                     List<SubModelElement> subModelElements1 = subModelObject.getSubmodelElements().getSubmodelElement();
@@ -124,18 +121,19 @@ public class ProductRequirementMapper {
     }
 
     private ProcessRequirement fillSubModelProcessRequirement(SubmodelElementCollection collection) {
-        //System.out.println(collection);
         ProcessRequirement processRequirement = new ProcessRequirement();
         String idShortOfProcessRequirement = collection.getIdShort();
 
         List<SubModelElement> subModelElementsInElement = collection.getValue().getSubmodelElement();
         processRequirement.setTvName(idShortOfProcessRequirement);
         subModelElementsInElement.forEach(subModelElementDeep1 -> {
-            //System.out.println(subModelElementDeep1);
             Property property = subModelElementDeep1.getProperty();
             if (property != null) {
                 if (property.getIdShort().equals("ReferenceParts")) {
                     processRequirement.setReferenceParts(property.getValue());
+                }
+                if (property.getIdShort().equals("Stability")) {
+                    processRequirement.setStability(Boolean.parseBoolean(property.getValue()));
                 }
             } else {
                 String idShortInnerhalbSCM = subModelElementDeep1.getSubmodelElementCollection().getIdShort();
