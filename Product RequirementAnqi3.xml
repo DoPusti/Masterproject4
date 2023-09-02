@@ -1644,6 +1644,17 @@
                   </value>
                 </submodelElementCollection>
               </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Stability</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType>boolean</valueType>
+                  <value>true</value>
+                </property>
+              </submodelElement>
             </value>
           </submodelElementCollection>
         </submodelElement>
@@ -2306,6 +2317,17 @@
                     </submodelElement>
                   </value>
                 </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Stability</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType>boolean</valueType>
+                  <value>false</value>
+                </property>
               </submodelElement>
             </value>
           </submodelElementCollection>
@@ -2970,6 +2992,17 @@
                   </value>
                 </submodelElementCollection>
               </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Stability</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>true</value>
+                </property>
+              </submodelElement>
             </value>
           </submodelElementCollection>
         </submodelElement>
@@ -3632,6 +3665,17 @@
                     </submodelElement>
                   </value>
                 </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <property>
+                  <idShort>Stability</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <valueType />
+                  <value>true</value>
+                </property>
               </submodelElement>
             </value>
           </submodelElementCollection>

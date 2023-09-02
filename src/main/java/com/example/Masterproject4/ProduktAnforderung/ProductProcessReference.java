@@ -1,13 +1,9 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
 
 @Component
 @Data
@@ -18,30 +14,25 @@ public class ProductProcessReference {
     String partName;
     String tvName;
     double mass;
-    double meanRoughness;
+    double staticFrictionCoefficient;
     boolean ferroMagnetic;
-    double length;
-    double width;
-    double height;
-    double centerOfMassX;
-    double centerOfMassY;
-    double centerOfMassZ;
+    double length, width, height;
+    double centerOfMassX, centerOfMassY, centerOfMassZ;
+    double meanRoughness;
 
     @Override
     public String toString() {
-        return "ProductProcessReference{" +
-                "partName='" + partName +
-                " | tvName=" + tvName +
-                " | mass=" + mass +
-                " | meanRoughness=" + meanRoughness +
-                " | ferroMagnetic=" + ferroMagnetic +
-                " | length=" + length +
-                " | width=" + width +
-                " | height=" + height +
-                " | centerOfMassX=" + centerOfMassX +
-                " | centerOfMassY=" + centerOfMassY +
-                " | centerOfMassZ=" + centerOfMassZ +
-                '}' + "\n";
+        return "tvName: " + tvName +
+                ", partName: " + partName +
+                ", mass: " + mass +
+                ", length: " + length +
+                ", width: " + width +
+                ", height: " + height +
+                ", centerOfMassX: " + centerOfMassX+
+                ", centerOfMassY: " + centerOfMassY +
+                ", centerOfMassZ: " + centerOfMassZ ;
+
+
     }
 
 }

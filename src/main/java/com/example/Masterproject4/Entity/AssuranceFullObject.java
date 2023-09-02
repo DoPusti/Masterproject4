@@ -27,29 +27,29 @@ public class AssuranceFullObject {
     double length;
     double width;
     double height;
-    double xCoM;
-    double yCoM;
-    double zCoM;
+    double centerOfMassX;
+    double centerOfMassY;
+    double centerOfMassZ;
     String connectionType;
     String operatingPrinciple;
-    double PositionX;
-    double PositionY;
-    double PositionZ;
-    double PositionRepetitionAccuracyX;
-    double PositionRepetitionAccuracyY;
-    double PositionRepetitionAccuracyZ;
-    double RotationX;
-    double RotationY;
-    double RotationZ;
-    double RotationRepetitionAccuracyX;
-    double RotationRepetitionAccuracyY;
-    double RotationRepetitionAccuracyZ;
-    double ForceX;
-    double ForceY;
-    double ForceZ;
-    double TorqueX;
-    double TorqueY;
-    double TorqueZ;
+    double positionX;
+    double positionY;
+    double positionZ;
+    double positionRepetitionAccuracyX;
+    double positionRepetitionAccuracyY;
+    double positionRepetitionAccuracyZ;
+    double rotationX;
+    double rotationY;
+    double rotationZ;
+    double rotationRepetitionAccuracyX;
+    double rotationRepetitionAccuracyY;
+    double rotationRepetitionAccuracyZ;
+    double forceX;
+    double forceY;
+    double forceZ;
+    double torqueX;
+    double torqueY;
+    double torqueZ;
 
     // MediaSupply
     double operatingCurrent;
@@ -80,13 +80,14 @@ public class AssuranceFullObject {
     String RestAPIAdress;
 
     public String getStringSequence() {
-        return "id='" + id +
-                " | forceX=" + ForceX +
-                " | forceY=" + ForceY +
-                " | forceZ=" + ForceZ +
-                " | positionX=" + PositionX +
-                " | positionY=" + PositionY +
-                " | positionZ=" + PositionZ;
+        return "id: " + id +
+                ", positionX: " + positionX +
+                ", positionY: " + positionY +
+                ", positionZ: " + positionZ +
+                ", forceX: " + forceX +
+                ", forceY: " + forceY +
+                ", forceZ: " + forceZ;
+
     }
 
 

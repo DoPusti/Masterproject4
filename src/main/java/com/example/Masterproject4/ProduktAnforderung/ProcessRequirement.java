@@ -1,9 +1,8 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import static java.lang.Math.max;
 
 @Builder
 @NoArgsConstructor
@@ -11,65 +10,41 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProcessRequirement {
     String tvName;
-
-    double PositionXRsC;
-    double PositionYRsC;
-    double PositionZRsC;
-    double RotationXRsC;
-    double RotationYRsC;
-    double RotationZRsC;
-
-    double PositionXSsC;
-    double PositionYSsC;
-    double PositionZSsC;
-    double RotationXSsC;
-    double RotationYSsC;
-    double RotationZSsC;
-
-    // PersistentStateChange
-    double ForceXRsC;
-    double ForceYRsC;
-    double ForceZRsC;
-    double TorqueXRsC;
-    double TorqueYRsC;
-    double TorqueZRsC;
-    double PositionRepetitionAccuracyXRsC;
-    double PositionRepetitionAccuracyYRsC;
-    double PositionRepetitionAccuracyZRsC;
-    double RotationRepetitionAccuracyXRsC;
-    double RotationRepetitionAccuracyYRsC;
-    double RotationRepetitionAccuracyZRsC;
-    double maxSpeedXRsC;
-    double maxSpeedYRsC;
-    double maxSpeedZRsC;
-    double MaxAccelerationXRsC;
-    double MaxAccelerationYRsC;
-    double MaxAccelerationZRsC;
-
-    // SecundaryStateChange
-    double ForceXSsC;
-    double ForceYSsC;
-    double ForceZSsC;
-    double TorqueXSsC;
-    double TorqueYSsC;
-    double TorqueZSsC;
-    double PositionRepetitionAccuracyXSsC;
-    double PositionRepetitionAccuracyYSsC;
-    double PositionRepetitionAccuracyZSsC;
-    double RotationRepetitionAccuracyXSsC;
-    double RotationRepetitionAccuracyYSsC;
-    double RotationRepetitionAccuracyZSsC;
-    double maxSpeedXSsC;
-    double maxSpeedYSsC;
-    double maxSpeedZSsC;
-    double MaxAccelerationXSsC;
-    double MaxAccelerationYSsC;
-    double MaxAccelerationZSsC;
-
-
-    String ReferenceParts;
+    String referenceParts;
+    int id;
     boolean stability;
 
+    public double forceXRsC,forceYRsC,forceZRsC ;
+    public double torqueXRsC, torqueYRsC, torqueZRsC;
+    public double positionRepetitionAccuracyXRsC,positionRepetitionAccuracyYRsC,positionRepetitionAccuracyZRsC;
+    public double rotationRepetitionAccuracyXRsC,rotationRepetitionAccuracyYRsC,rotationRepetitionAccuracyZRsC;
+    public double maxSpeedXRsC,maxSpeedYRsC,maxSpeedZRsC;
+    public double maxAccelerationXRsC,maxAccelerationYRsC,maxAccelerationZRsC;
+    public double forceXSsC,forceYSsC,forceZSsC;
+    public double torqueXSsC,torqueYSsC,torqueZSsC;
+    public double positionRepetitionAccuracyXSsC,positionRepetitionAccuracyYSsC,positionRepetitionAccuracyZSsC;
+    public double rotationRepetitionAccuracyXSsC,rotationRepetitionAccuracyYSsC,rotationRepetitionAccuracyZSsC;
+    public double maxSpeedXSsC,maxSpeedYSsC,maxSpeedZSsC;
+    public double maxAccelerationXSsC,maxAccelerationYSsC,maxAccelerationZSsC;
+    public double positionXRsC,positionYRsC,positionZRsC;
+    public double rotationXRsC,rotationYRsC,rotationZRsC;
+    public double positionXSsC,positionYSsC,positionZSsC;
+    public double rotationXSsC,rotationYSsC,rotationZSsC;
+
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", tvname: " + tvName +
+                ", stability: " + stability +
+                ", positionX: " + max(positionXRsC,positionXSsC) +
+                ", positionY: " + max(positionYRsC,positionYSsC) +
+                ", positionZ: " + max(positionZRsC,positionZSsC)+
+                ", forceX: " + max(forceXRsC,forceXSsC) +
+                ", forceY: " + max(forceYRsC,forceYSsC) +
+                ", forceZ: " + max(forceZRsC,forceZSsC) ;
+
+    }
 
 
 }

@@ -9,13 +9,15 @@ import lombok.NoArgsConstructor;
 import java.util.AbstractMap;
 import java.util.List;
 
+import static java.lang.Math.max;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class RessourceHolder {
 
-    String idShort;
+    int idShort;
     String restApi;
     double mass;
     double meanRoughness;
@@ -26,41 +28,43 @@ public class RessourceHolder {
     double centerOfMassX;
     double centerOfMassY;
     double centerOfMassZ;
-
     List<String> tvList;
+    AbstractMap.SimpleEntry<Integer, Double> positionX;
+    AbstractMap.SimpleEntry<Integer, Double> positionY;
+    AbstractMap.SimpleEntry<Integer, Double> positionZ;
+    AbstractMap.SimpleEntry<Integer, Double> rotationX;
+    AbstractMap.SimpleEntry<Integer, Double> rotationY;
+    AbstractMap.SimpleEntry<Integer, Double> rotationZ;
+    AbstractMap.SimpleEntry<Integer, Double> forceX;
+    AbstractMap.SimpleEntry<Integer, Double> forceY;
+    AbstractMap.SimpleEntry<Integer, Double> forceZ;
+    AbstractMap.SimpleEntry<Integer, Double> torqueX;
+    AbstractMap.SimpleEntry<Integer, Double> torqueY;
+    AbstractMap.SimpleEntry<Integer, Double> torqueZ;
+    AbstractMap.SimpleEntry<Integer, Double> positionRepetitionAccuracyX;
+    AbstractMap.SimpleEntry<Integer, Double> positionRepetitionAccuracyY;
+    AbstractMap.SimpleEntry<Integer, Double> positionRepetitionAccuracyZ;
+    AbstractMap.SimpleEntry<Integer, Double> rotationRepetitionAccuracyX;
+    AbstractMap.SimpleEntry<Integer, Double> rotationRepetitionAccuracyY;
+    AbstractMap.SimpleEntry<Integer, Double> rotationRepetitionAccuracyZ;
 
-    AbstractMap.SimpleEntry<String, Double> positionX;
-    AbstractMap.SimpleEntry<String, Double> positionY;
-    AbstractMap.SimpleEntry<String, Double> positionZ;
-    AbstractMap.SimpleEntry<String, Double> rotationX;
-    AbstractMap.SimpleEntry<String, Double> rotationY;
-    AbstractMap.SimpleEntry<String, Double> rotationZ;
-    AbstractMap.SimpleEntry<String, Double> forceX;
-    AbstractMap.SimpleEntry<String, Double> forceY;
-    AbstractMap.SimpleEntry<String, Double> forceZ;
-    AbstractMap.SimpleEntry<String, Double> torqueX;
-    AbstractMap.SimpleEntry<String, Double> torqueY;
-    AbstractMap.SimpleEntry<String, Double> torqueZ;
-    AbstractMap.SimpleEntry<String, Double> positionRepetitionAccuracyX;
-    AbstractMap.SimpleEntry<String, Double> positionRepetitionAccuracyY;
-    AbstractMap.SimpleEntry<String, Double> positionRepetitionAccuracyZ;
-    AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyX;
-    AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyY;
-    AbstractMap.SimpleEntry<String, Double> rotationRepetitionAccuracyZ;
 
     AssuranceFullObject gripper;
 
     List<KinematicChain> kinematicChainList;
 
     public String getStringSequence() {
-        return "idShort='" + idShort +
-                " | forceX=" + forceX.getValue() +
-                " | forceY=" + forceY.getValue() +
-                " | forceZ=" + forceZ.getValue() +
-                " | positionX=" + positionX.getValue() +
-                " | positionY=" + positionY.getValue() +
-                " | positionZ=" + positionZ.getValue();
+        return "idShort: " + idShort +
+                ", positionX: " + positionX +
+                ", positionY: " + positionY +
+                ", positionZ: " + positionZ +
+                ", forceX: " + forceX +
+                ", forceY: " + forceY+
+                ", forceZ: " + forceZ +
+                ", gripper: " + gripper ;
+
     }
+
 
 
     @Override
@@ -88,7 +92,6 @@ public class RessourceHolder {
                 " | centerOfMassX=" + centerOfMassX +
                 " | centerOfMassY=" + centerOfMassY +
                 " | centerOfMassZ=" + centerOfMassZ +
-                " | tvList=" + tvList +
                 " | restApi='" + restApi +
                 " | gripper='" + gripper +
                 '}' + "\n";

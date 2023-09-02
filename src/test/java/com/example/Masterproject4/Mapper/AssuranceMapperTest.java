@@ -190,9 +190,9 @@ class AssuranceMapperTest {
                 }
             case "CenterOfMass":
                 switch (idShort) {
-                    case "X" -> assuranceFullObject.setXCoM(Double.parseDouble(value1));
-                    case "Y" -> assuranceFullObject.setYCoM(Double.parseDouble(value1));
-                    case "Z" -> assuranceFullObject.setZCoM(Double.parseDouble(value1));
+                    case "X" -> assuranceFullObject.setCenterOfMassX(Double.parseDouble(value1));
+                    case "Y" -> assuranceFullObject.setCenterOfMassY(Double.parseDouble(value1));
+                    case "Z" -> assuranceFullObject.setCenterOfMassZ(Double.parseDouble(value1));
                 }
             case "OperatingPrinciple":
                 if (value1 != null) {

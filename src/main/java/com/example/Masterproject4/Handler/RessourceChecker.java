@@ -1,8 +1,8 @@
 package com.example.Masterproject4.Handler;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.ProduktAnforderung.KinematicChain;
 import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
+import com.example.Masterproject4.ProduktAnforderung.StateOfStability;
 import lombok.Builder;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -11,8 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
+import java.lang.reflect.Field;
+import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Component
@@ -27,10 +30,10 @@ public class RessourceChecker {
             if (!(assurance.getRestApi() == null)) {
                 String restCall;
                 restCall = assurance.getRestApi() + "/getPayload?AssetId=" + assurance.getIdShort();
-                System.out.println("RestCall " + restCall);
+                Log.info("RestCall " + restCall);
                 RestTemplate restTemplate = new RestTemplate();
                 ResponseEntity<String> call = restTemplate.getForEntity(restCall, String.class);
-                System.out.println(call.getBody());
+                Log.info(call.getBody());
             }
         });
 
@@ -69,10 +72,10 @@ public class RessourceChecker {
                             && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
                             && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()) {
                         if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
-                            //System.out.println("constraintsOut " + constraintsOut);
-                            //System.out.println("constraint " + constraint);
+                            // Log.info("constraintsOut " + constraintsOut);
+                            // Log.info("constraint " + constraint);
                             constraintsOut = constraint;
-                            //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
+                            // Log.info("ConstraintsOut nach Belegung  " + constraintsOut);
 
                         }
                     }
@@ -92,9 +95,9 @@ public class RessourceChecker {
                             && constraint.getRotationRepetitionAccuracyY() >= ressourceHolderIn.getRotationRepetitionAccuracyY().getValue()
                             && constraint.getRotationRepetitionAccuracyZ() >= ressourceHolderIn.getRotationRepetitionAccuracyZ().getValue()
                             && constraint.getMass() >= ressourceHolderIn.getMass()
-                            && constraint.getXCoM() >= ressourceHolderIn.getCenterOfMassX()
-                            && constraint.getYCoM() >= ressourceHolderIn.getCenterOfMassY()
-                            && constraint.getZCoM() >= ressourceHolderIn.getCenterOfMassZ()
+                            && constraint.getCenterOfMassX() >= ressourceHolderIn.getCenterOfMassX()
+                            && constraint.getCenterOfMassY() >= ressourceHolderIn.getCenterOfMassY()
+                            && constraint.getCenterOfMassZ() >= ressourceHolderIn.getCenterOfMassZ()
                             && constraint.getHeight() >= ressourceHolderIn.getHeight()
                             && constraint.getWidth() >= ressourceHolderIn.getWidth()
                             && constraint.getLength() >= ressourceHolderIn.getLength()
@@ -107,10 +110,10 @@ public class RessourceChecker {
 
                     ) {
                         if (constraintsOut.getAssetId() == null || constraint.getPrice() < constraintsOut.getPrice()) {
-                            //System.out.println("constraintsOut " + constraintsOut);
-                            //System.out.println("constraint " + constraint);
+                            // Log.info("constraintsOut " + constraintsOut);
+                            // Log.info("constraint " + constraint);
                             constraintsOut = constraint;
-                            //System.out.println("ConstraintsOut nach Belegung  " + constraintsOut);
+                            // Log.info("ConstraintsOut nach Belegung  " + constraintsOut);
 
                         }
                     }
@@ -122,6 +125,7 @@ public class RessourceChecker {
         return constraintsOut;
     }
 
+    /*
     public void searchForAxe(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
         RessourceHolder matchedRessourceholder = new RessourceHolder();
         AssuranceFullObject constraints = new AssuranceFullObject();
@@ -137,7 +141,9 @@ public class RessourceChecker {
         Log.info(constraints.toString());
     }
 
+     */
 
+/*
     public void searchForKinematicChain(List<RessourceHolder> ressourceHolderIn, List<AssuranceFullObject> assuranceListIn) {
 
 
@@ -145,8 +151,8 @@ public class RessourceChecker {
         // Schleife über alle Sequenzen des Satzes
         for (RessourceHolder ressourceHolder : ressourceHolderIn) {
             if (!foundMinimumOfOneAssurance) {
-                System.out.println("Gelesene Sequenz:");
-                System.out.println(ressourceHolder.getStringSequence());
+                Log.info("Gelesene Sequenz:");
+                Log.info(ressourceHolder.getStringSequence());
                 for (AssuranceFullObject assurance : assuranceListIn) {
                     if (assurance.getConnectionType().equals("NotAutomaticallyRemovable")) {
                         if (checkMatchingAssurance(ressourceHolder, assurance)) {
@@ -155,17 +161,17 @@ public class RessourceChecker {
                         ;
                     }
                 }
-                System.out.println("Ausgabe der gesamten Ressourholer:");
+                Log.info("Ausgabe der gesamten Ressourholer:");
                 ressourceHolderIn.forEach(objekt -> {
                     String sequence = objekt.getStringSequence();
-                    System.out.println(sequence);
+                    Log.info(sequence);
                 });
                 // Mindestens ein Eintrag wurde gefunden, der passen könnte
                 if (!(ressourceHolder.getKinematicChainList() == null)) {
                     List<KinematicChain> kinematicChainList = ressourceHolder.getKinematicChainList();
                     kinematicChainList.forEach(kinematicChain -> {
-                        System.out.println("Prüfung der kinematischen Kette vor dem Ranking:");
-                        System.out.println(kinematicChain);
+                        Log.info("Prüfung der kinematischen Kette vor dem Ranking:");
+                        Log.info(String.valueOf(kinematicChain));
                         if (!kinematicChain.isForceX()) {
                             kinematicChain.setRankingForceX(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "ForceX"));
                         }
@@ -184,8 +190,8 @@ public class RessourceChecker {
                         if (!kinematicChain.isPositionZ()) {
                             kinematicChain.setRankingPositionZ(checkRankingOfConstraint(kinematicChain.getAssurance(), ressourceHolderIn, "PositionZ"));
                         }
-                        System.out.println("Prüfung der kinematischen Kette nach dem Ranking:");
-                        System.out.println(kinematicChain);
+                        Log.info("Prüfung der kinematischen Kette nach dem Ranking:");
+                        Log.info(String.valueOf(kinematicChain));
                     });
                 }
 
@@ -198,6 +204,9 @@ public class RessourceChecker {
 
     }
 
+ */
+
+    /*
     public boolean checkMatchingAssurance(RessourceHolder ressourceIn, AssuranceFullObject assuranceIn) {
         boolean foundAssurance = false;
         List<KinematicChain> kinematicChainList;
@@ -270,10 +279,10 @@ public class RessourceChecker {
             kinematicChain.setPrice(price);
             kinematicChainList.add(kinematicChain);
             ressourceIn.setKinematicChainList(kinematicChainList);
-            System.out.println("Gefundene Zusicherung");
+            Log.info("Gefundene Zusicherung");
             foundAssurance = true;
             List<Boolean> booleanList = kinematicChain.getSequences();
-            System.out.println("Id=" + kinematicChain.getId()
+            Log.info("Id=" + kinematicChain.getId()
                     + " | " + "forceX=" + assuranceIn.getForceX() + "/" + booleanList.get(0)
                     + " | " + "forceY=" + assuranceIn.getForceY() + "/" + booleanList.get(1)
                     + " | " + "forceZ=" + assuranceIn.getForceZ() + "/" + booleanList.get(2)
@@ -286,7 +295,7 @@ public class RessourceChecker {
     }
 
     public int checkRankingOfConstraint(AssuranceFullObject assuranceIn, List<RessourceHolder> ressourceHolderIn, String attributeName) {
-        System.out.println("Suche Ranking für  " + attributeName);
+        Log.info("Suche Ranking für  " + attributeName);
         int rankingCounter = 0;
         boolean foundRanking = false;
         for (RessourceHolder ressourceHolder : ressourceHolderIn) {
@@ -294,46 +303,46 @@ public class RessourceChecker {
                 rankingCounter++;
                 switch (attributeName) {
                     case "ForceX":
-                        System.out.println("ForceX geprüft");
+                        Log.info("ForceX geprüft");
                         if (assuranceIn.getForceX() >= ressourceHolder.getForceX().getValue()) {
-                            System.out.println("Wert erreicht ForceX");
+                            Log.info("Wert erreicht ForceX");
                             foundRanking = true;
                             break;
                         }
                         break;
                     case "ForceY":
-                        System.out.println("ForceY geprüft");
+                        Log.info("ForceY geprüft");
                         if (assuranceIn.getForceY() >= ressourceHolder.getForceX().getValue()) {
-                            System.out.println("Wert erreicht ForceY");
+                            Log.info("Wert erreicht ForceY");
                             foundRanking = true;
                             break;
                         }
                         break;
                     case "ForceZ":
-                        System.out.println("ForceZ geprüft");
+                        Log.info("ForceZ geprüft");
                         if (assuranceIn.getForceZ() >= ressourceHolder.getForceX().getValue()) {
-                            System.out.println("Wert erreicht ForceZ");
+                            Log.info("Wert erreicht ForceZ");
                             foundRanking = true;
                             break;
                         }
                         break;
                     case "PositionX":
                         if (assuranceIn.getPositionX() >= ressourceHolder.getPositionX().getValue()) {
-                            System.out.println("Wert erreicht PositionX");
+                            Log.info("Wert erreicht PositionX");
                             foundRanking = true;
                             break;
                         }
                         break;
                     case "PositionY":
                         if (assuranceIn.getPositionY() >= ressourceHolder.getPositionY().getValue()) {
-                            System.out.println("Wert erreicht PositionY");
+                            Log.info("Wert erreicht PositionY");
                             foundRanking = true;
                             break;
                         }
                         break;
                     case "PositionZ":
                         if (assuranceIn.getPositionZ() >= ressourceHolder.getPositionZ().getValue()) {
-                            System.out.println("Wert erreicht PositionZ");
+                            Log.info("Wert erreicht PositionZ");
                             foundRanking = true;
                             break;
                         }
@@ -345,6 +354,80 @@ public class RessourceChecker {
         }
 
         return rankingCounter;
+    }
+
+     */
+
+    public void checkKinematicChain(List<RessourceHolder> ressourceIn,
+                                    List<AssuranceFullObject> assuranceIn,
+                                    List<StateOfStability> stateOfStabilityIn,
+                                    HashMap<String,String> listOfMatchingAttributesIn
+    ) throws IllegalAccessException, NoSuchFieldException {
+
+        System.out.println("Liste der relevanten zu prüfenden Zeilen");
+
+        for (RessourceHolder ressource : ressourceIn) {
+            System.out.println(ressource.getStringSequence());
+            if (findMatchinAssuranceTestOne(ressource, assuranceIn, listOfMatchingAttributesIn)) {
+                System.out.println("Minimum von einer Zusicherung erreicht");
+                break;
+            }
+        }
+    }
+
+    public Boolean findMatchinAssuranceTestOne(RessourceHolder ressource,
+                                               List<AssuranceFullObject> assuranceIn,
+                                               HashMap<String,String> listOfMatchingAttributesIn) throws IllegalAccessException, NoSuchFieldException {
+
+
+        // Jede Zusicherung wird geprüft
+        for(AssuranceFullObject assurance : assuranceIn) {
+
+            // Alle Attribute der Zusicherung entnehmen und prüfen, ob diese relevant sind
+            System.out.println("Prüfung der Zusicherung " + assurance.getId());
+
+            Class<?> clazz = assurance.getClass();
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                String fieldName = field.getName();
+                System.out.println("Attributname: " + fieldName);
+            }
+            /*
+            Field nameOfAssuranceAttribute = assurance.getClass().getDeclaredField(nameOfMatchingAttribute);
+            nameOfAssuranceAttribute.setAccessible(true);
+            double valueOfAssuranceAttribute = (double) nameOfAssuranceAttribute.get(assurance);
+            if(valueOfAssuranceAttribute>=valueOfRessourceAttribute.getValue()) {
+                System.out.println("Passender Wert wurde gefunden");
+                System.out.println("Name des Attributs " + nameOfMatchingAttribute);
+                System.out.println("Wert der Ressource ist " + valueOfRessourceAttribute.getValue());
+                System.out.println("Wert der Zusicherung ist " + valueOfAssuranceAttribute);
+            } else {
+                System.out.println("Wert passt leider nicht");
+                System.out.println("Wert der Ressource ist " + valueOfRessourceAttribute.getValue());
+                System.out.println("Wert der Zusicherung ist " + valueOfAssuranceAttribute);
+            }
+
+             */
+        }
+
+        /*
+        for (Map.Entry<String, String> attribute : listOfMatchingAttributesIn) {
+            System.out.println("Prüfung des Attributs " + attribute.getValue() + "|" + attribute.getKey());
+            String nameOfMatchingAttribute = attribute.getKey();
+            String valueOfMatchingAttribute = attribute.getValue();
+            Field nameOfRessourceAttribute = ressource.getClass().getDeclaredField(nameOfMatchingAttribute);
+            nameOfRessourceAttribute.setAccessible(true);
+
+            AbstractMap.SimpleEntry<Integer, Double> valueOfRessourceAttribute = (AbstractMap.SimpleEntry<Integer, Double>) nameOfRessourceAttribute.get(ressource);
+
+
+        }
+
+         */
+
+
+
+        return true;
     }
 
 }

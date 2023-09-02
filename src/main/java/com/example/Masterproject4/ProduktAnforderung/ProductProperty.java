@@ -1,9 +1,8 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import static java.lang.Math.max;
 
 @Builder
 @NoArgsConstructor
@@ -15,11 +14,20 @@ public class ProductProperty {
     double mass;
     double staticFrictionCoefficient;
     boolean ferroMagnetic;
-    double length;
-    double width;
-    double height;
-    double centerOfMassX;
-    double centerOfMassY;
-    double centerOfMassZ;
+    double length, width, height;
+    double centerOfMassX, centerOfMassY, centerOfMassZ;
     double meanRoughness;
+    @Override
+    public String toString() {
+        return "idShort: " + idShort +
+                ", mass: " + mass +
+                ", length: " + length +
+                ", width: " + width +
+                ", height: " + height +
+                ", centerOfMassX: " + centerOfMassX+
+                ", centerOfMassY: " + centerOfMassY +
+                ", centerOfMassZ: " + centerOfMassZ ;
+
+
+    }
 }
