@@ -11,6 +11,8 @@ import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -85,7 +90,7 @@ public class HtmlController {
             listOfMatchingAttributes.put("positionY", "PersistentStateChange");
             listOfMatchingAttributes.put("positionZ", "PersistentStateChange");
             listOfMatchingAttributes.put("forceX", "Constraints");
-            listOfMatchingAttributes.put("forceX", "Constraints");
+            listOfMatchingAttributes.put("forceY", "Constraints");
             listOfMatchingAttributes.put("forceZ", "Constraints");
 
             System.out.println("Stabilitätsliste ->");
@@ -181,8 +186,14 @@ public class HtmlController {
 
 
         }
+        // Pfad zum HTML-File im classpath:static Ordner
+        String htmlFilePath = "static/responseFile.html";
 
-        return "Verarbeitung erfolgt";
+        // Lese den Inhalt des HTML-Files
+        Resource resource = new ClassPathResource(htmlFilePath);
+        String htmlContent = Files.lines(Path.of(resource.getURI())).collect(Collectors.joining("\n"));
+        // Thymeleaf ist eine Template-Engine für Java
+        return htmlContent;
 
 
     }

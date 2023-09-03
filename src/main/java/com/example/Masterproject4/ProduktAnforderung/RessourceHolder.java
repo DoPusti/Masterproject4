@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.Math.max;
 
@@ -51,7 +52,24 @@ public class RessourceHolder {
 
     AssuranceFullObject gripper;
 
+    // Sequence von einer Zusicherung, die passt
     List<KinematicChain> kinematicChainList;
+
+    public String InformationForKinematicChainList() {
+        StringBuilder returnInformation = new StringBuilder("Liste der Kinematischen Kitte von :" + idShort);
+        for(KinematicChain kinematicChain : kinematicChainList) {
+            returnInformation.append("ID = ").append(kinematicChain.getId());
+            returnInformation.append("-> AttributsInformationen :").append("\n");
+            for(Map.Entry<String,KinematicChainProperties> entry : kinematicChain.getPropertiesOfAttributes().entrySet()) {
+                returnInformation.append("Attributsname= ").append(entry.getKey());
+                returnInformation.append(",Attributswert= ").append(entry.getValue().getValueOfAttribute());
+                returnInformation.append(",Attributstyp= ").append(entry.getValue().getKindOfAttribute());
+                returnInformation.append(",Wert ist erreicht= ").append(entry.getValue().isValueIsHigherOrEqualToRessource());
+                returnInformation.append(",TeilvorgangsId= ").append(entry.getValue().getSubprocess()).append("\n");
+            }
+        }
+        return returnInformation.toString();
+    }
 
     public String getStringSequence() {
         return "idShort: " + idShort +

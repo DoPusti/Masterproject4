@@ -8,21 +8,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 public class KinematicChain {
-
-    AbstractMap.SimpleEntry<Boolean, Integer> forceX;
-    AbstractMap.SimpleEntry<Boolean, Integer> forceY;
-    AbstractMap.SimpleEntry<Boolean, Integer> forceZ;
-
-    AbstractMap.SimpleEntry<Boolean, Integer> positionX;
-    AbstractMap.SimpleEntry<Boolean, Integer> positionY;
-    AbstractMap.SimpleEntry<Boolean, Integer> positionZ;
-
+    Map<String,KinematicChainProperties> propertiesOfAttributes;
     AssuranceFullObject assurance;
     double price;
     long id;
