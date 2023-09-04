@@ -1022,7 +1022,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>PositionX</idShort>
+                              <idShort>positionX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1037,7 +1037,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionY</idShort>
+                              <idShort>positionY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1052,7 +1052,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionZ</idShort>
+                              <idShort>positionZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1067,7 +1067,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationX</idShort>
+                              <idShort>rotationX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1082,7 +1082,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationY</idShort>
+                              <idShort>rotationY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1097,7 +1097,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationZ</idShort>
+                              <idShort>rotationZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1152,7 +1152,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1164,7 +1164,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1176,7 +1176,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1188,7 +1188,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1214,7 +1214,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1229,7 +1229,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1244,7 +1244,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1259,7 +1259,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1274,7 +1274,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1289,7 +1289,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1304,7 +1304,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1316,7 +1316,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1328,7 +1328,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1340,7 +1340,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1352,7 +1352,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1364,7 +1364,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1416,7 +1416,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1428,7 +1428,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1440,7 +1440,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1452,7 +1452,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1478,7 +1478,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1493,7 +1493,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1508,7 +1508,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1523,7 +1523,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1538,7 +1538,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1553,7 +1553,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1568,7 +1568,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1580,7 +1580,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1592,7 +1592,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1604,7 +1604,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1616,7 +1616,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1628,7 +1628,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1651,6 +1651,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType>boolean</valueType>
                   <value>true</value>
                 </property>
@@ -1696,7 +1697,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>PositionX</idShort>
+                              <idShort>positionX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1711,7 +1712,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionY</idShort>
+                              <idShort>positionY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1726,7 +1727,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionZ</idShort>
+                              <idShort>positionZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1741,7 +1742,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationX</idShort>
+                              <idShort>rotationX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1756,7 +1757,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationY</idShort>
+                              <idShort>rotationY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1771,7 +1772,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationZ</idShort>
+                              <idShort>rotationZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1826,7 +1827,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1838,7 +1839,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1850,7 +1851,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1862,7 +1863,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1888,7 +1889,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1903,7 +1904,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1918,7 +1919,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1933,7 +1934,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1948,7 +1949,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1963,7 +1964,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -1978,7 +1979,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -1990,7 +1991,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2002,7 +2003,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2014,7 +2015,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2026,7 +2027,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2038,7 +2039,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2090,7 +2091,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2102,7 +2103,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2114,7 +2115,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2126,7 +2127,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2152,7 +2153,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2167,7 +2168,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2182,7 +2183,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2197,7 +2198,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2212,7 +2213,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2227,7 +2228,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2242,7 +2243,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2254,7 +2255,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2266,7 +2267,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2278,7 +2279,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2290,7 +2291,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2302,7 +2303,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2325,6 +2326,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType>boolean</valueType>
                   <value>false</value>
                 </property>
@@ -2370,7 +2372,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>PositionX</idShort>
+                              <idShort>positionX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2385,7 +2387,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionY</idShort>
+                              <idShort>positionY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2400,7 +2402,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionZ</idShort>
+                              <idShort>positionZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2415,7 +2417,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationX</idShort>
+                              <idShort>rotationX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2430,7 +2432,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationY</idShort>
+                              <idShort>rotationY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2445,7 +2447,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationZ</idShort>
+                              <idShort>rotationZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2500,7 +2502,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2512,7 +2514,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2524,7 +2526,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2536,7 +2538,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2562,7 +2564,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2577,7 +2579,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2592,7 +2594,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2607,7 +2609,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2622,7 +2624,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2637,7 +2639,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2652,7 +2654,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2664,7 +2666,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2676,7 +2678,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2688,7 +2690,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2700,7 +2702,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2712,7 +2714,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2764,7 +2766,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2776,7 +2778,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2788,7 +2790,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2800,7 +2802,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2826,7 +2828,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2841,7 +2843,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2856,7 +2858,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2871,7 +2873,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2886,7 +2888,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2901,7 +2903,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -2916,7 +2918,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2928,7 +2930,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2940,7 +2942,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2952,7 +2954,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2964,7 +2966,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2976,7 +2978,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -2999,6 +3001,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>true</value>
                 </property>
@@ -3044,7 +3047,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>PositionX</idShort>
+                              <idShort>positionX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3059,7 +3062,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionY</idShort>
+                              <idShort>positionY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3074,7 +3077,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionZ</idShort>
+                              <idShort>positionZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3089,7 +3092,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationX</idShort>
+                              <idShort>rotationX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3104,7 +3107,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationY</idShort>
+                              <idShort>rotationY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3119,7 +3122,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationZ</idShort>
+                              <idShort>rotationZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3174,7 +3177,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3186,7 +3189,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3198,7 +3201,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3210,7 +3213,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3236,7 +3239,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3251,7 +3254,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3266,7 +3269,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3281,7 +3284,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3296,7 +3299,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3311,7 +3314,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3326,7 +3329,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3338,7 +3341,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3350,7 +3353,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3362,7 +3365,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3374,7 +3377,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3386,7 +3389,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3438,7 +3441,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedX</idShort>
+                              <idShort>maxSpeedX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3450,7 +3453,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationX</idShort>
+                              <idShort>maxAccelerationX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3462,7 +3465,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxSpeedY</idShort>
+                              <idShort>maxSpeedY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3474,7 +3477,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>MaxAccelerationY</idShort>
+                              <idShort>maxAccelerationY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3500,7 +3503,7 @@
                         <value>
                           <submodelElement>
                             <property>
-                              <idShort>ForceX</idShort>
+                              <idShort>forceX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3515,7 +3518,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceY</idShort>
+                              <idShort>forceY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3530,7 +3533,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>ForceZ</idShort>
+                              <idShort>forceZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3545,7 +3548,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueX</idShort>
+                              <idShort>torqueX</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3560,7 +3563,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueY</idShort>
+                              <idShort>torqueY</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3575,7 +3578,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>TorqueZ</idShort>
+                              <idShort>torqueZ</idShort>
                               <category>CONSTANT</category>
                               <kind>Instance</kind>
                               <semanticId>
@@ -3590,7 +3593,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyX</idShort>
+                              <idShort>positionRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3602,7 +3605,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyX</idShort>
+                              <idShort>rotationRepetitionAccuracyX</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3614,7 +3617,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyY</idShort>
+                              <idShort>positionRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3626,7 +3629,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyY</idShort>
+                              <idShort>rotationRepetitionAccuracyY</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3638,7 +3641,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>PositionRepetitionAccuracyZ</idShort>
+                              <idShort>positionRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3650,7 +3653,7 @@
                           </submodelElement>
                           <submodelElement>
                             <property>
-                              <idShort>RotationRepetitionAccuracyZ</idShort>
+                              <idShort>rotationRepetitionAccuracyZ</idShort>
                               <kind>Instance</kind>
                               <semanticId>
                                 <keys />
@@ -3673,6 +3676,7 @@
                   <semanticId>
                     <keys />
                   </semanticId>
+                  <qualifier />
                   <valueType />
                   <value>true</value>
                 </property>

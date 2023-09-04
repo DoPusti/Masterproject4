@@ -82,23 +82,24 @@ public class HtmlController {
 
             */
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
+            /*
             List<ProcessRequirement> processRequirementList = productRequirementFullObject.getProcessRequirement();
             List<ProductProperty> productPropertyList = productRequirementFullObject.getProductProperty();
             List<StateOfStability> stabilityList = productRequirementMapper.setStateOfStability(processRequirementList);
-            HashMap<String,String> listOfMatchingAttributes = new HashMap<>();
-            listOfMatchingAttributes.put("positionX", "PersistentStateChange");
-            listOfMatchingAttributes.put("positionY", "PersistentStateChange");
-            listOfMatchingAttributes.put("positionZ", "PersistentStateChange");
-            listOfMatchingAttributes.put("forceX", "Constraints");
-            listOfMatchingAttributes.put("forceY", "Constraints");
-            listOfMatchingAttributes.put("forceZ", "Constraints");
+            Map<String,String> listOfRelevantParameters = new HashMap<>();
+            listOfRelevantParameters.put("positionX", "PersistentStateChange");
+            listOfRelevantParameters.put("positionY", "PersistentStateChange");
+            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
+            listOfRelevantParameters.put("forceX", "Constraints");
+            listOfRelevantParameters.put("forceY", "Constraints");
+            listOfRelevantParameters.put("forceZ", "Constraints");
 
             System.out.println("Stabilitätsliste ->");
             stabilityList.forEach(stability -> {
                 System.out.println(stability.toString());
             });
             System.out.println("MatchingAttributeListe ->");
-            System.out.println(listOfMatchingAttributes);
+            System.out.println(listOfRelevantParameters);
 
 
             System.out.println("ProductRequirementFullObject ->");
@@ -112,20 +113,22 @@ public class HtmlController {
                 System.out.println(productProperty.toString());
             });
 
+             */
+
+            //List<RequirementSequence> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
+
             /*
                 Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen
 
-             */
+
             List<ProductProcessReference> listOfProductProcessReference = productRequirementMapper.getAllProductProcessReference(productRequirementFullObject);
 
             System.out.println("ProductProcessReference ->");
-            listOfProductProcessReference.forEach(productProcessReference -> {
-                System.out.println(productProcessReference);
-            });
+            listOfProductProcessReference.forEach(System.out::println);
 
             /*
                 Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
-             */
+
 
             List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, listOfProductProcessReference);
             System.out.println("Ressourcenliste ->");
@@ -137,7 +140,7 @@ public class HtmlController {
             /*
                 Objekt zur Haltunge der Daten für die Zusicherungen
 
-             */
+
 
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             System.out.println("Zusicherungen ->");
@@ -150,7 +153,7 @@ public class HtmlController {
             /*
                 Passende Ressource Greifer suchen (AutomaticallyRemoveable)
 
-             */
+
 
 
             ressourceChecker.searchForGripper(ressourceHolderList, assuranceList);
@@ -158,7 +161,7 @@ public class HtmlController {
             /*
                 Passender Greifer wurde nun ausgesucht -> Suche nach Achse oder passenden Roboter
 
-             */
+
 
             productRequirementMapper.setNewProperties(ressourceHolderList);
             Log.info("Neue kombinierte Anforderung mit Greifer + Produkt");
@@ -171,19 +174,10 @@ public class HtmlController {
             /*
                 Passende Achse bzw. Roboter finden
 
-             */
-            ressourceChecker.checkKinematicChain(ressourceHolderList, assuranceList, stabilityList, listOfMatchingAttributes);
 
-
-
-
-            /*
-            ressourceChecker.searchForKinematicChain(ressourceHolderList,assuranceList);
-
-            ressourceChecker.searchForAxe(ressourceHolderList,assuranceList);
+            ressourceChecker.checkKinematicChain(ressourceHolderList, assuranceList, stabilityList, listOfRelevantParameters);
 
              */
-
 
         }
         // Pfad zum HTML-File im classpath:static Ordner

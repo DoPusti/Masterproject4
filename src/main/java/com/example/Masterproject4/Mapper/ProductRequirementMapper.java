@@ -8,9 +8,8 @@ import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.*;
-
-import static java.lang.Math.max;
 
 @Component
 public class ProductRequirementMapper {
@@ -18,11 +17,19 @@ public class ProductRequirementMapper {
     ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
     List<ProductProperty> productProperties = new ArrayList<>();
     List<ProcessRequirement> processRequirements = new ArrayList<>();
+    int idForProcessRequirements = 0;
 
     private static void printEntry(String description, AbstractMap.SimpleEntry<String, Double> entry) {
         System.out.println(description + ": " + entry.getKey() + " - " + entry.getValue());
     }
-    int idForProcessRequirements = 0;
+
+    public static void addOrUpdateValue(Map<String, AttributeToValue> map, String key, double value, AttributeToValue newAttributeValueIn) {
+        if (!map.containsKey(key) || map.get(key).getValueOfParameter() < value) {
+            //System.out.println("Neues Attribut " + key + " hinzugefügt" );
+            map.put(key, newAttributeValueIn);
+        }
+    }
+
     public ProductRequirementFullObject mapXMLToClass(File file) throws JAXBException {
         //File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi3.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
@@ -56,7 +63,7 @@ public class ProductRequirementMapper {
                     List<SubModelElement> subModelElements = subModelObject.getSubmodelElements().getSubmodelElement();
                     subModelElements.forEach(subElementsLevel1 -> {
                         ProcessRequirement newProcessRequirement = fillSubModelProcessRequirement(subElementsLevel1.getSubmodelElementCollection());
-                        idForProcessRequirements ++;
+                        idForProcessRequirements++;
                         newProcessRequirement.setId(idForProcessRequirements);
                         processRequirements.add(newProcessRequirement);
                     });
@@ -121,6 +128,8 @@ public class ProductRequirementMapper {
     }
 
     private ProcessRequirement fillSubModelProcessRequirement(SubmodelElementCollection collection) {
+        Map<String, AttributeToValue> attributeDefinitions = new HashMap<>();
+
         ProcessRequirement processRequirement = new ProcessRequirement();
         String idShortOfProcessRequirement = collection.getIdShort();
 
@@ -136,184 +145,21 @@ public class ProductRequirementMapper {
                     processRequirement.setStability(Boolean.parseBoolean(property.getValue()));
                 }
             } else {
-                String idShortInnerhalbSCM = subModelElementDeep1.getSubmodelElementCollection().getIdShort();
+
                 List<SubModelElement> listOfElements = subModelElementDeep1.getSubmodelElementCollection().getValue().getSubmodelElement();
                 listOfElements.forEach(subModelElementDeep2 -> {
                     List<SubModelElement> subModelElements3 = subModelElementDeep2.getSubmodelElementCollection().getValue().getSubmodelElement();
-                    // bisher noch null bei PreCondition und PostCondition
                     if (subModelElements3 != null) {
                         subModelElements3.forEach(subModelElementDeep3 -> {
                             Property property2 = subModelElementDeep3.getProperty();
-                            switch (property2.getIdShort()) {
-                                case "PositionX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "PositionY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "PositionZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxSpeedX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxSpeedXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxSpeedXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxSpeedY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxSpeedYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxSpeedYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxSpeedZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxSpeedZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxSpeedZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxAccelerationX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxAccelerationXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxAccelerationXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxAccelerationY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxAccelerationYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxAccelerationYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "MaxAccelerationZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setMaxAccelerationZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setMaxAccelerationZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "ForceX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setForceXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setForceXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "ForceY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setForceYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setForceYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "ForceZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setForceZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setForceZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "PositionRepetitionAccuracyX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionRepetitionAccuracyXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionRepetitionAccuracyXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "PositionRepetitionAccuracyY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionRepetitionAccuracyYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionRepetitionAccuracyYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "PositionRepetitionAccuracyZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setPositionRepetitionAccuracyZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setPositionRepetitionAccuracyZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationRepetitionAccuracyX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationRepetitionAccuracyXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationRepetitionAccuracyXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationRepetitionAccuracyY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationRepetitionAccuracyYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationRepetitionAccuracyYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "RotationRepetitionAccuracyZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setRotationRepetitionAccuracyZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setRotationRepetitionAccuracyZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "TorqueX":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setTorqueXRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setTorqueXSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "TorqueY":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setTorqueYRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setTorqueYSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                                case "TorqueZ":
-                                    if (idShortInnerhalbSCM.equals("RequiredStateChange")) {
-                                        processRequirement.setTorqueZRsC(Double.parseDouble(property2.getValue()));
-                                    } else {
-                                        processRequirement.setTorqueZSsC(Double.parseDouble(property2.getValue()));
-                                    }
-                                    break;
-                            }
+                            double propertyParsedToDouble = Double.parseDouble(property2.getValue());
+                            System.out.println("TVID: " + idShortOfProcessRequirement + ", Elements " + property2.getIdShort() + "/" + propertyParsedToDouble);
+                            AttributeToValue newAttributeValue = AttributeToValue.builder()
+                                    .subProcessId(idShortOfProcessRequirement)
+                                    .valueOfParameter(propertyParsedToDouble)
+                                    .build();
+                            addOrUpdateValue(attributeDefinitions, property2.getIdShort(), propertyParsedToDouble, newAttributeValue);
+
                         });
                     }
                 });
@@ -321,14 +167,22 @@ public class ProductRequirementMapper {
 
         });
 
-        //System.out.println("Fertiges Process Requirement");
-        //System.out.println(processRequirement);
+        processRequirement.setAttributeDefinitions(attributeDefinitions);
+        for (AttributeToValue attributeToValue : processRequirement.getAttributeDefinitions().values()) {
+            attributeToValue.setStabilityGiven(processRequirement.isStability());
+        }
+        System.out.println(processRequirement);
         return processRequirement;
     }
 
+    /*
     public List<RessourceHolder> fillAndSortRequirementList(List<ProcessRequirement> processRequirementListIn,List<ProductProcessReference> productProcessReferenceIn) {
 
         List<RessourceHolder> newRessourceHolderList = new ArrayList<>();
+
+        List<List<Map<String, AttributeToValue>>> parameter;
+
+
         Map<Integer, Double> unsortedMapPositionX = new HashMap<>();
         Map<Integer, Double> unsortedMapPositionY = new HashMap<>();
         Map<Integer, Double> unsortedMapPositionZ = new HashMap<>();
@@ -481,28 +335,6 @@ public class ProductRequirementMapper {
 
         for (int i = 0; i < sortedListForceX.size(); i++) {
             List<String> tvList = new ArrayList<>();
-            // TV - Liste erzeugen aller betroffenen TVS pro Permutation
-            /*
-            tvList.add(sortedListRotationX.get(i).getKey());
-            tvList.add(sortedListRotationY.get(i).getKey());
-            tvList.add(sortedListRotationZ.get(i).getKey());
-            tvList.add(sortedListPositionX.get(i).getKey());
-            tvList.add(sortedListPositionY.get(i).getKey());
-            tvList.add(sortedListPositionZ.get(i).getKey());
-            tvList.add(sortedListForceX.get(i).getKey());
-            tvList.add(sortedListForceY.get(i).getKey());
-            tvList.add(sortedListForceZ.get(i).getKey());
-            tvList.add(sortedListTorqueX.get(i).getKey());
-            tvList.add(sortedListTorqueY.get(i).getKey());
-            tvList.add(sortedListTorqueZ.get(i).getKey());
-            tvList.add(sortedListPositionRepetitionAccuracyX.get(i).getKey());
-            tvList.add(sortedListPositionRepetitionAccuracyY.get(i).getKey());
-            tvList.add(sortedListPositionRepetitionAccuracyZ.get(i).getKey());
-            tvList.add(sortedListRotationRepetitionAccuracyX.get(i).getKey());
-            tvList.add(sortedListRotationRepetitionAccuracyY.get(i).getKey());
-            tvList.add(sortedListRotationRepetitionAccuracyZ.get(i).getKey());
-
-             */
             RessourceHolder newRessource = RessourceHolder.builder()
                     .idShort(i)
                     .positionX(new AbstractMap.SimpleEntry<>(sortedListPositionX.get(i).getKey(), sortedListPositionX.get(i).getValue()))
@@ -566,6 +398,8 @@ public class ProductRequirementMapper {
         return newRessourceHolderList;
     }
 
+     */
+
     public List<ProductProcessReference> getAllProductProcessReference(ProductRequirementFullObject productRequirementFullObjectIn) {
         List<ProductProcessReference> productProcessReferenceOut = new ArrayList<>();
 
@@ -601,7 +435,7 @@ public class ProductRequirementMapper {
     public void setNewProperties(List<RessourceHolder> ressourceHolderListIn) {
 
         ressourceHolderListIn.forEach(ressourceHolder -> {
-            if(!(ressourceHolder.getGripper() == null)) {
+            if (!(ressourceHolder.getGripper() == null)) {
                 ressourceHolder.setMass(ressourceHolder.getMass() + ressourceHolder.getGripper().getMass());
                 ressourceHolder.setLength(ressourceHolder.getLength() + ressourceHolder.getGripper().getLength());
                 ressourceHolder.setWidth(ressourceHolder.getWidth() + ressourceHolder.getGripper().getWidth());
@@ -609,27 +443,27 @@ public class ProductRequirementMapper {
                 ressourceHolder.setCenterOfMassX(ressourceHolder.getCenterOfMassX() + ressourceHolder.getGripper().getCenterOfMassX());
                 ressourceHolder.setCenterOfMassY(ressourceHolder.getCenterOfMassY() + ressourceHolder.getGripper().getCenterOfMassY());
                 ressourceHolder.setCenterOfMassZ(ressourceHolder.getCenterOfMassZ() + ressourceHolder.getGripper().getCenterOfMassZ());
-                ressourceHolder.setPositionX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionX().getKey(),ressourceHolder.getPositionX().getValue() + ressourceHolder.getGripper().getPositionX()));
-                ressourceHolder.setPositionY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionY().getKey(),ressourceHolder.getPositionY().getValue() + ressourceHolder.getGripper().getPositionY()));
-                ressourceHolder.setPositionZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionZ().getKey(),ressourceHolder.getPositionZ().getValue() + ressourceHolder.getGripper().getPositionZ()));
-                ressourceHolder.setRotationX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationX().getKey(),ressourceHolder.getRotationX().getValue() + ressourceHolder.getGripper().getRotationX()));
-                ressourceHolder.setRotationY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationY().getKey(),ressourceHolder.getRotationY().getValue() + ressourceHolder.getGripper().getRotationY()));
-                ressourceHolder.setRotationZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationZ().getKey(),ressourceHolder.getRotationZ().getValue() + ressourceHolder.getGripper().getRotationZ()));
-                ressourceHolder.setForceX(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceX().getKey(),ressourceHolder.getForceX().getValue() + ressourceHolder.getGripper().getForceX()));
-                ressourceHolder.setForceY(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceY().getKey(),ressourceHolder.getForceY().getValue() + ressourceHolder.getGripper().getForceY()));
-                ressourceHolder.setForceZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceZ().getKey(),ressourceHolder.getForceZ().getValue() + ressourceHolder.getGripper().getForceZ()));
-                ressourceHolder.setTorqueX(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueX().getKey(),ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueX()));
-                ressourceHolder.setTorqueY(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueY().getKey(),ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueY()));
-                ressourceHolder.setTorqueZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueZ().getKey(),ressourceHolder.getTorqueZ().getValue() + ressourceHolder.getGripper().getTorqueZ()));
-                ressourceHolder.setPositionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyX().getKey(),ressourceHolder.getPositionRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyX()));
-                ressourceHolder.setPositionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyY().getKey(),ressourceHolder.getPositionRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyY()));
-                ressourceHolder.setPositionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyZ().getKey(),ressourceHolder.getPositionRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyZ()));
-                ressourceHolder.setRotationRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyX().getKey(),ressourceHolder.getRotationRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyX()));
-                ressourceHolder.setRotationRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyY().getKey(),ressourceHolder.getRotationRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyY()));
-                ressourceHolder.setRotationRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyZ().getKey(),ressourceHolder.getRotationRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyZ()));
+                ressourceHolder.setPositionX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionX().getKey(), ressourceHolder.getPositionX().getValue() + ressourceHolder.getGripper().getPositionX()));
+                ressourceHolder.setPositionY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionY().getKey(), ressourceHolder.getPositionY().getValue() + ressourceHolder.getGripper().getPositionY()));
+                ressourceHolder.setPositionZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionZ().getKey(), ressourceHolder.getPositionZ().getValue() + ressourceHolder.getGripper().getPositionZ()));
+                ressourceHolder.setRotationX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationX().getKey(), ressourceHolder.getRotationX().getValue() + ressourceHolder.getGripper().getRotationX()));
+                ressourceHolder.setRotationY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationY().getKey(), ressourceHolder.getRotationY().getValue() + ressourceHolder.getGripper().getRotationY()));
+                ressourceHolder.setRotationZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationZ().getKey(), ressourceHolder.getRotationZ().getValue() + ressourceHolder.getGripper().getRotationZ()));
+                ressourceHolder.setForceX(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceX().getKey(), ressourceHolder.getForceX().getValue() + ressourceHolder.getGripper().getForceX()));
+                ressourceHolder.setForceY(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceY().getKey(), ressourceHolder.getForceY().getValue() + ressourceHolder.getGripper().getForceY()));
+                ressourceHolder.setForceZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceZ().getKey(), ressourceHolder.getForceZ().getValue() + ressourceHolder.getGripper().getForceZ()));
+                ressourceHolder.setTorqueX(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueX().getKey(), ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueX()));
+                ressourceHolder.setTorqueY(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueY().getKey(), ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueY()));
+                ressourceHolder.setTorqueZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueZ().getKey(), ressourceHolder.getTorqueZ().getValue() + ressourceHolder.getGripper().getTorqueZ()));
+                ressourceHolder.setPositionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyX().getKey(), ressourceHolder.getPositionRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyX()));
+                ressourceHolder.setPositionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyY().getKey(), ressourceHolder.getPositionRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyY()));
+                ressourceHolder.setPositionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyZ().getKey(), ressourceHolder.getPositionRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyZ()));
+                ressourceHolder.setRotationRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyX().getKey(), ressourceHolder.getRotationRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyX()));
+                ressourceHolder.setRotationRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyY().getKey(), ressourceHolder.getRotationRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyY()));
+                ressourceHolder.setRotationRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyZ().getKey(), ressourceHolder.getRotationRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyZ()));
 
             }
-        } );
+        });
 
 
     }
@@ -645,6 +479,35 @@ public class ProductRequirementMapper {
         });
 
         return stateOfStabilityListOut;
+    }
+
+    public List<RequirementSequence> getAllSequencesOfRequirements(ProductRequirementFullObject productRequirementFullObjectIn,
+                                                                   Map<String, String> listOfRelevantParametersIn) throws IllegalAccessException {
+
+        List<RequirementSequence> requirementSequencesOut = new ArrayList<>();
+        List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
+        List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
+
+        Map<String, List<AttributeToValue>> parametersForGivenAttributes = new HashMap<>();
+
+        for (ProcessRequirement process : processRequirement) {
+            System.out.println("TV-Vorgang " + process.getTvName());
+            Class<?> clazz = process.getClass();
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                String fieldName = field.getName();
+                if (listOfRelevantParametersIn.containsKey(fieldName)) {
+                    field.setAccessible(true);
+                    double valueOfRessourceAttribute = (double) field.get(process);
+                    System.out.println("Attributsname " + fieldName);
+                    System.out.println("Wert " + valueOfRessourceAttribute);
+                }
+            }
+
+        }
+
+
+        return requirementSequencesOut;
     }
 
 

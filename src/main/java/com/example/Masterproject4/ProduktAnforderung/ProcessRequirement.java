@@ -1,8 +1,12 @@
 package com.example.Masterproject4.ProduktAnforderung;
 
-import lombok.*;
+import com.example.Masterproject4.Mapper.AttributeToValue;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import static java.lang.Math.max;
+import java.util.Map;
 
 @Builder
 @NoArgsConstructor
@@ -13,37 +17,18 @@ public class ProcessRequirement {
     String referenceParts;
     int id;
     boolean stability;
-
-    public double forceXRsC,forceYRsC,forceZRsC ;
-    public double torqueXRsC, torqueYRsC, torqueZRsC;
-    public double positionRepetitionAccuracyXRsC,positionRepetitionAccuracyYRsC,positionRepetitionAccuracyZRsC;
-    public double rotationRepetitionAccuracyXRsC,rotationRepetitionAccuracyYRsC,rotationRepetitionAccuracyZRsC;
-    public double maxSpeedXRsC,maxSpeedYRsC,maxSpeedZRsC;
-    public double maxAccelerationXRsC,maxAccelerationYRsC,maxAccelerationZRsC;
-    public double forceXSsC,forceYSsC,forceZSsC;
-    public double torqueXSsC,torqueYSsC,torqueZSsC;
-    public double positionRepetitionAccuracyXSsC,positionRepetitionAccuracyYSsC,positionRepetitionAccuracyZSsC;
-    public double rotationRepetitionAccuracyXSsC,rotationRepetitionAccuracyYSsC,rotationRepetitionAccuracyZSsC;
-    public double maxSpeedXSsC,maxSpeedYSsC,maxSpeedZSsC;
-    public double maxAccelerationXSsC,maxAccelerationYSsC,maxAccelerationZSsC;
-    public double positionXRsC,positionYRsC,positionZRsC;
-    public double rotationXRsC,rotationYRsC,rotationZRsC;
-    public double positionXSsC,positionYSsC,positionZSsC;
-    public double rotationXSsC,rotationYSsC,rotationZSsC;
-
+    Map<String, AttributeToValue> attributeDefinitions;
 
     @Override
     public String toString() {
-        return "id: " + id +
-                ", tvname: " + tvName +
-                ", stability: " + stability +
-                ", positionX: " + max(positionXRsC,positionXSsC) +
-                ", positionY: " + max(positionYRsC,positionYSsC) +
-                ", positionZ: " + max(positionZRsC,positionZSsC)+
-                ", forceX: " + max(forceXRsC,forceXSsC) +
-                ", forceY: " + max(forceYRsC,forceYSsC) +
-                ", forceZ: " + max(forceZRsC,forceZSsC) ;
-
+        String returnString = "";
+        for (Map.Entry<String, AttributeToValue> entry : attributeDefinitions.entrySet()) {
+            returnString = returnString.concat("Attributname: " + entry.getKey() +
+                    ",Wert : " + entry.getValue().getValueOfParameter() +
+                    ",ProcessId " +entry.getValue().getSubProcessId() +
+                    ",Stability: " + entry.getValue().isStabilityGiven() + "\n");
+        }
+        return returnString;
     }
 
 
