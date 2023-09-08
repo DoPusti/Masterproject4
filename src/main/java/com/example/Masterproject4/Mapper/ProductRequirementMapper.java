@@ -522,6 +522,35 @@ public class ProductRequirementMapper {
         return requirementSequenceOut;
     }
     public void sortPropertiesInAscendingOrder(RequirementSequence requirementSequenceIn) {
+        Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceIn.getParameter();
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
+            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
+            List<Map.Entry<String, PropertyInformation>> sortedEntries = new ArrayList<>(innerMap.entrySet());
+
+            // Sortieren der Einträge absteigend anhand valueOfParameter
+            sortedEntries.sort((entry1, entry2) ->
+                    Double.compare(entry2.getValue().getValueOfParameter(), entry1.getValue().getValueOfParameter()));
+
+            // Erstellen einer neuen LinkedHashMap mit sortierten Einträgen
+            LinkedHashMap<String, PropertyInformation> sortedInnerMap = new LinkedHashMap<>();
+            for (Map.Entry<String, PropertyInformation> sortedEntry : sortedEntries) {
+                sortedInnerMap.put(sortedEntry.getKey(), sortedEntry.getValue());
+            }
+
+            // Ersetzen der ursprünglichen inneren Map durch die sortierte Map
+            outerEntry.setValue(sortedInnerMap);
+        }
+
+        // Überprüfen des Ergebnisses
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
+            System.out.println("Outer Key: " + outerEntry.getKey());
+            System.out.println("Inner Map:");
+
+            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
+            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
+                System.out.println("  " + innerEntry.getKey() + " -> " + innerEntry.getValue().getValueOfParameter());
+            }
+        }
 
     }
 
