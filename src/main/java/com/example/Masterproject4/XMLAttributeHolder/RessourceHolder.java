@@ -1,7 +1,8 @@
-package com.example.Masterproject4.ProduktAnforderung;
+package com.example.Masterproject4.XMLAttributeHolder;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.Mapper.AttributeToValue;
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
+import com.example.Masterproject4.CombinedRessources.KinematicChainProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -64,7 +65,7 @@ public class RessourceHolder {
         for(KinematicChain kinematicChain : kinematicChainList) {
             returnInformation.append("ID = ").append(kinematicChain.getId());
             returnInformation.append("-> AttributsInformationen :").append("\n");
-            for(Map.Entry<String,KinematicChainProperties> entry : kinematicChain.getPropertiesOfAttributes().entrySet()) {
+            for(Map.Entry<String, KinematicChainProperties> entry : kinematicChain.getPropertiesOfAttributes().entrySet()) {
                 returnInformation.append("Attributsname= ").append(entry.getKey());
                 returnInformation.append(",Attributswert= ").append(entry.getValue().getValueOfAttribute());
                 returnInformation.append(",Attributstyp= ").append(entry.getValue().getKindOfAttribute());

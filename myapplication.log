@@ -1,248 +1,240 @@
-2023-09-04T17:21:55.028+02:00  INFO 1948 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 1948 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T17:21:55.034+02:00  INFO 1948 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T17:21:55.448+02:00  INFO 1948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T17:21:55.490+02:00  INFO 1948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
-2023-09-04T17:21:55.889+02:00  INFO 1948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T17:21:55.897+02:00  INFO 1948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T17:21:55.898+02:00  INFO 1948 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T17:21:55.982+02:00  INFO 1948 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T17:21:55.982+02:00  INFO 1948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 918 ms
-2023-09-04T17:21:56.101+02:00  INFO 1948 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T17:21:56.150+02:00  INFO 1948 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T17:21:56.152+02:00  INFO 1948 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T17:21:56.260+02:00  INFO 1948 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:21:56.359+02:00  INFO 1948 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T17:21:56.372+02:00  INFO 1948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T17:21:56.531+02:00  INFO 1948 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22ae905f
-2023-09-04T17:21:56.533+02:00  INFO 1948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T17:21:56.588+02:00  INFO 1948 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T17:21:56.765+02:00  INFO 1948 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:21:57.253+02:00  INFO 1948 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T17:21:57.715+02:00  INFO 1948 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:21:57.906+02:00  WARN 1948 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T17:21:58.001+02:00  INFO 1948 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T17:21:58.175+02:00  INFO 1948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T17:21:58.180+02:00  INFO 1948 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.556 seconds (process running for 3.822)
-2023-09-04T17:22:24.505+02:00  INFO 1948 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T17:22:24.505+02:00  INFO 1948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T17:22:24.506+02:00  INFO 1948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-09-04T17:22:37.371+02:00  INFO 1948 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:22:37.373+02:00  INFO 1948 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T17:22:37.379+02:00  INFO 1948 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T17:33:42.085+02:00  INFO 17080 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 17080 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T17:33:42.091+02:00  INFO 17080 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T17:33:42.449+02:00  INFO 17080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T17:33:42.490+02:00  INFO 17080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
-2023-09-04T17:33:42.858+02:00  INFO 17080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T17:33:42.864+02:00  INFO 17080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T17:33:42.864+02:00  INFO 17080 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T17:33:42.930+02:00  INFO 17080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T17:33:42.930+02:00  INFO 17080 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 814 ms
-2023-09-04T17:33:43.034+02:00  INFO 17080 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T17:33:43.068+02:00  INFO 17080 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T17:33:43.070+02:00  INFO 17080 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T17:33:43.180+02:00  INFO 17080 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:33:43.326+02:00  INFO 17080 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T17:33:43.341+02:00  INFO 17080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T17:33:43.507+02:00  INFO 17080 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T17:33:43.508+02:00  INFO 17080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T17:33:43.552+02:00  INFO 17080 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T17:33:43.713+02:00  INFO 17080 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:33:44.222+02:00  INFO 17080 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T17:33:44.640+02:00  INFO 17080 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:33:44.819+02:00  WARN 17080 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T17:33:44.900+02:00  INFO 17080 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T17:33:45.025+02:00  INFO 17080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T17:33:45.031+02:00  INFO 17080 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.287 seconds (process running for 3.528)
-2023-09-04T17:33:46.372+02:00  INFO 17080 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T17:33:46.372+02:00  INFO 17080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T17:33:46.372+02:00  INFO 17080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2023-09-04T17:35:24.114+02:00  INFO 17080 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:35:24.114+02:00  INFO 17080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T17:35:24.130+02:00  INFO 17080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T17:50:47.645+02:00  INFO 25228 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 25228 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T17:50:47.648+02:00  INFO 25228 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T17:50:48.037+02:00  INFO 25228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T17:50:48.076+02:00  INFO 25228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interfaces.
-2023-09-04T17:50:48.437+02:00  INFO 25228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T17:50:48.445+02:00  INFO 25228 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T17:50:48.445+02:00  INFO 25228 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T17:50:48.514+02:00  INFO 25228 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T17:50:48.515+02:00  INFO 25228 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 828 ms
-2023-09-04T17:50:48.619+02:00  INFO 25228 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T17:50:48.658+02:00  INFO 25228 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T17:50:48.659+02:00  INFO 25228 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T17:50:48.753+02:00  INFO 25228 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:50:48.840+02:00  INFO 25228 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T17:50:48.852+02:00  INFO 25228 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T17:50:49.004+02:00  INFO 25228 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T17:50:49.006+02:00  INFO 25228 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T17:50:49.049+02:00  INFO 25228 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T17:50:49.202+02:00  INFO 25228 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T17:50:49.665+02:00  INFO 25228 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T17:50:50.081+02:00  INFO 25228 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:50:50.276+02:00  WARN 25228 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T17:50:50.360+02:00  INFO 25228 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T17:50:50.464+02:00  INFO 25228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T17:50:50.469+02:00  INFO 25228 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.269 seconds (process running for 3.512)
-2023-09-04T17:50:50.815+02:00  INFO 25228 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T17:50:50.815+02:00  INFO 25228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T17:50:50.816+02:00  INFO 25228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-09-04T17:51:18.605+02:00  INFO 25228 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T17:51:18.606+02:00  INFO 25228 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T17:51:18.612+02:00  INFO 25228 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T21:15:09.858+02:00  INFO 13544 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 13544 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T21:15:09.859+02:00  INFO 13544 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T21:15:10.294+02:00  INFO 13544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T21:15:10.337+02:00  INFO 13544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interfaces.
-2023-09-04T21:15:10.757+02:00  INFO 13544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T21:15:10.766+02:00  INFO 13544 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T21:15:10.766+02:00  INFO 13544 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T21:15:10.857+02:00  INFO 13544 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T21:15:10.857+02:00  INFO 13544 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 961 ms
-2023-09-04T21:15:10.975+02:00  INFO 13544 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T21:15:11.026+02:00  INFO 13544 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T21:15:11.028+02:00  INFO 13544 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T21:15:11.181+02:00  INFO 13544 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:15:11.340+02:00  INFO 13544 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T21:15:11.357+02:00  INFO 13544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T21:15:11.559+02:00  INFO 13544 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T21:15:11.561+02:00  INFO 13544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T21:15:11.609+02:00  INFO 13544 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T21:15:11.776+02:00  INFO 13544 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:15:12.257+02:00  INFO 13544 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T21:15:12.720+02:00  INFO 13544 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:15:12.915+02:00  WARN 13544 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T21:15:13.029+02:00  INFO 13544 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T21:15:13.155+02:00  INFO 13544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T21:15:13.160+02:00  INFO 13544 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.75 seconds (process running for 4.047)
-2023-09-04T21:15:16.823+02:00  INFO 13544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T21:15:16.823+02:00  INFO 13544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T21:15:16.824+02:00  INFO 13544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-09-04T21:20:44.136+02:00  INFO 13544 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:20:44.138+02:00  INFO 13544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T21:20:44.146+02:00  INFO 13544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T21:21:25.841+02:00  INFO 23072 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 23072 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T21:21:25.843+02:00  INFO 23072 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T21:21:26.250+02:00  INFO 23072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T21:21:26.292+02:00  INFO 23072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interfaces.
-2023-09-04T21:21:26.662+02:00  INFO 23072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T21:21:26.669+02:00  INFO 23072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T21:21:26.669+02:00  INFO 23072 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T21:21:26.738+02:00  INFO 23072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T21:21:26.738+02:00  INFO 23072 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 851 ms
-2023-09-04T21:21:26.846+02:00  INFO 23072 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T21:21:26.882+02:00  INFO 23072 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T21:21:26.883+02:00  INFO 23072 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T21:21:26.973+02:00  INFO 23072 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:21:27.058+02:00  INFO 23072 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T21:21:27.069+02:00  INFO 23072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T21:21:27.177+02:00  INFO 23072 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T21:21:27.178+02:00  INFO 23072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T21:21:27.213+02:00  INFO 23072 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T21:21:27.348+02:00  INFO 23072 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:21:27.815+02:00  INFO 23072 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T21:21:28.452+02:00  INFO 23072 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:21:28.702+02:00  WARN 23072 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T21:21:28.808+02:00  INFO 23072 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T21:21:28.944+02:00  INFO 23072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T21:21:28.950+02:00  INFO 23072 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.476 seconds (process running for 3.721)
-2023-09-04T21:21:31.295+02:00  INFO 23072 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T21:21:31.295+02:00  INFO 23072 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T21:21:31.295+02:00  INFO 23072 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2023-09-04T21:24:40.628+02:00  INFO 23072 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:24:40.630+02:00  INFO 23072 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T21:24:40.636+02:00  INFO 23072 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T21:24:52.786+02:00  INFO 13448 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 13448 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T21:24:52.787+02:00  INFO 13448 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T21:24:53.176+02:00  INFO 13448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T21:24:53.217+02:00  INFO 13448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
-2023-09-04T21:24:53.571+02:00  INFO 13448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T21:24:53.579+02:00  INFO 13448 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T21:24:53.579+02:00  INFO 13448 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T21:24:53.647+02:00  INFO 13448 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T21:24:53.648+02:00  INFO 13448 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
-2023-09-04T21:24:53.748+02:00  INFO 13448 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T21:24:53.783+02:00  INFO 13448 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T21:24:53.784+02:00  INFO 13448 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T21:24:53.874+02:00  INFO 13448 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:24:53.963+02:00  INFO 13448 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T21:24:53.973+02:00  INFO 13448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T21:24:54.082+02:00  INFO 13448 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T21:24:54.083+02:00  INFO 13448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T21:24:54.120+02:00  INFO 13448 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T21:24:54.259+02:00  INFO 13448 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:24:54.715+02:00  INFO 13448 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T21:24:55.144+02:00  INFO 13448 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:24:55.321+02:00  WARN 13448 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T21:24:55.407+02:00  INFO 13448 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T21:24:55.509+02:00  INFO 13448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T21:24:55.514+02:00  INFO 13448 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.111 seconds (process running for 3.382)
-2023-09-04T21:24:55.703+02:00  INFO 13448 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T21:24:55.703+02:00  INFO 13448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T21:24:55.704+02:00  INFO 13448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2023-09-04T21:25:40.738+02:00  INFO 13448 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:25:40.740+02:00  INFO 13448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T21:25:40.745+02:00  INFO 13448 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T21:41:42.690+02:00  INFO 12952 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 12952 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T21:41:42.705+02:00  INFO 12952 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T21:41:43.076+02:00  INFO 12952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T21:41:43.116+02:00  INFO 12952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interfaces.
-2023-09-04T21:41:43.468+02:00  INFO 12952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T21:41:43.474+02:00  INFO 12952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T21:41:43.474+02:00  INFO 12952 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T21:41:43.542+02:00  INFO 12952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T21:41:43.543+02:00  INFO 12952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 810 ms
-2023-09-04T21:41:43.653+02:00  INFO 12952 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T21:41:43.689+02:00  INFO 12952 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T21:41:43.690+02:00  INFO 12952 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T21:41:43.788+02:00  INFO 12952 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:41:43.874+02:00  INFO 12952 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T21:41:43.884+02:00  INFO 12952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T21:41:43.997+02:00  INFO 12952 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T21:41:43.999+02:00  INFO 12952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T21:41:44.033+02:00  INFO 12952 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T21:41:44.173+02:00  INFO 12952 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:41:44.640+02:00  INFO 12952 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T21:41:45.168+02:00  INFO 12952 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:41:45.344+02:00  WARN 12952 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T21:41:45.426+02:00  INFO 12952 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T21:41:45.542+02:00  INFO 12952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T21:41:45.547+02:00  INFO 12952 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.249 seconds (process running for 3.539)
-2023-09-04T21:41:45.782+02:00  INFO 12952 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T21:41:45.782+02:00  INFO 12952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T21:41:45.783+02:00  INFO 12952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-09-04T21:42:05.350+02:00  INFO 12952 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:42:05.352+02:00  INFO 12952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T21:42:05.357+02:00  INFO 12952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-09-04T21:43:07.940+02:00  INFO 9400 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 9400 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
-2023-09-04T21:43:07.945+02:00  INFO 9400 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
-2023-09-04T21:43:08.348+02:00  INFO 9400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-04T21:43:08.391+02:00  INFO 9400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interfaces.
-2023-09-04T21:43:08.745+02:00  INFO 9400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-09-04T21:43:08.752+02:00  INFO 9400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-09-04T21:43:08.752+02:00  INFO 9400 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-09-04T21:43:08.819+02:00  INFO 9400 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-09-04T21:43:08.819+02:00  INFO 9400 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 846 ms
-2023-09-04T21:43:08.920+02:00  INFO 9400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-04T21:43:08.954+02:00  INFO 9400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
-2023-09-04T21:43:08.955+02:00  INFO 9400 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-04T21:43:09.042+02:00  INFO 9400 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:43:09.126+02:00  INFO 9400 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-04T21:43:09.137+02:00  INFO 9400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-04T21:43:09.243+02:00  INFO 9400 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4899799b
-2023-09-04T21:43:09.245+02:00  INFO 9400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-04T21:43:09.278+02:00  INFO 9400 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
-2023-09-04T21:43:09.411+02:00  INFO 9400 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-04T21:43:09.871+02:00  INFO 9400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-04T21:43:10.271+02:00  INFO 9400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:43:10.443+02:00  WARN 9400 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-04T21:43:10.526+02:00  INFO 9400 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2023-09-04T21:43:10.641+02:00  INFO 9400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-04T21:43:10.646+02:00  INFO 9400 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.036 seconds (process running for 3.299)
-2023-09-04T21:43:12.695+02:00  INFO 9400 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-04T21:43:12.695+02:00  INFO 9400 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-09-04T21:43:12.696+02:00  INFO 9400 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-09-04T21:43:39.101+02:00  INFO 9400 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-04T21:43:39.103+02:00  INFO 9400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-09-04T21:43:39.108+02:00  INFO 9400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:23:34.977+02:00  INFO 18664 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 18664 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:23:34.983+02:00  INFO 18664 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:23:35.396+02:00  INFO 18664 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:23:35.438+02:00  INFO 18664 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:23:35.827+02:00  INFO 18664 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:23:35.834+02:00  INFO 18664 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:23:35.835+02:00  INFO 18664 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:23:35.914+02:00  INFO 18664 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:23:35.914+02:00  INFO 18664 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 896 ms
+2023-09-08T20:23:36.033+02:00  INFO 18664 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:23:36.081+02:00  INFO 18664 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:23:36.082+02:00  INFO 18664 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:23:36.193+02:00  INFO 18664 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:23:36.291+02:00  INFO 18664 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:23:36.302+02:00  INFO 18664 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:23:36.443+02:00  INFO 18664 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@748904e8
+2023-09-08T20:23:36.444+02:00  INFO 18664 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:23:36.495+02:00  INFO 18664 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:23:36.643+02:00  INFO 18664 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:23:37.107+02:00  INFO 18664 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:23:37.556+02:00  INFO 18664 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:23:37.750+02:00  WARN 18664 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:23:37.845+02:00  INFO 18664 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:23:37.962+02:00  INFO 18664 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:23:37.967+02:00  INFO 18664 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.371 seconds (process running for 3.629)
+2023-09-08T20:23:38.707+02:00  INFO 18664 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:23:38.707+02:00  INFO 18664 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:23:38.708+02:00  INFO 18664 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-08T20:23:48.010+02:00 ERROR 18664 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "com.example.Masterproject4.XMLAttributeHolder.PropertyInformation.getPartReference()" is null] with root cause
+
+java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "com.example.Masterproject4.XMLAttributeHolder.PropertyInformation.getPartReference()" is null
+	at com.example.Masterproject4.Mapper.ProductRequirementMapper.mapProductRequirementFullObjectToSequence(ProductRequirementMapper.java:524)
+	at com.example.Masterproject4.HtmlController.submitForm(HtmlController.java:90)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+
+2023-09-08T20:25:08.786+02:00  INFO 18664 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:25:08.787+02:00  INFO 18664 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:25:08.793+02:00  INFO 18664 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:26:12.472+02:00  INFO 17324 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 17324 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:26:12.474+02:00  INFO 17324 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:26:12.827+02:00  INFO 17324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:26:12.865+02:00  INFO 17324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:26:13.195+02:00  INFO 17324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:26:13.202+02:00  INFO 17324 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:26:13.202+02:00  INFO 17324 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:26:13.270+02:00  INFO 17324 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:26:13.271+02:00  INFO 17324 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 767 ms
+2023-09-08T20:26:13.373+02:00  INFO 17324 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:26:13.407+02:00  INFO 17324 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:26:13.409+02:00  INFO 17324 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:26:13.496+02:00  INFO 17324 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:26:13.581+02:00  INFO 17324 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:26:13.592+02:00  INFO 17324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:26:13.696+02:00  INFO 17324 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c7f6b5
+2023-09-08T20:26:13.697+02:00  INFO 17324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:26:13.733+02:00  INFO 17324 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:26:13.870+02:00  INFO 17324 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:26:14.312+02:00  INFO 17324 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:26:14.724+02:00  INFO 17324 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:26:14.899+02:00  WARN 17324 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:26:14.979+02:00  INFO 17324 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:26:15.080+02:00  INFO 17324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:26:15.085+02:00  INFO 17324 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 2.938 seconds (process running for 3.195)
+2023-09-08T20:26:18.274+02:00  INFO 17324 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:26:18.275+02:00  INFO 17324 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:26:18.275+02:00  INFO 17324 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-09-08T20:26:35.805+02:00  INFO 17324 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:26:35.807+02:00  INFO 17324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:26:35.813+02:00  INFO 17324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:29:48.399+02:00  INFO 1952 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 1952 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:29:48.400+02:00  INFO 1952 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:29:48.757+02:00  INFO 1952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:29:48.796+02:00  INFO 1952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:29:49.133+02:00  INFO 1952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:29:49.140+02:00  INFO 1952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:29:49.140+02:00  INFO 1952 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:29:49.207+02:00  INFO 1952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:29:49.207+02:00  INFO 1952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 777 ms
+2023-09-08T20:29:49.306+02:00  INFO 1952 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:29:49.341+02:00  INFO 1952 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:29:49.342+02:00  INFO 1952 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:29:49.430+02:00  INFO 1952 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:29:49.516+02:00  INFO 1952 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:29:49.527+02:00  INFO 1952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:29:49.632+02:00  INFO 1952 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51eb0e84
+2023-09-08T20:29:49.634+02:00  INFO 1952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:29:49.668+02:00  INFO 1952 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:29:49.803+02:00  INFO 1952 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:29:50.265+02:00  INFO 1952 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:29:50.676+02:00  INFO 1952 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:29:50.860+02:00  WARN 1952 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:29:50.944+02:00  INFO 1952 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:29:51.046+02:00  INFO 1952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:29:51.051+02:00  INFO 1952 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 2.991 seconds (process running for 3.233)
+2023-09-08T20:29:51.090+02:00  INFO 1952 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:29:51.091+02:00  INFO 1952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:29:51.091+02:00  INFO 1952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2023-09-08T20:30:12.674+02:00  INFO 1952 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:30:12.676+02:00  INFO 1952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:30:12.681+02:00  INFO 1952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:32:05.996+02:00  INFO 22140 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 22140 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:32:05.998+02:00  INFO 22140 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:32:06.351+02:00  INFO 22140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:32:06.389+02:00  INFO 22140 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:32:06.723+02:00  INFO 22140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:32:06.730+02:00  INFO 22140 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:32:06.730+02:00  INFO 22140 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:32:06.794+02:00  INFO 22140 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:32:06.795+02:00  INFO 22140 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 767 ms
+2023-09-08T20:32:06.892+02:00  INFO 22140 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:32:06.927+02:00  INFO 22140 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:32:06.929+02:00  INFO 22140 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:32:07.016+02:00  INFO 22140 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:32:07.101+02:00  INFO 22140 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:32:07.112+02:00  INFO 22140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:32:07.218+02:00  INFO 22140 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c7f6b5
+2023-09-08T20:32:07.219+02:00  INFO 22140 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:32:07.254+02:00  INFO 22140 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:32:07.395+02:00  INFO 22140 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:32:07.844+02:00  INFO 22140 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:32:08.240+02:00  INFO 22140 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:32:08.411+02:00  WARN 22140 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:32:08.489+02:00  INFO 22140 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:32:08.585+02:00  INFO 22140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:32:08.589+02:00  INFO 22140 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 2.919 seconds (process running for 3.153)
+2023-09-08T20:32:08.624+02:00  INFO 22140 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:32:08.624+02:00  INFO 22140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:32:08.625+02:00  INFO 22140 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-08T20:33:34.044+02:00  INFO 22140 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:33:34.046+02:00  INFO 22140 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:33:34.051+02:00  INFO 22140 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:38:59.822+02:00  INFO 22092 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 22092 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:38:59.824+02:00  INFO 22092 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:39:00.211+02:00  INFO 22092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:39:00.252+02:00  INFO 22092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:39:00.605+02:00  INFO 22092 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:39:00.611+02:00  INFO 22092 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:39:00.612+02:00  INFO 22092 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:39:00.677+02:00  INFO 22092 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:39:00.677+02:00  INFO 22092 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 822 ms
+2023-09-08T20:39:00.776+02:00  INFO 22092 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:39:00.809+02:00  INFO 22092 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:39:00.810+02:00  INFO 22092 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:39:00.894+02:00  INFO 22092 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:39:00.977+02:00  INFO 22092 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:39:00.988+02:00  INFO 22092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:39:01.093+02:00  INFO 22092 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c7f6b5
+2023-09-08T20:39:01.094+02:00  INFO 22092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:39:01.137+02:00  INFO 22092 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:39:01.271+02:00  INFO 22092 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:39:01.728+02:00  INFO 22092 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:39:02.117+02:00  INFO 22092 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:39:02.292+02:00  WARN 22092 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:39:02.372+02:00  INFO 22092 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:39:02.481+02:00  INFO 22092 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:39:02.488+02:00  INFO 22092 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 3.023 seconds (process running for 3.304)
+2023-09-08T20:39:02.748+02:00  INFO 22092 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:39:02.748+02:00  INFO 22092 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:39:02.749+02:00  INFO 22092 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-08T20:39:21.967+02:00  INFO 22092 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:39:21.969+02:00  INFO 22092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:39:21.975+02:00  INFO 22092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-09-08T20:45:25.367+02:00  INFO 28240 --- [main] c.e.M.Masterproject4Application          : Starting Masterproject4Application using Java 19.0.1 with PID 28240 (C:\Users\domin\IdeaProjects\Masterproject4\target\classes started by domin in C:\Users\domin\IdeaProjects\Masterproject4)
+2023-09-08T20:45:25.368+02:00  INFO 28240 --- [main] c.e.M.Masterproject4Application          : No active profile set, falling back to 1 default profile: "default"
+2023-09-08T20:45:25.721+02:00  INFO 28240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-08T20:45:25.759+02:00  INFO 28240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
+2023-09-08T20:45:26.093+02:00  INFO 28240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-08T20:45:26.100+02:00  INFO 28240 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-08T20:45:26.100+02:00  INFO 28240 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-09-08T20:45:26.165+02:00  INFO 28240 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-09-08T20:45:26.165+02:00  INFO 28240 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 767 ms
+2023-09-08T20:45:26.261+02:00  INFO 28240 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-08T20:45:26.293+02:00  INFO 28240 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-09-08T20:45:26.295+02:00  INFO 28240 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-08T20:45:26.382+02:00  INFO 28240 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:45:26.466+02:00  INFO 28240 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-08T20:45:26.476+02:00  INFO 28240 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-08T20:45:26.584+02:00  INFO 28240 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c7f6b5
+2023-09-08T20:45:26.585+02:00  INFO 28240 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-08T20:45:26.619+02:00  INFO 28240 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.MySQLDialect, version: 8.0.32
+2023-09-08T20:45:26.749+02:00  INFO 28240 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-08T20:45:27.195+02:00  INFO 28240 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-08T20:45:27.585+02:00  INFO 28240 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:45:27.757+02:00  WARN 28240 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-08T20:45:27.840+02:00  INFO 28240 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-09-08T20:45:27.944+02:00  INFO 28240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-09-08T20:45:27.950+02:00  INFO 28240 --- [main] c.e.M.Masterproject4Application          : Started Masterproject4Application in 2.908 seconds (process running for 3.16)
+2023-09-08T20:45:29.346+02:00  INFO 28240 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-08T20:45:29.346+02:00  INFO 28240 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-08T20:45:29.347+02:00  INFO 28240 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-08T20:45:48.513+02:00  INFO 28240 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-08T20:45:48.514+02:00  INFO 28240 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-09-08T20:45:48.519+02:00  INFO 28240 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

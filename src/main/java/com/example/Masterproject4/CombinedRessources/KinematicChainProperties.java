@@ -1,4 +1,4 @@
-package com.example.Masterproject4.ProduktAnforderung;
+package com.example.Masterproject4.CombinedRessources;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

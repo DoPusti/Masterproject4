@@ -1,10 +1,10 @@
 package com.example.Masterproject4.Handler;
 
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.ProduktAnforderung.KinematicChain;
-import com.example.Masterproject4.ProduktAnforderung.KinematicChainProperties;
-import com.example.Masterproject4.ProduktAnforderung.RessourceHolder;
-import com.example.Masterproject4.ProduktAnforderung.StateOfStability;
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
+import com.example.Masterproject4.CombinedRessources.KinematicChainProperties;
+import com.example.Masterproject4.XMLAttributeHolder.RessourceHolder;
+import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import lombok.Builder;
 import lombok.Data;
 import org.slf4j.Logger;

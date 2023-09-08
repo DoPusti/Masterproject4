@@ -1,12 +1,14 @@
 package com.example.Masterproject4;
 
-import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
+import com.example.Masterproject4.CombinedRessources.RequirementSequence;
+import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
-import com.example.Masterproject4.ProduktAnforderung.*;
 import com.example.Masterproject4.Repository.AssuranceRepository;
+import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
 import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -46,6 +47,10 @@ public class HtmlController {
     private AssuranceMapper assuranceMapper;
     @Autowired
     private StateOfStability stateOfStability;
+
+    @Autowired
+    private RequirementSequence requirementSequence;
+
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -82,6 +87,12 @@ public class HtmlController {
 
             */
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
+            requirementSequence = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
+            productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequence);
+
+
+
+
             /*
             List<ProcessRequirement> processRequirementList = productRequirementFullObject.getProcessRequirement();
             List<ProductProperty> productPropertyList = productRequirementFullObject.getProductProperty();

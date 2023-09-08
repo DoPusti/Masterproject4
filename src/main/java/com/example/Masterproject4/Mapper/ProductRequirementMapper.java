@@ -1,29 +1,30 @@
 package com.example.Masterproject4.Mapper;
 
+import com.example.Masterproject4.CombinedRessources.RequirementSequence;
+import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.JAXBModels.*;
-import com.example.Masterproject4.ProduktAnforderung.*;
+import com.example.Masterproject4.XMLAttributeHolder.ProcessRequirement;
+import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
+import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
+import com.example.Masterproject4.XMLAttributeHolder.RessourceHolder;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.*;
 
 @Component
 public class ProductRequirementMapper {
 
     ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
-    List<ProductProperty> productProperties = new ArrayList<>();
+    //List<ProductProperty> productProperties = new ArrayList<>();
+    Map<String, Map<String, Double>> productPropertiesOfParts = new HashMap<>();
     List<ProcessRequirement> processRequirements = new ArrayList<>();
     int idForProcessRequirements = 0;
 
-    private static void printEntry(String description, AbstractMap.SimpleEntry<String, Double> entry) {
-        System.out.println(description + ": " + entry.getKey() + " - " + entry.getValue());
-    }
-
-    public static void addOrUpdateValue(Map<String, AttributeToValue> map, String key, double value, AttributeToValue newAttributeValueIn) {
+    public static void addOrUpdateValue(Map<String, PropertyInformation> map, String key, double value, PropertyInformation newAttributeValueIn) {
         if (!map.containsKey(key) || map.get(key).getValueOfParameter() < value) {
             //System.out.println("Neues Attribut " + key + " hinzugefügt" );
             map.put(key, newAttributeValueIn);
@@ -31,11 +32,9 @@ public class ProductRequirementMapper {
     }
 
     public ProductRequirementFullObject mapXMLToClass(File file) throws JAXBException {
-        //File file = new File("src\\main\\resources\\ProductRequirementsForTest\\Product RequirementAnqi3.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(XMLStructure.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         XMLStructure XMLStructure = (XMLStructure) unmarshaller.unmarshal(file);
-
 
         List<SubModel> listOfAllSubmodels = XMLStructure.getSubmodels().getSubmodel();
         listOfAllSubmodels.forEach(subModelObject -> {
@@ -52,10 +51,7 @@ public class ProductRequirementMapper {
                         List<SubModelElement> subModelElementsLevel2 = subElementsLevel1.getSubmodelElementCollection().getValue().getSubmodelElement();
                         subModelElementsLevel2.forEach(subModelElementsLevel3 -> {
                             // Jedes einzelne Element in Single Parts und Combined Parts
-                            ProductProperty newProductProperty = fillSubModelProductProperty(subModelElementsLevel3.getSubmodelElementCollection());
-                            // z.B. Single Parts und Combined Parts
-                            newProductProperty.setTyp(subElementsLevel1.getSubmodelElementCollection().getIdShort());
-                            productProperties.add(newProductProperty);
+                            productPropertiesOfParts.put(subModelElementsLevel3.getSubmodelElementCollection().getIdShort(), fillSubModelProductProperty(subModelElementsLevel3.getSubmodelElementCollection()));
                         });
                     });
                 }
@@ -71,7 +67,7 @@ public class ProductRequirementMapper {
             }
 
         });
-        fullObjectProductRequirement.setProductProperty(productProperties);
+        fullObjectProductRequirement.setProductPropertiesOfParts(productPropertiesOfParts);
         fullObjectProductRequirement.setProcessRequirement(processRequirements);
         return fullObjectProductRequirement;
     }
@@ -86,49 +82,37 @@ public class ProductRequirementMapper {
 
     }
 
-    private ProductProperty fillSubModelProductProperty(SubmodelElementCollection collection) {
-        ProductProperty newProductProperty = new ProductProperty();
+    private Map<String, Double> fillSubModelProductProperty(SubmodelElementCollection collection) {
+        Map<String, Double> casheListForProperties = new HashMap<>();
         // IDShort z.B. Combined Parts
-        newProductProperty.setIdShort(collection.getIdShort());
         List<SubModelElement> subModelElementsInProductPropertyDeep2 = collection.getValue().getSubmodelElement();
         subModelElementsInProductPropertyDeep2.forEach(subModelElementObject1 -> {
-            // Property ausprobieren
-            //productProperties
             Property property1 = subModelElementObject1.getProperty();
             if (property1 != null) {
-                switch (property1.getIdShort()) {
-                    case "Mass" -> newProductProperty.setMass(Double.parseDouble(property1.getValue()));
-                    case "MeanRoughness" ->
-                            newProductProperty.setMeanRoughness(Double.parseDouble(property1.getValue()));
-                    case "FerroMagnetic" ->
-                            newProductProperty.setFerroMagnetic(Boolean.parseBoolean(property1.getValue()));
+                if (property1.getIdShort().equals("Mass") || property1.getIdShort().equals("MeanRoughness") || property1.getIdShort().equals("FerroMagentic")) {
+                    casheListForProperties.put(property1.getIdShort(), Double.parseDouble(property1.getValue()));
+
                 }
             } else {
-
                 List<SubModelElement> subModelElementsInProductPropertyDeep3 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
                 subModelElementsInProductPropertyDeep3.forEach(subModelElementObject2 -> {
                     Property property2 = subModelElementObject2.getProperty();
-                    switch (property2.getIdShort()) {
-                        case "Length" -> newProductProperty.setLength(Double.parseDouble(property2.getValue()));
-                        case "Width" -> newProductProperty.setWidth(Double.parseDouble(property2.getValue()));
-                        case "Height" -> newProductProperty.setHeight(Double.parseDouble(property2.getValue()));
-                        case "X" -> newProductProperty.setCenterOfMassX(Double.parseDouble(property2.getValue()));
-                        case "Y" -> newProductProperty.setCenterOfMassY(Double.parseDouble(property2.getValue()));
-                        case "Z" -> newProductProperty.setCenterOfMassZ(Double.parseDouble(property2.getValue()));
+                    if (property2.getIdShort().equals("Length") ||
+                            property2.getIdShort().equals("Width") ||
+                            property2.getIdShort().equals("Height") ||
+                            property2.getIdShort().equals("X") ||
+                            property2.getIdShort().equals("Y") ||
+                            property2.getIdShort().equals("Z")) {
+                        casheListForProperties.put(property2.getIdShort(), Double.parseDouble(property2.getValue()));
                     }
                 });
             }
-
         });
-
-
-        //System.out.println("Fertiges Produkt");
-        //System.out.println(newProductProperty);
-        return newProductProperty;
+        return casheListForProperties;
     }
 
     private ProcessRequirement fillSubModelProcessRequirement(SubmodelElementCollection collection) {
-        Map<String, AttributeToValue> attributeDefinitions = new HashMap<>();
+        Map<String, PropertyInformation> attributeDefinitions = new HashMap<>();
 
         ProcessRequirement processRequirement = new ProcessRequirement();
         String idShortOfProcessRequirement = collection.getIdShort();
@@ -153,8 +137,8 @@ public class ProductRequirementMapper {
                         subModelElements3.forEach(subModelElementDeep3 -> {
                             Property property2 = subModelElementDeep3.getProperty();
                             double propertyParsedToDouble = Double.parseDouble(property2.getValue());
-                            System.out.println("TVID: " + idShortOfProcessRequirement + ", Elements " + property2.getIdShort() + "/" + propertyParsedToDouble);
-                            AttributeToValue newAttributeValue = AttributeToValue.builder()
+                            //System.out.println("TVID: " + idShortOfProcessRequirement + ", Elements " + property2.getIdShort() + "/" + propertyParsedToDouble);
+                            PropertyInformation newAttributeValue = PropertyInformation.builder()
                                     .subProcessId(idShortOfProcessRequirement)
                                     .valueOfParameter(propertyParsedToDouble)
                                     .build();
@@ -168,10 +152,10 @@ public class ProductRequirementMapper {
         });
 
         processRequirement.setAttributeDefinitions(attributeDefinitions);
-        for (AttributeToValue attributeToValue : processRequirement.getAttributeDefinitions().values()) {
-            attributeToValue.setStabilityGiven(processRequirement.isStability());
+        for (PropertyInformation propertyInformation : processRequirement.getAttributeDefinitions().values()) {
+            propertyInformation.setStabilityGiven(processRequirement.isStability());
         }
-        System.out.println(processRequirement);
+        //System.out.println(processRequirement);
         return processRequirement;
     }
 
@@ -180,7 +164,7 @@ public class ProductRequirementMapper {
 
         List<RessourceHolder> newRessourceHolderList = new ArrayList<>();
 
-        List<List<Map<String, AttributeToValue>>> parameter;
+        List<List<Map<String, PropertyInformation>>> parameter;
 
 
         Map<Integer, Double> unsortedMapPositionX = new HashMap<>();
@@ -399,88 +383,153 @@ public class ProductRequirementMapper {
     }
 
      */
+    public RequirementSequence mapProductRequirementFullObjectToSequence(ProductRequirementFullObject productRequirementFullObjectIn) {
 
-    public List<ProductProcessReference> getAllProductProcessReference(ProductRequirementFullObject productRequirementFullObjectIn) {
-        List<ProductProcessReference> productProcessReferenceOut = new ArrayList<>();
-
-        List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
+        Map<String, Map<String, Double>> productPropertiesOfParts = productRequirementFullObjectIn.getProductPropertiesOfParts();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
+        Map<String, Map<String, PropertyInformation>> outerMap = new HashMap<>();
+        // Map für Referenz von Parts und TV`s
+        Map<String, PropertyInformation> partToTVReference = new HashMap<>();
 
-        //System.out.println("Größe : " + processRequirement.size());
-        processRequirement.forEach(process -> {
-            productProperty.forEach(product -> {
-                if (process.getReferenceParts().equals(product.getIdShort())) {
-                    productProcessReferenceOut.add(ProductProcessReference.builder()
-                            .tvName(process.getTvName())
-                            .partName(product.getIdShort())
-                            .mass(product.getMass())
-                            .meanRoughness(product.getMeanRoughness())
-                            .ferroMagnetic(product.isFerroMagnetic())
-                            .length(product.getLength())
-                            .width(product.getWidth())
-                            .height(product.getHeight())
-                            .centerOfMassX(product.getCenterOfMassX())
-                            .centerOfMassY(product.getCenterOfMassY())
-                            .centerOfMassZ(product.getCenterOfMassZ())
-                            .build());
+        //RequirementSequence nun befüllen mit ProcessRequirement
+        for (ProcessRequirement process : processRequirement) {
+            for (Map.Entry<String, PropertyInformation> entry : process.getAttributeDefinitions().entrySet()) {
+                PropertyInformation newPropertyInformation = PropertyInformation.builder()
+                        .stabilityGiven(entry.getValue().isStabilityGiven())
+                        .valueOfParameter(entry.getValue().getValueOfParameter())
+                        .subProcessId(entry.getValue().getSubProcessId())
+                        .partReference(process.getReferenceParts())
+                        .requirementFullFilled(false)
+                        .build();
+                if (outerMap.containsKey(entry.getKey())) {
+                    //System.out.println("Attribut " + entry.getKey() + " bereits vorhanden. Eintrag wird hinzugefügt.");
+                    // Einträge für diesen Key holen
+                    Map<String, PropertyInformation> innerMap = outerMap.get(entry.getKey());
+                    // Neuen Eintrag für den Key hinzufügen
+                    innerMap.put(entry.getValue().getSubProcessId(), newPropertyInformation);
+                    // Eintrag für Referenztabelle erstellen
+                    partToTVReference.put(entry.getValue().getSubProcessId(), newPropertyInformation);
+                } else {
+                    //System.out.println("Attribut " + entry.getKey() + " noch nicht vorhanden.");
+                    Map<String, PropertyInformation> innerMap = new HashMap<>();
+                    innerMap.put(entry.getValue().getSubProcessId(), newPropertyInformation);
+                    outerMap.put(entry.getKey(), innerMap);
+                    partToTVReference.put(entry.getValue().getSubProcessId(), newPropertyInformation);
+                }
+            }
+        }
+        //System.out.println("Liste von PartTVReference wurde vollständig befüllt.");
+        /*
+        for (Map.Entry<String, PropertyInformation> entry : partToTVReference.entrySet()) {
+            String key = entry.getKey();
+            PropertyInformation value = entry.getValue();
+            System.out.println("Eintrag mit Key: " + key + " und Wert " + value);
+        }
+
+         */
+
+
+        //System.out.println("OuterMap nun mit ProcessRequirement befüllt.");
+        /*
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
+            String outerKey = outerEntry.getKey();
+            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
+            System.out.println("Äußerer Schlüssel: " + outerKey);
+
+            // Jetzt können wir die innere Map durchlaufen
+            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
+                String innerKey = innerEntry.getKey();
+                PropertyInformation propertyInfo = innerEntry.getValue();
+                System.out.println("Innerer Schlüssel: " + innerKey);
+                System.out.println("Property Information: " + propertyInfo.toString());
+            }
+        }
+
+         */
+
+
+
+
+        //RequirementSequence nun befüllen mit ProductProperties
+        for (Map.Entry<String, Map<String, Double>> outerEntry : productPropertiesOfParts.entrySet()) {
+            String partName = outerEntry.getKey();
+            Map<String, Double> innerMapOfProductProperties = outerEntry.getValue();
+
+            //System.out.println("Name des Produkts: " + partName);
+            String keyOfMap = "";
+            Boolean stabilityGiven = false;
+
+            // gesuchten TV suchen
+            for (Map.Entry<String, PropertyInformation> entry : partToTVReference.entrySet()) {
+                //System.out.println("Vergleich " + entry.getValue().getPartReference() + " mit  " + partName);
+                if (entry.getValue().getPartReference().equals(partName)) {
+                    keyOfMap = entry.getKey();
+                    stabilityGiven = entry.getValue().isStabilityGiven();
+                    //System.out.println("Key gefunden"); // entspricht dem Teilvorgang
+                    break;
+                }
+            }
+            // Nur wenn das Teil auch benötigt wird, wird es hinzugefügt
+            if(!(keyOfMap.isBlank() || keyOfMap.isEmpty())) {
+                // Alle Attribute der Map durchsuchen (Mass, Length, Height etc.)
+                for (Map.Entry<String, Double> innerEntry : innerMapOfProductProperties.entrySet()) {
+                    String propertyName = innerEntry.getKey();
+                    Double propertyValue = innerEntry.getValue();
+                    //System.out.println("Property Name: " + propertyName + ", Property Value: " + propertyValue);
+                    PropertyInformation newPropertyInformation = PropertyInformation.builder()
+                            .stabilityGiven(stabilityGiven)
+                            .valueOfParameter(propertyValue)
+                            .subProcessId(keyOfMap)
+                            .requirementFullFilled(false)
+                            .build();
+                    if (outerMap.containsKey(propertyName)) {
+                        //System.out.println("Property Name: " + propertyName + "bereits vorhanden.");
+                        Map<String, PropertyInformation> innerMap = outerMap.get(propertyName);
+                        //System.out.println("Eintrag wird hinzugefügt mit TV: " + keyOfMap + " und Information " + newPropertyInformation  );
+                        innerMap.put(keyOfMap, newPropertyInformation);
+                    } else {
+                        Map<String, PropertyInformation> innerMap = new HashMap<>();
+                        //System.out.println("Property Name: " + propertyName + " noch nicht vorhanden.");
+                        innerMap.put(keyOfMap, newPropertyInformation);
+                        //System.out.println("Eintrag wird hinzugefügt mit TV: " + keyOfMap + " und Information " + newPropertyInformation  );
+                        outerMap.put(propertyName, innerMap);
+                    }
+
                 }
 
-            });
-        });
-
-
-        return productProcessReferenceOut;
-    }
-
-    public void setNewProperties(List<RessourceHolder> ressourceHolderListIn) {
-
-        ressourceHolderListIn.forEach(ressourceHolder -> {
-            if (!(ressourceHolder.getGripper() == null)) {
-                ressourceHolder.setMass(ressourceHolder.getMass() + ressourceHolder.getGripper().getMass());
-                ressourceHolder.setLength(ressourceHolder.getLength() + ressourceHolder.getGripper().getLength());
-                ressourceHolder.setWidth(ressourceHolder.getWidth() + ressourceHolder.getGripper().getWidth());
-                ressourceHolder.setHeight(ressourceHolder.getHeight() + ressourceHolder.getGripper().getHeight());
-                ressourceHolder.setCenterOfMassX(ressourceHolder.getCenterOfMassX() + ressourceHolder.getGripper().getCenterOfMassX());
-                ressourceHolder.setCenterOfMassY(ressourceHolder.getCenterOfMassY() + ressourceHolder.getGripper().getCenterOfMassY());
-                ressourceHolder.setCenterOfMassZ(ressourceHolder.getCenterOfMassZ() + ressourceHolder.getGripper().getCenterOfMassZ());
-                ressourceHolder.setPositionX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionX().getKey(), ressourceHolder.getPositionX().getValue() + ressourceHolder.getGripper().getPositionX()));
-                ressourceHolder.setPositionY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionY().getKey(), ressourceHolder.getPositionY().getValue() + ressourceHolder.getGripper().getPositionY()));
-                ressourceHolder.setPositionZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionZ().getKey(), ressourceHolder.getPositionZ().getValue() + ressourceHolder.getGripper().getPositionZ()));
-                ressourceHolder.setRotationX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationX().getKey(), ressourceHolder.getRotationX().getValue() + ressourceHolder.getGripper().getRotationX()));
-                ressourceHolder.setRotationY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationY().getKey(), ressourceHolder.getRotationY().getValue() + ressourceHolder.getGripper().getRotationY()));
-                ressourceHolder.setRotationZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationZ().getKey(), ressourceHolder.getRotationZ().getValue() + ressourceHolder.getGripper().getRotationZ()));
-                ressourceHolder.setForceX(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceX().getKey(), ressourceHolder.getForceX().getValue() + ressourceHolder.getGripper().getForceX()));
-                ressourceHolder.setForceY(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceY().getKey(), ressourceHolder.getForceY().getValue() + ressourceHolder.getGripper().getForceY()));
-                ressourceHolder.setForceZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getForceZ().getKey(), ressourceHolder.getForceZ().getValue() + ressourceHolder.getGripper().getForceZ()));
-                ressourceHolder.setTorqueX(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueX().getKey(), ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueX()));
-                ressourceHolder.setTorqueY(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueY().getKey(), ressourceHolder.getTorqueX().getValue() + ressourceHolder.getGripper().getTorqueY()));
-                ressourceHolder.setTorqueZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getTorqueZ().getKey(), ressourceHolder.getTorqueZ().getValue() + ressourceHolder.getGripper().getTorqueZ()));
-                ressourceHolder.setPositionRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyX().getKey(), ressourceHolder.getPositionRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyX()));
-                ressourceHolder.setPositionRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyY().getKey(), ressourceHolder.getPositionRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyY()));
-                ressourceHolder.setPositionRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getPositionRepetitionAccuracyZ().getKey(), ressourceHolder.getPositionRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getPositionRepetitionAccuracyZ()));
-                ressourceHolder.setRotationRepetitionAccuracyX(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyX().getKey(), ressourceHolder.getRotationRepetitionAccuracyX().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyX()));
-                ressourceHolder.setRotationRepetitionAccuracyY(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyY().getKey(), ressourceHolder.getRotationRepetitionAccuracyY().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyY()));
-                ressourceHolder.setRotationRepetitionAccuracyZ(new AbstractMap.SimpleEntry<>(ressourceHolder.getRotationRepetitionAccuracyZ().getKey(), ressourceHolder.getRotationRepetitionAccuracyZ().getValue() + ressourceHolder.getGripper().getRotationRepetitionAccuracyZ()));
-
             }
-        });
 
+
+        }
+        // Überprüfen des Ergebnisses
+        System.out.println("OuterMap nun mit ProductRequirement befüllt.");
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
+            String outerKey = outerEntry.getKey();
+            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
+            System.out.println("\n" + "Äußerer Schlüssel: " + outerKey);
+            // Jetzt können wir die innere Map durchlaufen
+            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
+                String innerKey = innerEntry.getKey();
+                PropertyInformation propertyInfo = innerEntry.getValue();
+                System.out.println("Innerer Schlüssel: " + innerKey);
+                System.out.println("Property Information: " + propertyInfo.toString());
+            }
+        }
+        RequirementSequence requirementSequenceOut = RequirementSequence.builder()
+                .parameter(outerMap)
+                .build();
+
+        return requirementSequenceOut;
+    }
+    public void sortPropertiesInAscendingOrder(RequirementSequence requirementSequenceIn) {
 
     }
 
-    public List<StateOfStability> setStateOfStability(List<ProcessRequirement> processRequirementListIn) {
-        List<StateOfStability> stateOfStabilityListOut = new ArrayList<>();
-        processRequirementListIn.forEach(processRequirement -> {
-            StateOfStability stateOfStability = StateOfStability.builder()
-                    .idOfSubProcess(processRequirement.getId())
-                    .givenStability(processRequirement.isStability())
-                    .build();
-            stateOfStabilityListOut.add(stateOfStability);
-        });
 
-        return stateOfStabilityListOut;
-    }
 
+
+
+    /*
     public List<RequirementSequence> getAllSequencesOfRequirements(ProductRequirementFullObject productRequirementFullObjectIn,
                                                                    Map<String, String> listOfRelevantParametersIn) throws IllegalAccessException {
 
@@ -488,10 +537,10 @@ public class ProductRequirementMapper {
         List<ProductProperty> productProperty = productRequirementFullObjectIn.getProductProperty();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
 
-        Map<String, List<AttributeToValue>> parametersForGivenAttributes = new HashMap<>();
+        Map<String, List<PropertyInformation>> parametersForGivenAttributes = new HashMap<>();
 
         for (ProcessRequirement process : processRequirement) {
-            System.out.println("TV-Vorgang " + process.getTvName());
+            //System.out.println("TV-Vorgang " + process.getTvName());
             Class<?> clazz = process.getClass();
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {
@@ -499,8 +548,8 @@ public class ProductRequirementMapper {
                 if (listOfRelevantParametersIn.containsKey(fieldName)) {
                     field.setAccessible(true);
                     double valueOfRessourceAttribute = (double) field.get(process);
-                    System.out.println("Attributsname " + fieldName);
-                    System.out.println("Wert " + valueOfRessourceAttribute);
+                    //System.out.println("Attributsname " + fieldName);
+                    //System.out.println("Wert " + valueOfRessourceAttribute);
                 }
             }
 
@@ -509,6 +558,8 @@ public class ProductRequirementMapper {
 
         return requirementSequencesOut;
     }
+
+     */
 
 
 }

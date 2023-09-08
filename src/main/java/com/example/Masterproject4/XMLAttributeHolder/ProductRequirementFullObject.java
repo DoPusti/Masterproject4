@@ -1,9 +1,10 @@
-package com.example.Masterproject4.ProduktAnforderung;
+package com.example.Masterproject4.XMLAttributeHolder;
 
 import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Builder
 @NoArgsConstructor
@@ -14,7 +15,9 @@ import java.util.List;
 public class ProductRequirementFullObject {
 
     String assetId;
-    List<ProductProperty> productProperty;
+    // n - Names with m Properties and Information about the Properties
+    Map<String, Map<String, Double>> productPropertiesOfParts;
     List<ProcessRequirement> processRequirement;
+
 
 }

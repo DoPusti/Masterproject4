@@ -1,4 +1,4 @@
-package com.example.Masterproject4.Mapper;
+package com.example.Masterproject4.XMLAttributeHolder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AttributeToValue {
+public class PropertyInformation {
     String subProcessId;
     double valueOfParameter;
     boolean stabilityGiven;
+    String partReference;
+    boolean requirementFullFilled;
 
 }

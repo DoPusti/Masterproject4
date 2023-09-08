@@ -1,7 +1,6 @@
-package com.example.Masterproject4.ProduktAnforderung;
+package com.example.Masterproject4.CombinedRessources;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Component;
 
 
