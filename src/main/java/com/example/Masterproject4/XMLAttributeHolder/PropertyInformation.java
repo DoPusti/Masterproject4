@@ -15,5 +15,6 @@ public class PropertyInformation {
     boolean stabilityGiven;
     String partReference;
     boolean requirementFullFilled;
+    String dataSpecification;
 
 }

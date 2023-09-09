@@ -3,6 +3,7 @@ package com.example.Masterproject4;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.CombinedRessources.RequirementSequence;
 import com.example.Masterproject4.CombinedRessources.StateOfStability;
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceMapper;
@@ -25,6 +26,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -50,6 +54,9 @@ public class HtmlController {
 
     @Autowired
     private RequirementSequence requirementSequence;
+
+    @Autowired
+    private RequirementSequence matchedRequirementSequence;
 
 
     public HtmlController(ResourceLoader resourceLoader) {
@@ -80,15 +87,25 @@ public class HtmlController {
 
         if (!fileOfUser.isEmpty()) {
             File convertedFile = new FileConverter().convertFile(fileOfUser);
-
-
-           /*
-                Fertiges Objekt mit allen Daten der Produktanforderung
-
-            */
+            // Alle relevante Attribute von Product Property und Process Requirement
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
+            // Fertige Liste von sortierten Attributen in Zusammenhang des jeweiligen Teilvorgangs
             requirementSequence = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
+            // Erstellung von kinematischen Ketten. Sortierung nach aufsteigenden Werten
             productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequence);
+            // Zusicherungsliste füllen
+            List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            // Zu Testzwecken eine Liste von relevanten Attributen
+            Map<String, String> listOfRelevantParameters = new HashMap<>();
+            listOfRelevantParameters.put("positionX", "PersistentStateChange");
+            listOfRelevantParameters.put("positionY", "PersistentStateChange");
+            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
+            listOfRelevantParameters.put("forceX", "Constraints");
+            listOfRelevantParameters.put("forceY", "Constraints");
+            listOfRelevantParameters.put("forceZ", "Constraints");
+            // Finden eines passenden Greifers
+            matchedRequirementSequence = ressourceChecker.searchForGripper(requirementSequence, assuranceList);
+
 
 
 
