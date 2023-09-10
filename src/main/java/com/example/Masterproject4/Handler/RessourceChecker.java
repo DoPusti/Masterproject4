@@ -40,7 +40,7 @@ public class RessourceChecker {
 
     }
 
-    public RequirementSequence searchForGripper(RequirementSequence requirementSequenceIn, List<AssuranceFullObject> assuranceListIn) {
+    public RequirementSequence searchForGripper(RequirementSequence requirementSequenceIn, List<AssuranceMapper> assuranceMapperIn,Map<String, String> listOfRelevantParametersIn) {
         RequirementSequence requirementSequenceOut = new RequirementSequence();
         return requirementSequenceOut;
     }

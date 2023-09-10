@@ -99,21 +99,12 @@ public class HtmlController {
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
             List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
+            /*
             for (AssuranceMapper assuranceMapper : assuranceMapList) {
-                System.out.println("Asset ID: " + assuranceMapper.getAssetId());
-                System.out.println("ID      : " + assuranceMapper.getId());
-
-                Map<String, PropertyInformation> propertyParameters = assuranceMapper.getPropertyParameters();
-                for (Map.Entry<String, PropertyInformation> entry : propertyParameters.entrySet()) {
-                    String propertyName = entry.getKey();
-                    PropertyInformation propertyInformation = entry.getValue();
-                    String valueOfParameter = String.valueOf(propertyInformation.getValueOfParameter());
-                    System.out.println("Property Name: " + propertyName);
-                    System.out.println("Value of Parameter: " + valueOfParameter);
-                }
-
-                System.out.println(); // Leerzeile zur Trennung der Einträge
+                assuranceMapper.toStringCustom();
             }
+
+             */
             // Zu Testzwecken eine Liste von relevanten Attributen
             Map<String, String> listOfRelevantParameters = new HashMap<>();
             listOfRelevantParameters.put("positionX", "PersistentStateChange");
@@ -123,7 +114,7 @@ public class HtmlController {
             listOfRelevantParameters.put("forceY", "Constraints");
             listOfRelevantParameters.put("forceZ", "Constraints");
             // Finden eines passenden Greifers
-            matchedRequirementSequence = ressourceChecker.searchForGripper(requirementSequence, assuranceList);
+            matchedRequirementSequence = ressourceChecker.searchForGripper(requirementSequence, assuranceMapList,listOfRelevantParameters);
             // passende Zusicherungen finden
 
 
