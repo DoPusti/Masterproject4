@@ -15,7 +15,7 @@ import java.util.List;
 
 //@DataJpaTest
 @SpringBootTest
-class AssuranceMapperTest {
+class AssuranceToDBTest {
 
     AssuranceFullObject assuranceFullObject = new AssuranceFullObject();
     @Autowired

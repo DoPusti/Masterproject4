@@ -1,12 +1,10 @@
 package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.CombinedRessources.RequirementSequence;
-import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.XMLAttributeHolder.ProcessRequirement;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
-import com.example.Masterproject4.XMLAttributeHolder.RessourceHolder;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
@@ -295,13 +293,13 @@ public class ProductRequirementMapper {
             }
         }
         RequirementSequence requirementSequenceOut = RequirementSequence.builder()
-                .parameter(outerMap)
+                .propertyParameters(outerMap)
                 .build();
 
         return requirementSequenceOut;
     }
     public void sortPropertiesInAscendingOrder(RequirementSequence requirementSequenceIn) {
-        Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceIn.getParameter();
+        Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceIn.getPropertyParameters();
         for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
             Map<String, PropertyInformation> innerMap = outerEntry.getValue();
             List<Map.Entry<String, PropertyInformation>> sortedEntries = new ArrayList<>(innerMap.entrySet());

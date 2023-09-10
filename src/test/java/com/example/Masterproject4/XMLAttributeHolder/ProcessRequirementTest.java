@@ -17,14 +17,14 @@ class ProcessRequirementTest {
 
         // Beispiel-Daten hinzufügen
         Map<String, PropertyInformation> innerMap1 = new HashMap<>();
-        innerMap1.put("entry1", new PropertyInformation("TV1",3.0,true,"",false));
-        innerMap1.put("entry2", new PropertyInformation("TV2",1.0,true,"",false));
-        innerMap1.put("entry3", new PropertyInformation("TV3",2.0,true,"",false));
+        innerMap1.put("entry1", new PropertyInformation("TV1",3.0,true,"",false,""));
+        innerMap1.put("entry2", new PropertyInformation("TV2",1.0,true,"",false,""));
+        innerMap1.put("entry3", new PropertyInformation("TV3",2.0,true,"",false,""));
 
         Map<String, PropertyInformation> innerMap2 = new HashMap<>();
-        innerMap2.put("entry1", new PropertyInformation("TV1",7.0,true,"",false));
-        innerMap2.put("entry2", new PropertyInformation("TV2",5.0,true,"",false));
-        innerMap2.put("entry3", new PropertyInformation("TV3",6.0,true,"",false));
+        innerMap2.put("entry1", new PropertyInformation("TV1",7.0,true,"",false,""));
+        innerMap2.put("entry2", new PropertyInformation("TV2",5.0,true,"",false,""));
+        innerMap2.put("entry3", new PropertyInformation("TV3",6.0,true,"",false,""));
 
         outerMap.put("key1", innerMap1);
         outerMap.put("key2", innerMap2);

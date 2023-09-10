@@ -6,10 +6,12 @@ import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
-import com.example.Masterproject4.Mapper.AssuranceMapper;
+import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.Repository.AssuranceRepository;
+import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
+import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +50,7 @@ public class HtmlController {
     @Autowired
     private ProductRequirementFullObject productRequirementFullObject;
     @Autowired
-    private AssuranceMapper assuranceMapper;
+    private AssuranceToDB assuranceToDB;
     @Autowired
     private StateOfStability stateOfStability;
 
@@ -80,8 +82,8 @@ public class HtmlController {
         for (MultipartFile fileInAssurance : assurance) {
             if (!fileInAssurance.isEmpty()) {
                 File convertedFile = new FileConverter().convertFile(fileInAssurance);
-                AssuranceMapper assuranceMapper = new AssuranceMapper();
-                assuranceRepository.save(assuranceMapper.saveXMLToDatabase(convertedFile));
+                AssuranceToDB assuranceToDB = new AssuranceToDB();
+                assuranceRepository.save(assuranceToDB.saveXMLToDatabase(convertedFile));
             }
         }
 
@@ -95,6 +97,23 @@ public class HtmlController {
             productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequence);
             // Zusicherungsliste füllen
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
+            // Zusicherungen auf die Mapperklasse sortieren
+            List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
+            for (AssuranceMapper assuranceMapper : assuranceMapList) {
+                System.out.println("Asset ID: " + assuranceMapper.getAssetId());
+                System.out.println("ID      : " + assuranceMapper.getId());
+
+                Map<String, PropertyInformation> propertyParameters = assuranceMapper.getPropertyParameters();
+                for (Map.Entry<String, PropertyInformation> entry : propertyParameters.entrySet()) {
+                    String propertyName = entry.getKey();
+                    PropertyInformation propertyInformation = entry.getValue();
+                    String valueOfParameter = String.valueOf(propertyInformation.getValueOfParameter());
+                    System.out.println("Property Name: " + propertyName);
+                    System.out.println("Value of Parameter: " + valueOfParameter);
+                }
+
+                System.out.println(); // Leerzeile zur Trennung der Einträge
+            }
             // Zu Testzwecken eine Liste von relevanten Attributen
             Map<String, String> listOfRelevantParameters = new HashMap<>();
             listOfRelevantParameters.put("positionX", "PersistentStateChange");
@@ -105,6 +124,7 @@ public class HtmlController {
             listOfRelevantParameters.put("forceZ", "Constraints");
             // Finden eines passenden Greifers
             matchedRequirementSequence = ressourceChecker.searchForGripper(requirementSequence, assuranceList);
+            // passende Zusicherungen finden
 
 
 

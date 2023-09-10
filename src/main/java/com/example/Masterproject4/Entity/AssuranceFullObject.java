@@ -23,73 +23,61 @@ public class AssuranceFullObject {
     String url;
 
     // Assurances
-    double mass;
-    double length;
-    double width;
-    double height;
-    double centerOfMassX;
-    double centerOfMassY;
-    double centerOfMassZ;
+    public double mass;
+    public double length;
+    public double width;
+    public double height;
+    public double centerOfMassX;
+    public double centerOfMassY;
+    public double centerOfMassZ;
     String connectionType;
     String operatingPrinciple;
-    double positionX;
-    double positionY;
-    double positionZ;
-    double positionRepetitionAccuracyX;
-    double positionRepetitionAccuracyY;
-    double positionRepetitionAccuracyZ;
-    double rotationX;
-    double rotationY;
-    double rotationZ;
-    double rotationRepetitionAccuracyX;
-    double rotationRepetitionAccuracyY;
-    double rotationRepetitionAccuracyZ;
-    double forceX;
-    double forceY;
-    double forceZ;
-    double torqueX;
-    double torqueY;
-    double torqueZ;
+    public double positionX;
+    public double positionY;
+    public double positionZ;
+    public double positionRepetitionAccuracyX;
+    public double positionRepetitionAccuracyY;
+    public double positionRepetitionAccuracyZ;
+    public double rotationX;
+    public double rotationY;
+    public double rotationZ;
+    public double rotationRepetitionAccuracyX;
+    public double rotationRepetitionAccuracyY;
+    public double rotationRepetitionAccuracyZ;
+    public double forceX;
+    public double forceY;
+    public double forceZ;
+    public double torqueX;
+    public double torqueY;
+    public double torqueZ;
 
     // MediaSupply
-    double operatingCurrent;
-    double operatingVoltage;
-    double compressedAirPressure;
-    double airFlow;
+    public double operatingCurrent;
+    public double operatingVoltage;
+    public double compressedAirPressure;
+    public double airFlow;
 
     // Environmental Conditions
-    double temperature;
-    double pressure;
-    double humidity;
+    public double temperature;
+    public double pressure;
+    public double humidity;
     boolean purity;
     int foodGrade;
     int explosiveness;
 
     // EconomicFactors
-    double price;
-    double lengthSR;
-    double widthSR;
-    double heightSR;
-    double lengthOfUsage;
-    double maintenanceInterval;
-    double maintanceDuration;
-    double deliveryTime;
-    double oneTimeLicenceCost;
-    double monthlyLicenceCost;
+    public double price;
+    public double lengthSR;
+    public double widthSR;
+    public double heightSR;
+    public double lengthOfUsage;
+    public double maintenanceInterval;
+    public double maintanceDuration;
+    public double deliveryTime;
+    public double oneTimeLicenceCost;
+    public double monthlyLicenceCost;
 
     String RestAPIAdress;
-
-    public String getStringSequence() {
-        return "id: " + id +
-                ", positionX: " + positionX +
-                ", positionY: " + positionY +
-                ", positionZ: " + positionZ +
-                ", forceX: " + forceX +
-                ", forceY: " + forceY +
-                ", forceZ: " + forceZ;
-
-    }
-
 
 
 }

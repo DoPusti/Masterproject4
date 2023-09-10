@@ -4,7 +4,6 @@ import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 
 @Builder
@@ -15,6 +14,6 @@ import java.util.Map;
 @ToString
 public class RequirementSequence {
 
-    Map<String, Map<String, PropertyInformation>> parameter;
+    Map<String, Map<String, PropertyInformation>> propertyParameters;
 
 }

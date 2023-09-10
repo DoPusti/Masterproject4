@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Component
-public class AssuranceMapper {
+public class AssuranceToDB {
 
     AssuranceFullObject assuranceFullObject = new AssuranceFullObject();
 
