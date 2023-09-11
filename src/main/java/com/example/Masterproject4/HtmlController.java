@@ -1,7 +1,7 @@
 package com.example.Masterproject4;
 
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
-import com.example.Masterproject4.CombinedRessources.RequirementSequence;
+import com.example.Masterproject4.CombinedRessources.RequirementSequenceTree;
 import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
@@ -11,7 +11,6 @@ import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
-import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,10 +54,10 @@ public class HtmlController {
     private StateOfStability stateOfStability;
 
     @Autowired
-    private RequirementSequence requirementSequence;
+    private RequirementSequenceTree requirementSequenceTree;
 
     @Autowired
-    private RequirementSequence matchedRequirementSequence;
+    private RequirementSequenceTree matchedRequirementSequenceTree;
 
 
     public HtmlController(ResourceLoader resourceLoader) {
@@ -92,9 +91,9 @@ public class HtmlController {
             // Alle relevante Attribute von Product Property und Process Requirement
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
             // Fertige Liste von sortierten Attributen in Zusammenhang des jeweiligen Teilvorgangs
-            requirementSequence = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
+            requirementSequenceTree = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
             // Erstellung von kinematischen Ketten. Sortierung nach aufsteigenden Werten
-            productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequence);
+            productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequenceTree);
             // Zusicherungsliste füllen
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
@@ -114,7 +113,7 @@ public class HtmlController {
             listOfRelevantParameters.put("forceY", "Constraints");
             listOfRelevantParameters.put("forceZ", "Constraints");
             // Finden eines passenden Greifers
-            matchedRequirementSequence = ressourceChecker.searchForGripper(requirementSequence, assuranceMapList,listOfRelevantParameters);
+            matchedRequirementSequenceTree = ressourceChecker.searchForGripper(requirementSequenceTree, assuranceMapList,listOfRelevantParameters);
             // passende Zusicherungen finden
 
 
@@ -154,7 +153,7 @@ public class HtmlController {
 
              */
 
-            //List<RequirementSequence> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
+            //List<RequirementSequenceTree> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
 
             /*
                 Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen

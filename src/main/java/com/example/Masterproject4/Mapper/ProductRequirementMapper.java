@@ -1,6 +1,6 @@
 package com.example.Masterproject4.Mapper;
 
-import com.example.Masterproject4.CombinedRessources.RequirementSequence;
+import com.example.Masterproject4.CombinedRessources.RequirementSequenceTree;
 import com.example.Masterproject4.JAXBModels.*;
 import com.example.Masterproject4.XMLAttributeHolder.ProcessRequirement;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
@@ -159,7 +159,7 @@ public class ProductRequirementMapper {
         return processRequirement;
     }
 
-      public RequirementSequence mapProductRequirementFullObjectToSequence(ProductRequirementFullObject productRequirementFullObjectIn) {
+      public RequirementSequenceTree mapProductRequirementFullObjectToSequence(ProductRequirementFullObject productRequirementFullObjectIn) {
 
         Map<String, Map<String, Double>> productPropertiesOfParts = productRequirementFullObjectIn.getProductPropertiesOfParts();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
@@ -167,7 +167,7 @@ public class ProductRequirementMapper {
         // Map für Referenz von Parts und TV`s
         Map<String, PropertyInformation> partToTVReference = new HashMap<>();
 
-        //RequirementSequence nun befüllen mit ProcessRequirement
+        //RequirementSequenceTree nun befüllen mit ProcessRequirement
         for (ProcessRequirement process : processRequirement) {
             for (Map.Entry<String, PropertyInformation> entry : process.getAttributeDefinitions().entrySet()) {
                 PropertyInformation newPropertyInformation = PropertyInformation.builder()
@@ -227,7 +227,7 @@ public class ProductRequirementMapper {
 
 
 
-        //RequirementSequence nun befüllen mit ProductProperties
+        //RequirementSequenceTree nun befüllen mit ProductProperties
         for (Map.Entry<String, Map<String, Double>> outerEntry : productPropertiesOfParts.entrySet()) {
             String partName = outerEntry.getKey();
             Map<String, Double> innerMapOfProductProperties = outerEntry.getValue();
@@ -292,14 +292,14 @@ public class ProductRequirementMapper {
                 System.out.println("Property Information: " + propertyInfo.toString());
             }
         }
-        RequirementSequence requirementSequenceOut = RequirementSequence.builder()
+        RequirementSequenceTree requirementSequenceTreeOut = RequirementSequenceTree.builder()
                 .propertyParameters(outerMap)
                 .build();
 
-        return requirementSequenceOut;
+        return requirementSequenceTreeOut;
     }
-    public void sortPropertiesInAscendingOrder(RequirementSequence requirementSequenceIn) {
-        Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceIn.getPropertyParameters();
+    public void sortPropertiesInAscendingOrder(RequirementSequenceTree requirementSequenceTreeIn) {
+        Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceTreeIn.getPropertyParameters();
         for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
             Map<String, PropertyInformation> innerMap = outerEntry.getValue();
             List<Map.Entry<String, PropertyInformation>> sortedEntries = new ArrayList<>(innerMap.entrySet());

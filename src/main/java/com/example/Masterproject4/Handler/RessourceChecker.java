@@ -1,6 +1,6 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.CombinedRessources.RequirementSequence;
+import com.example.Masterproject4.CombinedRessources.RequirementSequenceTree;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
@@ -40,9 +40,9 @@ public class RessourceChecker {
 
     }
 
-    public RequirementSequence searchForGripper(RequirementSequence requirementSequenceIn, List<AssuranceMapper> assuranceMapperIn,Map<String, String> listOfRelevantParametersIn) {
-        RequirementSequence requirementSequenceOut = new RequirementSequence();
-        return requirementSequenceOut;
+    public RequirementSequenceTree searchForGripper(RequirementSequenceTree requirementSequenceTreeIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
+        RequirementSequenceTree requirementSequenceTreeOut = new RequirementSequenceTree();
+        return requirementSequenceTreeOut;
     }
 
     /***
