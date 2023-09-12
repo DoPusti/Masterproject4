@@ -112,9 +112,13 @@ public class HtmlController {
             listOfRelevantParameters.put("forceX", "Constraints");
             listOfRelevantParameters.put("forceY", "Constraints");
             listOfRelevantParameters.put("forceZ", "Constraints");
+            // Map nun auf eine Zeilen-Spalten-Struktur parsen
+            productRequirementMapper.mapperToTable(requirementSequenceTree,listOfRelevantParameters);
+
             // Finden eines passenden Greifers
-            matchedRequirementSequenceTree = ressourceChecker.searchForGripper(requirementSequenceTree, assuranceMapList,listOfRelevantParameters);
+            // matchedRequirementSequenceTree = ressourceChecker.searchForGripper(requirementSequenceTree, assuranceMapList,listOfRelevantParameters);
             // passende Zusicherungen finden
+            //ressourceChecker.findKinematicChains(requirementSequenceTree,assuranceMapList,listOfRelevantParameters);
 
 
 

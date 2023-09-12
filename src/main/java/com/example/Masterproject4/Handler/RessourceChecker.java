@@ -78,4 +78,37 @@ public class RessourceChecker {
         return assuranceListOut;
     }
 
+    public void findKinematicChains(RequirementSequenceTree requirementSequenceTreeIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
+
+        System.out.println(requirementSequenceTreeIn);
+        // 1. Schleife über die tabellerarischen Felder der Requirement
+        checkRequirementTableForMatchingAssurance(requirementSequenceTreeIn.getPropertyParameters(), assuranceMapperIn, listOfRelevantParametersIn);
+
+    }
+
+    public void checkRequirementTableForMatchingAssurance(Map<String, Map<String, PropertyInformation>> propertyParametersIn,
+                                                          List<AssuranceMapper> assuranceMapperIn,
+                                                          Map<String, String> listOfRelevantParametersIn) {
+        System.out.println("Prüfung der Tabelle: ");
+        for (Map.Entry<String, Map<String, PropertyInformation>> entry : propertyParametersIn.entrySet()) {
+            String outerKey = entry.getKey();
+            Map<String, PropertyInformation> innerMap = entry.getValue();
+            // Innere Schleife durchläuft die innere Map
+            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
+                String innerKey = innerEntry.getKey();
+                if (listOfRelevantParametersIn.containsKey(outerKey)) {
+                    PropertyInformation innerPropertyInformation = innerEntry.getValue();
+                    // Hier kannst du auf die Werte zugreifen, z.B.:
+                    System.out.println("Attribut | " + outerKey);
+                    System.out.println("Innerer Schlüssel: " + innerKey);
+                    System.out.println("Wert | " + innerPropertyInformation.getValueOfParameter());
+                }
+
+            }
+            System.out.println("\n");
+        }
+
+
+    }
+
 }

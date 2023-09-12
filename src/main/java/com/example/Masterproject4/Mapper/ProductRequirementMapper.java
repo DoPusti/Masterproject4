@@ -8,6 +8,8 @@ import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -15,6 +17,7 @@ import java.util.*;
 
 @Component
 public class ProductRequirementMapper {
+    private static final Logger Log = LoggerFactory.getLogger(ProductRequirementMapper.class);
 
     ProductRequirementFullObject fullObjectProductRequirement = new ProductRequirementFullObject();
     //List<ProductProperty> productProperties = new ArrayList<>();
@@ -159,7 +162,7 @@ public class ProductRequirementMapper {
         return processRequirement;
     }
 
-      public RequirementSequenceTree mapProductRequirementFullObjectToSequence(ProductRequirementFullObject productRequirementFullObjectIn) {
+    public RequirementSequenceTree mapProductRequirementFullObjectToSequence(ProductRequirementFullObject productRequirementFullObjectIn) {
 
         Map<String, Map<String, Double>> productPropertiesOfParts = productRequirementFullObjectIn.getProductPropertiesOfParts();
         List<ProcessRequirement> processRequirement = productRequirementFullObjectIn.getProcessRequirement();
@@ -225,8 +228,6 @@ public class ProductRequirementMapper {
          */
 
 
-
-
         //RequirementSequenceTree nun befüllen mit ProductProperties
         for (Map.Entry<String, Map<String, Double>> outerEntry : productPropertiesOfParts.entrySet()) {
             String partName = outerEntry.getKey();
@@ -247,7 +248,7 @@ public class ProductRequirementMapper {
                 }
             }
             // Nur wenn das Teil auch benötigt wird, wird es hinzugefügt
-            if(!(keyOfMap.isBlank() || keyOfMap.isEmpty())) {
+            if (!(keyOfMap.isBlank() || keyOfMap.isEmpty())) {
                 // Alle Attribute der Map durchsuchen (Mass, Length, Height etc.)
                 for (Map.Entry<String, Double> innerEntry : innerMapOfProductProperties.entrySet()) {
                     String propertyName = innerEntry.getKey();
@@ -279,6 +280,7 @@ public class ProductRequirementMapper {
 
         }
         // Überprüfen des Ergebnisses
+          /*
         System.out.println("OuterMap nun mit ProductRequirement befüllt.");
         for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
             String outerKey = outerEntry.getKey();
@@ -292,12 +294,15 @@ public class ProductRequirementMapper {
                 System.out.println("Property Information: " + propertyInfo.toString());
             }
         }
+
+           */
         RequirementSequenceTree requirementSequenceTreeOut = RequirementSequenceTree.builder()
                 .propertyParameters(outerMap)
                 .build();
 
         return requirementSequenceTreeOut;
     }
+
     public void sortPropertiesInAscendingOrder(RequirementSequenceTree requirementSequenceTreeIn) {
         Map<String, Map<String, PropertyInformation>> outerMap = requirementSequenceTreeIn.getPropertyParameters();
         for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
@@ -318,6 +323,7 @@ public class ProductRequirementMapper {
             outerEntry.setValue(sortedInnerMap);
         }
 
+        /*
         // Überprüfen des Ergebnisses
         for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : outerMap.entrySet()) {
             System.out.println("Outer Key: " + outerEntry.getKey());
@@ -328,6 +334,57 @@ public class ProductRequirementMapper {
                 System.out.println("  " + innerEntry.getKey() + " -> " + innerEntry.getValue().getValueOfParameter());
             }
         }
+
+         */
+
+    }
+
+    public void mapperToTable(RequirementSequenceTree requirementSequenceTreeIn, Map<String, String> listOfRelevantParameters) {
+
+        //List<RequirementRow> requirementTable = new ArrayList<>();
+        Map<Integer, Map<String, PropertyInformation>> requirementTable = new TreeMap<>();
+
+
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : requirementSequenceTreeIn.getPropertyParameters().entrySet()) {
+            String outerKey = outerEntry.getKey();  // z.B. PositionX
+            int index = 1; // Zähler für die Zeilen
+            if (listOfRelevantParameters.containsKey(outerKey)) {
+                //if (outerKey.equals("positionX") || outerKey.equals("positionY")) {
+                // Iteriere über die innere Map . Liste von einem Key z.B. positionX
+                for (Map.Entry<String, PropertyInformation> innerEntry : outerEntry.getValue().entrySet()) {
+                    String innerKey = innerEntry.getKey(); //TV-Vorgang
+                    PropertyInformation propertyInfo = innerEntry.getValue();
+                    propertyInfo.setDataSpecification(listOfRelevantParameters.get(outerKey));
+                    // Prüfen ob die Zeile bereits angelegt wurde
+                    if (requirementTable.containsKey(index)) {
+                        Map<String, PropertyInformation> requirementRow = requirementTable.get(index);
+                        requirementRow.put(outerKey, propertyInfo);
+                        requirementTable.put(index, requirementRow);
+                    } else {
+                        Map<String, PropertyInformation> newRequirementRow = new HashMap<>();
+                        newRequirementRow.put(outerKey, propertyInfo);
+                        requirementTable.put(index, newRequirementRow);
+                    }
+                    index++;
+                }
+            }
+        }
+
+
+        //Prüfung der Ergebnisse:
+        for (Map.Entry<Integer, Map<String, PropertyInformation>> outerEntry : requirementTable.entrySet()) {
+            Integer outerKey = outerEntry.getKey();
+            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
+            System.out.println("Zeile " + outerKey);
+            // Iterieren Sie über die innere Map
+            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
+                String innerKey = innerEntry.getKey();
+                PropertyInformation propertyInfo = innerEntry.getValue();
+                // Hier können Sie auf die Werte zugreifen
+                System.out.println("Attribut: " + innerKey + ",Attributsinformationen: " + propertyInfo.getSubProcessId() + "," + propertyInfo.getValueOfParameter() + "," + propertyInfo.getDataSpecification());
+            }
+        }
+
 
     }
 
