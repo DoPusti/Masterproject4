@@ -2,6 +2,7 @@ package com.example.Masterproject4.Mapper;
 
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Data
 @ToString
-public class RequirementRow {
-    Map<String, PropertyInformation> requirementAttributes;
+@Component
+public class RequirementTable {
+    Map<Integer, Map<String, PropertyInformation>> requirementAttributes;
 }

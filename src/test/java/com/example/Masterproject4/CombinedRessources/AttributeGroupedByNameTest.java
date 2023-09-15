@@ -5,11 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-class RequirementSequenceTreeTest  {
+class AttributeGroupedByNameTest {
 
     @Test
     public void testTree() {
-            RequirementSequenceTree root = new RequirementSequenceTree();
+            AttributeGroupedByName root = new AttributeGroupedByName();
 
     }
 

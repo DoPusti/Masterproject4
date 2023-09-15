@@ -14,10 +14,6 @@ import java.util.Map;
 @Builder
 public class KinematicChain {
     Map<String,KinematicChainProperties> propertiesOfAttributes;
-    AssuranceFullObject assurance;
-    double price;
-    long id;
-
 
 }
 

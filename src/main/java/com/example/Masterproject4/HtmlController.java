@@ -1,13 +1,15 @@
 package com.example.Masterproject4;
 
+import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
+import com.example.Masterproject4.CombinedRessources.KinematicChainTree;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
-import com.example.Masterproject4.CombinedRessources.RequirementSequenceTree;
-import com.example.Masterproject4.CombinedRessources.StateOfStability;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
+import com.example.Masterproject4.Mapper.RequirementTable;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
@@ -50,15 +52,14 @@ public class HtmlController {
     private ProductRequirementFullObject productRequirementFullObject;
     @Autowired
     private AssuranceToDB assuranceToDB;
-    @Autowired
-    private StateOfStability stateOfStability;
 
     @Autowired
-    private RequirementSequenceTree requirementSequenceTree;
+    private AttributeGroupedByName attributeGroupedByName;
 
     @Autowired
-    private RequirementSequenceTree matchedRequirementSequenceTree;
-
+    private RequirementTable requirementTable;
+    @Autowired
+    private KinematicChainTree root;
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -74,14 +75,13 @@ public class HtmlController {
                              @RequestParam("Ressourcen") MultipartFile RessourcenFile,
                              @RequestParam("file") MultipartFile fileOfUser,
                              @RequestParam("assurance") MultipartFile[] assurance
-    ) throws IOException, JAXBException, IllegalAccessException, NoSuchFieldException {
+    ) throws IOException, JAXBException {
 
 
         // Prüfen ob Zusicherungen hochgeladen werden müssen
         for (MultipartFile fileInAssurance : assurance) {
             if (!fileInAssurance.isEmpty()) {
                 File convertedFile = new FileConverter().convertFile(fileInAssurance);
-                AssuranceToDB assuranceToDB = new AssuranceToDB();
                 assuranceRepository.save(assuranceToDB.saveXMLToDatabase(convertedFile));
             }
         }
@@ -91,19 +91,13 @@ public class HtmlController {
             // Alle relevante Attribute von Product Property und Process Requirement
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
             // Fertige Liste von sortierten Attributen in Zusammenhang des jeweiligen Teilvorgangs
-            requirementSequenceTree = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
+            attributeGroupedByName = productRequirementMapper.mapProductRequirementFullObjectToSequence(productRequirementFullObject);
             // Erstellung von kinematischen Ketten. Sortierung nach aufsteigenden Werten
-            productRequirementMapper.sortPropertiesInAscendingOrder(requirementSequenceTree);
+            productRequirementMapper.sortPropertiesInAscendingOrder(attributeGroupedByName);
             // Zusicherungsliste füllen
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
             List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
-            /*
-            for (AssuranceMapper assuranceMapper : assuranceMapList) {
-                assuranceMapper.toStringCustom();
-            }
-
-             */
             // Zu Testzwecken eine Liste von relevanten Attributen
             Map<String, String> listOfRelevantParameters = new HashMap<>();
             listOfRelevantParameters.put("positionX", "PersistentStateChange");
@@ -112,13 +106,23 @@ public class HtmlController {
             listOfRelevantParameters.put("forceX", "Constraints");
             listOfRelevantParameters.put("forceY", "Constraints");
             listOfRelevantParameters.put("forceZ", "Constraints");
+            listOfRelevantParameters.put("torqueX", "Constraints");
+            listOfRelevantParameters.put("torqueY", "Constraints");
+            listOfRelevantParameters.put("torqueZ", "Constraints");
             // Map nun auf eine Zeilen-Spalten-Struktur parsen
-            productRequirementMapper.mapperToTable(requirementSequenceTree,listOfRelevantParameters);
+            requirementTable = productRequirementMapper.mapperToTable(attributeGroupedByName, listOfRelevantParameters);
+
+            root.setRequirementSet(requirementTable.getRequirementAttributes());
+
+            // Baumstruktur füllen
+            ressourceChecker.setAssuranceMap(assuranceMapList);
+            ressourceChecker.getRequirementSnakes(requirementTable);
+
 
             // Finden eines passenden Greifers
-            // matchedRequirementSequenceTree = ressourceChecker.searchForGripper(requirementSequenceTree, assuranceMapList,listOfRelevantParameters);
+            // matchedAttributeGroupedByName = ressourceChecker.searchForGripper(attributeGroupedByName, assuranceMapList,listOfRelevantParameters);
             // passende Zusicherungen finden
-            //ressourceChecker.findKinematicChains(requirementSequenceTree,assuranceMapList,listOfRelevantParameters);
+            //ressourceChecker.findKinematicChains(attributeGroupedByName,assuranceMapList,listOfRelevantParameters);
 
 
 
@@ -157,7 +161,7 @@ public class HtmlController {
 
              */
 
-            //List<RequirementSequenceTree> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
+            //List<AttributeGroupedByName> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
 
             /*
                 Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen

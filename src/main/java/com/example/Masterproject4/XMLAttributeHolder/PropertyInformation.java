@@ -16,5 +16,7 @@ public class PropertyInformation {
     String partReference;
     boolean requirementFullFilled;
     String dataSpecification;
+    int valency;
+    int subProcessIdOrderValue;
 
 }

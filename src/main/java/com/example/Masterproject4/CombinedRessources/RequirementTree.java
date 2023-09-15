@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface RequirementTree {
     Boolean hasChild();
-    List<RequirementSequenceTree> getChilds();
-    void addChild(RequirementSequenceTree child);
+    List<KinematicChainTree> getChilds();
+    void addChild(KinematicChainTree child);
 }

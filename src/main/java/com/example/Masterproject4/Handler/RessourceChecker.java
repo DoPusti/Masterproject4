@@ -1,7 +1,8 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.CombinedRessources.RequirementSequenceTree;
+import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
+import com.example.Masterproject4.Mapper.RequirementTable;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import lombok.Builder;
@@ -13,10 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 
 @Component
@@ -24,7 +22,10 @@ import java.util.TreeMap;
 @Builder
 public class RessourceChecker {
 
+
     private static final Logger Log = LoggerFactory.getLogger(RessourceChecker.class);
+    List<AssuranceMapper> assuranceMap = new ArrayList<>();
+
 
     public void callRestService(List<Constraints> matchedAssurances) {
         matchedAssurances.forEach(assurance -> {
@@ -40,9 +41,9 @@ public class RessourceChecker {
 
     }
 
-    public RequirementSequenceTree searchForGripper(RequirementSequenceTree requirementSequenceTreeIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
-        RequirementSequenceTree requirementSequenceTreeOut = new RequirementSequenceTree();
-        return requirementSequenceTreeOut;
+    public AttributeGroupedByName searchForGripper(AttributeGroupedByName attributeGroupedByNameIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
+        AttributeGroupedByName attributeGroupedByNameOut = new AttributeGroupedByName();
+        return attributeGroupedByNameOut;
     }
 
     /***
@@ -57,6 +58,7 @@ public class RessourceChecker {
             AssuranceMapper mapper = new AssuranceMapper();
             mapper.setAssetId(fullObject.getAssetId());
             mapper.setId((fullObject.getId()));
+            mapper.setConnectionType(fullObject.getConnectionType());
             Map<String, PropertyInformation> propertyParameters = new TreeMap<>();
             // Verwende Reflection, um alle Double-Attribute zu extrahieren
             Field[] fields = fullObject.getClass().getDeclaredFields();
@@ -78,37 +80,96 @@ public class RessourceChecker {
         return assuranceListOut;
     }
 
-    public void findKinematicChains(RequirementSequenceTree requirementSequenceTreeIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
+    public void getRequirementSnakes(RequirementTable rootRequirement) {
+        // 1. Anforderungsset rein (bereits sortiert absteigend)
+        // 2. Greifersuche Loop
+        // Stabilitätsprüfung bei jeder Schlange
+        // Schlange neues Anforderungsset + Anforderung von Greifer (alle möglichen Schlangen) die wo am weitestens oben
+        // x | y | z -> Suche Achse, die mindestens eine position ändert ( Anforderungen wieder addieren)
+        // immer wenn die nächste Ressource nicht erfüllt -> Abbruch
+        // -> solange bis alle Positionen geändert sind
+        // -> Ergebnis: kombinierte Ressource, die Schlange erfüllt
+        // Zu jeder Schlange komplementärset (tv drüber die nicht erfüllt sind) -> gleiches spiel nochmal
+        System.out.println("<<Ermittlung aller kinematischen Schlangen>>");
 
-        System.out.println(requirementSequenceTreeIn);
-        // 1. Schleife über die tabellerarischen Felder der Requirement
-        checkRequirementTableForMatchingAssurance(requirementSequenceTreeIn.getPropertyParameters(), assuranceMapperIn, listOfRelevantParametersIn);
-
+        // Anforderungen prüfen und Liste holen
+        Map<Integer, Map<String, PropertyInformation>> requirementSet = rootRequirement.getRequirementAttributes();
+        Map<String, PropertyInformation> relevantAttributes = requirementSet.get(1);
+        // Nicht relevante Zeilen löschen
+        requirementSet.entrySet().removeIf(integerMapEntry -> integerMapEntry.getKey() > 3);
+        // Passende Greifer suchen
+        Map<AssuranceMapper, Map<String, PropertyInformation>> newRequirementSnake = checkForGripper(requirementSet, relevantAttributes);
+        // TODO: Kraft in z muss angepasst werden
+        // Prüfung ob Stabilität vorhanden ist
     }
 
-    public void checkRequirementTableForMatchingAssurance(Map<String, Map<String, PropertyInformation>> propertyParametersIn,
-                                                          List<AssuranceMapper> assuranceMapperIn,
-                                                          Map<String, String> listOfRelevantParametersIn) {
-        System.out.println("Prüfung der Tabelle: ");
-        for (Map.Entry<String, Map<String, PropertyInformation>> entry : propertyParametersIn.entrySet()) {
-            String outerKey = entry.getKey();
-            Map<String, PropertyInformation> innerMap = entry.getValue();
-            // Innere Schleife durchläuft die innere Map
-            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
-                String innerKey = innerEntry.getKey();
-                if (listOfRelevantParametersIn.containsKey(outerKey)) {
-                    PropertyInformation innerPropertyInformation = innerEntry.getValue();
-                    // Hier kannst du auf die Werte zugreifen, z.B.:
-                    System.out.println("Attribut | " + outerKey);
-                    System.out.println("Innerer Schlüssel: " + innerKey);
-                    System.out.println("Wert | " + innerPropertyInformation.getValueOfParameter());
+    public Map<AssuranceMapper, Map<String, PropertyInformation>> checkForGripper(Map<Integer, Map<String, PropertyInformation>> requirementSetIn, Map<String, PropertyInformation> relevantAttributesIn) {
+        Map<AssuranceMapper, Map<String, PropertyInformation>> cachedMatchedAssurances = new HashMap<>();
+        // Jedes Attribut einer Zusicherung wird seperat durchsucht
+        assuranceMap.forEach(assurance -> {
+            boolean assuranceIsRelevant = true;
+            Map<String, PropertyInformation> requirementSnake = new HashMap<>();
+            // Betrachtung von Greifern
+            if (assurance.getConnectionType().equals("AutomaticallyRemoveable")) {
+                System.out.println("Betrachtung von Zusicherung " + assurance.getId());
+                // Attribute der Zusicherung
+                Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
+                // Durchsuchen jedes Attribut der Zusicherung
+                loopForAttribute:
+                for (Map.Entry<String, PropertyInformation> assuranceAttribute : propertiesOfAssurance.entrySet()) {
+                    String attributeNameOfAssurance = assuranceAttribute.getKey(); // z.B. ForceX
+                    // Nur wenn das Attribut gebraucht wird
+                    if (relevantAttributesIn.containsKey(attributeNameOfAssurance)) {
+                        if (relevantAttributesIn.get(attributeNameOfAssurance).getDataSpecification().equals("Constraints")) {
+                            System.out.println("Prüfung des Attributs " + attributeNameOfAssurance + " mit dem Wert =" + assuranceAttribute.getValue().getValueOfParameter());
+                            boolean relevantAttributeFound = false;
+                            // Durchsuchen von jeder Zeile
+                            loopForRows:
+                            for (Map.Entry<Integer, Map<String, PropertyInformation>> outerEntry : requirementSetIn.entrySet()) {
+                                int rowNumber = outerEntry.getKey();
+                                Map<String, PropertyInformation> requirementAttribute = outerEntry.getValue();
+                                System.out.println("Zeile : " + rowNumber + " wird betrachtet. Wert = " + requirementAttribute.get(attributeNameOfAssurance).getValueOfParameter());
+                                if (assuranceAttribute.getValue().getValueOfParameter() >= requirementAttribute.get(attributeNameOfAssurance).getValueOfParameter()
+                                        && relevantAttributesIn.containsKey(attributeNameOfAssurance)) {
+                                    // Zeile wurde gefunden
+                                    PropertyInformation informationForAssuranceProperty = requirementAttribute.get(attributeNameOfAssurance);
+                                    informationForAssuranceProperty.setValency(rowNumber);
+                                    requirementSnake.put(attributeNameOfAssurance, informationForAssuranceProperty);
+                                    System.out.println("Wert ist größer -> wird eingetragen");
+                                    relevantAttributeFound = true;
+                                    break loopForRows;
+                                }
+                            }
+                            // Es wurde nichts passendes gefunden -> kompletter Abbruch für diese Zusicherung
+                            if (!relevantAttributeFound) {
+                                System.out.println("Attribut ");
+                                assuranceIsRelevant = false;
+                                break loopForAttribute;
+                            }
+                        }
+                    }
                 }
-
+                if (assuranceIsRelevant) {
+                    cachedMatchedAssurances.put(assurance, requirementSnake);
+                }
             }
-            System.out.println("\n");
+        });
+        System.out.println("Gefundene Greifer");
+        for (Map.Entry<AssuranceMapper, Map<String, PropertyInformation>> entry : cachedMatchedAssurances.entrySet()) {
+            AssuranceMapper assuranceMapper = entry.getKey();
+            Map<String, PropertyInformation> propertyInformationMap = entry.getValue();
+            System.out.println("ZusicherungsID : " + assuranceMapper.getId());
+            for (Map.Entry<String, PropertyInformation> entryIn : propertyInformationMap.entrySet()) {
+                System.out.println("Attributsname = " + entryIn.getKey() +
+                        "/Wert = " + entryIn.getValue().getValueOfParameter() +
+                        "/Position = " + entryIn.getValue().getValency() +
+                        "/TV = " + entryIn.getValue().getSubProcessId());
+            }
+            // Dein Code hier, um mit assuranceMapper und propertyInformationMap zu arbeiten
         }
 
-
+        return cachedMatchedAssurances;
     }
+
 
 }

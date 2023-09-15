@@ -16,6 +16,7 @@ import java.util.Map;
 public class AssuranceMapper {
     String assetId;
     Long id;
+    String connectionType;
     Map<String,PropertyInformation> propertyParameters;
 
     public StringBuilder toStringCustom() {
