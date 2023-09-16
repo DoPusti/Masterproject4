@@ -13,6 +13,7 @@ import com.example.Masterproject4.Mapper.RequirementTable;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
+import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -88,6 +89,18 @@ public class HtmlController {
 
         if (!fileOfUser.isEmpty()) {
             File convertedFile = new FileConverter().convertFile(fileOfUser);
+            // Zu Testzwecken eine Liste von relevanten Attributen
+            Map<String, String> listOfRelevantParameters = new HashMap<>();
+            listOfRelevantParameters.put("positionX", "PersistentStateChange");
+            listOfRelevantParameters.put("positionY", "PersistentStateChange");
+            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
+            listOfRelevantParameters.put("forceX", "Constraints");
+            listOfRelevantParameters.put("forceY", "Constraints");
+            listOfRelevantParameters.put("forceZ", "Constraints");
+            //listOfRelevantParameters.put("torqueX", "Constraints");
+            //listOfRelevantParameters.put("torqueY", "Constraints");
+            //listOfRelevantParameters.put("torqueZ", "Constraints");
+            productRequirementMapper.setListOfRelevantParameters(listOfRelevantParameters);
             // Alle relevante Attribute von Product Property und Process Requirement
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
             // Fertige Liste von sortierten Attributen in Zusammenhang des jeweiligen Teilvorgangs
@@ -98,25 +111,23 @@ public class HtmlController {
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
             List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
-            // Zu Testzwecken eine Liste von relevanten Attributen
-            Map<String, String> listOfRelevantParameters = new HashMap<>();
-            listOfRelevantParameters.put("positionX", "PersistentStateChange");
-            listOfRelevantParameters.put("positionY", "PersistentStateChange");
-            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
-            listOfRelevantParameters.put("forceX", "Constraints");
-            listOfRelevantParameters.put("forceY", "Constraints");
-            listOfRelevantParameters.put("forceZ", "Constraints");
-            listOfRelevantParameters.put("torqueX", "Constraints");
-            listOfRelevantParameters.put("torqueY", "Constraints");
-            listOfRelevantParameters.put("torqueZ", "Constraints");
             // Map nun auf eine Zeilen-Spalten-Struktur parsen
-            requirementTable = productRequirementMapper.mapperToTable(attributeGroupedByName, listOfRelevantParameters);
 
-            root.setRequirementSet(requirementTable.getRequirementAttributes());
+            Map.Entry<String, Map<String, PropertyInformation>> firstEntry = attributeGroupedByName.getPropertyParameters().entrySet().iterator().next();
+            int rowSize = firstEntry.getValue().size();
+            int columnSize = attributeGroupedByName.getPropertyParameters().size();
+            System.out.println("Spaltenanzahl : " + columnSize);
+            System.out.println("Zeilenanzahl  : " + rowSize);
+            // Zeilen entsprechen der Anzahl von Teilvorgängen und Spalten der Anzahl der relevanten Attribute
+            PropertyInformation[][] tableOfRequirement = new PropertyInformation[rowSize][columnSize];
 
-            // Baumstruktur füllen
+            // Sortierte Anforderung auf eine 2-Dimensionale Tabelle mappen
+            productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName,tableOfRequirement);
+
             ressourceChecker.setAssuranceMap(assuranceMapList);
-            ressourceChecker.getRequirementSnakes(requirementTable);
+            ressourceChecker.assemblyByDisassembly(tableOfRequirement);
+
+
 
 
             // Finden eines passenden Greifers

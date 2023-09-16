@@ -18,5 +18,9 @@ public class PropertyInformation {
     String dataSpecification;
     int valency;
     int subProcessIdOrderValue;
+    String attributeName;
+    int numberOfSequence;
+
+    AssuranceMapper matchingAssurance;
 
 }

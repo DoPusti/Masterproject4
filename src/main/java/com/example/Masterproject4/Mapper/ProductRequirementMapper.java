@@ -8,6 +8,7 @@ import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.util.*;
 
+@Data
 @Component
 public class ProductRequirementMapper {
     private static final Logger Log = LoggerFactory.getLogger(ProductRequirementMapper.class);
@@ -23,6 +25,8 @@ public class ProductRequirementMapper {
     //List<ProductProperty> productProperties = new ArrayList<>();
     Map<String, Map<String, Double>> productPropertiesOfParts = new HashMap<>();
     List<ProcessRequirement> processRequirements = new ArrayList<>();
+
+    Map<String, String> listOfRelevantParameters;
     int idForProcessRequirements = 0;
 
     public static void addOrUpdateValue(Map<String, PropertyInformation> map, String key, double value, PropertyInformation newAttributeValueIn) {
@@ -90,7 +94,9 @@ public class ProductRequirementMapper {
         subModelElementsInProductPropertyDeep2.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
             if (property1 != null) {
-                if (property1.getIdShort().equals("Mass") || property1.getIdShort().equals("MeanRoughness") || property1.getIdShort().equals("FerroMagentic")) {
+                if ((property1.getIdShort().equals("Mass") || property1.getIdShort().equals("MeanRoughness") || property1.getIdShort().equals("FerroMagentic"))
+                        && listOfRelevantParameters.containsKey(property1.getIdShort())
+                ) {
                     casheListForProperties.put(property1.getIdShort(), Double.parseDouble(property1.getValue()));
 
                 }
@@ -98,12 +104,12 @@ public class ProductRequirementMapper {
                 List<SubModelElement> subModelElementsInProductPropertyDeep3 = subModelElementObject1.getSubmodelElementCollection().getValue().getSubmodelElement();
                 subModelElementsInProductPropertyDeep3.forEach(subModelElementObject2 -> {
                     Property property2 = subModelElementObject2.getProperty();
-                    if (property2.getIdShort().equals("Length") ||
+                    if ((property2.getIdShort().equals("Length") ||
                             property2.getIdShort().equals("Width") ||
                             property2.getIdShort().equals("Height") ||
                             property2.getIdShort().equals("X") ||
                             property2.getIdShort().equals("Y") ||
-                            property2.getIdShort().equals("Z")) {
+                            property2.getIdShort().equals("Z")) && listOfRelevantParameters.containsKey(property2.getIdShort())) {
                         casheListForProperties.put(property2.getIdShort(), Double.parseDouble(property2.getValue()));
                     }
                 });
@@ -138,14 +144,16 @@ public class ProductRequirementMapper {
                     if (subModelElements3 != null) {
                         subModelElements3.forEach(subModelElementDeep3 -> {
                             Property property2 = subModelElementDeep3.getProperty();
-                            double propertyParsedToDouble = Double.parseDouble(property2.getValue());
-                            //System.out.println("TVID: " + idShortOfProcessRequirement + ", Elements " + property2.getIdShort() + "/" + propertyParsedToDouble);
-                            PropertyInformation newAttributeValue = PropertyInformation.builder()
-                                    .subProcessId(idShortOfProcessRequirement)
-                                    .valueOfParameter(propertyParsedToDouble)
-                                    .dataSpecification(dataSpecification)
-                                    .build();
-                            addOrUpdateValue(attributeDefinitions, property2.getIdShort(), propertyParsedToDouble, newAttributeValue);
+                            if (listOfRelevantParameters.containsKey(property2.getIdShort())) {
+                                double propertyParsedToDouble = Double.parseDouble(property2.getValue());
+                                //System.out.println("TVID: " + idShortOfProcessRequirement + ", Elements " + property2.getIdShort() + "/" + propertyParsedToDouble);
+                                PropertyInformation newAttributeValue = PropertyInformation.builder()
+                                        .subProcessId(idShortOfProcessRequirement)
+                                        .valueOfParameter(propertyParsedToDouble)
+                                        .dataSpecification(dataSpecification)
+                                        .build();
+                                addOrUpdateValue(attributeDefinitions, property2.getIdShort(), propertyParsedToDouble, newAttributeValue);
+                            }
 
                         });
                     }
@@ -338,6 +346,55 @@ public class ProductRequirementMapper {
          */
 
     }
+
+    public void mapToTableOfRequirement(AttributeGroupedByName attributeGroupedByNameIn, PropertyInformation[][] tableOfRequirement) {
+
+        int counterForColumns = 0;
+
+        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : attributeGroupedByNameIn.getPropertyParameters().entrySet()) {
+            String outerKey = outerEntry.getKey();  // z.B. PositionX
+            // Iteriere über die innere Map . Liste von einem Key z.B. positionX
+            //System.out.print("Attribut " + outerKey + " wird geprüft.");
+            // Schleife über alle Zeilen eines Attributs -> wird zu
+            int counterForRows = 0;
+            for (Map.Entry<String, PropertyInformation> innerEntry : outerEntry.getValue().entrySet()) {
+                PropertyInformation newInformationForAttribute = innerEntry.getValue();
+                //System.out.println("/Wert= " + newInformationForAttribute.getValueOfParameter());
+                newInformationForAttribute.setNumberOfSequence(Character.getNumericValue(innerEntry.getKey().charAt(2)));
+                newInformationForAttribute.setAttributeName(outerKey);
+                newInformationForAttribute.setDataSpecification(listOfRelevantParameters.get(outerKey));
+
+                tableOfRequirement[counterForRows][counterForColumns] = newInformationForAttribute;
+
+                //System.out.println("Attribut " + outerKey + " mit Wert = " + innerEntry.getValue().getValueOfParameter() +
+                //        " wird auf Zeile=" + counterForRows + " und Spalte= " + counterForColumns + " gesetzt.");
+
+                counterForRows++;
+            }
+            counterForColumns++;
+
+        }
+        for (int row = 0; row < tableOfRequirement.length; row++) {
+            // Zeilennummer am Anfang der Zeile anzeigen
+            System.out.printf("Zeile %d: ", row);
+
+            for (int col = 0; col < tableOfRequirement[row].length; col++) {
+                PropertyInformation propertyInfo = tableOfRequirement[row][col];
+                if (propertyInfo != null) {
+                    // Informationen der PropertyInformation ausgeben
+                    System.out.printf("%s/%d/%.2f",
+                            propertyInfo.getAttributeName(), propertyInfo.getNumberOfSequence(), propertyInfo.getValueOfParameter()
+                    );
+                } else {
+                    System.out.print("N/A"); // Wenn das Element null ist, "N/A" ausgeben
+                }
+
+                System.out.print("\t"); // Tabulator zur Trennung der Spalten
+            }
+            System.out.println(); // Zeilenumbruch am Ende der Zeile
+        }
+    }
+
 
     public RequirementTable mapperToTable(AttributeGroupedByName attributeGroupedByNameIn, Map<String, String> listOfRelevantParameters) {
         RequirementTable requirementTableOut = new RequirementTable();
