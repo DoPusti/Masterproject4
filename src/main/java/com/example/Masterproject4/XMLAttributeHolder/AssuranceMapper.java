@@ -17,6 +17,7 @@ public class AssuranceMapper {
     String assetId;
     Long id;
     String connectionType;
+    double price;
     Map<String,PropertyInformation> propertyParameters;
 
     public StringBuilder toStringCustom() {

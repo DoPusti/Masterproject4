@@ -1,7 +1,6 @@
 package com.example.Masterproject4;
 
 import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
-import com.example.Masterproject4.CombinedRessources.KinematicChain;
 import com.example.Masterproject4.CombinedRessources.KinematicChainTree;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
@@ -10,6 +9,7 @@ import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
 import com.example.Masterproject4.Mapper.RequirementTable;
+import com.example.Masterproject4.RCZwei.RessourceChecker2;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
@@ -45,6 +45,9 @@ public class HtmlController {
     private AssuranceRepository assuranceRepository;
     @Autowired
     private RessourceChecker ressourceChecker;
+
+    @Autowired
+    private RessourceChecker2 ressourceChecker2;
     @Autowired
     private ProductProcessReference productProcessReference;
     @Autowired
@@ -93,13 +96,10 @@ public class HtmlController {
             Map<String, String> listOfRelevantParameters = new HashMap<>();
             listOfRelevantParameters.put("positionX", "PersistentStateChange");
             listOfRelevantParameters.put("positionY", "PersistentStateChange");
-            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
+            //listOfRelevantParameters.put("positionZ", "PersistentStateChange");
             listOfRelevantParameters.put("forceX", "Constraints");
             listOfRelevantParameters.put("forceY", "Constraints");
-            listOfRelevantParameters.put("forceZ", "Constraints");
-            //listOfRelevantParameters.put("torqueX", "Constraints");
-            //listOfRelevantParameters.put("torqueY", "Constraints");
-            //listOfRelevantParameters.put("torqueZ", "Constraints");
+            //listOfRelevantParameters.put("forceZ", "Constraints");
             productRequirementMapper.setListOfRelevantParameters(listOfRelevantParameters);
             // Alle relevante Attribute von Product Property und Process Requirement
             productRequirementFullObject = productRequirementMapper.mapXMLToClass(convertedFile);
@@ -112,129 +112,26 @@ public class HtmlController {
             // Zusicherungen auf die Mapperklasse sortieren
             List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
             // Map nun auf eine Zeilen-Spalten-Struktur parsen
-
             Map.Entry<String, Map<String, PropertyInformation>> firstEntry = attributeGroupedByName.getPropertyParameters().entrySet().iterator().next();
             int rowSize = firstEntry.getValue().size();
             int columnSize = attributeGroupedByName.getPropertyParameters().size();
-            System.out.println("Spaltenanzahl : " + columnSize);
-            System.out.println("Zeilenanzahl  : " + rowSize);
             // Zeilen entsprechen der Anzahl von Teilvorgängen und Spalten der Anzahl der relevanten Attribute
             PropertyInformation[][] tableOfRequirement = new PropertyInformation[rowSize][columnSize];
-
             // Sortierte Anforderung auf eine 2-Dimensionale Tabelle mappen
             productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName,tableOfRequirement);
-
-            ressourceChecker.setAssuranceMap(assuranceMapList);
-            ressourceChecker.assemblyByDisassembly(tableOfRequirement);
-
+            ressourceChecker2.setAssuranceMap(assuranceMapList);
+            ressourceChecker2.assemblyByDisassembly(tableOfRequirement);
 
 
+            //ressourceChecker.setAssuranceMap(assuranceMapList);
+            //ressourceChecker.assemblyByDisassembly(tableOfRequirement);
 
-            // Finden eines passenden Greifers
-            // matchedAttributeGroupedByName = ressourceChecker.searchForGripper(attributeGroupedByName, assuranceMapList,listOfRelevantParameters);
-            // passende Zusicherungen finden
-            //ressourceChecker.findKinematicChains(attributeGroupedByName,assuranceMapList,listOfRelevantParameters);
+            //ressourceChecker.assemblyByDisassemblyEasyVariant(tableOfRequirement);
 
 
 
 
 
-            /*
-            List<ProcessRequirement> processRequirementList = productRequirementFullObject.getProcessRequirement();
-            List<ProductProperty> productPropertyList = productRequirementFullObject.getProductProperty();
-            List<StateOfStability> stabilityList = productRequirementMapper.setStateOfStability(processRequirementList);
-            Map<String,String> listOfRelevantParameters = new HashMap<>();
-            listOfRelevantParameters.put("positionX", "PersistentStateChange");
-            listOfRelevantParameters.put("positionY", "PersistentStateChange");
-            listOfRelevantParameters.put("positionZ", "PersistentStateChange");
-            listOfRelevantParameters.put("forceX", "Constraints");
-            listOfRelevantParameters.put("forceY", "Constraints");
-            listOfRelevantParameters.put("forceZ", "Constraints");
-
-            System.out.println("Stabilitätsliste ->");
-            stabilityList.forEach(stability -> {
-                System.out.println(stability.toString());
-            });
-            System.out.println("MatchingAttributeListe ->");
-            System.out.println(listOfRelevantParameters);
-
-
-            System.out.println("ProductRequirementFullObject ->");
-            System.out.println("ProcessRequirement");
-            processRequirementList.forEach(processRequirement -> {
-                System.out.println(processRequirement.toString());
-            });
-
-            System.out.println("ProductProperty");
-            productPropertyList.forEach(productProperty -> {
-                System.out.println(productProperty.toString());
-            });
-
-             */
-
-            //List<AttributeGroupedByName> requirements = productRequirementMapper.getAllSequencesOfRequirements(productRequirementFullObject,listOfRelevantParameters);
-
-            /*
-                Objekt zur Haltung der Beziehungen zwischen Produkt und Teilvorgängen
-
-
-            List<ProductProcessReference> listOfProductProcessReference = productRequirementMapper.getAllProductProcessReference(productRequirementFullObject);
-
-            System.out.println("ProductProcessReference ->");
-            listOfProductProcessReference.forEach(System.out::println);
-
-            /*
-                Objekt zur Haltung der Permutationen einer Sequenz von Teilvorgängen
-
-
-            List<RessourceHolder> ressourceHolderList = productRequirementMapper.fillAndSortRequirementList(processRequirementList, listOfProductProcessReference);
-            System.out.println("Ressourcenliste ->");
-            ressourceHolderList.forEach(ressourceHolder -> {
-                System.out.println(ressourceHolder.getStringSequence());
-            });
-
-
-            /*
-                Objekt zur Haltunge der Daten für die Zusicherungen
-
-
-
-            List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
-            System.out.println("Zusicherungen ->");
-            Log.info("AssuranceListFullObject ->");
-            assuranceList.forEach(assuranceInLists -> {
-                System.out.println(assuranceInLists.getStringSequence());
-                Log.info(assuranceInLists.getStringSequence());
-            });
-
-            /*
-                Passende Ressource Greifer suchen (AutomaticallyRemoveable)
-
-
-
-
-            ressourceChecker.searchForGripper(ressourceHolderList, assuranceList);
-
-            /*
-                Passender Greifer wurde nun ausgesucht -> Suche nach Achse oder passenden Roboter
-
-
-
-            productRequirementMapper.setNewProperties(ressourceHolderList);
-            Log.info("Neue kombinierte Anforderung mit Greifer + Produkt");
-            System.out.println("Neue kombinierte Anforderung mit Greifer + Produkt");
-            ressourceHolderList.forEach(ressourceHolder -> {
-                System.out.println(ressourceHolder.getStringSequence());
-                Log.info(ressourceHolder.toString());
-            });
-
-            /*
-                Passende Achse bzw. Roboter finden
-
-
-            ressourceChecker.checkKinematicChain(ressourceHolderList, assuranceList, stabilityList, listOfRelevantParameters);
-
-             */
 
         }
         // Pfad zum HTML-File im classpath:static Ordner

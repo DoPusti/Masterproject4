@@ -374,6 +374,7 @@ public class ProductRequirementMapper {
             counterForColumns++;
 
         }
+        /*
         for (int row = 0; row < tableOfRequirement.length; row++) {
             // Zeilennummer am Anfang der Zeile anzeigen
             System.out.printf("Zeile %d: ", row);
@@ -393,7 +394,11 @@ public class ProductRequirementMapper {
             }
             System.out.println(); // Zeilenumbruch am Ende der Zeile
         }
+        */
+
     }
+
+
 
 
     public RequirementTable mapperToTable(AttributeGroupedByName attributeGroupedByNameIn, Map<String, String> listOfRelevantParameters) {

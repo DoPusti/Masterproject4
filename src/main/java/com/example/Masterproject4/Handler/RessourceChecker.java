@@ -1,6 +1,7 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
+import com.example.Masterproject4.CombinedRessources.KinematicChainNode;
+import com.example.Masterproject4.CombinedRessources.KinematicChainRoot;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
@@ -40,11 +41,6 @@ public class RessourceChecker {
 
     }
 
-    public AttributeGroupedByName searchForGripper(AttributeGroupedByName attributeGroupedByNameIn, List<AssuranceMapper> assuranceMapperIn, Map<String, String> listOfRelevantParametersIn) {
-        AttributeGroupedByName attributeGroupedByNameOut = new AttributeGroupedByName();
-        return attributeGroupedByNameOut;
-    }
-
     /***
      * Parsen einer Liste von Zusicherungen auf eine Liste von Zusicherungen im Map-Format
      * @param assuranceListIn   : Liste von Zusicherungen, die aus der Datenbank direkt kommen
@@ -65,9 +61,13 @@ public class RessourceChecker {
                 if (field.getType() == double.class) {
                     try {
                         double value = field.getDouble(fullObject);
-                        PropertyInformation newPropertyInformationForAssuranceMapper = new PropertyInformation();
-                        newPropertyInformationForAssuranceMapper.setValueOfParameter(value);
-                        propertyParameters.put(field.getName(), newPropertyInformationForAssuranceMapper);
+                        if (field.getName().equals("price")) {
+                            mapper.setPrice(value);
+                        } else {
+                            PropertyInformation newPropertyInformationForAssuranceMapper = new PropertyInformation();
+                            newPropertyInformationForAssuranceMapper.setValueOfParameter(value);
+                            propertyParameters.put(field.getName(), newPropertyInformationForAssuranceMapper);
+                        }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
@@ -80,41 +80,56 @@ public class RessourceChecker {
     }
 
     public void assemblyByDisassembly(PropertyInformation[][] tableOfRequirement) {
+        Log.info("UPRO : assemblyByDisassembly -->");
+        KinematicChainRoot startingPointOfChain = new KinematicChainRoot();
+        // Zeilen kürzen
+        //int rowsToKeep = 3; // Die Anzahl der Zeilen, die du behalten möchtest
+        //PropertyInformation[][] newTable = new PropertyInformation[rowsToKeep][];
+        //System.arraycopy(tableOfRequirement, 0, newTable, 0, rowsToKeep);
+        Log.info("  Suche aller aktuellen Greifer mit dem Anforderungsset: ");
+        printRequirementTable(tableOfRequirement);
+        // Nodes für den Start festlegen
+        startingPointOfChain.setLeaveNodes(searchForGripper(tableOfRequirement));
+        Log.info("  Alle Startpunkte wurden nun festgelegt. Es sind " + startingPointOfChain.getLeaveNodes().size() + " Stück.");
+        List<KinematicChainNode> leaveNodes = startingPointOfChain.getLeaveNodes();
+        for (KinematicChainNode node : leaveNodes) {
+            // Jeder Knoten durchläuft eine Rekursive Funktion
+            findCombinedRessources(node);
+        }
 
-        searchForMatchingAssurance(tableOfRequirement, "AutomaticallyRemoveable");
 
 
-        // 2. Greifersuche Loop
-        // Stabilitätsprüfung bei jeder Schlange
-        // Schlange neues Anforderungsset + Anforderung von Greifer (alle möglichen Schlangen) die wo am weitestens oben
-        // x | y | z -> Suche Achse, die mindestens eine position ändert ( Anforderungen wieder addieren)
-        // immer wenn die nächste Ressource nicht erfüllt -> Abbruch
-        // -> solange bis alle Positionen geändert sind
-        // -> Ergebnis: kombinierte Ressource, die Schlange erfüllt
-        // Zu jeder Schlange komplementärset (tv drüber die nicht erfüllt sind) -> gleiches spiel nochmal
 
-        /*
-        System.out.println("<<Ermittlung aller kinematischen Schlangen>>");
-        // Anforderungen prüfen und Liste holen
-        Map<Integer, Map<String, PropertyInformation>> requirementSet = rootRequirement.getRequirementAttributes();
-        Map<String, PropertyInformation> relevantAttributes = requirementSet.get(1);
-        requirementSet.entrySet().removeIf(integerMapEntry -> integerMapEntry.getKey() > 3);
-        Map<AssuranceMapper, Map<String, PropertyInformation>> newRequirementSnake = checkForGripper(requirementSet, relevantAttributes);
-        checkForFullFilledSequence(requirementSet, newRequirementSnake);
 
-         */
+
+    }
+    public void findCombinedRessources(KinematicChainNode nodeIn) {
+
     }
 
-    public void searchForMatchingAssurance(PropertyInformation[][] tableOfRequirement, String kindOfAssurance) {
-        // kindOfAssurance = NotAutomaticallyRemovable oder AutomaticallyRemoveable
-        System.out.println("Passende Zusicherung für " + kindOfAssurance + " wird gesucht.");
 
-        Map<AssuranceMapper,PropertyInformation[][]>  tablesForAssurance = new HashMap<>();
-        // Jede Zusicherung wird seperat geprüft
+    public void printRequirementTable(PropertyInformation[][] tableOfRequirement) {
+        for (int i = 0; i < tableOfRequirement.length; i++) {
+            for (int j = 0; j < tableOfRequirement[i].length; j++) {
+                PropertyInformation element = tableOfRequirement[i][j];
+                Log.info("(" + i + "/" + j + "): " + element.getSubProcessId() + "/" + element.getAttributeName() + "/" + element.getValueOfParameter());
+            }
+        }
+    }
+
+    public List<KinematicChainNode> searchForGripper(PropertyInformation[][] tableOfRequirementIn) {
+        Log.info("UPRO : searchForGripper --> ");
+        // Erstmal alle Greifer suchen
+
+        Map<Set<String>, KinematicChainNode> listOfAllSequencesWithNodes = new HashMap<>();
+        String kindOfAssurance = "AutomaticallyRemoveable";
+        // Jede Zusicherung wird geprüft
         assuranceMap.forEach(assurance -> {
-            PropertyInformation[][] requirementTableForAssurance = tableOfRequirement;
+            KinematicChainNode nodeForAssurance = new KinematicChainNode();
+            PropertyInformation[][] requirementTableForAssurance = tableOfRequirementIn;
+            // Greifer
             if (assurance.getConnectionType().equals(kindOfAssurance)) {
-                System.out.println("Zusicherung " + assurance.getId() + " wird betrachtet.");
+                Log.info("  Zusicherung " + assurance.getId() + " wird betrachtet.");
                 Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
                 // Schleife über die Tabelle der tableOfRequirement
                 for (int col = 0; col < requirementTableForAssurance[0].length; col++) {
@@ -124,153 +139,132 @@ public class RessourceChecker {
                         double valueOfRequirement = requirementTableForAssurance[row][col].getValueOfParameter();
                         double valueOfAssuranceAttribute = propertiesOfAssurance.get(attributeName).getValueOfParameter();
                         String attributeSpecification = requirementTableForAssurance[row][col].getDataSpecification();
-                        if ((kindOfAssurance.equals("AutomaticallyRemoveable") && attributeSpecification.equals("Constraints"))
-                                || kindOfAssurance.equals("NotAutomaticallyRemoveable")) {
-                            if (valueOfAssuranceAttribute >= valueOfRequirement) {
-                                requirementTableForAssurance[row][col].setRequirementFullFilled(true);
-                                System.out.println("Zeile " + row + "/Spalte " + col);
-                                System.out.println("Attribut " + attributeName + " von Zusicherung mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + "." + kindOfAssurance + "/" + attributeSpecification);
-                                break;
-                            } else {
-                                System.out.println("Attribut " + attributeName + " von Zusicherung mit " + valueOfAssuranceAttribute + " < " + valueOfRequirement + "." + kindOfAssurance + "/" + attributeSpecification);
-                            }
+                        if (valueOfAssuranceAttribute >= valueOfRequirement && attributeSpecification.equals("Constraints")) {
+                            requirementTableForAssurance[row][col].setRequirementFullFilled(true);
+                            Log.info("  Zeile " + row + "/Spalte " + col);
+                            Log.info("  Attribut " + attributeName + " von Zusicherung mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + "." + kindOfAssurance + "/" + attributeSpecification);
+                            //break;
+                        } else {
+                            Log.info("  Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
+                            requirementTableForAssurance[row][col].setRequirementFullFilled(false);
                         }
                     }
                 }
-                tablesForAssurance.put(assurance,requirementTableForAssurance);
-            }
-        });
-
-        System.out.println("Ausgabe aller gefundenen Zusicherung mit ihren kinematischen Ketten");
-        // Durch die verschachtelte Map iterieren
-        for (Map.Entry<AssuranceMapper, PropertyInformation[][]> entry : tablesForAssurance.entrySet()) {
-            AssuranceMapper assuranceMapper = entry.getKey();
-            PropertyInformation[][] propertyInformationArray = entry.getValue();
-            System.out.println("AssuranceMapper: " + assuranceMapper.getId());
-            // Durch das innere zweidimensionale Array iterieren
-            for (int col = 0; col < propertyInformationArray[0].length; col++) {
-                for (int row = 0; row < propertyInformationArray.length; row++) {
-                    System.out.println("Zeile/Spalte " + row + "/" + col);
-                    //Wert zum gesuchten Attribut finden
-                    String attributeName = propertyInformationArray[row][col].getAttributeName();
-                    Boolean isFullFilled = propertyInformationArray[row][col].isRequirementFullFilled();
-                    System.out.println("Attribut " + attributeName + "/" + isFullFilled);
-
-                }
-            }
-        }
-
-
-
-    }
-
-    public Map<AssuranceMapper, Map<String, PropertyInformation>> checkForGripper(Map<Integer, Map<String, PropertyInformation>> requirementSetIn,
-                                                                                  Map<String, PropertyInformation> relevantAttributesIn) {
-        Map<AssuranceMapper, Map<String, PropertyInformation>> cachedMatchedAssurances = new HashMap<>();
-        // Jedes Attribut einer Zusicherung wird seperat durchsucht
-        assuranceMap.forEach(assurance -> {
-            boolean assuranceIsRelevant = true;
-            Map<String, PropertyInformation> requirementSnake = new HashMap<>();
-            // Betrachtung von Greifern
-            if (assurance.getConnectionType().equals("AutomaticallyRemoveable")) {
-                System.out.println("Betrachtung von Zusicherung " + assurance.getId());
-                // Attribute der Zusicherung
-                Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
-                // Durchsuchen jedes Attribut der Zusicherung
-                loopForAttribute:
-                for (Map.Entry<String, PropertyInformation> assuranceAttribute : propertiesOfAssurance.entrySet()) {
-                    String attributeNameOfAssurance = assuranceAttribute.getKey(); // z.B. ForceX
-                    // Nur wenn das Attribut gebraucht wird
-                    if (relevantAttributesIn.containsKey(attributeNameOfAssurance)) {
-                        if (relevantAttributesIn.get(attributeNameOfAssurance).getDataSpecification().equals("Constraints")) {
-                            System.out.println("Prüfung des Attributs " + attributeNameOfAssurance + " mit dem Wert =" + assuranceAttribute.getValue().getValueOfParameter());
-                            boolean relevantAttributeFound = false;
-                            // Durchsuchen von jeder Zeile
-                            loopForRows:
-                            for (Map.Entry<Integer, Map<String, PropertyInformation>> outerEntry : requirementSetIn.entrySet()) {
-                                int rowNumber = outerEntry.getKey();
-                                Map<String, PropertyInformation> requirementAttribute = outerEntry.getValue();
-                                System.out.println("Zeile : " + rowNumber + " wird betrachtet. Wert = " + requirementAttribute.get(attributeNameOfAssurance).getValueOfParameter());
-                                if (assuranceAttribute.getValue().getValueOfParameter() >= requirementAttribute.get(attributeNameOfAssurance).getValueOfParameter()
-                                        && relevantAttributesIn.containsKey(attributeNameOfAssurance)) {
-                                    // Zeile wurde gefunden
-                                    PropertyInformation informationForAssuranceProperty = requirementAttribute.get(attributeNameOfAssurance);
-                                    informationForAssuranceProperty.setValency(rowNumber);
-                                    requirementSnake.put(attributeNameOfAssurance, informationForAssuranceProperty);
-                                    System.out.println("Wert ist größer -> wird eingetragen");
-                                    relevantAttributeFound = true;
-                                    break loopForRows;
-                                }
-                            }
-                            // Es wurde nichts passendes gefunden -> kompletter Abbruch für diese Zusicherung
-                            if (!relevantAttributeFound) {
-                                System.out.println("Attribut ");
-                                assuranceIsRelevant = false;
-                                break loopForAttribute;
-                            }
+                // Nun wurde die komplette Requirementliste durchgeloopt und musst geprüft werden, ob dieser relevant wäre. Wenn Mindestens 1 True pro Spalte
+                // vorhanden ist, gilt es als gültig
+                Set<String> remainingSequences = new HashSet<>();
+                ArrayList<PropertyInformation> requirementSequence = createSequence(requirementTableForAssurance, remainingSequences);
+                // Wenn Sequence noch nicht vorhanden ist, wird sie eingetragen. Falls vorhanden und Preis billiger, wird sie auch eingetragen
+                Log.info("Prüfung auf ähnliche Sequenzen");
+                // Für jede Spalte muss ein Eintrag gefunden sein, ansonsten kann die Sequence nicht betrachtet werden
+                if (!(requirementSequence == null)) {
+                    nodeForAssurance.setGripperOrAxis(assurance);
+                    Log.info("Bisherige Einträge von Sequenzen : ");
+                    // Iterieren Sie über die Schlüssel und geben Sie sie aus
+                    for (Set<String> key : listOfAllSequencesWithNodes.keySet()) {
+                        Log.info("Schlüssel: " + key);
+                    }
+                    Log.info("Zu suchende Sequenz : ");
+                    Log.info(remainingSequences.toString());
+                    if (!listOfAllSequencesWithNodes.containsKey(remainingSequences) ||
+                            (listOfAllSequencesWithNodes.get(remainingSequences).getGripperOrAxis().getPrice() > assurance.getPrice())) {
+                        Log.info("Sequenz ist entweder noch nicht vorhanden, oder Preis ist billiger");
+                        Log.info("Preis der aktuellen Zusicherung : " + assurance.getPrice());
+                        nodeForAssurance.setRequirementSequence(requirementSequence);
+                        Log.info("Sequence ist gültig");
+                        Log.info("Teilvorgänge die nicht erfüllt wurden: ");
+                        Log.info(remainingSequences.toString());
+                        // Übrige Anfoderung ersetzen
+                        if(!remainingSequences.isEmpty()) {
+                            nodeForAssurance.setTableOfRemainingRequirement(createComplementaryRequirementSet(remainingSequences, requirementTableForAssurance));
                         }
+                        listOfAllSequencesWithNodes.put(remainingSequences,nodeForAssurance);
+
+                    } else {
+                        Log.info("Sequenz wird nicht benötigt.");
                     }
                 }
-                if (assuranceIsRelevant) {
-                    cachedMatchedAssurances.put(assurance, requirementSnake);
-                }
             }
         });
-        System.out.println("Gefundene Greifer");
-        for (Map.Entry<AssuranceMapper, Map<String, PropertyInformation>> entry : cachedMatchedAssurances.entrySet()) {
-            AssuranceMapper assuranceMapper = entry.getKey();
-            Map<String, PropertyInformation> propertyInformationMap = entry.getValue();
-            System.out.println("ZusicherungsID : " + assuranceMapper.getId());
-            for (Map.Entry<String, PropertyInformation> entryIn : propertyInformationMap.entrySet()) {
-                System.out.println("Attributsname = " + entryIn.getKey() +
-                        "/Wert = " + entryIn.getValue().getValueOfParameter() +
-                        "/Position = " + entryIn.getValue().getValency() +
-                        "/TV = " + entryIn.getValue().getSubProcessId());
-            }
-            // Dein Code hier, um mit assuranceMapper und propertyInformationMap zu arbeiten
-        }
 
-        return cachedMatchedAssurances;
+
+
+        Log.info("Alle Zusicherungen wurden geprüft und werden der Liste hinzugefügt");
+        List<KinematicChainNode> nodes = new ArrayList<>(listOfAllSequencesWithNodes.values());
+        Log.info(nodes.toString());
+
+
+        return nodes;
     }
 
-    public void checkForFullFilledSequence(Map<Integer, Map<String, PropertyInformation>> requirementSet,
-                                           Map<AssuranceMapper, Map<String, PropertyInformation>> newRequirementSnake) {
+    public ArrayList<PropertyInformation> createSequence(PropertyInformation[][] remainingRequirementListIn, Set<String> remainingSequencesIn) {
 
-        Map<Integer, Map<String, PropertyInformation>> newRequirementSet = new TreeMap<>();
-
-
-        System.out.println("Prüfung ob mindestens 1 Teilvorgang erfüllt ist und neue Produktanforderung wird generiert");
-        Set<String> allSequences = new HashSet<>();
-        for (Map.Entry<Integer, Map<String, PropertyInformation>> outerEntry : requirementSet.entrySet()) {
-            Integer outerKey = outerEntry.getKey();
-            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
-
-            System.out.println("Zeile: " + outerKey);
-
-            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
-                String innerKey = innerEntry.getKey();
-                PropertyInformation propertyInfo = innerEntry.getValue();
-
-                System.out.println("Attribut: " + innerKey);
-                allSequences.add(propertyInfo.getSubProcessId());
+        Log.info("UPRO : createSequence --> ");
+        ArrayList<PropertyInformation> sequence = new ArrayList<>();
+        for (int col = 0; col < remainingRequirementListIn[0].length; col++) {
+            if (remainingRequirementListIn[0][col].getDataSpecification().equals("Constraints")) {
+                boolean foundTrueForColumn = false;
+                for (int row = 0; row < remainingRequirementListIn.length; row++) {
+                    if (remainingRequirementListIn[row][col].isRequirementFullFilled()) {
+                        sequence.add(remainingRequirementListIn[row][col]);
+                        Log.info("  Wert erfüllt Kriterium  : " + remainingRequirementListIn[row][col].getAttributeName() + "/" + row + "/" + col + "/" + remainingRequirementListIn[row][col].isRequirementFullFilled());
+                        foundTrueForColumn = true;
+                        break;
+                    } else {
+                        // Teilvorgänge, die nicht erfüllt sind in Liste speichern
+                        Log.info("  Teilvorgang " + remainingRequirementListIn[row][col].getSubProcessId() + " nicht erfüllt.");
+                        remainingSequencesIn.add(remainingRequirementListIn[row][col].getSubProcessId());
+                    }
+                }
+                if (!foundTrueForColumn) {
+                    sequence.clear();
+                    break;
+                }
             }
+
         }
 
-        for (Map.Entry<AssuranceMapper, Map<String, PropertyInformation>> outerEntry : newRequirementSnake.entrySet()) {
-            AssuranceMapper outerKey = outerEntry.getKey();
-            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
 
-            System.out.println("Zusicherung: " + outerKey.getId());
+        return sequence;
+    }
 
-            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
-                String innerKey = innerEntry.getKey();
-                PropertyInformation propertyInfo = innerEntry.getValue();
 
-                System.out.println("Attribut: " + innerKey);
-                allSequences.add(propertyInfo.getSubProcessId());
+    public PropertyInformation[][] createComplementaryRequirementSet(Set<String> remainingSequencesIn, PropertyInformation[][] originListOfRequirement) {
+
+        int columnLength = originListOfRequirement[0].length;
+        int rowLength = remainingSequencesIn.size();
+        PropertyInformation[][] complementaryRequirementSet = new PropertyInformation[rowLength][columnLength];
+        Log.info("UPRO : createComplementaryRequirementSet ");
+        Log.info("Übrige Sequenzen, die zu prüfen sind: ");
+        for (String element : remainingSequencesIn) {
+            Log.info(element);
+        }
+        Log.info("Damit Erstellung eines Komplementärsets mit Zeilen=" + rowLength + " und Spalten=" + columnLength);
+
+        int counterForColumn = 0;
+        for (int col = 0; col < originListOfRequirement[0].length; col++) {
+            Log.info("Spalte " + col + " wird gesetzt.");
+            int counterForRow = 0;
+            for (PropertyInformation[] propertyInformations : originListOfRequirement) {
+                // Es werden nur Teilvorgänge in der korrekten Order abgefragt, die noch übrig sind
+                if (remainingSequencesIn.contains(propertyInformations[col].getSubProcessId())) {
+                    Log.info("Teilvorgang " + propertyInformations[col].getSubProcessId() + " wird betrachtet");
+                    complementaryRequirementSet[counterForRow][counterForColumn] = propertyInformations[col];
+                    counterForRow++;
+                }
+            }
+            counterForColumn++;
+        }
+        Log.info("KomplementärSet wurde erstellt");
+        for (int col = 0; col < complementaryRequirementSet[0].length; col++) {
+            for (int row = 0; row < complementaryRequirementSet.length; row++) {
+                Log.info("Zeile " + row + "/Spalte " + col + "=" + complementaryRequirementSet[row][col]);
             }
         }
+        return originListOfRequirement;
+    }
 
+    public void checkForStability() {
 
     }
 

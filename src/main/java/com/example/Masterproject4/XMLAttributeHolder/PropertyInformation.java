@@ -23,4 +23,9 @@ public class PropertyInformation {
 
     AssuranceMapper matchingAssurance;
 
+    @Override
+    public String toString() {
+        return "ID: " + subProcessId + "/Attribut: "  + attributeName + "/Value: " + valueOfParameter;
+    }
+
 }
