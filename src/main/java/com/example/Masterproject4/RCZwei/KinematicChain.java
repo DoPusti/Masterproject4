@@ -16,10 +16,18 @@ import java.util.Set;
 @Data
 @Builder
 public class KinematicChain {
+    // Noch zu betrachtende Anforderungen
     PropertyInformation[][] tableOfRemainingRequirement;
+    // Kindknoten
     List<KinematicChain> childs;
+    // Teilvorgänge, die noch betrachtet werden müssen
     Set<String> remainingSequence;
+    // Anforderungsset im Bezug auf Achsen, die noch betrachtet werden müssen
     Set<String> remainingRequiredStateChanges;
+    // Zusicherungen selbst
     AssuranceMapper gripperOrAxis;
+    // Die gerade zu betrachtenden Schlange
+    ArrayList<PropertyInformation> sequenceOfAllProperties;
+    // Referenz für Greifer oder Achse
     String nameOfAssurance;
 }

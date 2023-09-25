@@ -38,6 +38,7 @@ public class RessourceChecker2 {
                 PropertyInformation[][] requirementForAssurance = remainingRequirement;
                 Set<String> remainingSequences = new HashSet<>();
                 Set<String> requiredStateChanges = new HashSet<>();
+                ArrayList<PropertyInformation> sequenceOfAllProperties = new ArrayList<>();
                 if (assurance.getConnectionType().equals("AutomaticallyRemoveable")) {
                     Log.info("      Betrachtung der Zusicherung : " + assurance.getId());
                     Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
@@ -45,6 +46,7 @@ public class RessourceChecker2 {
                     // Schleife über die Tabelle der tableOfRequirement
                     for (int col = 0; col < requirementForAssurance[0].length; col++) {
                         boolean matchingColumnFound = false;
+                        boolean columnForSequenceSet = false;
                         for (int row = 0; row < requirementForAssurance.length; row++) {
                             //Passender Greifer filtern
                             String attributeName = requirementForAssurance[row][col].getAttributeName();
@@ -56,6 +58,12 @@ public class RessourceChecker2 {
                                 Log.info("          Zeile " + row + "/Spalte " + col);
                                 Log.info("          Attribut " + attributeName + " von Zusicherung mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + ".");
                                 matchingColumnFound = true;
+                                if(!columnForSequenceSet) {
+                                    Log.info("      Attribut " + attributeName + " für Sequenze wurde gesetzt.");
+                                    sequenceOfAllProperties.add(requirementForAssurance[row][col]);
+                                    columnForSequenceSet = true;
+                                }
+
                             } else {
                                 Log.info("          Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
                                 requirementForAssurance[row][col].setRequirementFullFilled(false);
@@ -63,7 +71,7 @@ public class RessourceChecker2 {
                             }
                             if (attributeSpecification.equals("PersistentStateChange") && valueOfAssuranceAttribute > 0) {
                                 requiredStateChanges.add(attributeName);
-                            }
+                               }
                         }
                         if (!matchingColumnFound) {
                             gripperIsRelevant = false;
@@ -110,6 +118,7 @@ public class RessourceChecker2 {
                                     .tableOfRemainingRequirement(remainingRequirmentsAfterGripper)
                                     .nameOfAssurance("Gripper")
                                     .remainingRequiredStateChanges(requiredStateChanges)
+                                    .sequenceOfAllProperties(sequenceOfAllProperties)
                                     .build();
                             //Für diesen Greifer nun passende Achsen finden -> searchForAxis
                             searchForAxis(nodeForGripper);
@@ -134,6 +143,7 @@ public class RessourceChecker2 {
                 if (assurance.getConnectionType().equals("NotAutomaticallyRemoveable")) {
                     Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
                     Log.info("       Greifer mit ID " + assurance.getId());
+                    //for(nod)
                 }
             });
         }
@@ -148,7 +158,7 @@ public class RessourceChecker2 {
 
     //Wenn nichts mehr zu erfüllen ist, rufe searchForGripper auf
 
-}
+
 
     public PropertyInformation[][] createComplementaryRequirementSet(Set<String> remainingSequencesIn, PropertyInformation[][] originListOfRequirement) {
 
