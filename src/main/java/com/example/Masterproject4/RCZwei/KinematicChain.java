@@ -30,4 +30,12 @@ public class KinematicChain {
     ArrayList<PropertyInformation> sequenceOfAllProperties;
     // Referenz für Greifer oder Achse
     String nameOfAssurance;
+
+    // Methode, um einen KinematicChain zu den childs hinzuzufügen
+    public void addChild(KinematicChain child) {
+        if (childs == null) {
+            childs = new ArrayList<>();
+        }
+        childs.add(child);
+    }
 }

@@ -98,7 +98,8 @@ public class HtmlController {
             listOfRelevantParameters.put("positionY", "PersistentStateChange");
             //listOfRelevantParameters.put("positionZ", "PersistentStateChange");
             listOfRelevantParameters.put("forceX", "Constraints");
-            listOfRelevantParameters.put("forceY", "Constraints");
+            listOfRelevantParameters.put("forceZ", "Constraints");
+            listOfRelevantParameters.put("mass", "object");
             //listOfRelevantParameters.put("forceZ", "Constraints");
             productRequirementMapper.setListOfRelevantParameters(listOfRelevantParameters);
             // Alle relevante Attribute von Product Property und Process Requirement

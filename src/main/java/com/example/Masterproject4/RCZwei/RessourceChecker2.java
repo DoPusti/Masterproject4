@@ -20,19 +20,29 @@ public class RessourceChecker2 {
 
     public void assemblyByDisassembly(PropertyInformation[][] tableOfRequirement) {
         KinematicChain rootObject = new KinematicChain();
+        /*
+        for (int col = 0; col < tableOfRequirement[0].length; col++) {
+            for (int row = 0; row < tableOfRequirement.length; row++) {
+                Log.info("Z/S: " + col + row + " = " + tableOfRequirement[row][col].getSubProcessId() + "/" + tableOfRequirement[row][col].getAttributeName() + "/" + tableOfRequirement[row][col].getValueOfParameter());
+            }
+
+        }
+
+         */
         rootObject.setTableOfRemainingRequirement(tableOfRequirement);
         searchForGripper(rootObject, tableOfRequirement);
 
 
     }
 
-    public void searchForGripper(KinematicChain node, PropertyInformation[][] remainingRequirement) {
+    public void searchForGripper(KinematicChain parentNode, PropertyInformation[][] remainingRequirement) {
         //Prüfung ob Requirmentset leer ist
         Log.info("Aufruf SEARCHFORGRIPPER");
         Log.info("===============================");
         Log.info("      Prüfung ob Anforderungsliste noch leer ist:");
         Log.info(Arrays.deepToString(remainingRequirement));
         if (!(remainingRequirement == null || remainingRequirement.length == 0)) {
+            Log.info("      Anforderungsliste ist noch nicht leer");
             //Schleife über alle Greifer
             assuranceMap.forEach(assurance -> {
                 PropertyInformation[][] requirementForAssurance = remainingRequirement;
@@ -53,12 +63,12 @@ public class RessourceChecker2 {
                             double valueOfRequirement = requirementForAssurance[row][col].getValueOfParameter();
                             double valueOfAssuranceAttribute = propertiesOfAssurance.get(attributeName).getValueOfParameter();
                             String attributeSpecification = requirementForAssurance[row][col].getDataSpecification();
+                            // PersistentStateChange werden beim Greifer nicht betrachtet, nur Constraints
                             if (valueOfAssuranceAttribute >= valueOfRequirement && attributeSpecification.equals("Constraints")) {
                                 requirementForAssurance[row][col].setRequirementFullFilled(true);
-                                Log.info("          Zeile " + row + "/Spalte " + col);
-                                Log.info("          Attribut " + attributeName + " von Zusicherung mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + ".");
+                                Log.info("          Attribut " + attributeName + " von Zusicherung erfüllt mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + ".");
                                 matchingColumnFound = true;
-                                if(!columnForSequenceSet) {
+                                if (!columnForSequenceSet) {
                                     Log.info("      Attribut " + attributeName + " für Sequenze wurde gesetzt.");
                                     sequenceOfAllProperties.add(requirementForAssurance[row][col]);
                                     columnForSequenceSet = true;
@@ -67,13 +77,16 @@ public class RessourceChecker2 {
                             } else {
                                 Log.info("          Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
                                 requirementForAssurance[row][col].setRequirementFullFilled(false);
-                                remainingSequences.add(requirementForAssurance[row][col].getSubProcessId());
+                                if (attributeSpecification.equals("Constraints")) {
+                                    remainingSequences.add(requirementForAssurance[row][col].getSubProcessId());
+                                }
+
                             }
                             if (attributeSpecification.equals("PersistentStateChange") && valueOfAssuranceAttribute > 0) {
                                 requiredStateChanges.add(attributeName);
-                               }
+                            }
                         }
-                        if (!matchingColumnFound) {
+                        if (!matchingColumnFound && requirementForAssurance[0][col].getDataSpecification().equals("Constraints")) {
                             gripperIsRelevant = false;
                             Log.info("      Greifer ist nicht relevant, weil eine Spalte nicht erfüllt wurde.");
                             break;
@@ -82,30 +95,39 @@ public class RessourceChecker2 {
                     Log.info("  Greifer relevant : " + gripperIsRelevant);
                     //Wenn Greifer passt -> Sequenz erstellen
                     if (gripperIsRelevant) {
-                        if (remainingSequences.isEmpty()) remainingSequences.add("Alle Teilvorgänge sind erfüllt.");
+                        if (remainingSequences.isEmpty())  remainingSequences.add("Alle Teilvorgänge sind erfüllt.");
                         Log.info("      Übrige Sequence der Teilvorgänge die nicht passen : " + remainingSequences.toString());
                         Log.info("      Gibt es diese Sequence bereits?");
                         boolean setIsRelevant = false;
                         boolean sameSequenceExists = false;
                         // Jeder bereits vorhandene Leaf wird geprüft
-                        for (KinematicChain child : node.getChilds()) {
-                            // Jeder Set-Eintrag
-                            if (child.getRemainingSequence().equals(remainingSequences)) {
-                                Log.info("      SetEintrag mit " + remainingSequences + " bereits vorhanden.");
-                                Log.info("      Alter Wert: " + child.getGripperOrAxis().getPrice());
-                                Log.info("      Neuer Wert: " + assurance.getPrice());
-                                sameSequenceExists = true;
-                                if (assurance.getPrice() < child.getGripperOrAxis().getPrice()) {
-                                    Log.info("      Greifer ist damit eindeutig relevant");
-                                    setIsRelevant = true;
-                                    break;
+                        if(parentNode.getChilds() != null) {
+                            for (KinematicChain child : parentNode.getChilds()) {
+                                // Jeder Set-Eintrag
+                                if (child.getRemainingSequence().equals(remainingSequences)) {
+                                    Log.info("      SetEintrag mit " + remainingSequences + " bereits vorhanden.");
+                                    Log.info("      Alter Wert: " + child.getGripperOrAxis().getPrice());
+                                    Log.info("      Neuer Wert: " + assurance.getPrice());
+                                    sameSequenceExists = true;
+                                    if (assurance.getPrice() < child.getGripperOrAxis().getPrice()) {
+                                        Log.info("      Greifer ist damit eindeutig relevant");
+                                        setIsRelevant = true;
+                                        break;
+                                    }
                                 }
                             }
+                        } else {
+                            setIsRelevant = true;
                         }
                         Log.info("      Gleiche Sequence exisitert : " + sameSequenceExists + " und Set ist relevant  : " + setIsRelevant);
                         if (setIsRelevant || !sameSequenceExists) {
                             Log.info("      Los gehts. Knotenpunkt wird erstellt.");
-                            PropertyInformation[][] remainingRequirmentsAfterGripper = createComplementaryRequirementSet(remainingSequences, remainingRequirement);
+                            PropertyInformation[][] remainingRequirmentsAfterGripper = null;
+                            if(!(remainingSequences.toString().equals("Alle Teilvorgänge sind erfüllt."))) {
+                                // Nur wenn Teilvorgänge übrig sind, muss ein Komplementärset erstellt werden, ansonsten ist es leer
+                                remainingRequirmentsAfterGripper = createComplementaryRequirementSet(remainingSequences, remainingRequirement);
+                            }
+
                             //Knotenpunkt erstellen
                             //Markiere Node als Greifer
                             //Sequenz dem Knoten hinzufügen
@@ -120,8 +142,9 @@ public class RessourceChecker2 {
                                     .remainingRequiredStateChanges(requiredStateChanges)
                                     .sequenceOfAllProperties(sequenceOfAllProperties)
                                     .build();
+                            parentNode.addChild(nodeForGripper);
                             //Für diesen Greifer nun passende Achsen finden -> searchForAxis
-                            searchForAxis(nodeForGripper);
+                            //searchForAxis(nodeForGripper);
 
                         }
 
@@ -157,7 +180,6 @@ public class RessourceChecker2 {
     //rufe searchForAxis mit gleichem auf
 
     //Wenn nichts mehr zu erfüllen ist, rufe searchForGripper auf
-
 
 
     public PropertyInformation[][] createComplementaryRequirementSet(Set<String> remainingSequencesIn, PropertyInformation[][] originListOfRequirement) {
