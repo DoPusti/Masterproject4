@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -22,12 +23,10 @@ public class KinematicChain {
     List<KinematicChain> childs;
     // Teilvorgänge, die noch betrachtet werden müssen
     Set<String> remainingSequence;
-    // Anforderungsset im Bezug auf Achsen, die noch betrachtet werden müssen
-    Set<String> remainingRequiredStateChanges;
     // Zusicherungen selbst
     AssuranceMapper gripperOrAxis;
     // Die gerade zu betrachtenden Schlange
-    ArrayList<PropertyInformation> sequenceOfAllProperties;
+    Map<String,PropertyInformation> propertiesOfCurrentKinematicChain;
     // Referenz für Greifer oder Achse
     String nameOfAssurance;
 
