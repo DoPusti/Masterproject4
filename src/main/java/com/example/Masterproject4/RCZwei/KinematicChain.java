@@ -17,6 +17,7 @@ import java.util.Set;
 @Data
 @Builder
 public class KinematicChain {
+    Integer uuid;
     // Noch zu betrachtende Anforderungen
     PropertyInformation[][] tableOfRemainingRequirement;
     // Kindknoten
@@ -29,7 +30,6 @@ public class KinematicChain {
     Map<String,PropertyInformation> propertiesOfCurrentKinematicChain;
     // Referenz für Greifer oder Achse
     String nameOfAssurance;
-
     // Methode, um einen KinematicChain zu den childs hinzuzufügen
     public void addChild(KinematicChain child) {
         if (childs == null) {

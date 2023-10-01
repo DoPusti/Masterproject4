@@ -1,14 +1,12 @@
 package com.example.Masterproject4;
 
 import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
-import com.example.Masterproject4.CombinedRessources.KinematicChainTree;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
-import com.example.Masterproject4.Mapper.RequirementTable;
 import com.example.Masterproject4.RCZwei.RessourceChecker2;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
@@ -25,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -45,7 +42,6 @@ public class HtmlController {
     private AssuranceRepository assuranceRepository;
     @Autowired
     private RessourceChecker ressourceChecker;
-
     @Autowired
     private RessourceChecker2 ressourceChecker2;
     @Autowired
@@ -59,11 +55,6 @@ public class HtmlController {
 
     @Autowired
     private AttributeGroupedByName attributeGroupedByName;
-
-    @Autowired
-    private RequirementTable requirementTable;
-    @Autowired
-    private KinematicChainTree root;
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -119,19 +110,14 @@ public class HtmlController {
             // Zeilen entsprechen der Anzahl von Teilvorgängen und Spalten der Anzahl der relevanten Attribute
             PropertyInformation[][] tableOfRequirement = new PropertyInformation[rowSize][columnSize];
             // Sortierte Anforderung auf eine 2-Dimensionale Tabelle mappen
-            productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName,tableOfRequirement);
+            productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName, tableOfRequirement);
             ressourceChecker2.setAssuranceMap(assuranceMapList);
             ressourceChecker2.assemblyByDisassembly(tableOfRequirement);
-
 
             //ressourceChecker.setAssuranceMap(assuranceMapList);
             //ressourceChecker.assemblyByDisassembly(tableOfRequirement);
 
             //ressourceChecker.assemblyByDisassemblyEasyVariant(tableOfRequirement);
-
-
-
-
 
 
         }

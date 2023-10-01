@@ -20,12 +20,18 @@ public class PropertyInformation {
     int subProcessIdOrderValue;
     String attributeName;
     int numberOfSequence;
-
     AssuranceMapper matchingAssurance;
 
     @Override
     public String toString() {
         return "ID: " + subProcessId + "/Attribut: "  + attributeName + "/Value: " + valueOfParameter;
+    }
+    // Konstruktor für tiefe Kopie
+    public PropertyInformation(PropertyInformation original) {
+        this.attributeName = original.attributeName;
+        this.valueOfParameter = original.valueOfParameter;
+        this.dataSpecification = original.dataSpecification;
+        this.subProcessId = original.subProcessId;
     }
 
 }
