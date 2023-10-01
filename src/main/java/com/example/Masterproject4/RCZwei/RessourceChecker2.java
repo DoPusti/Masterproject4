@@ -8,9 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.security.KeyStore;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 @Data
@@ -20,12 +18,15 @@ public class RessourceChecker2 {
     private static final Logger Log = LoggerFactory.getLogger(RessourceChecker2.class);
     List<AssuranceMapper> assuranceMap;
 
-    public void assemblyByDisassembly(PropertyInformation[][] tableOfRequirement) {
+    public KinematicChain assemblyByDisassembly(PropertyInformation[][] tableOfRequirement) {
         KinematicChain rootObject = new KinematicChain();
         rootObject.setUuid(0);
         rootObject.setTableOfRemainingRequirement(tableOfRequirement);
+        AssuranceMapper dummyMapper = new AssuranceMapper();
+        dummyMapper.setPrice(0);
+        rootObject.setGripperOrAxis(dummyMapper);
         searchForGripper(rootObject, tableOfRequirement);
-
+        return rootObject;
 
     }
 
@@ -42,9 +43,9 @@ public class RessourceChecker2 {
                 PropertyInformation[][] requirementForAssurance = remainingRequirement;
                 Set<String> remainingSequences = new HashSet<>();
                 Map<String, PropertyInformation> sequenceOfAllProperties = new HashMap<>();
-                if (assurance.getConnectionType().equals("AutomaticallyRemoveable") && assurance.getId() == 52) {
+                if (assurance.getConnectionType().equals("AutomaticallyRemoveable") && (assurance.getId() == 52 || assurance.getId() == 202)) {
                     Log.info("      Betrachtung der Zusicherung : " + assurance.getId());
-                    Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
+                    Map<String, PropertyInformation> propertiesOfAssurance = new HashMap<>(assurance.getPropertyParameters());
                     boolean gripperIsRelevant = true;
                     // Schleife über die Tabelle der tableOfRequirement
                     for (int col = 0; col < requirementForAssurance[0].length; col++) {
@@ -63,15 +64,15 @@ public class RessourceChecker2 {
                                 // Vergleich des Wertes aus Zusicherung mit Anforderung
                                 if (valueOfAssuranceAttribute >= valueOfRequirement) {
                                     requirementForAssurance[row][col].setRequirementFullFilled(true);
-                                    Log.info("          Attribut " + attributeName + " von Zusicherung erfüllt mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + ".");
+                                    //Log.info("          Attribut " + attributeName + " von Zusicherung erfüllt mit " + valueOfAssuranceAttribute + " >= " + valueOfRequirement + ".");
                                     matchingColumnFound = true;
                                     if (!columnForSequenceSet) {
-                                        Log.info("          Attribut " + attributeName + " für Sequenze wurde gesetzt.");
+                                        //Log.info("          Attribut " + attributeName + " für Sequenze wurde gesetzt.");
                                         sequenceOfAllProperties.put(requirementForAssurance[row][col].getAttributeName(), requirementForAssurance[row][col]);
                                         columnForSequenceSet = true;
                                     }
                                 } else {
-                                    Log.info("          Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
+                                    //Log.info("          Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
                                     requirementForAssurance[row][col].setRequirementFullFilled(false);
                                     remainingSequences.add(requirementForAssurance[row][col].getSubProcessId());
                                 }
@@ -112,7 +113,7 @@ public class RessourceChecker2 {
                         if (setIsRelevant) {
                             Log.info("          Los gehts. Knotenpunkt wird erstellt.");
                             PropertyInformation[][] remainingRequirmentsAfterGripper = null;
-                            if (!(remainingSequences.toString().equals("Alle Teilvorgänge sind erfüllt."))) {
+                            if (!(remainingSequences.contains("Alle Teilvorgänge sind erfüllt."))) {
                                 // Nur wenn Teilvorgänge übrig sind, muss ein Komplementärset erstellt werden, ansonsten ist es leer
                                 remainingRequirmentsAfterGripper = createComplementaryRequirementSet(remainingSequences, remainingRequirement);
                             }
@@ -125,10 +126,9 @@ public class RessourceChecker2 {
                             //Komplementärset erstellen
                             //Ressource hinzufügen
                             //Prüfung ob ähnliche Sequenz innerhalb des Parent-Node bereits vorhanden ist und billiger oder nicht vorhanden -> neu hinzufügen
-                            ArrayList<KinematicChain> childsOfGripper = new ArrayList<>();
                             KinematicChain nodeForGripper = KinematicChain.builder()
-                                    .childs(childsOfGripper)
-                                    .uuid((int) (Math.random() * ( 10000 - 1 )))
+                                    .childs(new ArrayList<>())
+                                    .uuid((int) (Math.random() * (10000 - 1)))
                                     .gripperOrAxis(assurance)                                      // Werte der Zusicherung
                                     .remainingSequence(remainingSequences)                         // Teilvorgänge, die noch später bearbeitet werden müssen
                                     .tableOfRemainingRequirement(remainingRequirmentsAfterGripper) // Komplementärset
@@ -168,11 +168,11 @@ public class RessourceChecker2 {
         if (requiredStateChangesLeft(propertiesOfCurrentKinematicChain)) {
             // Suche Achse, zur Sequence, wo findest ein RequiredStateChange erfüllt wurde und alle Constraints
             assuranceMap.forEach(assurance -> {
-                Log.info("              Anzahl der aktuellen Kindknoten " + node.getChilds().size());
-                Map<String,PropertyInformation> newChildMap = new HashMap<>();
+                Map<String, PropertyInformation> newChildMap = new HashMap<>();
                 boolean persistentStateChangeFullFilled = false;
                 boolean assuranceIsRelevant = true;
                 if (assurance.getConnectionType().equals("NotAutomaticallyRemovable")) {
+                    Log.info("              Anzahl der aktuellen Kindknoten " + node.getChilds().size());
                     Map<String, PropertyInformation> propertiesOfAssurance = assurance.getPropertyParameters();
                     Log.info("              Achse mit ID " + assurance.getId() + " wird geprüft");
                     // Jeden Eintrag aus der Anforderung prüfen
@@ -184,7 +184,7 @@ public class RessourceChecker2 {
                         String dataSpecification = entry.getValue().getDataSpecification();
                         switch (dataSpecification) {
                             case "Constraints" -> {
-                                newChildMap.put(attributeName,entry.getValue());
+                                newChildMap.put(attributeName, entry.getValue());
                                 if (!(attributeValue <= propertiesOfAssurance.get(attributeName).getValueOfParameter())) {
                                     assuranceIsRelevant = false;
                                     Log.info("              Constraint kann nicht erfüllt werden");
@@ -200,9 +200,9 @@ public class RessourceChecker2 {
                                     PropertyInformation newPropertyInformationForPersistentStateChange = new PropertyInformation(entry.getValue());
                                     // Wert wurde erfüllt und damit auf 0 gesetzt
                                     newPropertyInformationForPersistentStateChange.setValueOfParameter(0);
-                                    newChildMap.put(attributeName,newPropertyInformationForPersistentStateChange);
+                                    newChildMap.put(attributeName, newPropertyInformationForPersistentStateChange);
                                 } else {
-                                    newChildMap.put(attributeName,entry.getValue());
+                                    newChildMap.put(attributeName, entry.getValue());
                                 }
                             }
                         }
@@ -210,7 +210,8 @@ public class RessourceChecker2 {
                     if (persistentStateChangeFullFilled && assuranceIsRelevant) {
                         Log.info("              !!Zusicherung mit ID " + assurance.getId() + " ist relevant für die nächsten Schritte!!.");
                         KinematicChain newChildNode = KinematicChain.builder()
-                                .uuid((int) (Math.random() * ( 10000 - 1 )))
+                                .uuid((int) (Math.random() * (10000 - 1)))
+                                .childs(new ArrayList<>())
                                 .gripperOrAxis(assurance)                                               // Werte der Zusicherung
                                 .remainingSequence(node.getRemainingSequence())                         // Teilvorgänge, die noch später bearbeitet werden müssen
                                 .tableOfRemainingRequirement(node.getTableOfRemainingRequirement())     // Komplementärset
@@ -218,50 +219,61 @@ public class RessourceChecker2 {
                                 .propertiesOfCurrentKinematicChain(new HashMap<>(newChildMap))// Art der Zusicherung
                                 //.propertiesOfCurrentKinematicChain(new HashMap<>(newChildMap))          // Aktuelle kinematische Kette, die zu betrachten ist
                                 .build();
-                       // KinematicChain newChildNode = node;
+                        // KinematicChain newChildNode = node;
                         node.addChild(newChildNode);
+                        Log.info("       Kinematische Kette nach der Achsensuche            : ");
 
                         Log.info("              Alle Informationen zum aktuellen Kind-Knotenpunkt: " + newChildNode.getUuid());
-                        Log.info("                            GreiferID                                              :" + newChildNode.getGripperOrAxis().getId());
-                        Log.info("                            Typ                                                    :" + newChildNode.getNameOfAssurance());
+                        Log.info("                            " + newChildNode.getNameOfAssurance() + "/" + newChildNode.getGripperOrAxis().getId());
+                        /*
                         Log.info("                            Teilvorgänge, die noch später bearbeitet werden müssen : ");
                         newChildNode.getRemainingSequence().forEach(Log::info);
                         ;
-                        Log.info("                            Kinematische Kette nach der Achsensuche            : ");
+                         */
                         for (Map.Entry<String, PropertyInformation> entry : newChildNode.getPropertiesOfCurrentKinematicChain().entrySet()) {
                             Log.info("                            Attribut: " + entry.getKey() + "/" + entry.getValue().getValueOfParameter() + "/" + entry.getValue().getSubProcessId());
                         }
-
                         Log.info("              Alle Informationen zum aktuellen Eltern-Knotenpunkt: " + node.getUuid());
-                        Log.info("                            GreiferID                                              :" + node.getGripperOrAxis().getId());
-                        Log.info("                            Typ                                                    :" + node.getNameOfAssurance());
+                        Log.info("                            " + node.getNameOfAssurance() + "/" + node.getGripperOrAxis().getId());
+                        /*
                         Log.info("                            Teilvorgänge, die noch später bearbeitet werden müssen : ");
                         node.getRemainingSequence().forEach(Log::info);
                         ;
+                         */
                         Log.info("                            Kinematische Kette nach der Achsensuche            : ");
                         for (Map.Entry<String, PropertyInformation> entry : node.getPropertiesOfCurrentKinematicChain().entrySet()) {
                             Log.info("                            Attribut: " + entry.getKey() + "/" + entry.getValue().getValueOfParameter() + "/" + entry.getValue().getSubProcessId());
                         }
-                        //searchForAxis(newChildNode);
+                        searchForAxis(newChildNode);
 
 
+                    } else {
+                        Log.info("                            Achse nicht relevant");
                     }
                 }
             });
+        } else {
+            Log.info("                            Knotenpunkt hat keine offenen Werte mehr.");
         }
     }
 
     public Boolean requiredStateChangesLeft(Map<String, PropertyInformation> kinematicChainIn) {
+        /*
         Log.info("===============================");
         Log.info("UPRO : requiredStateChangesLeft");
         Log.info("===============================");
+
+         */
         boolean mininumOfOneAttributeNotFullFilled = false;
 
         for (Map.Entry<String, PropertyInformation> entry : kinematicChainIn.entrySet()) {
             if (entry.getValue().getDataSpecification().equals("PersistentStateChange") && entry.getValue().getValueOfParameter() > 0) {
+                /*
                 Log.info("              Attribut muss noch erfüllt werden");
                 Log.info("                            Name : " + entry.getValue().getAttributeName());
                 Log.info("                            Wert : " + entry.getValue().getValueOfParameter());
+
+                 */
                 mininumOfOneAttributeNotFullFilled = true;
                 break;
             }
@@ -306,6 +318,7 @@ public class RessourceChecker2 {
         }
         return originListOfRequirement;
     }
+
     public void fillKinematicChainPropertiesWithPersistentStateChange(PropertyInformation[][] originListOfRequirement,
                                                                       Set<String> remainingSequencesIn,
                                                                       Map<String, PropertyInformation> propertiesOfCurrentKinematicChainIn) {

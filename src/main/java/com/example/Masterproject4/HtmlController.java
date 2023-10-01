@@ -4,9 +4,12 @@ import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.FileConverter;
+import com.example.Masterproject4.Handler.PathFinder;
+import com.example.Masterproject4.Handler.PathFinder2;
 import com.example.Masterproject4.Handler.RessourceChecker;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
+import com.example.Masterproject4.RCZwei.KinematicChain;
 import com.example.Masterproject4.RCZwei.RessourceChecker2;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
@@ -17,20 +20,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -55,6 +56,9 @@ public class HtmlController {
 
     @Autowired
     private AttributeGroupedByName attributeGroupedByName;
+
+    @Autowired
+    private KinematicChain kinematicChain;
 
     public HtmlController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -112,8 +116,8 @@ public class HtmlController {
             // Sortierte Anforderung auf eine 2-Dimensionale Tabelle mappen
             productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName, tableOfRequirement);
             ressourceChecker2.setAssuranceMap(assuranceMapList);
-            ressourceChecker2.assemblyByDisassembly(tableOfRequirement);
-
+            kinematicChain = ressourceChecker2.assemblyByDisassembly(tableOfRequirement);
+            Log.info(kinematicChain.getTreeStructure());
             //ressourceChecker.setAssuranceMap(assuranceMapList);
             //ressourceChecker.assemblyByDisassembly(tableOfRequirement);
 
@@ -121,15 +125,42 @@ public class HtmlController {
 
 
         }
-        // Pfad zum HTML-File im classpath:static Ordner
-        String htmlFilePath = "static/responseFile.html";
+        int k = 5;
+        List<List<KinematicChain>> topPaths = PathFinder.findTopPaths(kinematicChain, k);
+        for (List<KinematicChain> path : topPaths) {
+            Log.info("Summe: " + PathFinder.sum(path));
+            for (KinematicChain node : path) {
+                Log.info("UUID: " + node.getGripperOrAxis().getId() + ", Preis: " + node.getGripperOrAxis().getPrice());
+            }
+            Log.info("----------");
+        }
+        Log.info("Die kleinste...");
 
-        // Lese den Inhalt des HTML-Files
-        Resource resource = new ClassPathResource(htmlFilePath);
-        String htmlContent = Files.lines(Path.of(resource.getURI())).collect(Collectors.joining("\n"));
-        // Thymeleaf ist eine Template-Engine für Java
+        List<List<KinematicChain>> topPaths2 = PathFinder2.findTopPaths(kinematicChain);
+        for (List<KinematicChain> path : topPaths2) {
+            Log.info("Summe: " + PathFinder2.sum(path));
+            for (KinematicChain node : path) {
+                Log.info("UUID: " + node.getGripperOrAxis().getId()  + ", Preis: " + node.getGripperOrAxis().getPrice());
+            }
+            Log.info("----------");
+        }
+
+
+
+
+
+
+        File file = new ClassPathResource("/static/responseFile.html").getFile();
+        File file2 = new ClassPathResource("/static/responseFile2.html").getFile();
+        String htmlContent = "Keine Anzeige möglich";
+        htmlContent = Files.readString(file.toPath());
+        // Den Baumstruktur-String in die HTML-Datei einfügen
+        htmlContent = htmlContent.replace("<!-- TREE_STRUCTURE_PLACEHOLDER -->", kinematicChain.getTreeStructureAsHTML());
+        // Die neue HTML-Datei erstellen
+        Files.writeString(file2.toPath(), htmlContent);
+
+
         return htmlContent;
-
 
     }
 
