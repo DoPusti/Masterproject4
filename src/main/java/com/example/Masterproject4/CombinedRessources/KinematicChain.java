@@ -31,6 +31,8 @@ public class KinematicChain {
     Map<String,PropertyInformation> propertiesOfCurrentKinematicChain;
     // Referenz für Greifer oder Achse
     String nameOfAssurance;
+    // Ist Pfad relevant oder nicht?
+    Boolean pathIsRelevant = true;
     // Methode, um einen KinematicChain zu den childs hinzuzufügen
     public void addChild(KinematicChain child) {
         if (childs == null) {

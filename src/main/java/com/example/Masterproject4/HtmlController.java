@@ -119,6 +119,7 @@ public class HtmlController {
             //ressourceChecker.assemblyByDisassemblyEasyVariant(tableOfRequirement);
         }
         List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,4);
+        /*
         for (List<CombinedRessources> path : topPaths3) {
             Log.info("Summe: " + PathFinder.sum(path));
             for (CombinedRessources node : path) {
@@ -126,12 +127,26 @@ public class HtmlController {
             }
             Log.info("----------");
         }
+         */
+        StringBuilder divContent = new StringBuilder();
+        for (List<CombinedRessources> path : topPaths3) {
+            divContent.append("<ul>");
+            divContent.append("<li>Summe: ").append(PathFinder.sum(path)).append("</li>");
+            for (CombinedRessources node : path) {
+                if(node.getId()!=0) {
+                    String output = String.format("<li>Id: %-4d  Preis: %-10.2f  Typ: %s</li>", node.getId(), node.getPrice(), node.getGripperOrAxis());
+                    divContent.append(output);
+                }
+            }
+            divContent.append("</ul>");
+            divContent.append("<hr/>"); // Trennlinie zwischen den Pfaden
+        }
         File file = new ClassPathResource("/static/responseFile.html").getFile();
         File file2 = new ClassPathResource("/static/responseFile2.html").getFile();
         String htmlContent = "Keine Anzeige möglich";
         htmlContent = Files.readString(file.toPath());
         // Den Baumstruktur-String in die HTML-Datei einfügen
-        htmlContent = htmlContent.replace("<!-- TREE_STRUCTURE_PLACEHOLDER -->", kinematicChain.getTreeStructureAsHTML());
+        htmlContent = htmlContent.replace("<!-- TREE_STRUCTURE_PLACEHOLDER -->", divContent);
         // Die neue HTML-Datei erstellen
         Files.writeString(file2.toPath(), htmlContent);
         return htmlContent;

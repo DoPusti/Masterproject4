@@ -31,7 +31,7 @@ public class PathFinder {
     }
 
     private static void dfs(KinematicChain node, List<CombinedRessources> currentPath, Set<Long> visitedNodes) {
-        if (node == null || visitedNodes.contains(node.getGripperOrAxis().getId())) {
+        if (node == null || visitedNodes.contains(node.getGripperOrAxis().getId()) || !node.getPathIsRelevant()) {
             return;
         }
 

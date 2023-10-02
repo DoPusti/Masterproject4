@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        h1 {text-align: center;}
+    </style>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Auswertungsseite</title>
+    <title>Auswertung</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title class="dynamic-content">{{title}}</title>
+    <link href="skeleton.css" rel="stylesheet" type="text/css">
+    <link href="normalize.css" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Willkommen auf meiner dynamischen HTML-Seite</h1>
-<p>Ergebnis: <span id="result"></span></p>
-<div id="treeStructure">
-    <!-- TREE_STRUCTURE_PLACEHOLDER -->
+<h1 class="modern-heading center">Ergebnis zur Auswahl kombinierter Ressourcen</h1>
+<div class="row">
+    <div class="offset-by-one.columns "></div>
+    <div class="eleven columns">
+        <div id="treeStructure" margin-left="20px">
+            <!-- TREE_STRUCTURE_PLACEHOLDER -->
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

@@ -23,7 +23,6 @@
                        step="1.0" type="range">
                 <span id="TemperaturAnzeige"></span>
             </div>
-
             <label class="dynamic-content" for="Luftfeuchtigkeit">{{left1}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Luftfeuchtigkeit" max="+100" min="-100" name="Luftfeuchtigkeit" oninput="showLuftfeuchtigkeit()"
@@ -32,14 +31,11 @@
                        value="0">
                 <span id="LuftfeuchtigkeitAnzeige"></span>
             </div>
-
-
             <label class ="dynamic-content" for="Pneumatikversorgung">{{left2}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Pneumatikversorgung" name="Pneumatikversorgung" type="number">
                 <div class="unit">Bar</div>
             </div>
-
             <label class ="dynamic-content" for="Stromversorgung">{{left3}}</label>
             <div class="input-container">
                    <select class="u-full-width dynamic-content" id="Stromversorgung" name="Stromversorgung">
@@ -50,8 +46,6 @@
                 </select>
                 <div class="unit">A</div>
             </div>
-
-
         </div>
         <div class="six columns">
             <h5 class ="dynamic-content" >{{headerRight}}</h5>
@@ -60,13 +54,11 @@
                 <input class="u-full-width" id="Flächenkosten" name="Flächenkosten" type="number">
                 <div class="unit">€</div>
             </div>
-
             <label class="dynamic-content" for="Einsatzdauer">{{right1}}</label>
             <div class="input-container">
                 <input class="u-full-width" id="Einsatzdauer" name="Einsatzdauer" type="number">
                 <div class="unit">€</div>
             </div>
-
             <label class="dynamic-content"  for="Ressourcen">{{right2}}</label>
             <input accept=".xml" class="u-full-width" id="Ressourcen" name="Ressourcen" type="file">
         </div>
@@ -77,12 +69,10 @@
             <button class="button-primary dynamic-content" type="submit">{{start}}</button>
         </div>
         <div class="three columns">
-
             <label class="dynamic-content" for="file">{{requirments}}</label>
             <input accept=".xml" class="u-full-width" id="file" name="file" type="file">
         </div>
         <div class="three columns">
-
             <label class="dynamic-content" for="assurance">{{assurances}}</label>
             <input accept="..xml" class="u-full-width" id="assurance" name="assurance" type="file" multiple>
         </div>
