@@ -1,4 +1,4 @@
-package com.example.Masterproject4.RCZwei;
+package com.example.Masterproject4.CombinedRessources;
 
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,7 +63,8 @@ public class KinematicChain {
     public String getTreeStructureAsHTML() {
         StringBuilder result = new StringBuilder();
         result.append("<ul>");
-        result.append("<li>UUID: ").append(uuid).append("</li>");
+        result.append("<li>ID: ").append(gripperOrAxis.getId()).append("</li>");
+        result.append("<li>ID: ").append(nameOfAssurance).append("</li>");
         if (childs != null) {
             result.append("<ul>");
             for (KinematicChain child : childs) {

@@ -1,16 +1,13 @@
 package com.example.Masterproject4;
 
 import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
+import com.example.Masterproject4.CombinedRessources.CombinedRessources;
 import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
-import com.example.Masterproject4.Handler.FileConverter;
-import com.example.Masterproject4.Handler.PathFinder;
-import com.example.Masterproject4.Handler.PathFinder2;
-import com.example.Masterproject4.Handler.RessourceChecker;
+import com.example.Masterproject4.Handler.*;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
 import com.example.Masterproject4.Mapper.ProductRequirementMapper;
-import com.example.Masterproject4.RCZwei.KinematicChain;
-import com.example.Masterproject4.RCZwei.RessourceChecker2;
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
 import com.example.Masterproject4.Repository.AssuranceRepository;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.ProductRequirementFullObject;
@@ -41,8 +38,6 @@ public class HtmlController {
     private final ResourceLoader resourceLoader;
     @Autowired
     private AssuranceRepository assuranceRepository;
-    @Autowired
-    private RessourceChecker ressourceChecker;
     @Autowired
     private RessourceChecker2 ressourceChecker2;
     @Autowired
@@ -106,7 +101,7 @@ public class HtmlController {
             // Zusicherungsliste füllen
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
-            List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
+            List<AssuranceMapper> assuranceMapList = ressourceChecker2.fillAssuranceMapper(assuranceList);
             // Map nun auf eine Zeilen-Spalten-Struktur parsen
             Map.Entry<String, Map<String, PropertyInformation>> firstEntry = attributeGroupedByName.getPropertyParameters().entrySet().iterator().next();
             int rowSize = firstEntry.getValue().size();
@@ -122,34 +117,15 @@ public class HtmlController {
             //ressourceChecker.assemblyByDisassembly(tableOfRequirement);
 
             //ressourceChecker.assemblyByDisassemblyEasyVariant(tableOfRequirement);
-
-
         }
-        int k = 5;
-        List<List<KinematicChain>> topPaths = PathFinder.findTopPaths(kinematicChain, k);
-        for (List<KinematicChain> path : topPaths) {
+        List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,4);
+        for (List<CombinedRessources> path : topPaths3) {
             Log.info("Summe: " + PathFinder.sum(path));
-            for (KinematicChain node : path) {
-                Log.info("UUID: " + node.getGripperOrAxis().getId() + ", Preis: " + node.getGripperOrAxis().getPrice());
+            for (CombinedRessources node : path) {
+                Log.info("Id: " + node.getId()  + ", Preis: " + node.getPrice() + ", Typ" + node.getGripperOrAxis());
             }
             Log.info("----------");
         }
-        Log.info("Die kleinste...");
-
-        List<List<KinematicChain>> topPaths2 = PathFinder2.findTopPaths(kinematicChain);
-        for (List<KinematicChain> path : topPaths2) {
-            Log.info("Summe: " + PathFinder2.sum(path));
-            for (KinematicChain node : path) {
-                Log.info("UUID: " + node.getGripperOrAxis().getId()  + ", Preis: " + node.getGripperOrAxis().getPrice());
-            }
-            Log.info("----------");
-        }
-
-
-
-
-
-
         File file = new ClassPathResource("/static/responseFile.html").getFile();
         File file2 = new ClassPathResource("/static/responseFile2.html").getFile();
         String htmlContent = "Keine Anzeige möglich";
@@ -158,8 +134,6 @@ public class HtmlController {
         htmlContent = htmlContent.replace("<!-- TREE_STRUCTURE_PLACEHOLDER -->", kinematicChain.getTreeStructureAsHTML());
         // Die neue HTML-Datei erstellen
         Files.writeString(file2.toPath(), htmlContent);
-
-
         return htmlContent;
 
     }

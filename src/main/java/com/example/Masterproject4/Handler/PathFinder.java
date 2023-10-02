@@ -1,53 +1,58 @@
 package com.example.Masterproject4.Handler;
 
-import com.example.Masterproject4.RCZwei.KinematicChain;
+import com.example.Masterproject4.CombinedRessources.CombinedRessources;
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-
-
-/*
-In diesem Beispiel speichern wir nun ganze TreeNode-Objekte in den Pfaden.
-Der dfs-Algorithmus traversiert den Baum und berechnet die Summe der gripperOrAxis.valueOfParameter()-Werte für jeden Pfad.
-topPaths speichert die besten Pfade, sortiert nach der Summe der Werte, und gibt die 5 besten Pfade aus.
-Du kannst k entsprechend deinen Anforderungen ändern. Beachte, dass AssuranceMapper eine fiktive Klasse ist
- und du sie durch deine tatsächliche Implementierung ersetzen solltest.
- */
 public class PathFinder {
-    private static List<List<KinematicChain>> topPaths = new ArrayList<>();
 
-    public static List<List<KinematicChain>> findTopPaths(KinematicChain root, int k) {
-        dfs(root, new ArrayList<>(), k);
-        topPaths.sort((a, b) -> Double.compare(sum(b), sum(a)));
-        return topPaths.subList(0, Math.min(k, topPaths.size()));
+    private static final PriorityQueue<List<CombinedRessources>> minHeapPaths = new PriorityQueue<>(Comparator.comparingDouble(PathFinder::sum));
+
+    public static List<List<CombinedRessources>> findTopPaths(KinematicChain root, int kMin) {
+        dfs(root, new ArrayList<>(), new HashSet<>());
+        List<List<CombinedRessources>> topPaths = new ArrayList<>();
+        Set<Set<Long>> visitedPaths = new HashSet<>();
+        while (!minHeapPaths.isEmpty()) {
+            List<CombinedRessources> currentPath = minHeapPaths.poll();
+            Set<Long> pathSet = currentPath.stream().map(CombinedRessources::getId).collect(Collectors.toSet());
+            if (!visitedPaths.contains(pathSet)) {
+                visitedPaths.add(pathSet);
+                topPaths.add(currentPath);
+            }
+            if (kMin != 0) {
+                if (topPaths.size() == kMin) {
+                    break;
+                }
+            }
+        }
+        return topPaths;
     }
 
-    private static void dfs(KinematicChain node, List<KinematicChain> currentPath, int k) {
-        if (node == null) {
+    private static void dfs(KinematicChain node, List<CombinedRessources> currentPath, Set<Long> visitedNodes) {
+        if (node == null || visitedNodes.contains(node.getGripperOrAxis().getId())) {
             return;
         }
 
-        currentPath.add(node);
+        CombinedRessources combinedRessources = new CombinedRessources(node.getGripperOrAxis().getId(), node.getNameOfAssurance(), node.getGripperOrAxis().getPrice());
+        visitedNodes.add(node.getGripperOrAxis().getId());
+        currentPath.add(combinedRessources);
 
         if (node.getChilds().isEmpty()) {
-            if (topPaths.size() < k || sum(currentPath) > sum(topPaths.get(topPaths.size() - 1))) {
-                topPaths.add(new ArrayList<>(currentPath));
-                topPaths.sort((a, b) -> Double.compare(sum(b), sum(a)));
-                if (topPaths.size() > k) {
-                    topPaths.remove(topPaths.size() - 1);
-                }
-            }
+            minHeapPaths.offer(new ArrayList<>(currentPath));
         } else {
             for (KinematicChain child : node.getChilds()) {
-                dfs(child, currentPath, k);
+                dfs(child, currentPath, visitedNodes);
             }
         }
 
+        visitedNodes.remove(node.getGripperOrAxis().getId());
         currentPath.remove(currentPath.size() - 1);
     }
 
-    public static double sum(List<KinematicChain> path) {
-        return path.stream().mapToDouble(node -> node.getGripperOrAxis().getPrice()).sum();
+    public static double sum(List<CombinedRessources> path) {
+        return path.stream().mapToDouble(CombinedRessources::getPrice).sum();
     }
+
 }

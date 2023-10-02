@@ -1,13 +1,18 @@
-package com.example.Masterproject4.RCZwei;
+package com.example.Masterproject4.Handler;
 
+import com.example.Masterproject4.CombinedRessources.KinematicChain;
+import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.XMLAttributeHolder.AssuranceMapper;
 import com.example.Masterproject4.XMLAttributeHolder.PropertyInformation;
 import lombok.Builder;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 @Component
@@ -18,12 +23,51 @@ public class RessourceChecker2 {
     private static final Logger Log = LoggerFactory.getLogger(RessourceChecker2.class);
     List<AssuranceMapper> assuranceMap;
 
+    /***
+     * Parsen einer Liste von Zusicherungen auf eine Liste von Zusicherungen im Map-Format
+     * @param assuranceListIn   : Liste von Zusicherungen, die aus der Datenbank direkt kommen
+     * @return assuranceListOut : Liste von Zusicherungen auf eine Map angepasst
+     */
+    public List<AssuranceMapper> fillAssuranceMapper(List<AssuranceFullObject> assuranceListIn) {
+        List<AssuranceMapper> assuranceListOut = new ArrayList<>();
+
+        for (AssuranceFullObject fullObject : assuranceListIn) {
+            AssuranceMapper mapper = new AssuranceMapper();
+            mapper.setAssetId(fullObject.getAssetId());
+            mapper.setId((fullObject.getId()));
+            mapper.setConnectionType(fullObject.getConnectionType());
+            Map<String, PropertyInformation> propertyParameters = new TreeMap<>();
+            // Verwende Reflection, um alle Double-Attribute zu extrahieren
+            Field[] fields = fullObject.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if (field.getType() == double.class) {
+                    try {
+                        double value = field.getDouble(fullObject);
+                        if (field.getName().equals("price")) {
+                            mapper.setPrice(value);
+                        } else {
+                            PropertyInformation newPropertyInformationForAssuranceMapper = new PropertyInformation();
+                            newPropertyInformationForAssuranceMapper.setValueOfParameter(value);
+                            propertyParameters.put(field.getName(), newPropertyInformationForAssuranceMapper);
+                        }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            mapper.setPropertyParameters(propertyParameters);
+            assuranceListOut.add(mapper);
+        }
+        return assuranceListOut;
+    }
+
     public KinematicChain assemblyByDisassembly(PropertyInformation[][] tableOfRequirement) {
         KinematicChain rootObject = new KinematicChain();
         rootObject.setUuid(0);
         rootObject.setTableOfRemainingRequirement(tableOfRequirement);
         AssuranceMapper dummyMapper = new AssuranceMapper();
         dummyMapper.setPrice(0);
+        dummyMapper.setId(0L);
         rootObject.setGripperOrAxis(dummyMapper);
         searchForGripper(rootObject, tableOfRequirement);
         return rootObject;
@@ -341,6 +385,20 @@ public class RessourceChecker2 {
                 }
             }
         }
+    }
+
+    public void callRestService(List<Constraints> matchedAssurances) {
+        matchedAssurances.forEach(assurance -> {
+            if (!(assurance.getRestApi() == null)) {
+                String restCall;
+                restCall = assurance.getRestApi() + "/getPayload?AssetId=" + assurance.getIdShort();
+                Log.info("RestCall " + restCall);
+                RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<String> call = restTemplate.getForEntity(restCall, String.class);
+                Log.info(call.getBody());
+            }
+        });
+
     }
 
 
