@@ -2,7 +2,6 @@ package com.example.Masterproject4;
 
 import com.example.Masterproject4.CombinedRessources.AttributeGroupedByName;
 import com.example.Masterproject4.CombinedRessources.CombinedRessources;
-import com.example.Masterproject4.CombinedRessources.ProductProcessReference;
 import com.example.Masterproject4.Entity.AssuranceFullObject;
 import com.example.Masterproject4.Handler.*;
 import com.example.Masterproject4.Mapper.AssuranceToDB;
@@ -39,19 +38,15 @@ public class HtmlController {
     @Autowired
     private AssuranceRepository assuranceRepository;
     @Autowired
-    private RessourceChecker2 ressourceChecker2;
-    @Autowired
-    private ProductProcessReference productProcessReference;
+    private RessourceChecker ressourceChecker;
     @Autowired
     private ProductRequirementMapper productRequirementMapper;
     @Autowired
     private ProductRequirementFullObject productRequirementFullObject;
     @Autowired
     private AssuranceToDB assuranceToDB;
-
     @Autowired
     private AttributeGroupedByName attributeGroupedByName;
-
     @Autowired
     private KinematicChain kinematicChain;
 
@@ -101,7 +96,7 @@ public class HtmlController {
             // Zusicherungsliste füllen
             List<AssuranceFullObject> assuranceList = assuranceRepository.findAll();
             // Zusicherungen auf die Mapperklasse sortieren
-            List<AssuranceMapper> assuranceMapList = ressourceChecker2.fillAssuranceMapper(assuranceList);
+            List<AssuranceMapper> assuranceMapList = ressourceChecker.fillAssuranceMapper(assuranceList);
             // Map nun auf eine Zeilen-Spalten-Struktur parsen
             Map.Entry<String, Map<String, PropertyInformation>> firstEntry = attributeGroupedByName.getPropertyParameters().entrySet().iterator().next();
             int rowSize = firstEntry.getValue().size();
@@ -110,8 +105,8 @@ public class HtmlController {
             PropertyInformation[][] tableOfRequirement = new PropertyInformation[rowSize][columnSize];
             // Sortierte Anforderung auf eine 2-Dimensionale Tabelle mappen
             productRequirementMapper.mapToTableOfRequirement(attributeGroupedByName, tableOfRequirement);
-            ressourceChecker2.setAssuranceMap(assuranceMapList);
-            kinematicChain = ressourceChecker2.assemblyByDisassembly(tableOfRequirement);
+            ressourceChecker.setAssuranceMap(assuranceMapList);
+            kinematicChain = ressourceChecker.assemblyByDisassembly(tableOfRequirement);
             Log.info(kinematicChain.getTreeStructure());
         }
         List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,4);
