@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"idShort","category","kind","semanticId","qualifier","ordered","allowDuplicates","value"})
-public class SubmodelElementCollection {
+public class SubModelElementCollection {
     @XmlElement(name="idShort")
     private String idShort;
 

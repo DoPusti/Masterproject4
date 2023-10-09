@@ -19,6 +19,7 @@ public class AssuranceMapper {
     String connectionType;
     double price;
     Map<String,PropertyInformation> propertyParameters;
+    String restApi;
 
     public StringBuilder toStringCustom() {
         StringBuilder outPutString = new StringBuilder();

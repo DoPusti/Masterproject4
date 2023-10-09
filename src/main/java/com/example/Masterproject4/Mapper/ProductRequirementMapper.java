@@ -82,7 +82,7 @@ public class ProductRequirementMapper {
 
     }
 
-    private Map<String, Double> fillSubModelProductProperty(SubmodelElementCollection collection) {
+    private Map<String, Double> fillSubModelProductProperty(SubModelElementCollection collection) {
         Map<String, Double> casheListForProperties = new HashMap<>();
         // IDShort z.B. Combined Parts
         List<SubModelElement> subModelElementsInProductPropertyDeep2 = collection.getValue().getSubmodelElement();
@@ -112,7 +112,7 @@ public class ProductRequirementMapper {
         return casheListForProperties;
     }
 
-    private ProcessRequirement fillSubModelProcessRequirement(SubmodelElementCollection collection) {
+    private ProcessRequirement fillSubModelProcessRequirement(SubModelElementCollection collection) {
         Map<String, PropertyInformation> attributeDefinitions = new HashMap<>();
         ProcessRequirement processRequirement = new ProcessRequirement();
         String idShortOfProcessRequirement = collection.getIdShort();

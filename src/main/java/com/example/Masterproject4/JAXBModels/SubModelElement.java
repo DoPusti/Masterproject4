@@ -14,7 +14,7 @@ public class SubModelElement {
     private Property property;
 
     @XmlElement(name="submodelElementCollection")
-    private SubmodelElementCollection submodelElementCollection;
+    private SubModelElementCollection submodelElementCollection;
 
     @XmlElement(name="range")
     private Range range;

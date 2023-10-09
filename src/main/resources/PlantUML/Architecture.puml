@@ -1,0 +1,41 @@
+@startuml
+
+skinparam nodesep 1
+left to right direction
+package "Group" {
+   actor user
+   [Browser]
+}
+
+package "HTTP Server" {
+package "Interface" {
+    [GUI          ]
+    [REST API]
+}
+
+node "Java Application" {
+    [File Converter               ]
+    [RequirementProcessing]
+    [AssuranceMapper         ]
+    [RessourceChecker]
+    [Traverse Algorithm]
+}
+
+
+}
+
+node "MySQL Server" {
+database "MySQL" {
+  folder "CR" {
+    file assurance_full_object
+    file assurance_full_object_seq
+  }
+
+}
+}
+user --> [Browser]
+[Browser] --(  "Interface" : HTTP(S)
+"Interface" )--( "Java Application"
+"Java Application" )--( "MySQL Server"
+
+@enduml

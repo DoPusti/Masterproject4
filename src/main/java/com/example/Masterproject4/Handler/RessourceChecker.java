@@ -398,11 +398,11 @@ public class RessourceChecker {
         }
     }
     //TODO Funktion muss noch ausgebaut und angebunden werden
-    public void callRestService(List<Constraints> matchedAssurances) {
+    public void callRestService(List<AssuranceMapper> matchedAssurances) {
         matchedAssurances.forEach(assurance -> {
             if (!(assurance.getRestApi() == null)) {
                 String restCall;
-                restCall = assurance.getRestApi() + "/getPayload?AssetId=" + assurance.getIdShort();
+                restCall = assurance.getRestApi() + "/getPayload?AssetId=" + assurance.getAssetId();
                 Log.info("RestCall " + restCall);
                 RestTemplate restTemplate = new RestTemplate();
                 ResponseEntity<String> call = restTemplate.getForEntity(restCall, String.class);

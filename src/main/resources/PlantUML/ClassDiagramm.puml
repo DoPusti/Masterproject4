@@ -1,0 +1,116 @@
+@startuml
+class HtmlController
+rectangle "AttributeMapping" #line.dashed {
+class FileConverter {
+  +convertFile()
+class PoductRequirementMapper {
++mapXMLToClass()
++mapProductRequirementFullObjectToSequence()
++sortPropertiesInAscendingOrder()
++mapToTableOfRequirement()
+}
+class PathFinder {
++findTopPaths()
+}
+}
+
+rectangle "FindCombinedRessources" #line.dashed{
+class RessourceChecker {
++fillAssuranceMapper()
++assemblyByDisassembly()
+}
+class AttributeGroupedByName
+class CombinedRessources
+class KinematicChain
+class AssuranceFullObject
+
+class AssuranceMapper
+class ProcessRequirement
+class PropertyInformation
+}
+class AssuranceToDB
+interface AssuranceRepository
+
+rectangle "XML Mapping" #line.dashed{
+class XMLStructure
+class Value
+class SubModels
+class SubModelRefs
+class SubModelRef
+class SubModelElements
+class SubModelElementCollection
+class SubModelElement
+class SubModel
+class SemanticId
+class Range
+class Property
+class Keys
+class Key
+class EmbeddedDataSpecification
+class Definition
+class DataSpecificationIEC61360
+class DataSpecificationContent
+class DataSpecification
+class ConceptDescriptions
+class ConceptDescription
+class Assets
+class AssetRef
+class AssetAdministrationShells
+class AssetAdministrationShell
+class Asset
+}
+note right of HtmlController: Einstiegspunkt für das Hauptverarbeitung
+
+
+HtmlController --> FileConverter
+HtmlController -->PoductRequirementMapper
+HtmlController --> RessourceChecker
+HtmlController --> PathFinder
+PathFinder --> CombinedRessources
+PathFinder --> KinematicChain
+AssuranceToDB --> AssuranceFullObject
+AssuranceMapper  --> PropertyInformation
+ProcessRequirement  --> PropertyInformation
+PoductRequirementMapper  --> PropertyInformation
+RessourceChecker  --> PropertyInformation
+PoductRequirementMapper --> XMLStructure
+HtmlController --> AssuranceToDB
+HtmlController --> AssuranceRepository
+PoductRequirementMapper --- AttributeGroupedByName
+
+
+
+XMLStructure "1" --> "1" AssetAdministrationShells
+AssetAdministrationShells "1" --> "1" AssetAdministrationShell
+AssetAdministrationShell "1" --> "1" AssetRef
+AssetAdministrationShell "1" --> "1" SubModelRefs
+SubModelRefs "1" --> "n" SubModelRef
+SubModelRef "1" --> "1" Keys
+Keys "1" --> "1" Key
+XMLStructure "1" --> "1" Assets
+Assets "1" --> "1" Asset
+XMLStructure "1" --> "1" SubModels
+SubModels "1" --> "n" SubModel
+SubModel "1" --> "1" SemanticId
+SubModels "1" --> "1" SubModelElements
+SubModelElements "1" --> "n" SubModelElement
+SubModelElement "1" --> "1" Property
+Property "1" --> "1" SemanticId
+SubModelElement "1" --> "1" SubModelElementCollection
+SubModelElementCollection "1" --> "1" SemanticId
+SubModelElementCollection "1" --> "1" Value
+Value "1" --> "n" SubModelElement
+SubModelElement "1" --> "1" Range
+XMLStructure "1" --> "1" ConceptDescriptions
+ConceptDescriptions "1" --> "n" ConceptDescription
+ConceptDescription "1" --> "n" EmbeddedDataSpecification
+EmbeddedDataSpecification "1" --> "1" DataSpecificationContent
+DataSpecificationContent "1" --> "1" DataSpecificationIEC61360
+EmbeddedDataSpecification "1" --> "1" DataSpecification
+DataSpecification "1" --> "1" DataSpecificationIEC61360
+DataSpecificationIEC61360 "1" --> "1" Definition
+
+
+
+
+@enduml
