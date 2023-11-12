@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Component
 @Data
 @Builder
-public class RessourceChecker {
+public class SicherungsKlasse {
 
     private static final Logger Log = LoggerFactory.getLogger(RessourceChecker.class);
     List<AssuranceMapper> assuranceMap;
@@ -71,15 +71,9 @@ public class RessourceChecker {
         dummyMapper.setId(0L);
         rootObject.setPathIsRelevant(true);
         rootObject.setGripperOrAxis(dummyMapper);
-        //fillLogWithCSV(tableOfRequirement);
-        searchForGripper(rootObject);
-        return rootObject;
-
-    }
-
-    private void fillLogWithCSV(PropertyInformation[][] tableOfRequirement) {
         StringBuilder output = new StringBuilder();
-        // Überschriften aus attributeName erstellen
+
+// Überschriften aus attributeName erstellen
         output.append("subProcessID/ValueOfParameter,");
         for (int i = 0; i < tableOfRequirement[0].length; i++) {
             output.append(tableOfRequirement[0][i].getAttributeName());
@@ -88,34 +82,40 @@ public class RessourceChecker {
             }
         }
         output.append(System.lineSeparator());
-        for (PropertyInformation[] propertyInformations : tableOfRequirement) {
-            for (int j = 0; j < propertyInformations.length; j++) {
-                String subProcessId = propertyInformations[j].getSubProcessId();
-                double valueOfParameter = propertyInformations[j].getValueOfParameter();
+
+        // Datenpunkte im CSV-Format hinzufügen
+        for (int i = 0; i < tableOfRequirement.length; i++) {
+            for (int j = 0; j < tableOfRequirement[i].length; j++) {
+                String subProcessId = tableOfRequirement[i][j].getSubProcessId();
+                double valueOfParameter = tableOfRequirement[i][j].getValueOfParameter();
                 output.append("(").append(subProcessId).append("/").append(valueOfParameter).append(")");
-                if (j < propertyInformations.length - 1) {
+                if (j < tableOfRequirement[i].length - 1) {
                     output.append(",");
                 }
             }
             output.append(System.lineSeparator());
         }
+
         Log.info(output.toString());
+        searchForGripper(rootObject, tableOfRequirement);
+        return rootObject;
+
     }
 
-    public void searchForGripper(KinematicChain parentNode) {
+    public void searchForGripper(KinematicChain parentNode, PropertyInformation[][] remainingRequirement) {
         //Prüfung ob Requirmentset leer ist
         Log.info("Aufruf SEARCHFORGRIPPER");
         Log.info("===============================");
         Log.info("      Prüfung ob Anforderungsliste noch leer ist:");
-        Log.info(Arrays.deepToString(parentNode.getTableOfRemainingRequirement()));
-        if (!(parentNode.getTableOfRemainingRequirement() == null || parentNode.getTableOfRemainingRequirement().length == 0)) {
+        Log.info(Arrays.deepToString(remainingRequirement));
+        if (!(remainingRequirement == null || remainingRequirement.length == 0)) {
             Log.info("      Anforderungsliste ist noch nicht leer");
             //Schleife über alle Greifer
             assuranceMap.forEach(assurance -> {
                 //PropertyInformation[][] requirementForAssurance = remainingRequirement;
-                PropertyInformation[][] remainingRequirement = new PropertyInformation[parentNode.getTableOfRemainingRequirement().length][];
-                for (int i = 0; i < parentNode.getTableOfRemainingRequirement().length; i++) {
-                    remainingRequirement[i] = parentNode.getTableOfRemainingRequirement()[i].clone();
+                PropertyInformation[][] requirementForAssurance = new PropertyInformation[remainingRequirement.length][];
+                for (int i = 0; i < remainingRequirement.length; i++) {
+                    requirementForAssurance[i] = remainingRequirement[i].clone();
                 }
                 Set<String> remainingSequences = new HashSet<>();
                 Map<String, PropertyInformation> sequenceOfAllProperties = new HashMap<>();
@@ -126,16 +126,16 @@ public class RessourceChecker {
                     Map<String, PropertyInformation> propertiesOfAssurance = new HashMap<>(assurance.getPropertyParameters());
                     boolean gripperIsRelevant = true;
                     // Schleife über die Tabelle der tableOfRequirement
-                    for (int col = 0; col < remainingRequirement[0].length; col++) {
+                    for (int col = 0; col < requirementForAssurance[0].length; col++) {
                         // Mindestens in einer Zeile des Attributs muss ein passender Wert gefunden werden
                         boolean matchingColumnFound = false;
                         // Dient zur Prüfung, ob bereits ein ähnlicher Greifer mit gleicher Sequenz gefunden wurde
                         boolean columnForSequenceSet = false;
-                        String attributeName = remainingRequirement[0][col].getAttributeName();
-                        String attributeSpecification = remainingRequirement[0][col].getDataSpecification();
+                        String attributeName = requirementForAssurance[0][col].getAttributeName();
+                        String attributeSpecification = requirementForAssurance[0][col].getDataSpecification();
                         // Es werden nur Spalten betrachtet mit Constraints, da PersistentStateChange bei einem Greifer nicht möglich ist
                         if (attributeSpecification.equals("Constraints")) {
-                            for (PropertyInformation[] propertyInformations : remainingRequirement) {
+                            for (PropertyInformation[] propertyInformations : requirementForAssurance) {
                                 //Passender Greifer filtern
                                 double valueOfRequirement = propertyInformations[col].getValueOfParameter();
                                 double valueOfAssuranceAttribute = propertiesOfAssurance.get(attributeName).getValueOfParameter();
@@ -159,7 +159,7 @@ public class RessourceChecker {
                                 }
                             }
                         }
-                        if (!matchingColumnFound && remainingRequirement[0][col].getDataSpecification().equals("Constraints")) {
+                        if (!matchingColumnFound && requirementForAssurance[0][col].getDataSpecification().equals("Constraints")) {
                             gripperIsRelevant = false;
                             Log.info("          Greifer ist nicht relevant, weil mindestens eine Spalte nicht erfüllt wurde.");
                             break;
@@ -343,7 +343,6 @@ public class RessourceChecker {
             }
         } else {
             Log.info("                            Knotenpunkt hat keine offenen Werte mehr.");
-            searchForGripper(node);
 
         }
     }

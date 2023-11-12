@@ -59,7 +59,7 @@ class AssetAdministrationShells
 class AssetAdministrationShell
 class Asset
 }
-note right of HtmlController: Einstiegspunkt für das Hauptverarbeitung
+note right of HtmlController: Einstiegspunkt für die Hauptverarbeitung
 
 
 HtmlController --> FileConverter

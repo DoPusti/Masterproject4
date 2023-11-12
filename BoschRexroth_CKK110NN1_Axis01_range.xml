@@ -354,21 +354,6 @@
                     </submodelElement>
                     <submodelElement>
                       <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>0.005</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
                         <idShort>Rotation</idShort>
                         <category>CONSTANT</category>
                         <description>
@@ -383,24 +368,6 @@
                         <qualifier />
                         <valueType />
                         <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>0.04</value>
                       </property>
                     </submodelElement>
                   </value>
@@ -437,21 +404,6 @@
                     </submodelElement>
                     <submodelElement>
                       <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3141_8181_2122_9458</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
                         <idShort>Rotation</idShort>
                         <category>CONSTANT</category>
                         <description>
@@ -461,24 +413,6 @@
                         <semanticId>
                           <keys>
                             <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/9241_8181_2122_0307</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/3151_8181_2122_4233</key>
                           </keys>
                         </semanticId>
                         <qualifier />
@@ -520,21 +454,6 @@
                     </submodelElement>
                     <submodelElement>
                       <property>
-                        <idShort>PositionRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2061_8181_2122_7168</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
                         <idShort>Rotation</idShort>
                         <category>CONSTANT</category>
                         <description>
@@ -544,24 +463,6 @@
                         <semanticId>
                           <keys>
                             <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/2361_8181_2122_2695</key>
-                          </keys>
-                        </semanticId>
-                        <qualifier />
-                        <valueType />
-                        <value>NaN</value>
-                      </property>
-                    </submodelElement>
-                    <submodelElement>
-                      <property>
-                        <idShort>RotationRepetitionAccuracy</idShort>
-                        <category>CONSTANT</category>
-                        <description>
-                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
-                        </description>
-                        <kind>Instance</kind>
-                        <semanticId>
-                          <keys>
-                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/4071_8181_2122_4716</key>
                           </keys>
                         </semanticId>
                         <qualifier />
@@ -608,6 +509,7 @@
                             <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
                           </keys>
                         </semanticId>
+                        <qualifier />
                         <valueType />
                         <min>NaN</min>
                         <max>NaN</max>
@@ -622,6 +524,7 @@
                             <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
                           </keys>
                         </semanticId>
+                        <qualifier />
                         <valueType />
                         <min>NaN</min>
                         <max>NaN</max>
@@ -636,6 +539,7 @@
                             <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/5355_4141_4032_8581</key>
                           </keys>
                         </semanticId>
+                        <qualifier />
                         <valueType />
                         <min>0</min>
                         <max>400</max>
@@ -708,6 +612,118 @@
                         <qualifier />
                         <valueType />
                         <value>240</value>
+                      </property>
+                    </submodelElement>
+                  </value>
+                </submodelElementCollection>
+              </submodelElement>
+              <submodelElement>
+                <submodelElementCollection>
+                  <idShort>Accuracy</idShort>
+                  <kind>Instance</kind>
+                  <semanticId>
+                    <keys />
+                  </semanticId>
+                  <ordered>false</ordered>
+                  <allowDuplicates>false</allowDuplicates>
+                  <value>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracyX</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.005</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracyX</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.04</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracyY</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.04</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracyY</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.005</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>RotationRepetitionAccuracyZ</idShort>
+                        <category>CONSTANT</category>
+                        <description>
+                          <langString lang="en">Repeatability is a measure of the ability of the method to generate similar results for multiple preparations of the same sample, in mm. </langString>
+                        </description>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.04</value>
+                      </property>
+                    </submodelElement>
+                    <submodelElement>
+                      <property>
+                        <idShort>PositionRepetitionAccuracyZ</idShort>
+                        <category>CONSTANT</category>
+                        <kind>Instance</kind>
+                        <semanticId>
+                          <keys>
+                            <key type="ConceptDescription" local="true" idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</key>
+                          </keys>
+                        </semanticId>
+                        <qualifier />
+                        <valueType />
+                        <value>0.005</value>
                       </property>
                     </submodelElement>
                   </value>
@@ -1408,7 +1424,7 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>PositionRepetitionAccuracy</idShort>
+      <idShort>PositionRepetitionAccuracyZ</idShort>
       <identification idType="IRI">https://example.com/ids/cd/1321_8181_2122_8521</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
@@ -1448,7 +1464,7 @@
       </embeddedDataSpecification>
     </conceptDescription>
     <conceptDescription>
-      <idShort>RotationRepetitionAccuracy</idShort>
+      <idShort>RotationRepetitionAccuracyZ</idShort>
       <identification idType="IRI">https://example.com/ids/cd/7131_8181_2122_5084</identification>
       <embeddedDataSpecification>
         <dataSpecificationContent>
@@ -2205,8 +2221,10 @@
         <dataSpecificationContent>
           <dataSpecificationIEC61360>
             <preferredName />
+            <shortName />
             <unit>N</unit>
             <dataType />
+            <definition />
           </dataSpecificationIEC61360>
         </dataSpecificationContent>
         <dataSpecification>

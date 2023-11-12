@@ -4,16 +4,16 @@ skinparam nodesep 1
 left to right direction
 package "Group" {
    actor user
-   [Application]
+   [Browser]
 }
 
-package "Server" {
+package "HTTP-Server" {
 package "Interface" {
-    [graphical          ] as GUIComponent
-    [program-based]
+    [graphical (HTML, CSS, Javascript)               ] as GUIComponent
+    [program-based (RestController Spring Boot]
 }
 
-node "Software Application" {
+node "Java Application" {
     [File Converter               ]
     [RequirementProcessing]
     [AssuranceMapper         ]
@@ -24,8 +24,8 @@ node "Software Application" {
 
 }
 
-node "Database Server" {
-database "DBMS" {
+node "MySQL Server" {
+database "MySQL" {
   folder "Schema" {
     file assurance_full_object
     file assurance_full_object_seq
@@ -35,9 +35,9 @@ database "DBMS" {
 }
 
 
-user --> [Application]
-[Application] --(  "Interface" : API
-"Interface" )--( "Software Application"
-"Software Application" )--( "Database Server"
+user --> [Browser]
+[Browser] --(  "Interface" : API
+"Interface" )--( "Java Application"
+"Java Application" )--( "MySQL Server"
 
 @enduml

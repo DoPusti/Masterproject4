@@ -302,65 +302,6 @@ public class ProductRequirementMapper {
 
     }
 
-
-
-    /*
-    public RequirementTable mapperToTable(AttributeGroupedByName attributeGroupedByNameIn, Map<String, String> listOfRelevantParameters) {
-        RequirementTable requirementTableOut = new RequirementTable();
-
-        //List<RequirementTable> requirementTable = new ArrayList<>();
-        Map<Integer, Map<String, PropertyInformation>> requirementTable = new TreeMap<>();
-
-        for (Map.Entry<String, Map<String, PropertyInformation>> outerEntry : attributeGroupedByNameIn.getPropertyParameters().entrySet()) {
-            String outerKey = outerEntry.getKey();  // z.B. PositionX
-            int index = 1; // Zähler für die Zeilen
-            if (listOfRelevantParameters.containsKey(outerKey)) {
-                //if (outerKey.equals("positionX") || outerKey.equals("positionY")) {
-                // Iteriere über die innere Map . Liste von einem Key z.B. positionX
-                for (Map.Entry<String, PropertyInformation> innerEntry : outerEntry.getValue().entrySet()) {
-                    String innerKey = innerEntry.getKey(); //TV-Vorgang
-                    PropertyInformation propertyInfo = innerEntry.getValue();
-                    propertyInfo.setDataSpecification(listOfRelevantParameters.get(outerKey));
-                    // Prüfen ob die Zeile bereits angelegt wurde
-                    if (requirementTable.containsKey(index)) {
-                        Map<String, PropertyInformation> requirementRow = requirementTable.get(index);
-                        requirementRow.put(outerKey, propertyInfo);
-                        requirementTable.put(index, requirementRow);
-                    } else {
-                        Map<String, PropertyInformation> newRequirementRow = new HashMap<>();
-                        newRequirementRow.put(outerKey, propertyInfo);
-                        requirementTable.put(index, newRequirementRow);
-                    }
-                    index++;
-                }
-            }
-        }
-
-
-        //Prüfung der Ergebnisse:
-        for (Map.Entry<Integer, Map<String, PropertyInformation>> outerEntry : requirementTable.entrySet()) {
-            Integer outerKey = outerEntry.getKey();
-            Map<String, PropertyInformation> innerMap = outerEntry.getValue();
-            System.out.println("Zeile " + outerKey);
-            // Iterieren Sie über die innere Map
-            for (Map.Entry<String, PropertyInformation> innerEntry : innerMap.entrySet()) {
-                String innerKey = innerEntry.getKey();
-                PropertyInformation propertyInfo = innerEntry.getValue();
-                // Hier können Sie auf die Werte zugreifen
-                System.out.println("Attribut: " + innerKey + ",Attributsinformationen: " + propertyInfo.getSubProcessId() + "," + propertyInfo.getValueOfParameter() + "," + propertyInfo.getDataSpecification());
-            }
-        }
-
-
-        requirementTableOut.setRequirementAttributes(requirementTable);
-        return requirementTableOut;
-
-
-    }
-
-     */
-
-
 }
 
 

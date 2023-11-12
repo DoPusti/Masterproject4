@@ -109,14 +109,14 @@ public class HtmlController {
             kinematicChain = ressourceChecker.assemblyByDisassembly(tableOfRequirement);
             Log.info(kinematicChain.getTreeStructure());
         }
-        List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,4);
+        List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,6);
         StringBuilder divContent = new StringBuilder();
         for (List<CombinedRessources> path : topPaths3) {
             divContent.append("<ul>");
             divContent.append("<li>Summe: ").append(PathFinder.sum(path)).append(" €").append("</li>");
             for (CombinedRessources node : path) {
                 if(node.getId()!=0) {
-                    String output = String.format("<li>Id: %-4d  Preis: %-10.2f  Typ: %s</li>", node.getId(), node.getPrice(), node.getGripperOrAxis());
+                    String output = String.format("<li>Id: %-4d  Preis: %-10.2f €  Typ: %s</li>", node.getId(), node.getPrice(), node.getGripperOrAxis());
                     divContent.append(output);
                 }
             }
@@ -125,7 +125,7 @@ public class HtmlController {
         }
         File file = new ClassPathResource("/static/responseFile.html").getFile();
         File file2 = new ClassPathResource("/static/responseFile2.html").getFile();
-        String htmlContent = "Keine Anzeige möglich";
+        String htmlContent;
         htmlContent = Files.readString(file.toPath());
         // Den Baumstruktur-String in die HTML-Datei einfügen
         htmlContent = htmlContent.replace("<!-- TREE_STRUCTURE_PLACEHOLDER -->", divContent);

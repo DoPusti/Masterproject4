@@ -4,9 +4,7 @@ import com.example.Masterproject4.Entity.AssuranceFullObject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface AssuranceRepository  extends JpaRepository<AssuranceFullObject,Long> {
+public interface AssuranceRepository extends JpaRepository<AssuranceFullObject, Long> {
 
 }
