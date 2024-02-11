@@ -89,7 +89,7 @@ public class ProductRequirementMapper {
         subModelElementsInProductPropertyDeep2.forEach(subModelElementObject1 -> {
             Property property1 = subModelElementObject1.getProperty();
             if (property1 != null) {
-                if ((property1.getIdShort().equals("Mass") || property1.getIdShort().equals("MeanRoughness") || property1.getIdShort().equals("FerroMagentic"))
+                if ((property1.getIdShort().equals("mass") || property1.getIdShort().equals("MeanRoughness") || property1.getIdShort().equals("FerroMagentic"))
                         && listOfRelevantParameters.containsKey(property1.getIdShort())
                 ) {
                     casheListForProperties.put(property1.getIdShort(), Double.parseDouble(property1.getValue()));

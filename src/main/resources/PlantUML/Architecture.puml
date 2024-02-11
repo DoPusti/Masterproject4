@@ -14,7 +14,6 @@ package "Interface" {
 }
 
 node "Software Application" {
-    [File Converter               ]
     [RequirementProcessing]
     [AssuranceMapper         ]
     [RessourceChecker]

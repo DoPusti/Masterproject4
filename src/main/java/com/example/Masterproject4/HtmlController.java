@@ -109,7 +109,7 @@ public class HtmlController {
             kinematicChain = ressourceChecker.assemblyByDisassembly(tableOfRequirement);
             Log.info(kinematicChain.getTreeStructure());
         }
-        List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,6);
+        List<List<CombinedRessources>> topPaths3 = PathFinder.findTopPaths(kinematicChain,10);
         StringBuilder divContent = new StringBuilder();
         for (List<CombinedRessources> path : topPaths3) {
             divContent.append("<ul>");

@@ -149,15 +149,10 @@ public class RessourceChecker {
                                         sequenceOfAllProperties.put(propertyInformations[col].getAttributeName(), propertyInformations[col]);
                                         columnForSequenceSet = true;
                                     }
-                                } else {
-                                    /*
-                                    Log.info("          Attribut " + attributeName + " wird auf false gesetzt in Zeile/" + row + "/Spalte " + col);
-                                    propertyInformations[col].setRequirementFullFilled(false);
-                                    remainingSequences.add(propertyInformations[col].getSubProcessId());
-
-                                     */
                                 }
                             }
+                        } else {
+                            Log.info("Attribut ist nicht Constraints: " + attributeName + " " + attributeSpecification);
                         }
                         if (!matchingColumnFound && remainingRequirement[0][col].getDataSpecification().equals("Constraints")) {
                             gripperIsRelevant = false;
@@ -208,6 +203,7 @@ public class RessourceChecker {
                             //Komplementärset erstellen
                             //Ressource hinzufügen
                             //Prüfung ob ähnliche Sequenz innerhalb des Parent-Node bereits vorhanden ist und billiger oder nicht vorhanden -> neu hinzufügen
+                            fillNewForceY();
                             KinematicChain nodeForGripper = KinematicChain.builder()
                                     .childs(new ArrayList<>())
                                     .uuid((int) (Math.random() * (10000 - 1)))
@@ -288,11 +284,13 @@ public class RessourceChecker {
                                     newChildMap.put(attributeName, entry.getValue());
                                 }
                             }
+                            default -> Log.info("Masse ist nicht enthalten " + attributeName + " " +propertiesOfAssurance.get(attributeName).getValueOfParameter());
                         }
                     }
                     if (persistentStateChangeFullFilled && assuranceIsRelevant && sameAssuranceOnLevelExists(node)) {
                         minimumOfOneAssuranceFound.set(true);
                         Log.info("              !!Zusicherung mit ID " + assurance.getId() + " ist relevant für die nächsten Schritte!!.");
+                        fillNewForceY();
                         KinematicChain newChildNode = KinematicChain.builder()
                                 .uuid((int) (Math.random() * (10000 - 1)))
                                 .childs(new ArrayList<>())
@@ -430,9 +428,11 @@ public class RessourceChecker {
                         break;
                     }
                 }
+            } else {
+                Log.info("Attribut gilt nicht als PersistentStateChange " + attributeName + " " + attributeSpecification);
             }
         }
-    }
+     }
 
     //TODO Funktion muss noch ausgebaut und angebunden werden
     public void callRestService(List<AssuranceMapper> matchedAssurances) {
@@ -457,6 +457,10 @@ public class RessourceChecker {
     public Boolean checkStability(Map<String, PropertyInformation> sequenceIn) {
         return true;
     }
+
+    public void fillNewForceY() {
+
+    };
 
 
 }
